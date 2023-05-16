@@ -1,43 +1,17 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import DrawerNavigator from './src/stacks/DrawerNavigator';
+import React, {useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import TabNavigator from './src/stacks/BottomTab';
-
-
+import { AppProvider } from './src/context/AppContext';
+import SplashScreen from 'react-native-splash-screen';
 export default function App() {
-  
-
-  const transitionSpec = {
-    open: {
-      animation: 'timing',
-      config: {
-        duration: 500,
-      },
-    },
-    close: {
-      animation: 'timing',
-      config: {
-        duration: 500,
-      },
-    },
-  };
-
-  const cardStyleInterpolator = ({ current, next, layouts }) => {
-    const { progress } = current;
-
-    const translateX = progress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [layouts.screen.width, 0],
-    });
-
-    const slideFromLeft = { transform: [{ translateX }] };
-
-    return { cardStyle: slideFromLeft };
-  };
-
+  useEffect(() => {
+      SplashScreen.hide();
+  }, []);
   return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
+    <AppProvider>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </AppProvider>
   );
 }
