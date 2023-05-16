@@ -3,9 +3,10 @@ import {View, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {moderateScale} from 'react-native-size-matters';
-
-import {HomeStack, ProfileStack, SettingsStack} from './StackNavigation';
 import {black, white, gold} from '../constants/Color';
+import Home from '../screens/Home';
+import Setting from '../screens/Setting';
+import Profile from '../screens/Profile';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => (
@@ -46,9 +47,9 @@ const TabNavigator = () => (
         );
       },
     })}>
-    <Tab.Screen name="Home" component={HomeStack} />
-    <Tab.Screen name="Settings" component={SettingsStack} />
-    <Tab.Screen name="Profile" component={ProfileStack} />
+    <Tab.Screen name="Home" component={Home} />
+    <Tab.Screen name="Settings" component={Setting} />
+    <Tab.Screen name="Profile" component={Profile} />
   </Tab.Navigator>
 );
 

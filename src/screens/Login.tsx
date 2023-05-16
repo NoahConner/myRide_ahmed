@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useAppContext} from '../context/AppContext';
 
-const Home = () => {
+const Login = () => {
   const {token, setToken} = useAppContext();
 
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Login</Text>
       <Button
         onPress={() => setToken(token ? false : true)}
         title="Context Check State"
@@ -16,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;
