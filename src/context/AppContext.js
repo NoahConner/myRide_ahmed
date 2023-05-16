@@ -1,18 +1,13 @@
-import React, { createContext, useContext, useState } from 'react';
-
-// Create the context
+import React, {createContext, useContext, useState} from 'react';
 const AppContext = createContext();
-
-// Create the provider component
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({children}) => {
   const [state, setState] = useState('');
+  const [loader, setLoader] = useState('');
 
-  const contextValues = {state,setState};
+  const contextValues = {state, setState, loader, setLoader};
 
   return (
-    <AppContext.Provider value={contextValues}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>
   );
 };
 export const useAppContext = () => useContext(AppContext);
