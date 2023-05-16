@@ -1,2 +1,2 @@
-# myride
-Client app
+# MyRide
+ Client App name myride
