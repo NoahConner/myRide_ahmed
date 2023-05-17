@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View, Image, Animated, StyleSheet} from 'react-native';
-import {screenHeight} from '../constants/ScreenResolution';
+import {screenHeight} from '../../constants/ScreenResolution';
 
 const topValue = screenHeight - 150;
 
-const SplashLogoAnimation = ({setBackgroundState}) => {
-  const [animation] = useState(new Animated.Value(0));
+const SplashLogoAnimation = ({setBackgroundState, setModalView}) => {
+  const animation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const startAnimation = () => {
       Animated.timing(animation, {
         toValue: topValue - screenHeight,
-        duration: 1500,
+        duration: 1000,
         useNativeDriver: true,
-      }).start(() => {
-        setBackgroundState(false);
-      });
+      }).start();
+      setModalView(true);
+      setBackgroundState(false);
     };
     const timeout = setTimeout(startAnimation, 2000);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [animation, setBackgroundState, setModalView]);
 
   return (
     <Animated.View
@@ -31,7 +31,10 @@ const SplashLogoAnimation = ({setBackgroundState}) => {
             styles.arrowContainer,
             {transform: [{translateY: animation}]},
           ]}>
-          <Image source={require('../../assets/Images/AppLogo.png')} />
+          <Image
+            source={require('../../../assets/Images/AppLogo.png')}
+            resizeMode="cover"
+          />
         </Animated.View>
       </View>
     </Animated.View>

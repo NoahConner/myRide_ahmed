@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { gray, purple, white } from '../constants/Color';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+} from 'react-native';
+import {gray, purple, white} from '../constants/Color';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {screenWidth} from '../constants/ScreenResolution';
 
-const Input = ({ placeholder, value, setValue, type }) => {
+const Input = ({placeholder, value, setValue, type}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
@@ -11,8 +18,28 @@ const Input = ({ placeholder, value, setValue, type }) => {
     setSecureTextEntry(prevState => !prevState);
   };
 
+  const inputAnimation = new Animated.Value(screenWidth + 250);
+
+  useEffect(() => {
+    startInputAnimation();
+  }, []);
+
+  const startInputAnimation = () => {
+    Animated.timing(inputAnimation, {
+      toValue: 0,
+      duration: 1500,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const inputAnimationStyle = {
+    transform: [{translateX: inputAnimation}],
+    ...styles.container,
+    ...(isActive && styles.activeContainer),
+  };
+
   return (
-    <View style={[styles.container, isActive && styles.activeContainer]}>
+    <Animated.View style={[inputAnimationStyle]}>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
@@ -23,15 +50,17 @@ const Input = ({ placeholder, value, setValue, type }) => {
         secureTextEntry={type === 'password' && secureTextEntry}
       />
       {type === 'password' && (
-        <TouchableOpacity style={styles.eyeButton} onPress={toggleSecureTextEntry}>
+        <TouchableOpacity
+          style={styles.eyeButton}
+          onPress={toggleSecureTextEntry}>
           <Icon
             name={secureTextEntry ? 'eye' : 'eye-slash'}
-            size={25}
-            color={white}
+            size={15}
+            color={purple}
           />
         </TouchableOpacity>
       )}
-    </View>
+    </Animated.View>
   );
 };
 

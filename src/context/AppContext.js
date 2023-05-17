@@ -6,8 +6,9 @@ export const AppProvider = ({ children }) => {
   const [state, setState] = useState('');
   const [loader, setLoader] = useState('');
   const [token, setToken] = useState(false);
+  const [role, setRole] = useState('');
 
-  const contextValues = { state, setState, loader, setLoader, token, setToken };
+  const contextValues = { state, setState, loader, setLoader, token, setToken, role, setRole };
 
   return (
     <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>

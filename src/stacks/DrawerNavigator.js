@@ -2,6 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import TabNavigator from './BottomTab';
 import CustomDrawerContent from './CustomDrawer';
+import { purple } from '../constants/Color';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,9 +13,9 @@ export default function DrawerNavigatorScreen() {
       screenOptions={{
         drawerType: 'front',
         drawerPosition: 'right',
-        headerShown: false,
+        headerShown: true,
         drawerStyle: {
-          backgroundColor: '#FFFFFF',
+          backgroundColor: purple,
           width: '60%',
         },
       }}>
