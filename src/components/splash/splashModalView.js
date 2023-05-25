@@ -13,7 +13,7 @@ const SplashModalView = ({modalView}) => {
   const translateYAnimation = useRef(new Animated.Value(screenHeight)).current;
   const carAnimation = useRef(new Animated.Value(screenWidth)).current;
   const mapAnimation = useRef(new Animated.Value(0)).current;
-  const {setRole, role} = useContext(AppContext);
+  const {setRole} = useContext(AppContext);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const SplashModalView = ({modalView}) => {
   const setRoleAndNavigate = role => {
     setRole(role);
     setTimeout(() => {
-      if (role === 'captain') {
+      if (role === 'driver') {
         navigation.navigate('CapatainLogin');
       } else if (role === 'passenger') {
         navigation.navigate('Login');
@@ -119,7 +119,7 @@ const SplashModalView = ({modalView}) => {
           borderRadius={moderateScale(100, 0.1)}
           width="40%"
           onPress={() => {
-            setRoleAndNavigate('captain');
+            setRoleAndNavigate('driver');
           }}
         />
         <Button

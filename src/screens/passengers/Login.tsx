@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -16,12 +16,14 @@ import Button from '../../components/Button';
 import TopLeftCircleProp from '../../components/TopLeftCircleProp';
 import BottomCircleProp from '../../components/BottomCircleProp';
 import {useNavigation} from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const navigation:any = useNavigation();
+  const {setToken} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -85,7 +87,7 @@ const Login = () => {
             textAlign="center"
             borderRadius={moderateScale(100, 0.1)}
             width="50%"
-            onPress={() => navigation.navigate('Signup')}
+            onPress={() => setToken(true)}
           />
         </View>
         <View style={styles.dontHaveBox}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,6 +14,7 @@ import {KumbhSansExtraBold} from '../../constants/Fonts';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -23,6 +24,7 @@ const SignUp = () => {
   const [confirmpassword, setConfirmPassword] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation: any = useNavigation();
+  const {setToken} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -122,7 +124,7 @@ const SignUp = () => {
             textAlign="center"
             borderRadius={moderateScale(100, 0.1)}
             width="50%"
-            onPress={() => navigation.navigate('')}
+            onPress={() => setToken(true)}
           />
         </View>
         <View style={styles.dontHaveBox}>

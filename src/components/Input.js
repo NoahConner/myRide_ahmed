@@ -33,13 +33,12 @@ const Input = ({placeholder, value, setValue, type}) => {
   };
 
   const inputAnimationStyle = {
-    transform: [{translateX: inputAnimation}],
     ...styles.container,
     ...(isActive && styles.activeContainer),
   };
 
   return (
-    <Animated.View style={[inputAnimationStyle]}>
+    <View style={[inputAnimationStyle]}>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
@@ -60,7 +59,7 @@ const Input = ({placeholder, value, setValue, type}) => {
           />
         </TouchableOpacity>
       )}
-    </Animated.View>
+    </View>
   );
 };
 

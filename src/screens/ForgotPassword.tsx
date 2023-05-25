@@ -30,7 +30,7 @@ const ForgotPassword = () => {
       }),
       Animated.spring(QuestionMarkAnimation, {
         toValue: 1,
-        friction: 1,
+        friction: 7,
         useNativeDriver: true,
       }),
     ]).start();
