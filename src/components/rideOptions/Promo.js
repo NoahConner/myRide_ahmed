@@ -1,20 +1,28 @@
 import {View, StyleSheet} from 'react-native';
 import React, {useState, useEffect, useContext} from 'react';
 import {Button, Heading, Input} from '../Index';
-import {KumbhSansBold, KumbhSansExtraBold, black, gray, green, white} from '../../constants/Index';
+import {
+  KumbhSansBold,
+  KumbhSansExtraBold,
+  black,
+  gray,
+  green,
+  screenWidth,
+  white,
+} from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
 
 const Promo = () => {
   const [promo, setPromo] = useState('');
-  const {rideDetails, setRideDetails} = useContext(AppContext);
+  const {rideDetails, setRideDetails, setRideStages} = useContext(AppContext);
   const applyCoupan = () => {
-    const updatedRideDetails = { ...rideDetails, promo: promo };
+    const updatedRideDetails = {...rideDetails, promo: promo};
     setRideDetails(updatedRideDetails);
-    console.log(rideDetails);
-  }
+    setRideStages('payment');
+  };
   return (
-    <View>
+    <View style={styles.container}>
       <Heading
         text="Enter Promo Code"
         style={styles.heading}
@@ -32,24 +40,29 @@ const Promo = () => {
         placeholderTextColor={gray}
         textAlign="center"
         fontFamily={KumbhSansExtraBold}
-        fontSize={moderateScale(20,0.1)}
+        fontSize={moderateScale(20, 0.1)}
       />
       <Button
-        style={null}
+        style={styles.applyButton}
         fontSize={moderateScale(14, 0.1)}
         backgroundColor={green}
         color={white}
         text="Apply"
-        padding={moderateScale(5, 0.1)}
+        padding={null}
         textAlign="center"
         borderRadius={moderateScale(100, 0.1)}
-        width="25%"
-        onPress={() => {applyCoupan()}}
+        width={screenWidth - 250}
+        onPress={() => {
+          applyCoupan();
+        }}
       />
     </View>
   );
 };
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
   heading: {
     marginTop: moderateScale(15, 0.1),
   },
@@ -59,11 +72,18 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(5, 0.1),
     color: black,
     shadowColor: black,
-    shadowOffset: { width: 2, height: 10 },
+    shadowOffset: {width: 2, height: 10},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 20,
-    borderRadius: moderateScale(10, 0.1)
+    borderRadius: moderateScale(5, 0.1),
+    width:moderateScale(screenWidth-150,0.1)
+  },
+  applyButton: {
+    paddingHorizontal: moderateScale(5, 0.1),
+    paddingVertical: moderateScale(15, 0.1),
+    position: 'absolute',
+    bottom: -70,
   },
 });
 export default Promo;

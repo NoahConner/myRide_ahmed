@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { purple } from '../constants/Index';
-import { FindRide, HeaderToggleButton, RidePayment } from './Index';
+import { FindRide, HeaderToggleButton, RidePayment, RideType } from './Index';
 import { moderateScale } from 'react-native-size-matters';
 import { AppContext, useAppContext } from '../context/AppContext';
 
@@ -12,7 +12,7 @@ const DrawerHeader = ({ navigate, style }) => {
     <View style={[styles.container, style]}>
       <HeaderToggleButton drawer={navigate} />
       <View style={styles.rideOptionsView}>
-        {rideStages === 'initial' ? <FindRide /> : <RidePayment />}
+      {rideStages === 'initial' ? <FindRide /> : rideStages === 'finding' ? <RidePayment /> : <RideType />}
       </View>
     </View>
   );

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, Heading} from '../Index';
-import {moderateScale} from 'react-native-size-matters';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Button, Heading } from '../Index';
+import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraLight,
@@ -11,12 +11,13 @@ import {
   purple,
   white,
 } from '../../constants/Index';
-import {formatUSDPrice} from '../../constants/HelperFunctions';
+import { formatUSDPrice } from '../../constants/HelperFunctions';
 import { AppContext } from '../../context/AppContext';
 
-const CarDetail = ({car, index}) => {
-  const {rideDetails, setRideDetails} = useContext(AppContext);
+const CarDetail = ({ car}) => {
+  const { rideDetails, setRideDetails } = useContext(AppContext);
   console.log(rideDetails);
+
   const getImageSource = () => {
     switch (car.image) {
       case 'ride1.png':
@@ -29,18 +30,24 @@ const CarDetail = ({car, index}) => {
   };
 
   const imageSource = getImageSource();
+
   const selectVehicle = () => {
-    const RideDetail = {
-      ...rideDetails,
-      ...car,
-    };
-    setRideDetails(RideDetail)
-  }
-  const containerStyle =
-    index % 2 === 0 ? styles.containerPurple : styles.containerLightPurple;
+    const updatedRideDetails = { ...rideDetails };
+
+    // Set the previous selected car's "selected" property to false
+    if (updatedRideDetails.car) {
+      updatedRideDetails.car['selected'] = false;
+    }
+
+    // Set the new selected car and update rideDetails
+    car['selected'] = true;
+    updatedRideDetails.car = car;
+
+    setRideDetails(updatedRideDetails);
+  };
 
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View style={[styles.container, { backgroundColor: car['selected'] ? lightestPurple : purple }]}>
       <View>
         {imageSource && <Image source={imageSource} resizeMode="contain" />}
       </View>
@@ -93,12 +100,12 @@ const CarDetail = ({car, index}) => {
         fontSize={moderateScale(14, 0.1)}
         backgroundColor={white}
         color={black}
-        text="Select"
+        text={car['selected'] ? "Selected" : "Select"}
         padding={moderateScale(5, 0.1)}
         textAlign="center"
         borderRadius={moderateScale(100, 0.1)}
         width="25%"
-        onPress={() => {selectVehicle(car)}}
+        onPress={selectVehicle}
       />
     </View>
   );
@@ -112,14 +119,8 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(20, 0.1),
     alignItems: 'center',
   },
-  containerPurple: {
-    backgroundColor: purple,
-  },
-  containerLightPurple: {
-    backgroundColor: lightestPurple,
-  },
-  estimatedPriceHeading:{
-    marginBottom:moderateScale(5,0.1)
+  estimatedPriceHeading: {
+    marginBottom: moderateScale(5, 0.1)
   }
 });
 

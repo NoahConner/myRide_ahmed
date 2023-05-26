@@ -18,6 +18,7 @@ export const AppProvider = ({children}) => {
   const [rideDetails, setRideDetails] = useState('initial');
   const [loading, setLoading] = useState(true);
   const [imageloading, setImageLoading] = useState(true);
+  const [headDrawerHeight, setHeadDrawerHeight] = useState(0);
   useEffect(() => {
     async function fetchStoredValues() {
       try {
@@ -69,6 +70,8 @@ export const AppProvider = ({children}) => {
       setLoading,
       imageloading,
       setImageLoading,
+      headDrawerHeight,
+      setHeadDrawerHeight,
     }),
     [
       state,
@@ -87,6 +90,8 @@ export const AppProvider = ({children}) => {
       setLoading,
       imageloading,
       setImageLoading,
+      headDrawerHeight,
+      setHeadDrawerHeight,
     ],
   );
 

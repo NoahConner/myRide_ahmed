@@ -12,8 +12,12 @@ import {moderateScale} from 'react-native-size-matters';
 
 const RidePayment = () => {
   const {rideDetails} = useContext(AppContext);
+  const onContainerLayout = (event) => {
+    const height = event.nativeEvent.layout.height;
+    setHeadDrawerHeight(height);
+  };
   return (
-    <KeyboardAvoidingView  behavior="height" enabled style={styles.container}>
+    <KeyboardAvoidingView  behavior="height" enabled style={styles.container} onLayout={onContainerLayout}>
       <View style={styles.headingContainer}>
         <Heading
           text="Select Your Type"
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom:moderateScale(30,0.1)
   },
   headingContainer: {
     width: '100%',
