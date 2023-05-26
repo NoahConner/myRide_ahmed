@@ -12,12 +12,8 @@ import {moderateScale} from 'react-native-size-matters';
 
 const RidePayment = () => {
   const {rideDetails} = useContext(AppContext);
-  const onContainerLayout = (event) => {
-    const height = event.nativeEvent.layout.height;
-    setHeadDrawerHeight(height);
-  };
   return (
-    <KeyboardAvoidingView  behavior="height" enabled style={styles.container} onLayout={onContainerLayout}>
+    <KeyboardAvoidingView  behavior="height" enabled style={styles.container}>
       <View style={styles.headingContainer}>
         <Heading
           text="Select Your Type"
