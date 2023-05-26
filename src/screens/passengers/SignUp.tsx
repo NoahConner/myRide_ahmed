@@ -6,15 +6,19 @@ import {
   KeyboardAvoidingView,
   Text,
 } from 'react-native';
-import {gray, primaryHeadingColor, purple, white} from '../../constants/Color';
+import {
+  gray,
+  primaryHeadingColor,
+  purple,
+  white,
+  KumbhSansExtraBold,
+  screenWidth,
+  black,
+} from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import {screenWidth} from '../../constants/ScreenResolution';
-import Heading from '../../components/Heading';
-import {KumbhSansExtraBold} from '../../constants/Fonts';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
+import {Heading, Button, Input} from '../../components/Index';
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -70,6 +74,7 @@ const SignUp = () => {
       />
       <View style={styles.headingBox}>
         <Heading
+          style={null}
           text="Sign Up"
           fontSize={moderateScale(40, 0.1)}
           fontFamily={KumbhSansExtraBold}
@@ -78,36 +83,48 @@ const SignUp = () => {
         />
         <View style={styles.InputBox}>
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="First Name"
             value={firstName}
             setValue={setFirstName}
             type="text"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Last Name"
             value={lastName}
             setValue={setLastName}
             type="text"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
             setValue={setEmail}
             type="text"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Contact"
             value={contact}
             setValue={setContact}
             type="text"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Password"
             value={password}
             setValue={setPassword}
             type="password"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Confirm Password"
             value={confirmpassword}
             setValue={setConfirmPassword}
@@ -116,6 +133,7 @@ const SignUp = () => {
         </View>
         <View style={styles.signInButtonContainer}>
           <Button
+            style={null}
             fontSize={moderateScale(14, 0.1)}
             backgroundColor={purple}
             color={white}
@@ -130,6 +148,7 @@ const SignUp = () => {
         <View style={styles.dontHaveBox}>
           <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
           <Button
+            style={null}
             fontSize={moderateScale(12, 0.1)}
             backgroundColor={null}
             color={purple}

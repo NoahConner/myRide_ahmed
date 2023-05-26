@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Text, Animated, StyleSheet } from 'react-native';
 
-const Heading = ({ text, fontSize, fontFamily, color, textAlign }) => {
+const Heading = ({ text, fontSize, fontFamily, color, textAlign, style }) => {
   const headingAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Heading = ({ text, fontSize, fontFamily, color, textAlign }) => {
   };
 
   return (
-    <Animated.View style={[headingAnimationStyle]}>
+    <Animated.View style={[headingAnimationStyle, style]}>
       <Text style={{ fontSize, fontFamily, color, textAlign }}>{text}</Text>
     </Animated.View>
   );

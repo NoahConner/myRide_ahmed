@@ -1,9 +1,7 @@
 import {Animated,StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
 import {moderateScale} from 'react-native-size-matters';
-import { screenWidth } from '../constants/ScreenResolution';
-import { lightPurple } from '../constants/Color';
-
+import {lightPurple, screenWidth} from '../constants/Index';
 const BottomCircleProp = () => {
   const CirclePropBottomAnimation = new Animated.Value(screenWidth + 150);
 

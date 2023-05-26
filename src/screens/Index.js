@@ -1,0 +1,9 @@
+export { default as CapatainLogin } from './captain/DriverLogin';
+export { default as CapatainSignUp } from './captain/DriverSignUp';
+export { default as Login } from './passengers/Login';
+export { default as SignUp } from './passengers/SignUp';
+export { default as AppSplash } from './AppSplash';
+export { default as ForgotPassword } from './ForgotPassword';
+export { default as Home } from './Home';
+export { default as Profile } from './Profile';
+export { default as Setting } from './Setting';

@@ -1,8 +1,9 @@
-import React, {useEffect, useRef} from 'react';
-import {Image, Animated} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Image } from 'react-native';
 
-const SplashBackgroundAnimation = ({backgroundState}) => {
+const SplashBackgroundAnimation = ({ backgroundState }) => {
   const scaleAnimation = useRef(new Animated.Value(0.6)).current;
+  const backgroundImageSource = require('../../../assets/Images/AppSplashBg.png');
 
   useEffect(() => {
     if (!backgroundState) {
@@ -14,15 +15,13 @@ const SplashBackgroundAnimation = ({backgroundState}) => {
     }
   }, [backgroundState, scaleAnimation]);
 
-  const backgroundImageSource = require('../../../assets/Images/AppSplashBg.png');
-
   return (
     backgroundImageSource && (
       <Animated.Image
         source={backgroundImageSource}
         resizeMode="cover"
         style={{
-          transform: [{scale: scaleAnimation}],
+          transform: [{ scale: scaleAnimation }],
         }}
       />
     )

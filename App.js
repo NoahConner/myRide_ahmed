@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { AppProvider, useAppContext } from './src/context/AppContext';
-import DrawerNavigatorScreen from './src/stacks/DrawerNavigator';
-import AuthNavigator from './src/stacks/AuthStack';
 import SplashScreen from 'react-native-splash-screen';
+import { AppContext, AppProvider, useAppContext } from './src/context/AppContext';
+import { DrawerNavigatorScreen, AuthNavigator } from './src/stacks/Index';
 
 export default function App() {
   useEffect(() => {
@@ -11,6 +10,7 @@ export default function App() {
       SplashScreen.hide();
     }, 800);
   }, []);
+
   return (
     <AppProvider>
       <AppContent />
@@ -18,11 +18,12 @@ export default function App() {
   );
 }
 
-function AppContent() {
-  const { token } = useAppContext(); 
+const AppContent = memo(() => {
+  const { token } = useAppContext(AppContext);
+
   return (
     <NavigationContainer>
       {token ? <DrawerNavigatorScreen /> : <AuthNavigator />}
     </NavigationContainer>
   );
-}
+});

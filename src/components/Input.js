@@ -1,21 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-} from 'react-native';
-import {gray, purple, white} from '../constants/Color';
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import { black, gray, purple, screenWidth } from '../constants/Index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {screenWidth} from '../constants/ScreenResolution';
 
-const Input = ({placeholder, value, setValue, type}) => {
+const Input = ({ placeholder, value, setValue, type, style, placeholderTextColor }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
   const toggleSecureTextEntry = () => {
-    setSecureTextEntry(prevState => !prevState);
+    setSecureTextEntry((prevState) => !prevState);
   };
 
   const inputAnimation = new Animated.Value(screenWidth + 250);
@@ -35,11 +28,13 @@ const Input = ({placeholder, value, setValue, type}) => {
   const inputAnimationStyle = {
     ...styles.container,
     ...(isActive && styles.activeContainer),
+    ...style, // Apply the passed style from the parent component
   };
 
   return (
-    <View style={[inputAnimationStyle]}>
+    <View style={inputAnimationStyle}>
       <TextInput
+        placeholderTextColor={placeholderTextColor}
         style={styles.input}
         placeholder={placeholder}
         value={value}
@@ -49,14 +44,8 @@ const Input = ({placeholder, value, setValue, type}) => {
         secureTextEntry={type === 'password' && secureTextEntry}
       />
       {type === 'password' && (
-        <TouchableOpacity
-          style={styles.eyeButton}
-          onPress={toggleSecureTextEntry}>
-          <Icon
-            name={secureTextEntry ? 'eye' : 'eye-slash'}
-            size={15}
-            color={purple}
-          />
+        <TouchableOpacity style={styles.eyeButton} onPress={toggleSecureTextEntry}>
+          <Icon name={secureTextEntry ? 'eye' : 'eye-slash'} size={15} color={purple} />
         </TouchableOpacity>
       )}
     </View>
@@ -69,7 +58,6 @@ const styles = StyleSheet.create({
     borderBottomColor: gray,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
   },
   activeContainer: {
     borderBottomColor: purple,
@@ -77,6 +65,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 8,
+    color: black,
   },
   eyeButton: {
     padding: 8,

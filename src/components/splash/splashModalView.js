@@ -1,21 +1,17 @@
-import React, {useRef, useEffect, useContext} from 'react';
-import {View, StyleSheet, Animated} from 'react-native';
-import {screenHeight, screenWidth} from '../../constants/ScreenResolution';
-import {black, lightPurple, purple, white, yellow} from '../../constants/Color';
+import React, { useEffect, useRef, useContext } from 'react';
+import { View, Animated, StyleSheet } from 'react-native';
+import { Heading, Button } from '../Index';
 import {moderateScale} from 'react-native-size-matters';
-import {KumbhSansExtraBold} from '../../constants/Fonts';
-import {useNavigation} from '@react-navigation/native';
-import Button from '../Button';
-import {AppContext} from '../../context/AppContext';
-import Heading from '../Heading';
+import { screenHeight, screenWidth, black, lightPurple, white, KumbhSansExtraBold } from '../../constants/Index';
+import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 
-const SplashModalView = ({modalView}) => {
+const SplashModalView = ({ modalView }) => {
   const translateYAnimation = useRef(new Animated.Value(screenHeight)).current;
   const carAnimation = useRef(new Animated.Value(screenWidth)).current;
   const mapAnimation = useRef(new Animated.Value(0)).current;
   const {setRole} = useContext(AppContext);
   const navigation = useNavigation();
-
   useEffect(() => {
     const startAnimation = () => {
       if (modalView) {
@@ -57,18 +53,19 @@ const SplashModalView = ({modalView}) => {
     };
   }, [modalView, translateYAnimation, carAnimation, mapAnimation]);
 
-  const carStyle = {
-    transform: [{translateX: carAnimation}],
-    ...styles.carProp,
-  };
+  const carStyle = StyleSheet.compose(
+    {
+      transform: [{ translateX: carAnimation }],
+    },
+    styles.carProp
+  );
 
-  const mapStyle = {
-    transform: [{scale: mapAnimation}],
-    ...styles.mapProp,
-  };
-
-  const carProp = require('../../../assets/Images/carProp.png');
-  const mapProp = require('../../../assets/Images/mapProp.png');
+  const mapStyle = StyleSheet.compose(
+    {
+      transform: [{ scale: mapAnimation }],
+    },
+    styles.mapProp
+  );
 
   const setRoleAndNavigate = role => {
     setRole(role);
@@ -82,11 +79,7 @@ const SplashModalView = ({modalView}) => {
   };
 
   return (
-    <Animated.View
-      style={[
-        styles.viewBox,
-        {transform: [{translateY: translateYAnimation}]},
-      ]}>
+    <Animated.View style={[styles.viewBox, { transform: [{ translateY: translateYAnimation }] }]}>
       <View style={styles.viewBoxContent}>
         <View style={styles.viewBoxHeadingBox}>
           <Heading
@@ -97,16 +90,8 @@ const SplashModalView = ({modalView}) => {
             textAlign="left"
           />
         </View>
-        <Animated.Image
-          style={carStyle}
-          resizeMode="contain"
-          source={carProp}
-        />
-        <Animated.Image
-          style={mapStyle}
-          resizeMode="contain"
-          source={mapProp}
-        />
+        <Animated.Image style={carStyle} resizeMode="contain" source={require('../../../assets/Images/carProp.png')} />
+        <Animated.Image style={mapStyle} resizeMode="contain" source={require('../../../assets/Images/mapProp.png')} />
       </View>
       <View style={styles.viewboxButtons}>
         <Button

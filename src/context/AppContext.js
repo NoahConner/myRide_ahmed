@@ -1,14 +1,94 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AppContext = createContext();
 
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({children}) => {
   const [state, setState] = useState('');
   const [loader, setLoader] = useState('');
   const [token, setToken] = useState(false);
   const [role, setRole] = useState('');
+  const [rideStages, setRideStages] = useState('initial');
+  const [rideDetails, setRideDetails] = useState('initial');
+  const [loading, setLoading] = useState(true);
+  const [imageloading, setImageLoading] = useState(true);
+  useEffect(() => {
+    async function fetchStoredValues() {
+      try {
+        const storedToken = await AsyncStorage.getItem('token');
+        const storedRole = await AsyncStorage.getItem('role');
 
-  const contextValues = { state, setState, loader, setLoader, token, setToken, role, setRole };
+        if (storedToken !== null) {
+          setToken(JSON.parse(storedToken));
+        }
+        if (storedRole !== null) {
+          setRole(storedRole);
+        }
+      } catch (error) {
+        console.log('Error retrieving data from AsyncStorage:', error);
+      }
+    }
+
+    fetchStoredValues();
+  }, []);
+
+  useEffect(() => {
+    async function saveValuesToStorage() {
+      try {
+        await AsyncStorage.setItem('token', JSON.stringify(token));
+        await AsyncStorage.setItem('role', role);
+      } catch (error) {
+        console.log('Error saving data to AsyncStorage:', error);
+      }
+    }
+
+    saveValuesToStorage();
+  }, [token, role]);
+
+  const contextValues = useMemo(
+    () => ({
+      state,
+      setState,
+      loader,
+      setLoader,
+      token,
+      setToken,
+      role,
+      setRole,
+      rideStages,
+      setRideStages,
+      rideDetails,
+      setRideDetails,
+      loading,
+      setLoading,
+      imageloading,
+      setImageLoading,
+    }),
+    [
+      state,
+      setState,
+      loader,
+      setLoader,
+      token,
+      setToken,
+      role,
+      setRole,
+      rideStages,
+      setRideStages,
+      rideDetails,
+      setRideDetails,
+      loading,
+      setLoading,
+      imageloading,
+      setImageLoading,
+    ],
+  );
 
   return (
     <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>

@@ -1,33 +1,32 @@
-import {Animated,StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
-import {moderateScale} from 'react-native-size-matters';
-import {purple} from '../constants/Color';
-import { screenWidth } from '../constants/ScreenResolution';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { purple, screenWidth } from '../constants/Index';
 
 const TopLeftCircleProp = () => {
-  const CirclePropleftAnimation = new Animated.Value(-screenWidth + 150);
+  const circlePropleftAnimation = useRef(new Animated.Value(-screenWidth + 150)).current;
 
   useEffect(() => {
     startAnimations();
   }, []);
+
   const startAnimations = () => {
-    Animated.timing(CirclePropleftAnimation, {
+    Animated.timing(circlePropleftAnimation, {
       toValue: 0,
       duration: 1000,
       useNativeDriver: true,
     }).start();
   };
-  return (
-    <Animated.View
-      style={[
-        styles.CirclePropTopleft,
-        {transform: [{translateX: CirclePropleftAnimation}]},
-      ]}
-    />
-  );
+
+  const circlePropStyle = {
+    transform: [{ translateX: circlePropleftAnimation }],
+  };
+
+  return <Animated.View style={[styles.circlePropTopleft, circlePropStyle]} />;
 };
+
 const styles = StyleSheet.create({
-  CirclePropTopleft: {
+  circlePropTopleft: {
     position: 'absolute',
     top: moderateScale(-150, 0.1),
     left: moderateScale(-150, 0.1),
@@ -37,4 +36,5 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(500, 0.1),
   },
 });
+
 export default TopLeftCircleProp;

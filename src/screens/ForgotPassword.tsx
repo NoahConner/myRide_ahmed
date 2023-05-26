@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Animated, KeyboardAvoidingView, Text } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
-import { useNavigation } from '@react-navigation/native';
-import TopLeftCircleProp from '../components/TopLeftCircleProp';
-import { KumbhSansExtraBold } from '../constants/Fonts';
-import { primaryHeadingColor, purple, white } from '../constants/Color';
-import Heading from '../components/Heading';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import BottomCircleProp from '../components/BottomCircleProp';
-import { screenWidth } from '../constants/ScreenResolution';
-
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, Animated, KeyboardAvoidingView} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
+import {
+  primaryHeadingColor,
+  purple,
+  white,
+  KumbhSansExtraBold,
+  screenWidth,
+  black,
+} from '../constants/Index';
+import {
+  Heading,
+  Button,
+  Input,
+  TopLeftCircleProp,
+  BottomCircleProp,
+} from '../components/Index';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
@@ -41,6 +47,7 @@ const ForgotPassword = () => {
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
+          style={null}
           text="Forget Password"
           fontSize={moderateScale(40, 0.1)}
           fontFamily={KumbhSansExtraBold}
@@ -49,6 +56,8 @@ const ForgotPassword = () => {
         />
         <View style={styles.InputBox}>
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
             setValue={setEmail}
@@ -57,6 +66,7 @@ const ForgotPassword = () => {
         </View>
         <View style={styles.signInButtonContainer}>
           <Button
+            style={null}
             fontSize={moderateScale(14, 0.1)}
             backgroundColor={purple}
             color={white}

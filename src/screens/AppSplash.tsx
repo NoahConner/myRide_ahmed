@@ -1,9 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, SafeAreaView, StyleSheet, Animated} from 'react-native';
-import {white} from '../constants/Color';
-import SplashBackgrounAnimation from '../components/splash/splashBackgrounAnimation';
-import SplashLogoAnimation from '../components/splash/splashLogoAnimation';
-import SplashModalView from '../components/splash/splashModalView';
+import {SplashLogoAnimation, SplashModalView, SplashBackgroundAnimation} from '../components/Index';
+import {white} from '../constants/Index';
 
 const AppSplash = () => {
   const [backgroundState, setBackgroundState] = useState(true);
@@ -23,12 +21,15 @@ const AppSplash = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SplashBackgrounAnimation backgroundState={backgroundState} />
+      <SplashBackgroundAnimation backgroundState={backgroundState} />
       <Animated.View style={[styles.overlay, {opacity: fadeAnim}]}>
         <View style={styles.overlay} />
       </Animated.View>
-      <SplashLogoAnimation setBackgroundState={setBackgroundState} setModalView={setModalView} />
-      {modalView && <SplashModalView modalView={modalView}/>}
+      <SplashLogoAnimation
+        setBackgroundState={setBackgroundState}
+        setModalView={setModalView}
+      />
+      {modalView && <SplashModalView modalView={modalView} />}
     </SafeAreaView>
   );
 };

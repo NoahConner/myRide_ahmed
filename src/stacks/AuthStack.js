@@ -1,13 +1,7 @@
 import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppContext } from '../context/AppContext';
-import AppSplash from '../screens/AppSplash';
-import Login from '../screens/passengers/Login';
-import SignUp from '../screens/passengers/SignUp';
-import CapatainLogin from '../screens/captain/DriverLogin';
-import CapatainSignUp from '../screens/captain/DriverSignUp';
-import ForgotPassword from '../screens/ForgotPassword';
-
+import { ForgotPassword,CapatainSignUp,CapatainLogin, SignUp, Login, AppSplash} from '../screens/Index';
 const Stack = createStackNavigator();
 
 const AuthNavigator = () => {

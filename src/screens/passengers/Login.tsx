@@ -6,23 +6,31 @@ import {
   KeyboardAvoidingView,
   Text,
 } from 'react-native';
-import {gray, primaryHeadingColor, purple, white} from '../../constants/Color';
+import {
+  gray,
+  primaryHeadingColor,
+  purple,
+  white,
+  KumbhSansExtraBold,
+  screenWidth,
+  black,
+} from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import {screenWidth} from '../../constants/ScreenResolution';
-import Heading from '../../components/Heading';
-import {KumbhSansExtraBold} from '../../constants/Fonts';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import TopLeftCircleProp from '../../components/TopLeftCircleProp';
-import BottomCircleProp from '../../components/BottomCircleProp';
 import {useNavigation} from '@react-navigation/native';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
+import {
+  Heading,
+  Button,
+  Input,
+  TopLeftCircleProp,
+  BottomCircleProp,
+} from '../../components/Index';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
-  const navigation:any = useNavigation();
+  const navigation: any = useNavigation();
   const {setToken} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
@@ -46,6 +54,7 @@ const Login = () => {
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
+          style={null}
           text="Sign in to continue"
           fontSize={moderateScale(40, 0.1)}
           fontFamily={KumbhSansExtraBold}
@@ -54,12 +63,16 @@ const Login = () => {
         />
         <View style={styles.InputBox}>
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
             setValue={setEmail}
             type="text"
           />
           <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Password"
             value={password}
             setValue={setPassword}
@@ -67,6 +80,7 @@ const Login = () => {
           />
         </View>
         <Button
+          style={null}
           fontSize={moderateScale(12, 0.1)}
           backgroundColor={null}
           color={purple}
@@ -79,6 +93,7 @@ const Login = () => {
         />
         <View style={styles.signInButtonContainer}>
           <Button
+            style={null}
             fontSize={moderateScale(14, 0.1)}
             backgroundColor={purple}
             color={white}
@@ -93,6 +108,7 @@ const Login = () => {
         <View style={styles.dontHaveBox}>
           <Text style={styles.dontHaveBoxText}>Don't have an account?</Text>
           <Button
+            style={null}
             fontSize={moderateScale(12, 0.1)}
             backgroundColor={null}
             color={purple}

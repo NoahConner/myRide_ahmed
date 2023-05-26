@@ -1,9 +1,0 @@
-export const KumbhSansBlack = 'KumbhSans-Black';
-export const KumbhSansBold = 'KumbhSans-Bold';
-export const KumbhSansExtraBold = 'KumbhSans-ExtraBold';
-export const KumbhSansExtraLight = 'KumbhSans-ExtraLight';
-export const KumbhSansLight = 'KumbhSans-Light';
-export const KumbhSansExtraMedium = 'KumbhSans-ExtraMedium';
-export const KumbhSansExtraRegular = 'KumbhSans-ExtraRegular';
-export const KumbhSansExtraSemiBold = 'KumbhSans-ExtraSemiBold';
-export const KumbhSansExtraThin = 'KumbhSans-ExtraThin';

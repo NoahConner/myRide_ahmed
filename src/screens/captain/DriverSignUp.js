@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { useAppContext } from '../../context/AppContext';
+import { AppContext, useAppContext } from '../../context/AppContext';
 
 const CapatainSignUp = () => {
-  const { state,setState } = useAppContext();
+  const { state,setState } = useAppContext(AppContext);
 
   return (
     <View>
