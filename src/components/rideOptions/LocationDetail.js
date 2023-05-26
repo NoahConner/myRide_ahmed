@@ -5,9 +5,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   KumbhSansLight,
-  lightPurple,
-  screenWidth,
-  white,
+  lightPurple
 } from '../../constants/Index';
 
 const LocationDetail = ({rideDetails}) => {

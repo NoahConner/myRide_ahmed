@@ -13,6 +13,7 @@ export const gray = '#B1B1B1';
 export const lightGray = 'lightGray';
 export const darkGray = 'darkGray';
 export const yellow = 'yellow';
+export const green = 'green';
 // fonts
 export const KumbhSansBlack = 'KumbhSans-Black';
 export const KumbhSansBold = 'KumbhSans-Bold';

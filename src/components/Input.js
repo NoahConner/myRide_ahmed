@@ -1,14 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet, Animated } from 'react-native';
-import { black, gray, purple, screenWidth } from '../constants/Index';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+} from 'react-native';
+import {
+  KumbhSansExtraBold,
+  black,
+  gray,
+  purple,
+  screenWidth,
+} from '../constants/Index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Input = ({ placeholder, value, setValue, type, style, placeholderTextColor }) => {
+const Input = ({
+  placeholder,
+  value,
+  setValue,
+  type,
+  style,
+  placeholderTextColor,
+  textAlign,
+  fontFamily,
+  fontSize,
+}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
   const toggleSecureTextEntry = () => {
-    setSecureTextEntry((prevState) => !prevState);
+    setSecureTextEntry(prevState => !prevState);
   };
 
   const inputAnimation = new Animated.Value(screenWidth + 250);
@@ -28,7 +50,7 @@ const Input = ({ placeholder, value, setValue, type, style, placeholderTextColor
   const inputAnimationStyle = {
     ...styles.container,
     ...(isActive && styles.activeContainer),
-    ...style, // Apply the passed style from the parent component
+    ...style,
   };
 
   return (
@@ -41,11 +63,20 @@ const Input = ({ placeholder, value, setValue, type, style, placeholderTextColor
         onChangeText={setValue}
         onFocus={() => setIsActive(true)}
         onBlur={() => setIsActive(false)}
+        textAlign={textAlign}
+        fontFamily={fontFamily}
+        fontSize={fontSize}
         secureTextEntry={type === 'password' && secureTextEntry}
       />
       {type === 'password' && (
-        <TouchableOpacity style={styles.eyeButton} onPress={toggleSecureTextEntry}>
-          <Icon name={secureTextEntry ? 'eye' : 'eye-slash'} size={15} color={purple} />
+        <TouchableOpacity
+          style={styles.eyeButton}
+          onPress={toggleSecureTextEntry}>
+          <Icon
+            name={secureTextEntry ? 'eye' : 'eye-slash'}
+            size={15}
+            color={purple}
+          />
         </TouchableOpacity>
       )}
     </View>

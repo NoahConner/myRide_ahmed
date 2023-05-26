@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, KeyboardAvoidingView, StyleSheet, FlatList} from 'react-native';
 import {AppContext} from '../../context/AppContext';
 import {CarDetail, Heading, Promo, RideDetail} from '../../components/Index';
 import {
@@ -13,7 +13,7 @@ import {moderateScale} from 'react-native-size-matters';
 const RidePayment = () => {
   const {rideDetails} = useContext(AppContext);
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView  behavior="height" enabled style={styles.container}>
       <View style={styles.headingContainer}>
         <Heading
           text="Select Your Type"
@@ -37,7 +37,7 @@ const RidePayment = () => {
         />
       </View>
       <Promo />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
