@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { Input } from '../Index';
-import { gray, screenWidth } from '../../constants/Index';
+import { black, gray, screenWidth, white } from '../../constants/Index';
 import { moderateScale } from 'react-native-size-matters';
 import { AppContext } from '../../context/AppContext';
 
@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
     width: moderateScale(screenWidth - 50, 0.1),
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: white,
     borderRadius: 100,
-    shadowColor: 'black',
+    shadowColor: black,
     shadowOffset: { width: 2, height: 30 },
     shadowOpacity: 1,
     shadowRadius: 10,

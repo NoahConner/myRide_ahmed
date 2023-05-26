@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -18,50 +18,86 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import {AppContext} from '../../context/AppContext';
-import {
-  Heading,
-  Button,
-  Input,
-  TopLeftCircleProp,
-  BottomCircleProp,
-} from '../../components/Index';
-const Login = () => {
+import {Heading, Button, Input} from '../../components/Index';
+const SignUp = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [contact, setContact] = useState('');
   const [password, setPassword] = useState('');
-  const GirlAnimation = new Animated.Value(screenWidth + 250);
-  const MobileAnimation = new Animated.Value(screenWidth + 250);
-  const navigation: any = useNavigation();
+  const [confirmpassword, setConfirmPassword] = useState('');
+  const CarAnimation = new Animated.Value(-screenWidth + 250);
+  const navigation = useNavigation();
   const {setToken} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
   }, []);
 
   const startAnimations = () => {
-    Animated.timing(GirlAnimation, {
-      toValue: 0,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-
-    Animated.timing(MobileAnimation, {
-      toValue: 0,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
+    Animated.sequence([
+      Animated.timing(CarAnimation, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.spring(CarAnimation, {
+        toValue: 1,
+        friction: 4,
+        useNativeDriver: true,
+      }),
+    ]).start();
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
-      <TopLeftCircleProp />
+      <Animated.Image
+        style={[
+          styles.CarProp,
+          {
+            transform: [
+              {
+                translateY: CarAnimation.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-screenWidth + 250, 0],
+                }),
+              },
+              {
+                scale: CarAnimation.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0, 1],
+                }),
+              },
+            ],
+          },
+        ]}
+        resizeMode="contain"
+        source={require('../../../assets/Images/SignUpProp.png')}
+      />
       <View style={styles.headingBox}>
         <Heading
           style={null}
-          text="Sign in to continue"
+          text="Sign Up"
           fontSize={moderateScale(40, 0.1)}
           fontFamily={KumbhSansExtraBold}
           color={primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
+          <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
+            placeholder="First Name"
+            value={firstName}
+            setValue={setFirstName}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
+            placeholder="Last Name"
+            value={lastName}
+            setValue={setLastName}
+            type="text"
+          />
           <Input
             placeholderTextColor={black}
             style={{marginBottom: 16}}
@@ -73,31 +109,35 @@ const Login = () => {
           <Input
             placeholderTextColor={black}
             style={{marginBottom: 16}}
+            placeholder="Contact"
+            value={contact}
+            setValue={setContact}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
             placeholder="Password"
             value={password}
             setValue={setPassword}
             type="password"
           />
+          <Input
+            placeholderTextColor={black}
+            style={{marginBottom: 16}}
+            placeholder="Confirm Password"
+            value={confirmpassword}
+            setValue={setConfirmPassword}
+            type="password"
+          />
         </View>
-        <Button
-          style={null}
-          fontSize={moderateScale(12, 0.1)}
-          backgroundColor={null}
-          color={purple}
-          text="Forgot Password?"
-          padding={moderateScale(0, 0.1)}
-          textAlign="right"
-          borderRadius={moderateScale(0, 0.1)}
-          width="100%"
-          onPress={() => navigation.navigate('ForgotPassword')}
-        />
         <View style={styles.signInButtonContainer}>
           <Button
             style={null}
             fontSize={moderateScale(14, 0.1)}
             backgroundColor={purple}
             color={white}
-            text="Sign In"
+            text="Register Now"
             padding={moderateScale(10, 0.1)}
             textAlign="center"
             borderRadius={moderateScale(100, 0.1)}
@@ -106,35 +146,21 @@ const Login = () => {
           />
         </View>
         <View style={styles.dontHaveBox}>
-          <Text style={styles.dontHaveBoxText}>Don't have an account?</Text>
+          <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
           <Button
             style={null}
             fontSize={moderateScale(12, 0.1)}
             backgroundColor={null}
             color={purple}
-            text="Sign Up Now!"
+            text="Sign In!"
             padding={moderateScale(0, 0.1)}
             textAlign="center"
             borderRadius={moderateScale(0, 0.1)}
             width="30%"
-            onPress={() => navigation.navigate('Signup')}
+            onPress={() => navigation.navigate('Login')}
           />
         </View>
       </View>
-      <BottomCircleProp />
-      <Animated.Image
-        style={[styles.GirlProp, {transform: [{translateX: GirlAnimation}]}]}
-        resizeMode="contain"
-        source={require('../../../assets/Images/girlProp.png')}
-      />
-      <Animated.Image
-        style={[
-          styles.MobileProp,
-          {transform: [{translateY: MobileAnimation}]},
-        ]}
-        resizeMode="contain"
-        source={require('../../../assets/Images/mobileProp.png')}
-      />
     </KeyboardAvoidingView>
   );
 };
@@ -168,22 +194,11 @@ const styles = StyleSheet.create({
   dontHaveBoxText: {
     color: gray,
   },
-  GirlProp: {
-    position: 'absolute',
-    bottom: moderateScale(10, 0.1),
-    right: moderateScale(100, 0.1),
-    width: moderateScale(200, 0.1),
-    resizeMode: 'contain',
-    height: moderateScale(180, 0.1),
-  },
-  MobileProp: {
-    position: 'absolute',
-    bottom: moderateScale(10, 0.1),
-    right: moderateScale(40, 0.1),
+  CarProp: {
     width: moderateScale(200, 0.1),
     resizeMode: 'contain',
     height: moderateScale(180, 0.1),
   },
 });
 
-export default Login;
+export default SignUp;

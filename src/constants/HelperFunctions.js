@@ -1,15 +1,12 @@
-import {Image, Platform} from 'react-native';
-export const getImageSource = imageName => {
-  let imgPath = '';
-
-  if (Platform.OS === 'android') {
-    imgPath = `assets:/Images/${imageName.toLowerCase()}`;
-  } else {
-    imgPath = imageName.toLowerCase();
-  }
-  console.log(imgPath);
-  return Image.resolveAssetSource({uri: imgPath}).uri;
-};
-export const handleImageLoad = (setLoading) => {
+export const handleImageLoad = setLoading => {
   setLoading(false);
 };
+export function formatUSDPrice(price) {
+  if (isNaN(price)) {
+    return 'Invalid Price';
+  }
+  const roundedPrice = Number(price).toFixed(2);
+  const parts = roundedPrice.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return '$' + parts.join('.');
+}

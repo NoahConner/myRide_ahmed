@@ -18,3 +18,5 @@ export { default as RidePayment } from './rideOptions/RidePayment';
 export { default as RideType } from './rideOptions/RideType';
 export { default as RideDetail } from './rideOptions/RideDetail';
 export { default as CarDetail } from './rideOptions/CarDetail';
+export { default as LocationDetail } from './rideOptions/LocationDetail';
+export { default as Promo } from './rideOptions/Promo';

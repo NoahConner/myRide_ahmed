@@ -1,4 +1,4 @@
-import {baseUrl} from './utils';
+import {baseUrl} from './Utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {setLoader} = useAppContext();
