@@ -76,7 +76,7 @@ const SignUp = () => {
         <Heading
           style={null}
           text="Sign Up"
-          fontSize={moderateScale(40, 0.1)}
+          fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
           color={primaryHeadingColor}
           textAlign="left"
@@ -134,13 +134,13 @@ const SignUp = () => {
         <View style={styles.signInButtonContainer}>
           <Button
             style={null}
-            fontSize={moderateScale(14, 0.1)}
+            fontSize={moderateScale(14)}
             backgroundColor={purple}
             color={white}
             text="Register Now"
-            padding={moderateScale(10, 0.1)}
+            padding={moderateScale(10)}
             textAlign="center"
-            borderRadius={moderateScale(100, 0.1)}
+            borderRadius={moderateScale(100)}
             width="50%"
             onPress={() => setToken(true)}
           />
@@ -149,13 +149,13 @@ const SignUp = () => {
           <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
           <Button
             style={null}
-            fontSize={moderateScale(12, 0.1)}
+            fontSize={moderateScale(12)}
             backgroundColor={null}
             color={purple}
             text="Sign In!"
-            padding={moderateScale(0, 0.1)}
+            padding={moderateScale(0)}
             textAlign="center"
-            borderRadius={moderateScale(0, 0.1)}
+            borderRadius={moderateScale(0)}
             width="30%"
             onPress={() => navigation.navigate('Login')}
           />
@@ -173,31 +173,31 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   headingBox: {
-    width: moderateScale(screenWidth - 100, 0.1),
+    width: moderateScale(screenWidth - 100),
   },
   InputBox: {
-    marginTop: moderateScale(20, 0.1),
+    marginTop: moderateScale(20),
   },
   signInButtonContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: moderateScale(15, 0.1),
+    marginTop: moderateScale(15),
   },
   dontHaveBox: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginVertical: moderateScale(15, 0.1),
+    marginVertical: moderateScale(15),
   },
   dontHaveBoxText: {
     color: gray,
   },
   CarProp: {
-    width: moderateScale(200, 0.1),
+    width: moderateScale(200),
     resizeMode: 'contain',
-    height: moderateScale(180, 0.1),
+    height: moderateScale(180),
   },
 });
 

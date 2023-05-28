@@ -15,9 +15,12 @@ export const AppProvider = ({children}) => {
   const [token, setToken] = useState(false);
   const [role, setRole] = useState('');
   const [rideStages, setRideStages] = useState('initial');
-  const [rideDetails, setRideDetails] = useState('initial');
+  const [rideDetails, setRideDetails] = useState('');
   const [loading, setLoading] = useState(true);
   const [imageloading, setImageLoading] = useState(true);
+  const [findRideButton, setFindRideButton] = useState(false);
+  const [applyButton, setApplyButton] = useState(false);
+  const [paymentButton, setPaymentButton] = useState(false);
   useEffect(() => {
     async function fetchStoredValues() {
       try {
@@ -69,6 +72,12 @@ export const AppProvider = ({children}) => {
       setLoading,
       imageloading,
       setImageLoading,
+      findRideButton,
+      setFindRideButton,
+      applyButton,
+      setApplyButton,
+      paymentButton,
+      setPaymentButton,
     }),
     [
       state,
@@ -87,6 +96,12 @@ export const AppProvider = ({children}) => {
       setLoading,
       imageloading,
       setImageLoading,
+      findRideButton,
+      setFindRideButton,
+      applyButton,
+      setApplyButton,
+      paymentButton,
+      setPaymentButton,
     ],
   );
 

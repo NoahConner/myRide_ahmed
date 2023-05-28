@@ -49,7 +49,7 @@ const ForgotPassword = () => {
         <Heading
           style={null}
           text="Forget Password"
-          fontSize={moderateScale(40, 0.1)}
+          fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
           color={primaryHeadingColor}
           textAlign="left"
@@ -67,13 +67,13 @@ const ForgotPassword = () => {
         <View style={styles.signInButtonContainer}>
           <Button
             style={null}
-            fontSize={moderateScale(14, 0.1)}
+            fontSize={moderateScale(14)}
             backgroundColor={purple}
             color={white}
             text="Send"
-            padding={moderateScale(10, 0.1)}
+            padding={moderateScale(10)}
             textAlign="center"
-            borderRadius={moderateScale(100, 0.1)}
+            borderRadius={moderateScale(100)}
             width="50%"
             onPress={() => {}}
           />
@@ -115,24 +115,24 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   headingBox: {
-    width: moderateScale(screenWidth - 100, 0.1),
+    width: moderateScale(screenWidth - 100),
   },
   InputBox: {
-    marginTop: moderateScale(20, 0.1),
+    marginTop: moderateScale(20),
   },
   signInButtonContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: moderateScale(15, 0.1),
+    marginTop: moderateScale(15),
   },
   QuestionMarkProp: {
     position: 'absolute',
-    bottom: moderateScale(10, 0.1),
-    right: moderateScale(100, 0.1),
-    width: moderateScale(200, 0.1),
+    bottom: moderateScale(10),
+    right: moderateScale(100),
+    width: moderateScale(200),
     resizeMode: 'contain',
-    height: moderateScale(180, 0.1),
+    height: moderateScale(180),
   },
 });
 

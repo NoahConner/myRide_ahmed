@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {useState, useEffect, useContext} from 'react';
 import {Button, Heading, Input} from '../Index';
 import {
@@ -15,7 +15,7 @@ import {AppContext} from '../../context/AppContext';
 
 const Promo = () => {
   const [promo, setPromo] = useState('');
-  const {rideDetails, setRideDetails, setRideStages} = useContext(AppContext);
+  const {rideDetails, setRideDetails, setRideStages, applyButton} = useContext(AppContext);
   const applyCoupan = () => {
     const updatedRideDetails = {...rideDetails, promo: promo};
     setRideDetails(updatedRideDetails);
@@ -26,7 +26,7 @@ const Promo = () => {
       <Heading
         text="Enter Promo Code"
         style={styles.heading}
-        fontSize={moderateScale(20, 0.1)}
+        fontSize={moderateScale(18)}
         fontFamily={KumbhSansBold}
         color={white}
         textAlign="center"
@@ -40,22 +40,26 @@ const Promo = () => {
         placeholderTextColor={gray}
         textAlign="center"
         fontFamily={KumbhSansExtraBold}
-        fontSize={moderateScale(20, 0.1)}
+        fontSize={moderateScale(20)}
       />
-      <Button
-        style={styles.applyButton}
-        fontSize={moderateScale(14, 0.1)}
-        backgroundColor={green}
-        color={white}
-        text="Apply"
-        padding={null}
-        textAlign="center"
-        borderRadius={moderateScale(100, 0.1)}
-        width={screenWidth - 250}
-        onPress={() => {
-          applyCoupan();
-        }}
-      />
+      {
+        applyButton ?
+        <Button
+          style={styles.applyButton}
+          fontSize={moderateScale(14)}
+          backgroundColor={green}
+          color={white}
+          text="Apply"
+          padding={null}
+          textAlign="center"
+          borderRadius={moderateScale(100)}
+          width={screenWidth - 250}
+          onPress={() => {
+            applyCoupan();
+          }}
+        /> :
+        <ActivityIndicator style={styles.applyButton} size="large" color="#000000" />
+      }
     </View>
   );
 };
@@ -64,26 +68,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heading: {
-    marginTop: moderateScale(15, 0.1),
+    marginTop: moderateScale(15),
   },
   input: {
     backgroundColor: white,
-    paddingHorizontal: moderateScale(10, 0.1),
-    paddingVertical: moderateScale(5, 0.1),
+    paddingHorizontal: moderateScale(10),
+    paddingVertical: moderateScale(5),
     color: black,
     shadowColor: black,
     shadowOffset: {width: 2, height: 10},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 20,
-    borderRadius: moderateScale(5, 0.1),
-    width:moderateScale(screenWidth-150,0.1)
+    borderRadius: moderateScale(5),
+    width:moderateScale(screenWidth-150,0.1),
+    marginTop:moderateScale(15,0.1)
   },
   applyButton: {
-    paddingHorizontal: moderateScale(5, 0.1),
-    paddingVertical: moderateScale(15, 0.1),
+    paddingHorizontal: moderateScale(5),
+    paddingVertical: moderateScale(15),
     position: 'absolute',
-    bottom: -70,
+    bottom: -75,
   },
 });
 export default Promo;

@@ -28,12 +28,12 @@ const BottomCircleProp = () => {
 const styles = StyleSheet.create({
     CirclePropBottom: {
       position: 'absolute',
-      bottom: moderateScale(-200, 0.1),
-      left: moderateScale(-70, 0.1),
+      bottom: moderateScale(-200),
+      left: moderateScale(-70),
       backgroundColor: lightPurple,
-      width: moderateScale(380, 0.1),
-      height: moderateScale(380, 0.1),
-      borderRadius: moderateScale(500, 0.1),
+      width: moderateScale(380),
+      height: moderateScale(380),
+      borderRadius: moderateScale(500),
       opacity: 0.3,
       zIndex: -10,
     }

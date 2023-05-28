@@ -24,7 +24,7 @@ export const KumbhSansExtraMedium = 'KumbhSans-ExtraMedium';
 export const KumbhSansExtraRegular = 'KumbhSans-ExtraRegular';
 export const KumbhSansExtraSemiBold = 'KumbhSans-ExtraSemiBold';
 export const KumbhSansExtraThin = 'KumbhSans-ExtraThin';
-// dummy rides
+// dummy array
 export const rides = [
   {
     id:1,
@@ -33,6 +33,7 @@ export const rides = [
     car: 'Prius 2022',
     number: 'RE-796 ',
     fare: '80',
+    selected:false
   },
   {
     id:2,
@@ -41,5 +42,50 @@ export const rides = [
     car: 'Passo 2023',
     number: 'RE-796 ',
     fare: '55',
+    selected:false
+  }
+];
+export const cards = [
+  {
+    id:1,
+    name: 'Card 01',
+    number: '123**********7890',
+    type: 'MasterCard',
+    selected:false
+  },
+  {
+    id:2,
+    name: 'Card 02',
+    number: '123**********7890',
+    type: 'Visa',
+    selected:false
+  },
+  {
+    id:3,
+    name: 'Card 03',
+    number: '123**********7890',
+    type: 'Visa',
+    selected:false
+  },
+  {
+    id:4,
+    name: 'Card 04',
+    number: '123**********7890',
+    type: 'MasterCard',
+    selected:false
+  },
+  {
+    id:5,
+    name: 'Card 05',
+    number: '123**********7890',
+    type: 'MasterCard',
+    selected:false
+  },
+  {
+    id:6,
+    name: 'Card 06',
+    number: '123**********7890',
+    type: 'Visa',
+    selected:false
   }
 ];

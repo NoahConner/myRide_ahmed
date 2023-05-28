@@ -11,7 +11,8 @@ const Button = ({
   borderRadius,
   padding,
   fontSize,
-  style
+  style,
+  fontFamily
 }) => {
   return (
     <TouchableOpacity
@@ -19,7 +20,7 @@ const Button = ({
       activeOpacity={0.8}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color, fontSize, textAlign }]}>{text}</Text>
+      <Text style={[styles.buttonText, { color, fontSize, textAlign, fontFamily }]}>{text}</Text>
     </TouchableOpacity>
   );
 };

@@ -13,6 +13,5 @@ module.exports = {
         inlineRequires: true,
       },
     }),
-  },
-  assets: ['./assets']
+  }
 };

@@ -14,7 +14,7 @@ const LocationDetail = ({rideDetails}) => {
       <Heading
         style={styles.heading}
         text="Pick Up"
-        fontSize={moderateScale(10, 0.1)}
+        fontSize={moderateScale(10)}
         fontFamily={KumbhSansExtraBold}
         color={lightPurple}
         textAlign="left"
@@ -22,16 +22,16 @@ const LocationDetail = ({rideDetails}) => {
       <Heading
         style={styles.heading}
         text={rideDetails?.pickUpAddress}
-        fontSize={moderateScale(10, 0.1)}
+        fontSize={moderateScale(10)}
         fontFamily={KumbhSansLight}
         color={lightPurple}
         textAlign="left"
       />
-      <Icon name={'arrow-down'} size={25} color={lightPurple} />
+      <Icon style={styles.icon} name={'arrow-down'} size={20} color={lightPurple} />
       <Heading
         style={styles.heading}
         text="Drop Off"
-        fontSize={moderateScale(10, 0.1)}
+        fontSize={moderateScale(10)}
         fontFamily={KumbhSansExtraBold}
         color={lightPurple}
         textAlign="left"
@@ -39,7 +39,7 @@ const LocationDetail = ({rideDetails}) => {
       <Heading
         style={styles.heading}
         text={rideDetails?.dropOffAddress}
-        fontSize={moderateScale(10, 0.1)}
+        fontSize={moderateScale(10)}
         fontFamily={KumbhSansLight}
         color={lightPurple}
         textAlign="left"
@@ -47,7 +47,7 @@ const LocationDetail = ({rideDetails}) => {
       <Heading
         style={styles.heading}
         text="No. Of Passengers"
-        fontSize={moderateScale(10, 0.1)}
+        fontSize={moderateScale(10)}
         fontFamily={KumbhSansExtraBold}
         color={lightPurple}
         textAlign="left"
@@ -55,7 +55,7 @@ const LocationDetail = ({rideDetails}) => {
       <Heading
         style={styles.heading}
         text={rideDetails?.noOfPassengers}
-        fontSize={moderateScale(30, 0.1)}
+        fontSize={moderateScale(30)}
         fontFamily={KumbhSansExtraBold}
         color={lightPurple}
         textAlign="left"
@@ -65,7 +65,10 @@ const LocationDetail = ({rideDetails}) => {
 };
 const styles = StyleSheet.create({
   heading: {
-    marginVertical: moderateScale(5, 0.1),
+    marginVertical: moderateScale(5)
   },
+  icon:{
+    marginVertical: moderateScale(10)
+  }
 });
 export default LocationDetail;

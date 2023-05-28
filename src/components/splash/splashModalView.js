@@ -84,7 +84,7 @@ const SplashModalView = ({ modalView }) => {
         <View style={styles.viewBoxHeadingBox}>
           <Heading
             text="Our Service Is Always There For You."
-            fontSize={moderateScale(35, 0.1)}
+            fontSize={moderateScale(35)}
             fontFamily={KumbhSansExtraBold}
             color={white}
             textAlign="left"
@@ -95,26 +95,26 @@ const SplashModalView = ({ modalView }) => {
       </View>
       <View style={styles.viewboxButtons}>
         <Button
-          fontSize={moderateScale(14, 0.1)}
+          fontSize={moderateScale(14)}
           backgroundColor={white}
           color={black}
           text="Login as Captain"
-          padding={moderateScale(10, 0.1)}
+          padding={moderateScale(10)}
           textAlign="center"
-          borderRadius={moderateScale(100, 0.1)}
+          borderRadius={moderateScale(100)}
           width="40%"
           onPress={() => {
             setRoleAndNavigate('driver');
           }}
         />
         <Button
-          fontSize={moderateScale(14, 0.1)}
+          fontSize={moderateScale(14)}
           backgroundColor={white}
           color={black}
           text="Get Started"
-          padding={moderateScale(10, 0.1)}
+          padding={moderateScale(10)}
           textAlign="center"
-          borderRadius={moderateScale(100, 0.1)}
+          borderRadius={moderateScale(100)}
           width="40%"
           onPress={() => {
             setRoleAndNavigate('passenger');
@@ -127,25 +127,25 @@ const SplashModalView = ({ modalView }) => {
 
 const styles = StyleSheet.create({
   viewBox: {
-    height: moderateScale(screenHeight / 1.2, 0.1),
+    height: moderateScale(screenHeight / 1.2),
     backgroundColor: lightPurple,
     position: 'absolute',
-    bottom: moderateScale(0, 0.1),
-    width: moderateScale(screenWidth, 0.1),
-    borderTopLeftRadius: moderateScale(30, 0.1),
-    borderTopRightRadius: moderateScale(30, 0.1),
+    bottom: moderateScale(0),
+    width: moderateScale(screenWidth),
+    borderTopLeftRadius: moderateScale(30),
+    borderTopRightRadius: moderateScale(30),
   },
   viewBoxContent: {
     position: 'relative',
-    padding: moderateScale(50, 0.1),
+    padding: moderateScale(50),
     flex: 1,
   },
   viewBoxHeadingBox: {
-    width: moderateScale(screenWidth / 2, 0.1),
+    width: moderateScale(screenWidth / 2),
   },
   viewboxButtons: {
     position: 'absolute',
-    top: moderateScale(screenHeight / 1.85, 0.1),
+    top: moderateScale(screenHeight / 1.85),
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
   carProp: {
     position: 'absolute',
     width: '100%',
-    bottom: moderateScale(190, 0.1),
-    right: moderateScale(0, 0.1),
+    bottom: moderateScale(190),
+    right: moderateScale(0),
   },
   mapProp: {
     position: 'absolute',
     width: '70%',
-    top: moderateScale(0, 0.1),
-    right: moderateScale(0, 0.1),
+    top: moderateScale(0),
+    right: moderateScale(0),
   },
 });
 

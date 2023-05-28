@@ -7,7 +7,6 @@ const Image = ({ fileName, style, resizeMode }) => {
   const handleImageLoad = () => {
     setLoading(false);
   };
-  console.log(fileName);
   return (
     <View>
       {loading && <ActivityIndicator />}

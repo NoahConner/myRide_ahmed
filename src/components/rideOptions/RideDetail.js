@@ -18,11 +18,11 @@ const RideDetail = ({rideDetails}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: moderateScale(screenWidth - 50, 0.1),
+    width: moderateScale(screenWidth - 50),
     backgroundColor: white,
-    paddingHorizontal: moderateScale(20, 0.1),
-    paddingVertical: moderateScale(10, 0.1),
-    borderRadius: moderateScale(15, 0.1),
+    paddingHorizontal: moderateScale(20),
+    paddingVertical: moderateScale(10),
+    borderRadius: moderateScale(15),
     shadowColor: black,
     shadowOffset: { width: 2, height: 30 },
     shadowOpacity: 1,
