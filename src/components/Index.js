@@ -8,7 +8,7 @@ export { default as HeaderToggleButton } from './HeaderToggleButton';
 export { default as Icon } from './Icon';
 export { default as Image } from './Image';
 export { default as RadioButton } from './RadioButton';
-
+export { default as ViewHeader } from './ViewHeader';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';

@@ -14,6 +14,7 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
+  emailRegex,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
@@ -32,10 +33,25 @@ const Login = () => {
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
   const {setToken} = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true); 
   useEffect(() => {
     startAnimations();
   }, []);
-
+  useEffect(() => {
+    if (email === '' || password === '' || !emailRegex.test(email)) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+    }, [email, password]);
+  const login = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setToken(true);
+      setLoading(false);
+    }, 1500);
+  };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
       toValue: 0,
@@ -50,7 +66,7 @@ const Login = () => {
     }).start();
   };
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -93,6 +109,8 @@ const Login = () => {
         />
         <View style={styles.signInButtonContainer}>
           <Button
+            disabled={disabled}
+            loading={loading}
             style={null}
             fontSize={moderateScale(14)}
             backgroundColor={purple}
@@ -102,7 +120,7 @@ const Login = () => {
             textAlign="center"
             borderRadius={moderateScale(100)}
             width="50%"
-            onPress={() => setToken(true)}
+            onPress={() => login()}
           />
         </View>
         <View style={styles.dontHaveBox}>

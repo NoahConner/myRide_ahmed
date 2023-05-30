@@ -1,15 +1,32 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { yellow} from '../../constants/Index';
-import { AppContext, useAppContext } from '../../context/AppContext';
+import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import React from 'react';
+import DrawerHeader from '../../components/DrawerHeader';
+import ViewHeader from '../../components/ViewHeader';
+import {black, purple} from '../../constants/Index';
+import {moderateScale} from 'react-native-size-matters';
 
-const Profile = () => {
-  const { state } = useAppContext(AppContext);
+const Profile = ({navigation}) => {
   return (
-    <View>
-      <Text>{state}</Text>
-    </View>
-  )
-}
-
-export default Profile
+    <KeyboardAvoidingView behavior="height" enabled style={styles.container}>
+        <DrawerHeader navigate={navigation} />
+        <ViewHeader
+          heading={'Profile'}
+          icon={'home'}
+          headingColor={purple}
+          fontSize={25}
+          style={styles.header}
+        />
+    </KeyboardAvoidingView>
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+  },
+  header:{
+    marginTop:moderateScale(10)
+  }
+});
+export default Profile;

@@ -15,11 +15,16 @@ import {AppContext} from '../../context/AppContext';
 
 const Promo = () => {
   const [promo, setPromo] = useState('');
-  const {rideDetails, setRideDetails, setRideStages, applyButton} = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const {rideDetails, setRideDetails, setRideStages, applyButton} =
+    useContext(AppContext);
   const applyCoupan = () => {
-    const updatedRideDetails = {...rideDetails, promo: promo};
-    setRideDetails(updatedRideDetails);
-    setRideStages('payment');
+    setLoading(true);
+    setTimeout(() => {
+      const updatedRideDetails = {...rideDetails, promo: promo};
+      setRideDetails(updatedRideDetails);
+      setRideStages('payment');
+    }, 1500);
   };
   return (
     <View style={styles.container}>
@@ -42,24 +47,22 @@ const Promo = () => {
         fontFamily={KumbhSansExtraBold}
         fontSize={moderateScale(20)}
       />
-      {
-        applyButton ?
-        <Button
-          style={styles.applyButton}
-          fontSize={moderateScale(14)}
-          backgroundColor={green}
-          color={white}
-          text="Apply"
-          padding={null}
-          textAlign="center"
-          borderRadius={moderateScale(100)}
-          width={screenWidth - 250}
-          onPress={() => {
-            applyCoupan();
-          }}
-        /> :
-        <ActivityIndicator style={styles.applyButton} size="large" color="#000000" />
-      }
+      <Button
+        disabled={!applyButton}
+        loading={loading}
+        style={styles.applyButton}
+        fontSize={moderateScale(14)}
+        backgroundColor={green}
+        color={white}
+        text="Apply"
+        padding={null}
+        textAlign="center"
+        borderRadius={moderateScale(100)}
+        width={screenWidth - 250}
+        onPress={() => {
+          applyCoupan();
+        }}
+      />
     </View>
   );
 };
@@ -81,8 +84,8 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 20,
     borderRadius: moderateScale(5),
-    width:moderateScale(screenWidth-150,0.1),
-    marginTop:moderateScale(15,0.1)
+    width: moderateScale(screenWidth - 150, 0.1),
+    marginTop: moderateScale(15, 0.1),
   },
   applyButton: {
     paddingHorizontal: moderateScale(5),

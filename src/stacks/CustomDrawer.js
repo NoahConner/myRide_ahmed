@@ -40,7 +40,6 @@ const CustomDrawerContent = ({navigation, ...props}) => {
       <View style={styles.topSpace} />
       <View style={styles.header}>
         <View style={styles.imageContainer}>
-          {isLoading && <ActivityIndicator size="large" color="#000000" />}
           <Image
             source={require('../../assets/Images/AppLogo.png')}
             style={styles.profileImage}

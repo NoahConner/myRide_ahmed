@@ -1,5 +1,10 @@
-import React, {useContext} from 'react';
-import {View, KeyboardAvoidingView, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {
+  View,
+  KeyboardAvoidingView,
+  StyleSheet,
+  FlatList
+} from 'react-native';
 import {AppContext} from '../../context/AppContext';
 import {
   Button,
@@ -20,6 +25,14 @@ import {moderateScale} from 'react-native-size-matters';
 
 const RidePayment = () => {
   const {rideDetails, setRideStages, paymentButton} = useContext(AppContext);
+  const [loading, setLoading] = useState(false)
+  const finding = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setRideStages('finding');
+      setLoading(false)
+    }, 1500);
+  }
   return (
     <View>
       <KeyboardAvoidingView behavior="height" enabled style={styles.container}>
@@ -39,7 +52,7 @@ const RidePayment = () => {
         <View style={styles.carListContainer}>
           <CarDetail car={rideDetails?.car} select={false} />
         </View>
-        <View style={[styles.carListContainer,styles.cardListContainer]}>
+        <View style={[styles.carListContainer, styles.cardListContainer]}>
           <FlatList
             data={cards}
             keyExtractor={item => item.id}
@@ -64,26 +77,26 @@ const RidePayment = () => {
           textAlign="center"
           borderRadius={moderateScale(0)}
           width="100%"
-          onPress={() => { alert('New Card Screen Remaining')}}
-        />
-        {
-          paymentButton ?
-          <Button
-          style={styles.findRideButton}
-          fontSize={moderateScale(14)}
-          backgroundColor={green}
-          color={white}
-          text="Find My Ride"
-          padding={null}
-          textAlign="center"
-          borderRadius={moderateScale(100)}
-          width={screenWidth - 200}
           onPress={() => {
-            setRideStages('finding')
+            alert('New Card Screen Remaining');
           }}
-        /> :
-        <ActivityIndicator style={styles.findRideButton} size="large" color="#000000" />
-        }
+        />
+          <Button
+            disabled={!paymentButton}
+            loading={loading}
+            style={styles.findRideButton}
+            fontSize={moderateScale(14)}
+            backgroundColor={green}
+            color={white}
+            text="Find My Ride"
+            padding={null}
+            textAlign="center"
+            borderRadius={moderateScale(100)}
+            width={screenWidth - 200}
+            onPress={() => {
+              finding()
+            }}
+          />
       </KeyboardAvoidingView>
     </View>
   );
@@ -94,7 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: moderateScale(30),
-    position:'relative'
+    position: 'relative',
   },
   headingContainer: {
     width: '100%',
@@ -107,10 +120,10 @@ const styles = StyleSheet.create({
   },
   carListContainer: {
     width: screenWidth,
-    marginTop: moderateScale(15)
+    marginTop: moderateScale(15),
   },
   cardListContainer: {
-    height:moderateScale(150,0.1)
+    height: moderateScale(150, 0.1),
   },
   findRideButton: {
     paddingHorizontal: moderateScale(5),
@@ -118,11 +131,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -15,
   },
-  newCardButton:{
-    paddingVertical:moderateScale(15,0.1),
-    marginTop:moderateScale(15,0.1),
-    fontFamily:KumbhSansExtraBold
-  }
+  newCardButton: {
+    paddingVertical: moderateScale(15, 0.1),
+    marginTop: moderateScale(15, 0.1),
+    fontFamily: KumbhSansExtraBold,
+  },
 });
 
 export default RidePayment;

@@ -1,35 +1,38 @@
-import React from 'react';
-import {View, StyleSheet, ActivityIndicator} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet} from 'react-native';
 import {AppContext, useAppContext} from '../context/AppContext';
 import {Button, DrawerHeader} from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {purple, white} from '../constants/Index';
 const Home = ({navigation}) => {
   const {rideStages, setRideStages, findRideButton} = useAppContext(AppContext);
+  const [loading, setLoading] = useState(false)
   const findRide = () => {
-    setRideStages('findType');
+    setLoading(true);
+    setTimeout(() => {
+    setLoading(false);
+      setRideStages('findType');
+    }, 1500);
   };
   return (
     <View style={styles.container}>
       {console.log(findRideButton)}
-      <DrawerHeader navigate={navigation} style={styles.drawerHeader} />
+      <DrawerHeader navigate={navigation} style={styles.drawerHeader} screen={"home"}/>
       {rideStages == 'initial' ? (
-          !findRideButton ? (
-            <ActivityIndicator style={styles.finRideButton} size="large" color="#000000" />
-          ) : (
-            <Button
-              style={styles.finRideButton}
-              fontSize={moderateScale(14)}
-              backgroundColor={purple}
-              color={white}
-              text="Find My Ride"
-              padding={moderateScale(10)}
-              textAlign="center"
-              borderRadius={moderateScale(100)}
-              width="50%"
-              onPress={() => findRide()}
-            />
-          )
+        <Button
+          disabled={!findRideButton}
+          loading={loading}
+          style={styles.finRideButton}
+          fontSize={moderateScale(14)}
+          backgroundColor={purple}
+          color={white}
+          text="Find My Ride"
+          padding={moderateScale(10)}
+          textAlign="center"
+          borderRadius={moderateScale(100)}
+          width="50%"
+          onPress={() => findRide()}
+        />
       ) : null}
     </View>
   );

@@ -24,6 +24,8 @@ export const KumbhSansExtraMedium = 'KumbhSans-ExtraMedium';
 export const KumbhSansExtraRegular = 'KumbhSans-ExtraRegular';
 export const KumbhSansExtraSemiBold = 'KumbhSans-ExtraSemiBold';
 export const KumbhSansExtraThin = 'KumbhSans-ExtraThin';
+// regex
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // dummy array
 export const rides = [
   {
