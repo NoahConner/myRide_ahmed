@@ -11,7 +11,7 @@ export const lightPurple = '#a389d2e0';
 export const lightestPurple = '#b6a3d9e0';
 export const gray = '#B1B1B1';
 export const lightGray = 'lightGray';
-export const darkGray = 'darkGray';
+export const darkGray = '#6A6A6A';
 export const yellow = 'yellow';
 export const green = '#0F9776';
 // fonts

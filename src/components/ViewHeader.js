@@ -10,10 +10,11 @@ const ViewHeader = ({
   headingColor,
   fontSize,
   style,
+  navigation
 }) => {
   return (
     <View style={[styles.container, style]}>
-      <TouchableOpacity style={styles.backButton} onPress={() => {}}>
+      <TouchableOpacity style={styles.backButton} onPress={() => {navigation.goBack()}}>
         <Icon name={'arrow-left'} size={15} color={white} />
       </TouchableOpacity>
       <Heading

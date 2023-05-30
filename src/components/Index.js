@@ -9,6 +9,7 @@ export { default as Icon } from './Icon';
 export { default as Image } from './Image';
 export { default as RadioButton } from './RadioButton';
 export { default as ViewHeader } from './ViewHeader';
+export { default as RideOfferDetail } from './RideOfferDetail';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';
