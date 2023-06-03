@@ -58,6 +58,8 @@ const Input = ({
     <View style={inputAnimationStyle}>
       <TextInput
         disabled={disabled}
+        editable={!disabled}
+        selectTextOnFocus={!disabled}
         placeholderTextColor={placeholderTextColor}
         style={styles.input}
         placeholder={placeholder}

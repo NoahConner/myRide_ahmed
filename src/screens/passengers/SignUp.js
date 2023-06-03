@@ -28,7 +28,7 @@ const SignUp = () => {
   const [confirmpassword, setConfirmPassword] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken} = useContext(AppContext);
+  const {setToken, setUser} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -47,6 +47,10 @@ const SignUp = () => {
       }),
     ]).start();
   };
+  const signUp = () => {
+    setUser({firstName, lastName, contact, password, email})
+    setToken(true)
+  }
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
       <Animated.Image
@@ -142,7 +146,7 @@ const SignUp = () => {
             textAlign="center"
             borderRadius={moderateScale(100)}
             width="50%"
-            onPress={() => setToken(true)}
+            onPress={() => signUp() }
           />
         </View>
         <View style={styles.dontHaveBox}>

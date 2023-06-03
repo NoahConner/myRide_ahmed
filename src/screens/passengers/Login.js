@@ -32,7 +32,7 @@ const Login = () => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken} = useContext(AppContext);
+  const {setToken, setUser} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true); 
   useEffect(() => {
@@ -49,6 +49,7 @@ const Login = () => {
     setLoading(true);
     setTimeout(() => {
       setToken(true);
+      setUser({email})
       setLoading(false);
     }, 1500);
   };

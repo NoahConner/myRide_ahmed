@@ -13,6 +13,7 @@ export const AppProvider = ({children}) => {
   const [state, setState] = useState('');
   const [loader, setLoader] = useState('');
   const [token, setToken] = useState(false);
+  const [user, setUser] = useState(false);
   const [role, setRole] = useState('');
   const [rideStages, setRideStages] = useState('initial');
   const [rideDetails, setRideDetails] = useState('');
@@ -78,6 +79,7 @@ export const AppProvider = ({children}) => {
       setApplyButton,
       paymentButton,
       setPaymentButton,
+      user, setUser
     }),
     [
       state,
@@ -102,6 +104,7 @@ export const AppProvider = ({children}) => {
       setApplyButton,
       paymentButton,
       setPaymentButton,
+      user, setUser
     ],
   );
 
