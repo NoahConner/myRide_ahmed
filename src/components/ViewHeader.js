@@ -1,7 +1,12 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import {Heading, Icon} from '../components/Index';
-import {KumbhSansExtraBold, purple, screenWidth, white} from '../constants/Index';
+import {
+  KumbhSansExtraBold,
+  purple,
+  screenWidth,
+  white,
+} from '../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 const ViewHeader = ({
@@ -10,11 +15,16 @@ const ViewHeader = ({
   headingColor,
   fontSize,
   style,
-  navigation
+  navigation,
+  path,
 }) => {
   return (
     <View style={[styles.container, style]}>
-      <TouchableOpacity style={styles.backButton} onPress={() => {navigation.goBack()}}>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => {
+          navigation.goBack();
+        }}>
         <Icon name={'arrow-left'} size={15} color={white} />
       </TouchableOpacity>
       <Heading
@@ -24,20 +34,24 @@ const ViewHeader = ({
         color={headingColor}
         textAlign="center"
       />
-      <TouchableOpacity style={styles.secondaryButton} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.secondaryButton}
+        onPress={() => {
+          navigation.navigate(path);
+        }}>
         <Icon name={icon} size={25} color={purple} />
       </TouchableOpacity>
     </View>
   );
 };
 const styles = StyleSheet.create({
-    container:{
-        display:'flex',
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'space-around',
-        width:moderateScale(screenWidth)
-    },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: moderateScale(screenWidth),
+  },
   backButton: {
     backgroundColor: purple,
     borderRadius: moderateScale(200),
@@ -47,8 +61,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  secondaryButton:{
+  secondaryButton: {
     backgroundColor: 'transparent',
-  }
+  },
 });
 export default ViewHeader;

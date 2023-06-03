@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {AppContext, useAppContext} from '../context/AppContext';
 import {Button, DrawerHeader, RideOfferDetail} from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
-import {purple, white} from '../constants/Index';
+import {backgroundColor, purple, white} from '../constants/Index';
 const Home = ({navigation}) => {
   const {rideStages, setRideStages, findRideButton} = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,9 @@ const Home = ({navigation}) => {
           onPress={() => findRide()}
         />
       ) : rideStages == 'finding' ? (
-        <RideOfferDetail />
+        <View style={styles.rideOfferView}>
+          <RideOfferDetail />
+        </View>
       ) : null}
     </View>
   );
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     flex: 1,
     alignItems: 'center',
+    backgroundColor:backgroundColor
   },
   drawerHeader: {
     position: 'absolute',
@@ -58,5 +61,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: moderateScale(50),
   },
+  rideOfferView:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  }
 });
 export default Home;

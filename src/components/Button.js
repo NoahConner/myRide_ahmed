@@ -6,10 +6,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {
-  black,
   gray,
-  lightPurple,
-  lightestPurple,
   white,
 } from '../constants/Index';
 
@@ -28,12 +25,10 @@ const Button = ({
   disabled,
   loading,
 }) => {
-  console.log(disabled, 'disabled');
   return (
     <TouchableOpacity
       disabled={disabled}
       style={[
-        styles.button,
         {backgroundColor, width, borderRadius, padding},
         style,
         disabled && styles.disabledButton,
@@ -61,10 +56,6 @@ const Button = ({
 };
 
 const styles = StyleSheet.create({
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   buttonText: {
     textAlign: 'center',
   },

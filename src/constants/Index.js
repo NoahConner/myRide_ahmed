@@ -4,16 +4,19 @@ export const screenHeight = Dimensions.get('window').height;
 export const screenWidth = Dimensions.get('window').width;
 // colors
 export const black = 'black';
+export const backgroundColor = '#EFEFEF';
+export const red = '#F21C1C';
 export const white = 'white';
 export const primaryHeadingColor = '#151F3A';
 export const purple = '#A389D2';
 export const lightPurple = '#a389d2e0';
 export const lightestPurple = '#b6a3d9e0';
 export const gray = '#B1B1B1';
-export const lightGray = 'lightGray';
+export const lightGray = '#F5F5F5';
 export const darkGray = '#6A6A6A';
 export const yellow = 'yellow';
 export const green = '#0F9776';
+export const linearGradient = ["#7452B0", "#A78DD5"]
 // fonts
 export const KumbhSansBlack = 'KumbhSans-Black';
 export const KumbhSansBold = 'KumbhSans-Bold';

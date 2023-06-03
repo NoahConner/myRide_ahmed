@@ -25,6 +25,7 @@ const Input = ({
   textAlign,
   fontFamily,
   fontSize,
+  disabled,
 }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -56,6 +57,7 @@ const Input = ({
   return (
     <View style={inputAnimationStyle}>
       <TextInput
+        disabled={disabled}
         placeholderTextColor={placeholderTextColor}
         style={styles.input}
         placeholder={placeholder}
@@ -67,6 +69,7 @@ const Input = ({
         fontFamily={fontFamily}
         fontSize={fontSize}
         secureTextEntry={type === 'password' && secureTextEntry}
+        keyboardType={type == 'number' ? 'numeric' : 'default'}
       />
       {type === 'password' && (
         <TouchableOpacity

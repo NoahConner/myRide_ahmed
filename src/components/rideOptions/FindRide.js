@@ -58,7 +58,7 @@ const FindRide = () => {
         value={noOfPassengers}
         setValue={setNoOfPassengers}
         placeholder="No Of Passengers"
-        type="text"
+        type="number"
         style={styles.input}
         placeholderTextColor={gray}
       />
