@@ -11,6 +11,7 @@ export { default as RadioButton } from './RadioButton';
 export { default as ViewHeader } from './ViewHeader';
 export { default as RbSheet } from './RbSheet';
 export { default as RideOfferDetail } from './RideOfferDetail';
+export { default as CardRow } from './CardRow';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';

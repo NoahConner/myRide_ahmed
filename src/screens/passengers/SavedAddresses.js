@@ -10,7 +10,6 @@ import {
 } from '../../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {
-  KumbhSansExtraMedium,
   backgroundColor,
   black,
   darkGray,
@@ -18,7 +17,6 @@ import {
   screenWidth,
   KumbhSansExtraRegular,
   gray,
-  lightGray,
   lighterGray,
 } from '../../constants/Index';
 const SavedAddresses = ({navigation}) => {
@@ -26,7 +24,7 @@ const SavedAddresses = ({navigation}) => {
     return Array.from({length: 5}).map((_, index) => (
       <View style={styles.addressRow} key={index}>
         <Heading
-          text="Address 01"
+          text={"Address " + index}
           fontSize={moderateScale(13)}
           fontFamily={KumbhSansExtraBold}
           color={black}
@@ -41,23 +39,23 @@ const SavedAddresses = ({navigation}) => {
           textAlign="left"
           style={styles.heading}
         />
-        {renderIcons()}
         </View>
     ));
   };
   return (
     <View style={{flex: 1}}>
-      <DrawerHeader navigate={navigation} />
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <View>
         <ViewHeader
           heading="Saved Addresses"
-          icon={null}
+          icon={'home'}
           headingColor={darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
           path={'Home'}
         />
+        {renderIcons()}
       </View>
     </View>
   );
@@ -82,8 +80,6 @@ const styles = StyleSheet.create({
     borderRadius:moderateScale(10)
   },
   heading: {
-    // width:moderateScale(screenWidth-70),
-    // marginHorizontal:moderateScale(35),
     marginTop: moderateScale(5),
   },
 });

@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: purple,
     paddingHorizontal: moderateScale(10),
-    paddingTop: moderateScale(10),
-    paddingBottom: moderateScale(10),
+    paddingTop: moderateScale(10)
   },
   container: {
     width: '100%',

@@ -20,11 +20,11 @@ import {
   const HowToUse = ({navigation}) => {
     return (
       <View style={{flex: 1}}>
-        <DrawerHeader navigate={navigation} />
+        <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
         <View>
           <ViewHeader
             heading="How To Use?"
-            icon={null}
+            icon={'home'}
             headingColor={darkGray}
             fontSize={20}
             style={styles.header}

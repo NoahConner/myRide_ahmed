@@ -29,7 +29,7 @@ const Profile = ({navigation}) => {
       path: 'Notifications',
     },
     {
-      name: 'Cards&Accounts',
+      name: 'Cards & Accounts',
       path: 'CardsAndAccounts',
     },
     {
@@ -69,7 +69,7 @@ const Profile = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <DrawerHeader navigate={navigation} />
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <ViewHeader
         heading={'Profile'}
         icon={'home'}

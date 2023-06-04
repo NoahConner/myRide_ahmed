@@ -67,7 +67,7 @@ const Login = () => {
     }).start();
   };
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+    <View style={styles.container}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -154,7 +154,7 @@ const Login = () => {
         resizeMode="contain"
         source={require('../../../assets/Images/mobileProp.png')}
       />
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

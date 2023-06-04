@@ -22,8 +22,9 @@ import {
   white,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-
+import { useNavigation } from '@react-navigation/native';
 const RidePayment = () => {
+  const navigation = useNavigation();
   const {rideDetails, setRideStages, paymentButton} = useContext(AppContext);
   const [loading, setLoading] = useState(false)
   const finding = () => {
@@ -77,9 +78,7 @@ const RidePayment = () => {
           textAlign="center"
           borderRadius={moderateScale(0)}
           width="100%"
-          onPress={() => {
-            alert('New Card Screen Remaining');
-          }}
+          onPress={() => {navigation.navigate('CardsAndAccounts')}}
         />
           <Button
             disabled={!paymentButton}

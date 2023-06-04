@@ -29,7 +29,7 @@ const renderIcons = () => {
 };
 
 const RideOfferDetail = () => {
-  const {rideDetails} = useAppContext(AppContext);
+  const {rideDetails, setRideStages, setRideDetails} = useAppContext(AppContext);
 
   return (
     <LinearGradient
@@ -126,7 +126,7 @@ const RideOfferDetail = () => {
           </View>
         </View>
         <Button
-          style={styles.null}
+          style={null}
           fontSize={moderateScale(14)}
           backgroundColor={red}
           color={white}
@@ -135,6 +135,7 @@ const RideOfferDetail = () => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width="30%"
+          onPress={()=>{setRideStages('initial'); setRideDetails('')}}
         />
       </View>
     </LinearGradient>

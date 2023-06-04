@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  KeyboardAvoidingView,
   Animated,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -30,10 +29,6 @@ import {
 } from '../../constants/Index';
 import {AppContext, useAppContext} from '../../context/AppContext';
 import {ScrollView} from 'react-native-gesture-handler';
-import {
-  handleCameraPress,
-  handleGalleryPress,
-} from '../../constants/HelperFunctions';
 import ImagePickerOptions from '../../components/ImagePickerOptions';
 
 const PersonalInformation = ({navigation}) => {
@@ -80,7 +75,7 @@ const PersonalInformation = ({navigation}) => {
   };
   return (
     <View style={{flex: 1}}>
-      <DrawerHeader navigate={navigation} />
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <ScrollView contentContainerStyle={styles.container}>
         <View>
           <ViewHeader

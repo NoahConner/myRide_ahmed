@@ -22,7 +22,7 @@ import {
 const PrivacyPolicy = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
-      <DrawerHeader navigate={navigation} />
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <View>
         <ViewHeader
           heading="Privacy Policy"

@@ -20,7 +20,7 @@ import {
   const TermsAndConditions = ({navigation}) => {
     return (
       <View style={{flex: 1}}>
-        <DrawerHeader navigate={navigation} />
+        <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
         <View>
           <ViewHeader
             heading="Terms & Conditions"

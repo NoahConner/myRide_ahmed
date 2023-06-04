@@ -23,7 +23,7 @@ const Help = ({navigation}) => {
   const [helpMessage, setHelpMessage] = useState('');
   return (
     <View style={{flex: 1}}>
-      <DrawerHeader navigate={navigation} />
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <View>
         <ViewHeader
           heading="Help"

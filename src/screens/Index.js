@@ -8,6 +8,7 @@ export { default as HowToUse } from './HowToUse';
 export { default as PrivacyPolicy } from './PrivacyPolicy';
 export { default as TermsAndConditions } from './TermsAndConditions';
 export { default as Help } from './Help';
+export { default as Notifications } from './Notifications';
 // passenger screens
 export { default as Login } from './passengers/Login';
 export { default as SignUp } from './passengers/SignUp';
@@ -16,3 +17,4 @@ export { default as RideHistory } from './passengers/RideHistory';
 export { default as SavedAddresses } from './passengers/SavedAddresses';
 export { default as Contactus } from './passengers/Contactus';
 export { default as PersonalInformation } from './passengers/PersonalInformation';
+export { default as CardsAndAccounts } from './passengers/CardsAndAccounts';

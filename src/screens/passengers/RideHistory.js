@@ -1,12 +1,64 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-
-const RideHistory = () => {
+import {
+  View,
+  StyleSheet
+} from 'react-native';
+import React from 'react';
+import {
+  DrawerHeader,
+  Heading,
+  ViewHeader,
+} from '../../components/Index';
+import {moderateScale} from 'react-native-size-matters';
+import {
+  backgroundColor,
+  black,
+  darkGray,
+  KumbhSansExtraBold,
+  screenWidth,
+  KumbhSansExtraRegular,
+  gray,
+  lighterGray,
+} from '../../constants/Index';
+const RideHistory = ({navigation}) => {
   return (
-    <View>
-      <Text>RideHistory</Text>
+    <View style={{flex: 1}}>
+      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
+      <View>
+        <ViewHeader
+          heading="Ride History"
+          icon={'home'}
+          headingColor={darkGray}
+          fontSize={20}
+          style={styles.header}
+          navigation={navigation}
+          path={'Home'}
+        />
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default RideHistory
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    alignItems: 'center',
+    backgroundColor: backgroundColor,
+  },
+  header: {
+    marginTop: moderateScale(20),
+    marginBottom: moderateScale(20),
+  },
+  addressRow:{
+    marginVertical:moderateScale(10),
+    width:moderateScale(screenWidth),
+    backgroundColor:lighterGray,
+    paddingVertical:moderateScale(15),
+    paddingHorizontal:moderateScale(25),
+    borderRadius:moderateScale(10)
+  },
+  heading: {
+    marginTop: moderateScale(5),
+  },
+});
+
+export default RideHistory;
