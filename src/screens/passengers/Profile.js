@@ -37,7 +37,7 @@ const Profile = ({navigation}) => {
       path: 'PrivacyPolicy',
     },
     {
-      name: 'Terms&Conditions',
+      name: 'Terms & Conditions',
       path: 'TermsAndConditions',
     },
     {
