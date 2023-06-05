@@ -6,11 +6,12 @@ const Icon = ({
   name,
   size,
   color,
-  style
+  style,
+  solid
 }) => {
   return (
     <View style={[style]}>
-      <FontAwesome5 name={name} size={size} color={color} />
+      <FontAwesome5 name={name} solid={solid} size={size} color={color} />
     </View>
   );
 };

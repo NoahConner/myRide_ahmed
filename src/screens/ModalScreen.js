@@ -6,6 +6,7 @@ import {
   KumbhSansExtraBold,
   KumbhSansExtraRegular,
   black,
+  gold,
   gray,
   lightPurple,
   lightestGray,
@@ -59,8 +60,9 @@ const ModalScreen = () => {
         style={styles.iconStyle}
         key={index}
         name="star"
+        solid={true}
         size={14}
-        color={yellow}
+        color={gold}
       />
     ));
   };

@@ -15,6 +15,7 @@ export { default as CardRow } from './CardRow';
 export { default as RideHistoryCard } from './RideHistoryCard';
 export { default as CustomModal } from './Modal';
 export { default as ChatHeader } from './ChatHeader';
+export { default as ChatFooter } from './ChatFooter';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';

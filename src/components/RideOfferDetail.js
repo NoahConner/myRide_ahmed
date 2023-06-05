@@ -4,6 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from './Index';
 import {
   KumbhSansExtraRegular,
+  gold,
   linearGradient,
   purple,
   red,
@@ -22,8 +23,9 @@ const renderIcons = () => {
       style={styles.iconStyle}
       key={index}
       name="star"
+      solid={true}
       size={6}
-      color={yellow}
+      color={gold}
     />
   ));
 };

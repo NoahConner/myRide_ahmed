@@ -5,6 +5,7 @@ import {Button, Heading, Icon} from './Index';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraRegular,
+  gold,
   linearGradient,
   purple,
   red,
@@ -22,8 +23,9 @@ const renderIcons = () => {
       style={styles.iconStyle}
       key={index}
       name="star"
+      solid={true}
       size={6}
-      color={yellow}
+      color={gold}
     />
   ));
 };
