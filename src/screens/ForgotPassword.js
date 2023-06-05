@@ -43,7 +43,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
+    <View style={styles.container}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -103,7 +103,7 @@ const ForgotPassword = () => {
         source={require('../../assets/Images/QuestionMarkProp.png')}
       />
       <BottomCircleProp />
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
+    zIndex:-1
   },
 });
 

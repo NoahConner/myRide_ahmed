@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
+    zIndex:-1
   },
   MobileProp: {
     position: 'absolute',
@@ -202,6 +203,7 @@ const styles = StyleSheet.create({
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
+    zIndex:-1
   },
 });
 
