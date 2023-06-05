@@ -1,23 +1,19 @@
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import Heading from './Heading';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraRegular,
-  backgroundColor,
   gold,
   gray,
   green,
-  yellow,
+  screenWidth,
 } from '../constants/Index';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import Icon from './Icon';
-
-const { width } = Dimensions.get('window');
-
-const ChatHeader = ({ user }) => {
+const ChatHeader = ({user}) => {
   const renderIcons = () => {
-    return Array.from({ length: user?.rating }).map((_, index) => (
+    return Array.from({length: user?.rating}).map((_, index) => (
       <Icon
         style={styles.iconStyle}
         key={index}
@@ -32,20 +28,22 @@ const ChatHeader = ({ user }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-        <Heading
-          text={user?.name}
-          fontSize={moderateScale(18)}
-          fontFamily={KumbhSansExtraBold}
-          color={green}
-          textAlign="center"
-        />
-        <Heading
-          text="Online"
-          fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
-          color={gray}
-          textAlign="center"
-        />
+        <View style={styles.textContainer}>
+          <Heading
+            text={user?.name}
+            fontSize={moderateScale(18)}
+            fontFamily={KumbhSansExtraBold}
+            color={green}
+            textAlign="center"
+          />
+          <Heading
+            text="Online"
+            fontSize={moderateScale(10)}
+            fontFamily={KumbhSansExtraRegular}
+            color={gray}
+            textAlign="center"
+          />
+        </View>
       </View>
       <View style={styles.imageContainer}>
         <Image
@@ -64,37 +62,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: moderateScale(10),
-    width: width,
+    width: screenWidth,
     height: moderateScale(70),
-    marginTop:moderateScale(20)
+    marginTop: moderateScale(20),
   },
   headingContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:'center',
-    position:'relative',
+    justifyContent: 'center',
+    width: moderateScale(screenWidth),
+    paddingLeft:moderateScale(70)
+  },
+  textContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageContainer: {
-    width: moderateScale(70),
-    height: moderateScale(70),
-    borderRadius: moderateScale(200),
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    position:'absolute',
-    right:moderateScale(10),
-    top:moderateScale(10),
-    backgroundColor:backgroundColor
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: moderateScale(50),
+    height: moderateScale(50),
     borderRadius: moderateScale(200),
   },
   ratingContainer: {
     flexDirection: 'row',
     marginVertical: moderateScale(5),
-    backgroundColor:backgroundColor
   },
   iconStyle: {
     marginHorizontal: moderateScale(1),
