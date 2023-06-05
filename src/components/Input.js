@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
-  Modal,
-  Text,
+  Modal
 } from 'react-native';
 import {
   KumbhSansExtraBold,
@@ -37,7 +36,6 @@ const Input = ({
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const toggleSecureTextEntry = () => {

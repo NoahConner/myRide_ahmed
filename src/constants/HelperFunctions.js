@@ -1,5 +1,5 @@
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {PermissionsAndroid, Platform} from 'react-native';
+import {PermissionsAndroid, Platform, Linking } from 'react-native';
 export const handleImageLoad = setLoading => {
   setLoading(false);
 };
@@ -12,6 +12,16 @@ export function formatUSDPrice(price) {
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return '$' + parts.join('.');
 }
+export const formatTime = (time) => {
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let period = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  const formattedTime = hours + ':' + minutes + ' ' + period;
+
+  return formattedTime;
+};
 export const handleCameraPress = async (setImageSource, setSheet) => {
   const options = {
     title: 'Select Image',
@@ -84,4 +94,8 @@ export const handleGalleryPress = (setImageSource, setSheet) => {
       setImageSource(source);
     }
   });
+};
+export const handleCallButtonPress = (phoneNumber) => {
+  const url = `tel:${phoneNumber}`;
+  Linking.openURL(url);
 };

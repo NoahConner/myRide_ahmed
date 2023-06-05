@@ -3,7 +3,6 @@ import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from './Index';
 import {
-  KumbhSansExtraBold,
   KumbhSansExtraRegular,
   linearGradient,
   purple,
@@ -13,8 +12,9 @@ import {
   yellow,
 } from '../constants/Index';
 import {AppContext, useAppContext} from '../context/AppContext';
-import {formatUSDPrice} from '../constants/HelperFunctions';
+import {formatUSDPrice, handleCallButtonPress} from '../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
@@ -30,7 +30,7 @@ const renderIcons = () => {
 
 const RideOfferDetail = () => {
   const {rideDetails, setRideStages, setRideDetails} = useAppContext(AppContext);
-
+  const navigation = useNavigation()
   return (
     <LinearGradient
       style={styles.container}
@@ -107,7 +107,7 @@ const RideOfferDetail = () => {
             textAlign="center"
           />
           <View style={styles.contactIcons}>
-            <TouchableOpacity onPress={()=>{console.log('call')}}>
+            <TouchableOpacity onPress={()=>{handleCallButtonPress('1234567890')}}>
             <Icon
               style={[styles.iconStyle, styles.captainIcon]}
               name="phone-alt"
@@ -115,7 +115,7 @@ const RideOfferDetail = () => {
               color={white}
             />
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{console.log('message')}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('Chat')}}>
             <Icon
               style={[styles.iconStyle, styles.captainIcon]}
               name="comment"
@@ -135,7 +135,8 @@ const RideOfferDetail = () => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width="30%"
-          onPress={()=>{setRideStages('initial'); setRideDetails('')}}
+          onPress={()=>{navigation.navigate('ModalScreen')}}
+          // onPress={()=>{setRideStages('initial'); setRideDetails('')}}
         />
       </View>
     </LinearGradient>
@@ -146,8 +147,8 @@ const styles = StyleSheet.create({
   container: {
     width: moderateScale(screenWidth - 30),
     backgroundColor: purple,
-    marginLeft: moderateScale(15),
-    marginRight: moderateScale(15),
+    marginLeft:'auto',
+    marginRight:'auto',
     marginVertical: moderateScale(10),
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(20),
@@ -185,7 +186,7 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(5),
   },
   iconStyle: {
-    marginHorizontal: moderateScale(2),
+    marginHorizontal: moderateScale(1),
   },
   captainIcon: {
     marginHorizontal: moderateScale(10),

@@ -12,6 +12,9 @@ export { default as ViewHeader } from './ViewHeader';
 export { default as RbSheet } from './RbSheet';
 export { default as RideOfferDetail } from './RideOfferDetail';
 export { default as CardRow } from './CardRow';
+export { default as RideHistoryCard } from './RideHistoryCard';
+export { default as CustomModal } from './Modal';
+export { default as ChatHeader } from './ChatHeader';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';

@@ -16,7 +16,7 @@ import { moderateScale } from 'react-native-size-matters';
 
 const CardRow = ({key, card ,index}) => {
   return (
-    <View key={index} style={styles.container}>
+    <View style={styles.container}>
       <View>
         <View style={styles.row}>
           <Heading

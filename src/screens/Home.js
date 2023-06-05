@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {AppContext, useAppContext} from '../context/AppContext';
-import {Button, DrawerHeader, RideOfferDetail} from '../components/Index';
+import {Button, CustomModal, DrawerHeader, RideOfferDetail} from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {backgroundColor, purple, white} from '../constants/Index';
 const Home = ({navigation}) => {

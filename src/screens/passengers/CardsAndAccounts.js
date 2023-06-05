@@ -146,7 +146,7 @@ const CardsAndAccounts = ({navigation}) => {
             data={cards}
             keyExtractor={item => item.id}
             renderItem={({item, index}) => (
-              <CardRow key={index} card={item} index={index} />
+              <CardRow card={item} index={index} />
             )}
             horizontal={false}
           />

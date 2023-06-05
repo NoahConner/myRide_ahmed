@@ -9,11 +9,14 @@ export { default as PrivacyPolicy } from './PrivacyPolicy';
 export { default as TermsAndConditions } from './TermsAndConditions';
 export { default as Help } from './Help';
 export { default as Notifications } from './Notifications';
+export { default as RideHistory } from './RideHistory';
+export { default as ModalScreen } from './ModalScreen';
+export { default as Chat } from './Chat';
+
 // passenger screens
 export { default as Login } from './passengers/Login';
 export { default as SignUp } from './passengers/SignUp';
 export { default as Profile } from './passengers/Profile';
-export { default as RideHistory } from './passengers/RideHistory';
 export { default as SavedAddresses } from './passengers/SavedAddresses';
 export { default as Contactus } from './passengers/Contactus';
 export { default as PersonalInformation } from './passengers/PersonalInformation';

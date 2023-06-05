@@ -13,7 +13,6 @@ import {
   backgroundColor,
   black,
   darkGray,
-  gray,
   lightestGray,
   purple,
   screenWidth,

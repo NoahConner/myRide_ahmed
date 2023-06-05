@@ -2,10 +2,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   CardsAndAccounts,
+  Chat,
   Contactus,
   Help,
   Home,
   HowToUse,
+  ModalScreen,
   Notifications,
   PersonalInformation,
   PrivacyPolicy,
@@ -37,6 +39,8 @@ const PassengerStack = () => {
       <Stack.Screen name="Help" component={Help} />
       <Stack.Screen name="CardsAndAccounts" component={CardsAndAccounts} />
       <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="ModalScreen" component={ModalScreen} />
+      <Stack.Screen name="Chat" component={Chat} />
 
     </Stack.Navigator>
   );

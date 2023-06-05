@@ -9,6 +9,9 @@ import {
 } from '../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Linking} from 'react-native';
+import {handleCallButtonPress} from '../constants/HelperFunctions';
+
 const ViewHeader = ({
   heading,
   icon,
@@ -17,7 +20,16 @@ const ViewHeader = ({
   style,
   navigation,
   path,
+  phoneNumber,
 }) => {
+  const handleButtonPress = () => {
+    if (icon === 'phone-alt') {
+      handleCallButtonPress(phoneNumber);
+    } else {
+      navigation.navigate(path);
+    }
+  };
+
   return (
     <View style={[styles.container, style]}>
       <TouchableOpacity
@@ -25,32 +37,39 @@ const ViewHeader = ({
         onPress={() => {
           navigation.goBack();
         }}>
-        <Icon name={'arrow-left'} size={15} color={white} />
+        <Icon
+          name={'arrow-left'}
+          size={icon === 'phone-alt' ? 10 : 15}
+          color={white}
+        />
       </TouchableOpacity>
-      <Heading
-        text={heading}
-        fontSize={moderateScale(fontSize)}
-        fontFamily={KumbhSansExtraBold}
-        color={headingColor}
-        textAlign="center"
-      />
+      <View style={styles.headingContainer}>
+        <Heading
+          text={heading}
+          fontSize={moderateScale(fontSize)}
+          fontFamily={KumbhSansExtraBold}
+          color={headingColor}
+          textAlign="center"
+        />
+      </View>
       <TouchableOpacity
         style={styles.secondaryButton}
-        onPress={() => {
-          navigation.navigate(path);
-        }}>
+        onPress={handleButtonPress}>
         <Icon name={icon} size={25} color={purple} />
       </TouchableOpacity>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    width: moderateScale(screenWidth),
+    justifyContent: 'space-between',
+    paddingHorizontal: moderateScale(10),
+    width: '100%',
+    maxWidth: moderateScale(screenWidth),
   },
   backButton: {
     backgroundColor: purple,
@@ -64,5 +83,10 @@ const styles = StyleSheet.create({
   secondaryButton: {
     backgroundColor: 'transparent',
   },
+  headingContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
 });
+
 export default ViewHeader;
