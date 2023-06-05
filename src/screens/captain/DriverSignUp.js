@@ -1,12 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, Animated, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {AppContext, useAppContext} from '../../context/AppContext';
 import {
-  View,
-  StyleSheet,
-  Animated,
-  KeyboardAvoidingView,
-  Text,
-  ScrollView,
-} from 'react-native';
+  Heading,
+  Button,
+  Input,
+  TopLeftCircleProp,
+  BottomCircleProp,
+  Dropdown,
+} from '../../components/Index';
 import {
   gray,
   primaryHeadingColor,
@@ -15,17 +18,11 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
+  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
-import {
-  Heading,
-  Button,
-  Input,
-  TopLeftCircleProp,
-  BottomCircleProp,
-} from '../../components/Index';
+import DropDownPicker from 'react-native-dropdown-picker';
+
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -37,11 +34,12 @@ const CapatainSignUp = () => {
   const [model, setModel] = useState('');
   const [carYear, setCarYear] = useState('');
   const [carColor, setCarColor] = useState('');
-  const [service, setService] = useState('');
   const [carCapacity, setCarCapacity] = useState('');
+  const [selectedService, setSelectedService] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser} = useContext(AppContext);
+  const {setToken, setUser} = useAppContext(AppContext);
+
   useEffect(() => {
     startAnimations();
   }, []);
@@ -60,182 +58,149 @@ const CapatainSignUp = () => {
       }),
     ]).start();
   };
+
   const signUp = () => {
     setUser({firstName, lastName, contact, password, email});
     setToken(true);
   };
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(['italy', 'spain', 'barcelona', 'finland']);
+  const [items, setItems] = useState([
+    {label: 'Spain', value: 'spain'},
+    {label: 'Madrid', value: 'madrid', parent: 'spain'},
+    {label: 'Barcelona', value: 'barcelona', parent: 'spain'},
+
+    {label: 'Italy', value: 'italy'},
+    {label: 'Rome', value: 'rome', parent: 'italy'},
+
+    {label: 'Finland', value: 'finland'}
+  ]);
   return (
-      <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <TopLeftCircleProp />
-        <View style={styles.headingBox}>
-          <Heading
-            style={null}
-            text="Fill this form to
-            complete sign up!"
-            fontSize={moderateScale(20)}
-            fontFamily={KumbhSansExtraBold}
-            color={primaryHeadingColor}
-            textAlign="left"
+      <View style={styles.headingBox}>
+        <Heading
+          style={styles.heading}
+          text="Fill this form to complete sign up!"
+          fontSize={moderateScale(20)}
+          fontFamily={KumbhSansExtraBold}
+          color={primaryHeadingColor}
+          textAlign="left"
+        />
+        <View style={styles.InputBox}>
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="First Name"
+            value={firstName}
+            setValue={setFirstName}
+            type="text"
           />
-          <View style={styles.InputBox}>
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="First Name"
-                value={firstName}
-                setValue={setFirstName}
-                type="text"
-              />
-            </View>
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Last Name"
-                value={lastName}
-                setValue={setLastName}
-                type="text"
-              />
-            </View>
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Email"
-                value={email}
-                setValue={setEmail}
-                type="text"
-              />
-            </View>
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Contact"
-                value={contact}
-                setValue={setContact}
-                type="text"
-              />
-            </View>
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="City"
-                value={city}
-                setValue={setCity}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="State"
-                value={state}
-                setValue={setState}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Car Maker"
-                value={carMaker}
-                setValue={setCarMaker}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Model"
-                value={model}
-                setValue={setModel}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Car Year"
-                value={carYear}
-                setValue={setCarYear}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Car Color"
-                value={carColor}
-                setValue={setCarColor}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Service"
-                value={service}
-                setValue={setService}
-                type="text"
-              />
-            </View>
-
-            <View style={styles.input}>
-              <Input
-                placeholderTextColor={black}
-                style={[styles.input, {marginBottom: 16}]}
-                placeholder="Car Capacity"
-                value={carCapacity}
-                setValue={setCarCapacity}
-                type="text"
-              />
-            </View>
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Last Name"
+            value={lastName}
+            setValue={setLastName}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            setValue={setEmail}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Contact"
+            value={contact}
+            setValue={setContact}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="City"
+            value={city}
+            setValue={setCity}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="State"
+            value={state}
+            setValue={setState}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Car Maker"
+            value={carMaker}
+            setValue={setCarMaker}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Model"
+            value={model}
+            setValue={setModel}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Car Year"
+            value={carYear}
+            setValue={setCarYear}
+            type="text"
+          />
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Car Color"
+            value={carColor}
+            setValue={setCarColor}
+            type="text"
+          />
+          <View style={styles.input}>
+          <DropDownPicker
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        setValue={setValue}
+        setItems={setItems}/>
           </View>
-          <View style={styles.signInButtonContainer}>
-            <Button
-              style={null}
-              fontSize={moderateScale(14)}
-              backgroundColor={purple}
-              color={white}
-              text="Register Now"
-              padding={moderateScale(10)}
-              textAlign="center"
-              borderRadius={moderateScale(100)}
-              width="50%"
-              onPress={() => signUp()}
-            />
-          </View>
-          <View style={styles.dontHaveBox}>
-            <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
-            <Button
-              style={null}
-              fontSize={moderateScale(12)}
-              backgroundColor={null}
-              color={purple}
-              text="Sign In!"
-              padding={moderateScale(0)}
-              textAlign="center"
-              borderRadius={moderateScale(0)}
-              width="30%"
-              onPress={() => navigation.navigate('Login')}
-            />
-          </View>
+          <Input
+            placeholderTextColor={black}
+            style={styles.input}
+            placeholder="Car Capacity"
+            value={carCapacity}
+            setValue={setCarCapacity}
+            type="text"
+          />
         </View>
+        <View style={styles.signInButtonContainer}>
+          <Button
+            style={styles.button}
+            fontSize={moderateScale(14)}
+            backgroundColor={purple}
+            color={white}
+            text="Send"
+            padding={moderateScale(10)}
+            textAlign="center"
+            borderRadius={moderateScale(100)}
+            width="50%"
+            onPress={signUp}
+          />
+        </View>
+      </View>
       <Animated.Image
         style={[
           styles.CarProp,
@@ -260,19 +225,21 @@ const CapatainSignUp = () => {
         source={require('../../../assets/Images/captainSignUpProp.png')}
       />
       <BottomCircleProp />
-      </ScrollView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     position: 'relative',
     padding: moderateScale(30),
   },
   headingBox: {
     width: moderateScale(screenWidth - 100),
+  },
+  heading: {
+    marginBottom: moderateScale(20),
   },
   InputBox: {
     marginTop: moderateScale(20),
@@ -291,6 +258,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: moderateScale(15),
   },
+  button: {
+    width: '50%',
+  },
   dontHaveBox: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -300,10 +270,13 @@ const styles = StyleSheet.create({
   },
   dontHaveBoxText: {
     color: gray,
+    marginRight: moderateScale(5),
+  },
+  signInButton: {
+    width: '30%',
   },
   CarProp: {
     width: moderateScale(200),
-    resizeMode: 'contain',
     height: moderateScale(180),
   },
 });
