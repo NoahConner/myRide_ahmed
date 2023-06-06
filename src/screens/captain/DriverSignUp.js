@@ -8,7 +8,7 @@ import {
   Input,
   TopLeftCircleProp,
   BottomCircleProp,
-  Dropdown,
+  CustomPicker,
 } from '../../components/Index';
 import {
   gray,
@@ -18,11 +18,8 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
-  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import DropDownPicker from 'react-native-dropdown-picker';
-
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -43,7 +40,11 @@ const CapatainSignUp = () => {
   useEffect(() => {
     startAnimations();
   }, []);
-
+  const services = [
+    {label: 'Basic', value: 'Basic'},
+    {label: 'Standard', value: 'Standard'},
+    {label: 'Premium', value: 'Premium'},
+  ];
   const startAnimations = () => {
     Animated.sequence([
       Animated.timing(CarAnimation, {
@@ -63,18 +64,6 @@ const CapatainSignUp = () => {
     setUser({firstName, lastName, contact, password, email});
     setToken(true);
   };
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(['italy', 'spain', 'barcelona', 'finland']);
-  const [items, setItems] = useState([
-    {label: 'Spain', value: 'spain'},
-    {label: 'Madrid', value: 'madrid', parent: 'spain'},
-    {label: 'Barcelona', value: 'barcelona', parent: 'spain'},
-
-    {label: 'Italy', value: 'italy'},
-    {label: 'Rome', value: 'rome', parent: 'italy'},
-
-    {label: 'Finland', value: 'finland'}
-  ]);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <TopLeftCircleProp />
@@ -168,14 +157,14 @@ const CapatainSignUp = () => {
             setValue={setCarColor}
             type="text"
           />
-          <View style={styles.input}>
-          <DropDownPicker
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={setValue}
-        setItems={setItems}/>
+          <View style={styles.SelectBorderContainer}>
+            <CustomPicker
+              selectedService={selectedService}
+              setSelectedService={setSelectedService}
+              style={styles.select}
+              options={services}
+            />
+            <View style={styles.SelectBorder}></View>
           </View>
           <Input
             placeholderTextColor={black}
@@ -251,6 +240,23 @@ const styles = StyleSheet.create({
   input: {
     width: moderateScale(screenWidth / 2 - 60),
     marginVertical: moderateScale(10),
+  },
+  select: {
+    width: moderateScale(screenWidth / 2 - 60),
+    marginVertical: moderateScale(10),
+    color: black,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  SelectBorderContainer: {
+    position: 'relative',
+  },
+  SelectBorder: {
+    position: 'absolute',
+    bottom: moderateScale(10),
+    width: '100%',
+    height: moderateScale(1),
+    backgroundColor: gray,
   },
   signInButtonContainer: {
     display: 'flex',

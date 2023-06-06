@@ -16,6 +16,7 @@ import {
 import {formatTime, formatUSDPrice} from '../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
+import { useNavigation } from '@react-navigation/native';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
@@ -30,7 +31,8 @@ const renderIcons = () => {
   ));
 };
 
-const RideHistoryCard = ({navigation}) => {
+const RideHistoryCard = ({}) => {
+  const navigation = useNavigation()
   return (
     <LinearGradient
       style={[styles.container]}

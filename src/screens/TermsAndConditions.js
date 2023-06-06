@@ -17,7 +17,11 @@ import {
     dummyText,
     screenWidth,
   } from '../constants/Index';
-  const TermsAndConditions = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+  const TermsAndConditions = ({}) => {
+  const navigation = useNavigation()
+
     return (
       <View style={{flex: 1}}>
         <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>

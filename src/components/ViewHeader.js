@@ -9,7 +9,6 @@ import {
 } from '../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Linking} from 'react-native';
 import {handleCallButtonPress} from '../constants/HelperFunctions';
 
 const ViewHeader = ({

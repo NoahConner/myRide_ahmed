@@ -19,7 +19,10 @@ import {
   gray,
   lighterGray,
 } from '../../constants/Index';
-const SavedAddresses = ({navigation}) => {
+import {useNavigation} from '@react-navigation/native';
+
+const SavedAddresses = ({}) => {
+  const navigation = useNavigation()
   const renderIcons = () => {
     return Array.from({length: 5}).map((_, index) => (
       <View style={styles.addressRow} key={index}>

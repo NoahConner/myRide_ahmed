@@ -29,8 +29,11 @@ import {
   white,
 } from '../../constants/Index';
 import moment from 'moment';
+import {useNavigation} from '@react-navigation/native';
 
-const CardsAndAccounts = ({navigation}) => {
+const CardsAndAccounts = ({}) => {
+  const navigation = useNavigation()
+
   const [name, setName] = useState('');
   const [cardNo, setCardNo] = useState('');
   const [expiry, setExpiry] = useState('');

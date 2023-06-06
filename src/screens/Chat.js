@@ -20,8 +20,9 @@ import {
   white,
 } from '../constants/Index';
 import ChatBody from '../components/ChatBody';
-
-const Chat = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+const Chat = ({}) => {
+  const navigation = useNavigation()
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState(messages);
   useEffect(() => {

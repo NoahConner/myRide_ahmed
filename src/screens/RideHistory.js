@@ -9,7 +9,11 @@ import {
   lighterGray,
 } from '../constants/Index';
 import {FlatList} from 'react-native';
-const RideHistory = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+const RideHistory = ({}) => {
+  const navigation = useNavigation()
+
   const renderCards = () => {
     return Array.from({length: 10}).map((_, index) => ({
       key: index.toString(),

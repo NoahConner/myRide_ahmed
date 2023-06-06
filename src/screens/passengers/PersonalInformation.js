@@ -30,8 +30,11 @@ import {
 import {AppContext, useAppContext} from '../../context/AppContext';
 import {ScrollView} from 'react-native-gesture-handler';
 import ImagePickerOptions from '../../components/ImagePickerOptions';
+import {useNavigation} from '@react-navigation/native';
 
-const PersonalInformation = ({navigation}) => {
+const PersonalInformation = ({}) => {
+  const navigation = useNavigation()
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');

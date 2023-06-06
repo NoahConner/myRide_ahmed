@@ -19,7 +19,11 @@ import {
     gray,
     lighterGray,
   } from '../constants/Index';
-  const Notifications = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+  const Notifications = ({}) => {
+  const navigation = useNavigation()
+
     const renderNotifications = () => {
       return Array.from({length: 5}).map((_, index) => (
         <View style={styles.addressRow} key={index}>

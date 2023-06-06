@@ -17,8 +17,11 @@ import {
 } from '../../constants/Index';
 import {Button, Heading, Icon, DrawerHeader, ViewHeader} from '../../components/Index';
 import {moderateScale} from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
 
-const Profile = ({navigation}) => {
+const Profile = ({}) => {
+  const navigation = useNavigation()
+
   const navigationViewButtons = [
     {
       name: 'Personal Information',

@@ -17,7 +17,10 @@ import {
     dummyText,
     screenWidth,
   } from '../constants/Index';
-  const HowToUse = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+  const HowToUse = ({}) => {
+  const navigation = useNavigation()
     return (
       <View style={{flex: 1}}>
         <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>

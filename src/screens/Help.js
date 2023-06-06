@@ -18,7 +18,9 @@ import {
   screenWidth,
   white,
 } from '../constants/Index';
-const Help = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+const Help = ({}) => {
+  const navigation = useNavigation()
   const [helpMessage, setHelpMessage] = useState('');
   return (
     <View style={{flex: 1}}>

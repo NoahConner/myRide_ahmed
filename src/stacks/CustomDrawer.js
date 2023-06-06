@@ -1,7 +1,8 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet, View, Image, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {moderateScale} from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
 import {
   KumbhSansBold,
   KumbhSansExtraRegular,
@@ -12,10 +13,11 @@ import {
 import {Heading, Icon, Button} from '../components/Index';
 import {AppContext} from '../context/AppContext';
 
-const CustomDrawerContent = ({navigation, ...props}) => {
+const CustomDrawerContent = ({...props}) => {
   const [isLoading, setIsLoading] =
     useState(true);
-  const {setToken, setRole, setRideStages, rideDetails, setRideDetails} = useContext(AppContext);
+    const navigation = useNavigation()
+  const {setToken, setRole, setRideStages, setRideDetails} = useContext(AppContext);
   const handleImageLoad = () => {
     setIsLoading(false);
   };

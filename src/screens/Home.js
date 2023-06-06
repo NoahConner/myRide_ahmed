@@ -4,7 +4,10 @@ import {AppContext, useAppContext} from '../context/AppContext';
 import {Button, CustomModal, DrawerHeader, RideOfferDetail} from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {backgroundColor, purple, white} from '../constants/Index';
-const Home = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+const Home = ({}) => {
+  const navigation = useNavigation()
   const {rideStages, setRideStages, findRideButton} = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const findRide = () => {

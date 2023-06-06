@@ -19,7 +19,11 @@ import {
   purple,
   screenWidth,
 } from '../constants/Index';
-const PrivacyPolicy = ({navigation}) => {
+import { useNavigation } from '@react-navigation/native';
+
+const PrivacyPolicy = ({}) => {
+  const navigation = useNavigation()
+
   return (
     <View style={{flex: 1}}>
       <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
