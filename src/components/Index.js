@@ -14,6 +14,7 @@ export { default as RideOfferDetail } from './RideOfferDetail';
 export { default as CardRow } from './CardRow';
 export { default as RideHistoryCard } from './RideHistoryCard';
 export { default as CustomPicker } from './CustomPicker';
+export { default as UploadDocument } from './UploadDocument';
 export { default as CustomModal } from './Modal';
 export { default as ChatHeader } from './ChatHeader';
 export { default as ChatFooter } from './ChatFooter';

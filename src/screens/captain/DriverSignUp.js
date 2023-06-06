@@ -9,6 +9,7 @@ import {
   TopLeftCircleProp,
   BottomCircleProp,
   CustomPicker,
+  UploadDocument,
 } from '../../components/Index';
 import {
   gray,
@@ -20,6 +21,7 @@ import {
   black,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
+import { uploadFile } from '../../constants/HelperFunctions';
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -36,6 +38,11 @@ const CapatainSignUp = () => {
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
   const {setToken, setUser} = useAppContext(AppContext);
+  const {driverFile, setDriverFile} = useState('')
+  const {registrationFile, setRegistrationFile} = useState('')
+  const {insuranceFile, setInsuranceFile} = useState('')
+  const {liscencePlateFile, setLiscencePlateFile} = useState('')
+  const {carFile, setCarFile} = useState('')
 
   useEffect(() => {
     startAnimations();
@@ -174,6 +181,13 @@ const CapatainSignUp = () => {
             setValue={setCarCapacity}
             type="text"
           />
+        </View>
+        <View>
+          <UploadDocument headingText="Driver Liscence" onPress={uploadFile} />
+          <UploadDocument headingText="Car Registration" onPress={uploadFile} />
+          <UploadDocument headingText="Car Insurance" onPress={uploadFile} />
+          <UploadDocument headingText="Picture of Liscence Plate" truncate={15} onPress={uploadFile} />
+          <UploadDocument headingText="Picture of Car" onPress={uploadFile} />
         </View>
         <View style={styles.signInButtonContainer}>
           <Button
