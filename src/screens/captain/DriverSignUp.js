@@ -21,7 +21,7 @@ import {
   black,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import { uploadFile } from '../../constants/HelperFunctions';
+import {selectDocument} from '../../constants/HelperFunctions';
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -38,11 +38,11 @@ const CapatainSignUp = () => {
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
   const {setToken, setUser} = useAppContext(AppContext);
-  const {driverFile, setDriverFile} = useState('')
-  const {registrationFile, setRegistrationFile} = useState('')
-  const {insuranceFile, setInsuranceFile} = useState('')
-  const {liscencePlateFile, setLiscencePlateFile} = useState('')
-  const {carFile, setCarFile} = useState('')
+  const [driverFile, setDriverFile] = useState('');
+  const [registrationFile, setRegistrationFile] = useState('');
+  const [insuranceFile, setInsuranceFile] = useState('');
+  const [liscencePlateFile, setLiscencePlateFile] = useState('');
+  const [carFile, setCarFile] = useState('');
 
   useEffect(() => {
     startAnimations();
@@ -183,11 +183,36 @@ const CapatainSignUp = () => {
           />
         </View>
         <View>
-          <UploadDocument headingText="Driver Liscence" onPress={uploadFile} />
-          <UploadDocument headingText="Car Registration" onPress={uploadFile} />
-          <UploadDocument headingText="Car Insurance" onPress={uploadFile} />
-          <UploadDocument headingText="Picture of Liscence Plate" truncate={15} onPress={uploadFile} />
-          <UploadDocument headingText="Picture of Car" onPress={uploadFile} />
+          <UploadDocument
+            headingText="Driver Liscence"
+            truncate={13}
+            onPress={() => selectDocument(setDriverFile)}
+            document={driverFile}
+          />
+          <UploadDocument
+            headingText="Car Registration"
+            truncate={13}
+            onPress={() => selectDocument(setRegistrationFile)}
+            document={registrationFile}
+          />
+          <UploadDocument
+            headingText="Car Insurance"
+            truncate={13}
+            onPress={() => selectDocument(setInsuranceFile)}
+            document={insuranceFile}
+          />
+          <UploadDocument
+            headingText="Picture of Liscence Plate"
+            truncate={13}
+            onPress={() => selectDocument(setLiscencePlateFile)}
+            document={liscencePlateFile}
+          />
+          <UploadDocument
+            headingText="Picture of Car"
+            truncate={13}
+            onPress={() => selectDocument(setCarFile)}
+            document={carFile}
+          />
         </View>
         <View style={styles.signInButtonContainer}>
           <Button
