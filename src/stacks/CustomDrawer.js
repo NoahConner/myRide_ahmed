@@ -16,12 +16,12 @@ import {AppContext} from '../context/AppContext';
 const CustomDrawerContent = ({...props}) => {
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
-  const {role, setToken, setRole, setRideStages, setRideDetails} =
+  const {role, setToken, setRole, setRideStages, setRideDetails, user} =
     useContext(AppContext);
   const handleImageLoad = () => {
     setIsLoading(false);
   };
-
+  console.log(user,"hello i'm user");
   const PassengerButtons = [
     {text: 'Profile', screen: 'Profile'},
     {text: 'Ride History', screen: 'RideHistory'},
@@ -51,7 +51,7 @@ const CustomDrawerContent = ({...props}) => {
       <View style={styles.header}>
         <View style={styles.imageContainer}>
           <Image
-            source={require('../../assets/Images/AppLogo.png')}
+            source={{uri:user?.image}}
             style={styles.profileImage}
             onLoad={handleImageLoad}
           />
@@ -65,7 +65,7 @@ const CustomDrawerContent = ({...props}) => {
             textAlign="left"
           />
           <Heading
-            text={'John Smith'}
+            text={user?.first_name + " " + user?.last_name}
             fontSize={moderateScale(18)}
             fontFamily={KumbhSansBold}
             color={white}

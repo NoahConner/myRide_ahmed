@@ -52,7 +52,7 @@ export const handleCameraPress = async (setImageSource, setSheet) => {
             const selectedImage = response.assets[0];
             const source = {uri: selectedImage.uri};
             setSheet(false);
-            setImageSource(source);
+            setImageSource(source.uri);
           }
         });
       } else {
@@ -68,7 +68,7 @@ export const handleCameraPress = async (setImageSource, setSheet) => {
           const selectedImage = response.assets[0];
           const source = {uri: selectedImage.uri};
           setSheet(false);
-          setImageSource(source);
+          setImageSource(source?.uri);
         }
       });
     }
@@ -93,7 +93,7 @@ export const handleGalleryPress = (setImageSource, setSheet) => {
       const selectedImage = response.assets[0];
       const source = {uri: selectedImage.uri};
       setSheet(false);
-      setImageSource(source);
+      setImageSource(source?.uri);
     }
   });
 };

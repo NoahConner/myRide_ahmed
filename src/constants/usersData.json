@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john@example.com",
+      "phone": "1234567890",
+      "address": "123 Main Street",
+      "type": "passenger",
+      "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+    },
+    {
+      "id": 2,
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "email": "jane@example.com",
+      "phone": "9876543210",
+      "address": "456 Elm Street",
+      "type": "driver",
+      "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
+    },
+    {
+      "id": 3,
+      "first_name": "Michael",
+      "last_name": "Johnson",
+      "email": "michael@example.com",
+      "phone": "5555555555",
+      "address": "789 Oak Street",
+      "type": "passenger",
+      "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+    },
+    {
+      "id": 4,
+      "first_name": "Sarah",
+      "last_name": "Williams",
+      "email": "sarah@example.com",
+      "phone": "1112223333",
+      "address": "321 Maple Avenue",
+      "type": "driver",
+      "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
+    },
+    {
+      "id": 5,
+      "first_name": "David",
+      "last_name": "Brown",
+      "email": "david@example.com",
+      "phone": "4444444444",
+      "address": "567 Pine Street",
+      "type": "passenger",
+      "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+    },
+    {
+      "id": 6,
+      "first_name": "Dummy",
+      "last_name": "User",
+      "email": "dummy@gmail.com",
+      "phone": "5555555555",
+      "address": "123 Oak Street",
+      "type": "driver",
+      "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
+    },
+    {
+      "id": 7,
+      "first_name": "John",
+      "last_name": "Smith",
+      "email": "john@gmail.com",
+      "phone": "1111111111",
+      "address": "789 Maple Avenue",
+      "type": "passenger",
+      "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   Text,
 } from 'react-native';
+import userData from '../../constants/usersData.json';
 import {
   gray,
   primaryHeadingColor,
@@ -34,7 +35,7 @@ const Login = () => {
   const navigation = useNavigation();
   const {setToken, setUser, setRole} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
-  const [disabled, setDisabled] = useState(true); 
+  const [disabled, setDisabled] = useState(true);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -44,15 +45,17 @@ const Login = () => {
     } else {
       setDisabled(false);
     }
-    }, [email, password]);
+  }, [email, password]);
   const login = () => {
     setLoading(true);
-    setTimeout(() => {
-      setRole('Passenger')
+    const foundUser = userData.users.find(user => user?.email == email?.toLowerCase());
+    console.log(foundUser);
+    if (foundUser) {
+      setUser(foundUser);
+      setRole('Passenger');
       setToken(true);
-      setUser({email})
-      setLoading(false);
-    }, 1500);
+    }
+    setLoading(false);
   };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
@@ -191,11 +194,11 @@ const styles = StyleSheet.create({
   GirlProp: {
     position: 'absolute',
     bottom: moderateScale(10),
-    alignItems:'center',
+    alignItems: 'center',
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
-    zIndex:-1
+    zIndex: -1,
   },
   MobileProp: {
     position: 'absolute',
@@ -204,7 +207,7 @@ const styles = StyleSheet.create({
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
-    zIndex:-1
+    zIndex: -1,
   },
 });
 

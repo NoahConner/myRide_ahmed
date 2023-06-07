@@ -24,7 +24,7 @@ import {AppContext} from '../../context/AppContext';
 const Profile = ({}) => {
   const navigation = useNavigation();
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
-  const {role} = useContext(AppContext);
+  const {role, user} = useContext(AppContext);
   const passengernavigationViewButtons = [
     {
       name: 'Personal Information',
@@ -130,12 +130,12 @@ const Profile = ({}) => {
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
           <Image
-            source={require('../../../assets/Images/AppLogo.png')}
+            source={{uri:user?.image}}
             resizeMode="cover"
             style={styles.profileImage}
           />
           <Heading
-            text={'John Smith'}
+            text={user?.first_name + " " + user?.last_name}
             fontSize={moderateScale(20)}
             fontFamily={KumbhSansExtraBold}
             color={green}
@@ -143,7 +143,7 @@ const Profile = ({}) => {
             style={styles.marginTop}
           />
           <Heading
-            text={'132-456-789-0'}
+            text={user?.phone}
             fontSize={moderateScale(14)}
             fontFamily={KumbhSansExtraRegular}
             color={darkGray}

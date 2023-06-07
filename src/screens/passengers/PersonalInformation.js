@@ -56,18 +56,20 @@ const PersonalInformation = ({}) => {
       !emailRegex.test(email) ||
       email === '' ||
       contact === '' ||
-      address === ''
+      address === '' || imageSource === ''
     ) {
       setDisabled(true);
     } else {
       setDisabled(false);
     }
-  }, [firstName, lastName, email, contact, address]);
+  }, [firstName, lastName, email, contact, address, imageSource]);
   useEffect(() => {
     setEmail(user?.email);
-    setFirstName(user?.firstName);
-    setLastName(user?.lastName);
-    setContact(user?.contact);
+    setFirstName(user?.first_name);
+    setLastName(user?.last_name);
+    setContact(user?.phone);
+    setAddress(user?.address);
+    setImageSource(user?.image)
   }, []);
   const startAnimations = () => {
     Animated.timing(illustratorProp, {
@@ -102,7 +104,7 @@ const PersonalInformation = ({}) => {
             <View style={styles.prfoileImageContainer}>
               {imageSource ? (
                 <Image
-                  source={{uri: imageSource.uri}}
+                  source={{uri: imageSource}}
                   resizeMode="cover"
                   style={styles.profileImage}
                 />

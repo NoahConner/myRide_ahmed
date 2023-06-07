@@ -24,6 +24,7 @@ import {
   Input,
   TopLeftCircleProp,
 } from '../../components/Index';
+import userData from '../../constants/usersData.json';
 const CapatainLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -44,12 +45,14 @@ const CapatainLogin = () => {
     }, [email, password]);
   const login = () => {
     setLoading(true);
-    setTimeout(() => {
-      setRole("Driver")
+    const foundUser = userData.users.find(user => user?.email == email?.toLowerCase());
+    console.log(foundUser);
+    if (foundUser) {
+      setUser(foundUser);
+      setRole('Driver');
       setToken(true);
-      setUser({email})
-      setLoading(false);
-    }, 1500);
+    }
+    setLoading(false);
   };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
