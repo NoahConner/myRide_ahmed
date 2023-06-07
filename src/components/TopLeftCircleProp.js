@@ -3,7 +3,7 @@ import { Animated, StyleSheet } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { purple, screenWidth } from '../constants/Index';
 
-const TopLeftCircleProp = () => {
+const TopLeftCircleProp = ({style}) => {
   const circlePropleftAnimation = useRef(new Animated.Value(-screenWidth + 150)).current;
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const TopLeftCircleProp = () => {
     transform: [{ translateX: circlePropleftAnimation }],
   };
 
-  return <Animated.View style={[styles.circlePropTopleft, circlePropStyle]} />;
+  return <Animated.View style={[styles.circlePropTopleft, circlePropStyle,style]} />;
 };
 
 const styles = StyleSheet.create({
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     width: moderateScale(300),
     height: moderateScale(300),
     borderRadius: moderateScale(500),
+    zIndex:-1
   },
 });
 

@@ -25,4 +25,8 @@ export { default as CardsAndAccounts } from './passengers/CardsAndAccounts';
 // captain screens
 export { default as Wallet } from './captain/Wallet';
 export { default as Ratings } from './captain/Ratings';
+export { default as Accounts } from './captain/Accounts';
+export { default as AccountInformation } from './captain/AccountInformation';
+
+
 

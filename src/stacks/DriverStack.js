@@ -1,6 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
+  AccountInformation,
+  Accounts,
   CardsAndAccounts,
   Chat,
   Help,
@@ -27,6 +29,8 @@ const DriverStack = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="RideHistory" component={RideHistory} />
         <Stack.Screen name="Wallet" component={Wallet} />
+        <Stack.Screen name="Accounts" component={Accounts} />
+        <Stack.Screen name="AccountInformation" component={AccountInformation} />
         <Stack.Screen name="Ratings" component={Ratings} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen
