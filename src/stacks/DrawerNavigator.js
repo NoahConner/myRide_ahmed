@@ -16,24 +16,24 @@ export default function DrawerNavigatorScreen() {
   );
 
   const initialRouteName = role === 'passenger' ? 'Passenger' : 'Driver';
-  useEffect(() => {
-    socket.on('connect', () => {
-      console.log('Socket connected');
-    });
-    socket.on('disconnect', reason => {
-      console.log('Socket disconnected');
-      console.log('Reason:', reason);
-    });
-    socket.on('error', error => {
-      console.error('Socket error:', error);
-    });
-    socket.on('connect_error', error => {
-      console.log('Connection error:', error);
-    });
-    return () => {
-      socket.disconnect();
-    };
-  }, [socket]);
+  // useEffect(() => {
+  //   socket.on('connect', () => {
+  //     console.log('Socket connected');
+  //   });
+  //   socket.on('disconnect', reason => {
+  //     console.log('Socket disconnected');
+  //     console.log('Reason:', reason);
+  //   });
+  //   socket.on('error', error => {
+  //     console.error('Socket error:', error);
+  //   });
+  //   socket.on('connect_error', error => {
+  //     console.log('Connection error:', error);
+  //   });
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, [socket]);
   return (
     <Drawer.Navigator
       drawerContent={drawerContent}
@@ -43,7 +43,7 @@ export default function DrawerNavigatorScreen() {
         width: '60%',
       }}
       initialRouteName={initialRouteName}>
-      {role === 'passenger' ? (
+      {role === 'Passenger' ? (
         <Drawer.Screen
           options={{
             headerShown: false,

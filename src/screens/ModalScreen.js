@@ -168,6 +168,7 @@ const ModalScreen = () => {
       />
       <View style={styles.container}>
         <CustomModal
+          times={true}
           backgroundColor={purple}
           visible={modalVisible}
           onClose={handleCloseModal}

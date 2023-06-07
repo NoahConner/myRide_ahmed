@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {StyleSheet, View, Image} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {moderateScale} from 'react-native-size-matters';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {
   KumbhSansBold,
   KumbhSansExtraRegular,
@@ -14,20 +14,28 @@ import {Heading, Icon, Button} from '../components/Index';
 import {AppContext} from '../context/AppContext';
 
 const CustomDrawerContent = ({...props}) => {
-  const [isLoading, setIsLoading] =
-    useState(true);
-    const navigation = useNavigation()
-  const {setToken, setRole, setRideStages, setRideDetails} = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation();
+  const {role, setToken, setRole, setRideStages, setRideDetails} =
+    useContext(AppContext);
   const handleImageLoad = () => {
     setIsLoading(false);
   };
 
-  const buttons = [
+  const PassengerButtons = [
     {text: 'Profile', screen: 'Profile'},
     {text: 'Ride History', screen: 'RideHistory'},
     {text: 'Saved Addresses', screen: 'SavedAddresses'},
     {text: 'How to Use?', screen: 'HowToUse'},
-    {text: 'Contact Us', screen: 'Contactus'},
+    {text: 'Contact Us', screen: 'Help'},
+  ];
+  const DriverButtons = [
+    {text: 'Profile', screen: 'Profile'},
+    {text: 'Wallet', screen: 'Wallet'},
+    {text: 'How To Use', screen: 'HowToUse'},
+    {text: 'Ride History', screen: 'RideHistory'},
+    {text: 'Ratings', screen: 'Ratings'},
+    {text: 'Contact Us', screen: 'Help'},
   ];
   const logout = () => {
     setToken(false);
@@ -65,22 +73,39 @@ const CustomDrawerContent = ({...props}) => {
           />
         </View>
       </View>
-      {buttons.map((button, index) => (
-        <Button
-          key={index}
-          style={[styles.drawerButton, styles.paddingDrawerButton]}
-          fontSize={moderateScale(16)}
-          fontFamily={KumbhSansBold}
-          backgroundColor={null}
-          color={white}
-          text={button.text}
-          padding={moderateScale(5)}
-          textAlign="left"
-          onPress={() => navigation.navigate(button.screen)}
-          borderRadius={moderateScale(100)}
-          width="100%"
-        />
-      ))}
+      {role == 'Passenger'
+        ? PassengerButtons.map((button, index) => (
+            <Button
+              key={index}
+              style={[styles.drawerButton, styles.paddingDrawerButton]}
+              fontSize={moderateScale(16)}
+              fontFamily={KumbhSansBold}
+              backgroundColor={null}
+              color={white}
+              text={button.text}
+              padding={moderateScale(5)}
+              textAlign="left"
+              onPress={() => navigation.navigate(button.screen)}
+              borderRadius={moderateScale(100)}
+              width="100%"
+            />
+          ))
+        : DriverButtons.map((button, index) => (
+            <Button
+              key={index}
+              style={[styles.drawerButton, styles.paddingDrawerButton]}
+              fontSize={moderateScale(16)}
+              fontFamily={KumbhSansBold}
+              backgroundColor={null}
+              color={white}
+              text={button.text}
+              padding={moderateScale(5)}
+              textAlign="left"
+              onPress={() => navigation.navigate(button.screen)}
+              borderRadius={moderateScale(100)}
+              width="100%"
+            />
+          ))}
       <View style={styles.bottomButtons}>
         <View style={styles.iconButtonContainer}>
           <Icon style={null} name={'window-close'} size={16} color={white} />

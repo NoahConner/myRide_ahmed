@@ -102,10 +102,10 @@ const RidePayment = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: moderateScale(30),
+    // paddingBottom: moderateScale(30),
     position: 'relative',
   },
   headingContainer: {
@@ -128,11 +128,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(5),
     paddingVertical: moderateScale(15),
     position: 'absolute',
-    bottom: -15,
+    bottom: moderateScale(-45),
   },
   newCardButton: {
     paddingVertical: moderateScale(15, 0.1),
-    marginTop: moderateScale(15, 0.1),
+    marginVertical: moderateScale(15, 0.1),
     fontFamily: KumbhSansExtraBold,
   },
 });

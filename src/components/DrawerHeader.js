@@ -6,18 +6,18 @@ import {moderateScale} from 'react-native-size-matters';
 import {AppContext, useAppContext} from '../context/AppContext';
 
 const DrawerHeader = ({navigate, style, screen}) => {
-  const {rideStages} = useAppContext(AppContext);
+  const {rideStages, role} = useAppContext(AppContext);
 
   return (
     <View
       style={[
-        rideStages == 'finding' || screen != 'home'
+        rideStages == 'finding' || screen != 'home' || role == 'Driver'
           ? styles.FindingContainer
           : styles.container,
         style,
       ]}>
       <HeaderToggleButton drawer={navigate} />
-      {screen == 'home' ? (
+      {screen == 'home' && role == 'Passenger'? (
         <View
           style={[
             rideStages == 'finding'
@@ -43,12 +43,14 @@ const styles = StyleSheet.create({
     backgroundColor: purple,
     paddingHorizontal: moderateScale(10),
     paddingTop: moderateScale(10),
+    paddingBottom: moderateScale(10),
   },
   container: {
     width: '100%',
     backgroundColor: purple,
     paddingHorizontal: moderateScale(10),
     paddingTop: moderateScale(10),
+    paddingBottom: moderateScale(10),
     borderBottomLeftRadius: moderateScale(20),
     borderBottomRightRadius: moderateScale(20),
   },
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   rideOptionsFindingView: {
-    paddingVertical: moderateScale(8),
+    // paddingVertical: moderateScale(8),
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',

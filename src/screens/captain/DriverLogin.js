@@ -29,7 +29,7 @@ const CapatainLogin = () => {
   const [password, setPassword] = useState('');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser} = useContext(AppContext);
+  const {setToken, setUser, setRole} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true); 
   useEffect(() => {
@@ -45,6 +45,7 @@ const CapatainLogin = () => {
   const login = () => {
     setLoading(true);
     setTimeout(() => {
+      setRole("Driver")
       setToken(true);
       setUser({email})
       setLoading(false);

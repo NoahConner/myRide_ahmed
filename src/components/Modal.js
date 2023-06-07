@@ -2,8 +2,9 @@ import React from 'react';
 import {Modal, View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Button from './Button';
-import {green, screenWidth, white} from '../constants/Index';
+import {green, linearGradient, screenWidth, white} from '../constants/Index';
 import Icon from './Icon';
+import LinearGradient from 'react-native-linear-gradient';
 
 const CustomModal = ({
   visible,
@@ -11,6 +12,7 @@ const CustomModal = ({
   content,
   backgroundColor,
   buttonText,
+  times,
 }) => {
   return (
     <Modal
@@ -19,10 +21,16 @@ const CustomModal = ({
       animationType="fade"
       onRequestClose={onClose}>
       <View style={styles.modalContainer}>
-        <View style={[styles.modalContent, {backgroundColor}]}>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Icon name="times" size={20} color={white} />
-          </TouchableOpacity>
+        <LinearGradient
+          colors={linearGradient}
+          start={{x: 0, y: 1}}
+          end={{x: 0, y: 0}}
+          style={[styles.modalContent, {backgroundColor}]}>
+          {times ? (
+            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+              <Icon name="times" size={20} color={white} />
+            </TouchableOpacity>
+          ) : null}
           {content}
           <Button
             style={styles.modalButton}
@@ -33,10 +41,10 @@ const CustomModal = ({
             padding={moderateScale(10)}
             textAlign="center"
             borderRadius={moderateScale(100)}
-            width={moderateScale(screenWidth / 2 - 30)}
+            width={moderateScale(screenWidth / 2)}
             onPress={onClose}
           />
-        </View>
+        </LinearGradient>
       </View>
     </Modal>
   );
@@ -50,12 +58,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    padding: moderateScale(40),
+    paddingHorizontal: moderateScale(40),
+    paddingTop: moderateScale(10),
+    paddingBottom: moderateScale(30),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'purple',
     borderRadius: 10,
     position: 'relative',
+    width:moderateScale(screenWidth - 50)
   },
   modalButton: {
     position: 'absolute',

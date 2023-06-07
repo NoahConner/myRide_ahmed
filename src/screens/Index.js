@@ -21,3 +21,8 @@ export { default as SavedAddresses } from './passengers/SavedAddresses';
 export { default as Contactus } from './passengers/Contactus';
 export { default as PersonalInformation } from './passengers/PersonalInformation';
 export { default as CardsAndAccounts } from './passengers/CardsAndAccounts';
+
+// captain screens
+export { default as Wallet } from './captain/Wallet';
+export { default as Ratings } from './captain/Ratings';
+

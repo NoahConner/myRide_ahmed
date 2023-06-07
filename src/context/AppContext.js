@@ -22,6 +22,8 @@ export const AppProvider = ({children}) => {
   const [findRideButton, setFindRideButton] = useState(false);
   const [applyButton, setApplyButton] = useState(false);
   const [paymentButton, setPaymentButton] = useState(false);
+  const [rideStatus, setRideStatus] = useState('initial');
+
   useEffect(() => {
     async function fetchStoredValues() {
       try {
@@ -79,7 +81,10 @@ export const AppProvider = ({children}) => {
       setApplyButton,
       paymentButton,
       setPaymentButton,
-      user, setUser
+      user,
+      setUser,
+      rideStatus,
+      setRideStatus,
     }),
     [
       state,
@@ -104,7 +109,10 @@ export const AppProvider = ({children}) => {
       setApplyButton,
       paymentButton,
       setPaymentButton,
-      user, setUser
+      user,
+      setUser,
+      rideStatus,
+      setRideStatus,
     ],
   );
 

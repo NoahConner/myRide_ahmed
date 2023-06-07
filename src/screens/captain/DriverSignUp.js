@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Animated, ScrollView, Modal} from 'react-native';
+import {View, StyleSheet, Animated, ScrollView, Modal, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppContext, useAppContext} from '../../context/AppContext';
 import {
@@ -9,7 +9,7 @@ import {
   TopLeftCircleProp,
   BottomCircleProp,
   CustomPicker,
-  UploadDocument,
+  UploadDocument
 } from '../../components/Index';
 import {
   gray,
@@ -19,9 +19,12 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
+  linearGradient,
+  KumbhSansExtraRegular,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {selectDocument} from '../../constants/HelperFunctions';
+import LinearGradient from 'react-native-linear-gradient';
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -37,7 +40,7 @@ const CapatainSignUp = () => {
   const [selectedService, setSelectedService] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser} = useAppContext(AppContext);
+  const {setToken, setUser, setRole} = useAppContext(AppContext);
   const [driverFile, setDriverFile] = useState('');
   const [registrationFile, setRegistrationFile] = useState('');
   const [insuranceFile, setInsuranceFile] = useState('');
@@ -68,9 +71,18 @@ const CapatainSignUp = () => {
   };
 
   const signUp = () => {
-    setUser({firstName, lastName, contact, password, email});
-    setToken(true);
+    setVisible(true);
   };
+  useEffect(() => {
+    if(visible){
+      setTimeout(() => {
+        setVisible(false)
+        setRole("Driver")
+        setToken(true);
+      }, 5000);
+    }
+  }, [visible])
+  
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <TopLeftCircleProp />
@@ -254,31 +266,50 @@ const CapatainSignUp = () => {
       />
       <BottomCircleProp />
       <Modal
-      visible={visible}
-      transparent={true}
-      animationType="fade"
-      onRequestClose={onClose}>
-      <View style={styles.modalContainer}>
-        <View style={[styles.modalContent, {backgroundColor}]}>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Icon name="times" size={20} color={white} />
-          </TouchableOpacity>
-          {content}
-          <Button
-            style={styles.modalButton}
-            fontSize={moderateScale(14)}
-            backgroundColor={green}
-            color={white}
-            text={buttonText}
-            padding={moderateScale(10)}
-            textAlign="center"
-            borderRadius={moderateScale(100)}
-            width={moderateScale(screenWidth / 2 - 30)}
-            onPress={onClose}
-          />
+        visible={visible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => {
+          setVisible(false);
+        }}>
+        <View style={styles.modalContainer}>
+          <LinearGradient
+            colors={linearGradient}
+            start={{x: 0, y: 1}}
+            end={{x: 0, y: 0}}
+            style={[styles.modalContent]}>
+            <Image
+              style={styles.StopWatchProp}
+              resizeMode="contain"
+              source={require('../../../assets/Images/CaptainSignStopwatch.png')}
+            />
+            <Heading
+              style={styles.heading}
+              text="Your Request has been sent successfully"
+              fontSize={moderateScale(12)}
+              fontFamily={KumbhSansExtraRegular}
+              color={white}
+              textAlign="center"
+            />
+            <Heading
+              style={styles.heading}
+              text="Kindly wait for Approval"
+              fontSize={moderateScale(20)}
+              fontFamily={KumbhSansExtraRegular}
+              color={white}
+              textAlign="center"
+            />
+            <Heading
+              style={styles.heading}
+              text="Your approval will send through email or phone no."
+              fontSize={moderateScale(14)}
+              fontFamily={KumbhSansExtraRegular}
+              color={white}
+              textAlign="center"
+            />
+          </LinearGradient>
         </View>
-      </View>
-    </Modal>
+      </Modal>
     </ScrollView>
   );
 };
@@ -348,7 +379,40 @@ const styles = StyleSheet.create({
   },
   CarProp: {
     width: moderateScale(screenWidth - 80),
-    marginTop:moderateScale(50)
+    marginTop: moderateScale(50),
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(167, 141, 213, 0.7)',
+  },
+  modalContent: {
+    paddingHorizontal: moderateScale(40),
+    paddingTop: moderateScale(80),
+    paddingBottom: moderateScale(40),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'purple',
+    borderRadius: moderateScale(30),
+    borderColor: black,
+    borderWidth: moderateScale(1),
+    position: 'relative',
+  },
+  StopWatchProp: {
+    position: 'absolute',
+    width: moderateScale(100),
+    top: moderateScale(-30),
+    alignItems: 'center',
+  },
+  modalButton: {
+    position: 'absolute',
+    bottom: moderateScale(-20),
+  },
+  closeButton: {
+    position: 'absolute',
+    top: moderateScale(15),
+    right: moderateScale(15),
   },
 });
 

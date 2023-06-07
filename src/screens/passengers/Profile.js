@@ -1,10 +1,5 @@
-import {
-  View,
-  StyleSheet,
-  Image,
-  FlatList,
-} from 'react-native';
-import React from 'react';
+import {View, StyleSheet, Image, FlatList, ScrollView, Animated} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraRegular,
@@ -13,16 +8,24 @@ import {
   gray,
   green,
   purple,
-  screenWidth
+  screenWidth,
 } from '../../constants/Index';
-import {Button, Heading, Icon, DrawerHeader, ViewHeader} from '../../components/Index';
+import {
+  Button,
+  Heading,
+  Icon,
+  DrawerHeader,
+  ViewHeader,
+} from '../../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
+import {AppContext} from '../../context/AppContext';
 
 const Profile = ({}) => {
-  const navigation = useNavigation()
-
-  const navigationViewButtons = [
+  const navigation = useNavigation();
+  const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
+  const {role} = useContext(AppContext);
+  const passengernavigationViewButtons = [
     {
       name: 'Personal Information',
       path: 'PersonalInformation',
@@ -48,31 +51,73 @@ const Profile = ({}) => {
       path: 'Help',
     },
   ];
-  const navigate = (path) => {
-    navigation.navigate(path)
-  }
-  const renderNavigationButton = ({item}) => {
+  const drivernavigationViewButtons = [
+    {
+      name: 'Personal Information',
+      path: 'PersonalInformation',
+    },
+    {
+      name: 'Notifications',
+      path: 'Notifications',
+    },
+    {
+      name: 'Privacy Policy',
+      path: 'PrivacyPolicy',
+    },
+    {
+      name: 'Terms & Conditions',
+      path: 'TermsAndConditions',
+    },
+    {
+      name: 'Help',
+      path: 'Help',
+    },
+  ];
+  useEffect(() => {
+    startAnimations();
+  }, []);
+  const navigate = path => {
+    navigation.navigate(path);
+  };
+  const startAnimations = () => {
+    Animated.timing(illustratorProp, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
+  const renderNavigationButton = (naviagteButton, index) => {
     return (
-      <View style={styles.profileNavigatorView}>
+      <View key={index} style={styles.profileNavigatorView}>
         <Button
           style={styles.navigationButton}
           fontSize={moderateScale(14)}
           backgroundColor={null}
           color={darkGray}
-          text={item.name}
+          text={naviagteButton.name}
           padding={moderateScale(5)}
           textAlign="left"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth - 60)}
-          onPress={()=>{navigate(item.path)}}
+          onPress={() => {
+            navigate(naviagteButton.path);
+          }}
         />
-      <Icon name={'chevron-right'} style={styles.navigationIcon} size={15} color={gray} />
+        <Icon
+          name={'chevron-right'}
+          style={styles.navigationIcon}
+          size={15}
+          color={gray}
+        />
       </View>
     );
   };
   return (
-    <View style={styles.container}>
-      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
+    <View style={{flex: 1}}>
+      <DrawerHeader
+        navigate={navigation}
+        style={{paddingBottom: moderateScale(10)}}
+      />
       <ViewHeader
         heading={'Profile'}
         icon={'home'}
@@ -82,52 +127,64 @@ const Profile = ({}) => {
         navigation={navigation}
         path={'Home'}
       />
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('../../../assets/Images/AppLogo.png')}
-          resizeMode="cover"
-          style={styles.profileImage}
-        />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require('../../../assets/Images/AppLogo.png')}
+            resizeMode="cover"
+            style={styles.profileImage}
+          />
+          <Heading
+            text={'John Smith'}
+            fontSize={moderateScale(20)}
+            fontFamily={KumbhSansExtraBold}
+            color={green}
+            textAlign="center"
+            style={styles.marginTop}
+          />
+          <Heading
+            text={'132-456-789-0'}
+            fontSize={moderateScale(14)}
+            fontFamily={KumbhSansExtraRegular}
+            color={darkGray}
+            textAlign="center"
+            style={styles.marginTop}
+          />
+        </View>
         <Heading
-          text={'John Smith'}
+          text={'Account Information'}
           fontSize={moderateScale(20)}
           fontFamily={KumbhSansExtraBold}
-          color={green}
-          textAlign="center"
-          style={styles.marginTop}
-        />
-        <Heading
-          text={'132-456-789-0'}
-          fontSize={moderateScale(14)}
-          fontFamily={KumbhSansExtraRegular}
           color={darkGray}
           textAlign="center"
-          style={styles.marginTop}
         />
-      </View>
-      <Heading
-        text={'Account Information'}
-        fontSize={moderateScale(20)}
-        fontFamily={KumbhSansExtraBold}
-        color={darkGray}
-        textAlign="center"
-      />
-        <FlatList
-          data={navigationViewButtons}
-          renderItem={renderNavigationButton}
-          keyExtractor={(item, index) => index}
-          scrollEnabled={true}
-          showsVerticalScrollIndicator={true}
+        {role == 'Passenger'
+          ? passengernavigationViewButtons?.map((naviagteButton, index) => {
+              return renderNavigationButton(naviagteButton, index);
+            })
+          : drivernavigationViewButtons?.map((naviagteButton, index) => {
+              return renderNavigationButton(naviagteButton, index);
+            })}
+        <Animated.View style={{transform: [{translateY: illustratorProp}]}}>
+        <Image
+          resizeMode="contain"
+          style={styles.prop}
+          source={
+            role === 'Passenger'
+              ? require('../../../assets/Images/passengerProfileProp.png')
+              : require('../../../assets/Images/driverProfileProp.png')
+          }
         />
+        </Animated.View>
+      </ScrollView>
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    flex: 1,
     alignItems: 'center',
-    backgroundColor:backgroundColor
+    backgroundColor: backgroundColor,
   },
   header: {
     marginTop: moderateScale(10),
@@ -144,22 +201,25 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(5),
   },
   profileNavigatorView: {
-    position:'relative'
+    position: 'relative',
   },
-  navigationIcon:{
-    position:'absolute',
-    right:moderateScale(0),
-    bottom:moderateScale(25)
+  navigationIcon: {
+    position: 'absolute',
+    right: moderateScale(0),
+    bottom: moderateScale(25),
   },
   navigationButton: {
     borderBottomColor: gray,
     borderBottomWidth: 1,
-    borderRadius:0,
+    borderRadius: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: moderateScale(10),
-    marginVertical:moderateScale(12.5)
+    marginVertical: moderateScale(12.5),
   },
+  prop:{
+    width:moderateScale(200)
+  }
 });
 export default Profile;

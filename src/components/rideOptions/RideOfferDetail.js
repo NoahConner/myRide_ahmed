@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from './Index';
+import {Button, Heading, Icon} from '../Index';
 import {
   KumbhSansExtraRegular,
   gold,
@@ -11,9 +11,9 @@ import {
   screenWidth,
   white,
   yellow,
-} from '../constants/Index';
-import {AppContext, useAppContext} from '../context/AppContext';
-import {formatUSDPrice, handleCallButtonPress} from '../constants/HelperFunctions';
+} from '../../constants/Index';
+import {AppContext, useAppContext} from '../../context/AppContext';
+import {formatUSDPrice, handleCallButtonPress} from '../../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -44,7 +44,7 @@ const RideOfferDetail = () => {
         <View style={styles.profileContentContainer}>
           <Image
             style={styles.profileImage}
-            source={require('../../assets/Images/AppLogo.png')}
+            source={require('../../../assets/Images/AppLogo.png')}
           />
           <View style={styles.profileContent}>
             <Heading
@@ -74,7 +74,7 @@ const RideOfferDetail = () => {
         <View style={styles.carContainer}>
           <Image
             style={styles.carImage}
-            source={require('../../assets/Images/ride1.png')}
+            source={require('../../../assets/Images/ride1.png')}
           />
           <Heading
             text="Basic"
@@ -120,6 +120,7 @@ const RideOfferDetail = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate('Chat')}}>
             <Icon
               style={[styles.iconStyle, styles.captainIcon]}
+              solid={true}
               name="comment"
               size={18}
               color={white}
@@ -136,7 +137,7 @@ const RideOfferDetail = () => {
           padding={moderateScale(5)}
           textAlign="center"
           borderRadius={moderateScale(100)}
-          width="30%"
+          width={moderateScale(screenWidth / 3)}
           onPress={()=>{navigation.navigate('ModalScreen')}}
           // onPress={()=>{setRideStages('initial'); setRideDetails('')}}
         />

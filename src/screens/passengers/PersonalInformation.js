@@ -43,7 +43,7 @@ const PersonalInformation = ({}) => {
   const [address, setAddress] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [sheet, setSheet] = useState(false);
-  const {user, setUser} = useAppContext(AppContext);
+  const {user, setUser, role} = useAppContext(AppContext);
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   useEffect(() => {
     startAnimations();
@@ -183,11 +183,15 @@ const PersonalInformation = ({}) => {
           </View>
         </View>
         <Animated.View style={{transform: [{translateY: illustratorProp}]}}>
-          <Image
-            style={styles.prop}
-            resizeMode="contain"
-            source={require('../../../assets/Images/personalInformation.png')}
-          />
+        <Image
+          resizeMode="contain"
+          style={styles.prop}
+          source={
+            role === 'Passenger'
+              ? require('../../../assets/Images/personalInformation.png')
+              : require('../../../assets/Images/driverPersonalInfoProp.png')
+          }
+        />
         </Animated.View>
       </ScrollView>
       <RbSheet sheet={sheet} setSheet={setSheet}>
@@ -255,6 +259,7 @@ const styles = StyleSheet.create({
   },
   prop: {
     marginVertical: moderateScale(30),
+    width:moderateScale(200)
   },
 });
 

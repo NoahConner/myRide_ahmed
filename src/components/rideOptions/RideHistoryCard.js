@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from './Index';
+import {Button, Heading, Icon} from '../Index';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraRegular,
@@ -12,8 +12,8 @@ import {
   screenWidth,
   white,
   yellow,
-} from '../constants/Index';
-import {formatTime, formatUSDPrice} from '../constants/HelperFunctions';
+} from '../../constants/Index';
+import {formatTime, formatUSDPrice} from '../../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
@@ -43,7 +43,7 @@ const RideHistoryCard = ({}) => {
         <View style={styles.profileContentContainer}>
           <Image
             style={styles.profileImage}
-            source={require('../../assets/Images/AppLogo.png')}
+            source={require('../../../assets/Images/AppLogo.png')}
           />
           <View style={styles.profileContent}>
             <Heading
@@ -73,7 +73,7 @@ const RideHistoryCard = ({}) => {
         <View style={styles.carContainer}>
           <Image
             style={styles.carImage}
-            source={require('../../assets/Images/ride1.png')}
+            source={require('../../../assets/Images/ride1.png')}
           />
           <Heading
             text="Basic"
