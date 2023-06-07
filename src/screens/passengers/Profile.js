@@ -1,4 +1,11 @@
-import {View, StyleSheet, Image, FlatList, ScrollView, Animated} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  FlatList,
+  ScrollView,
+  Animated,
+} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {
   KumbhSansExtraBold,
@@ -129,13 +136,15 @@ const Profile = ({}) => {
       />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={{uri:user?.image}}
-            resizeMode="cover"
-            style={styles.profileImage}
-          />
+          {user?.image ? (
+            <Image
+              source={{uri: user?.image}}
+              resizeMode="cover"
+              style={styles.profileImage}
+            />
+          ) : null}
           <Heading
-            text={user?.first_name + " " + user?.last_name}
+            text={user?.first_name + ' ' + user?.last_name}
             fontSize={moderateScale(20)}
             fontFamily={KumbhSansExtraBold}
             color={green}
@@ -166,15 +175,15 @@ const Profile = ({}) => {
               return renderNavigationButton(naviagteButton, index);
             })}
         <Animated.View style={{transform: [{translateY: illustratorProp}]}}>
-        <Image
-          resizeMode="contain"
-          style={styles.prop}
-          source={
-            role === 'Passenger'
-              ? require('../../../assets/Images/passengerProfileProp.png')
-              : require('../../../assets/Images/driverProfileProp.png')
-          }
-        />
+          <Image
+            resizeMode="contain"
+            style={styles.prop}
+            source={
+              role === 'Passenger'
+                ? require('../../../assets/Images/passengerProfileProp.png')
+                : require('../../../assets/Images/driverProfileProp.png')
+            }
+          />
         </Animated.View>
       </ScrollView>
     </View>
@@ -218,8 +227,8 @@ const styles = StyleSheet.create({
     paddingBottom: moderateScale(10),
     marginVertical: moderateScale(12.5),
   },
-  prop:{
-    width:moderateScale(200)
-  }
+  prop: {
+    width: moderateScale(200),
+  },
 });
 export default Profile;

@@ -21,7 +21,7 @@ const CustomDrawerContent = ({...props}) => {
   const handleImageLoad = () => {
     setIsLoading(false);
   };
-  console.log(user,"hello i'm user");
+  console.log(user, "hello i'm user");
   const PassengerButtons = [
     {text: 'Profile', screen: 'Profile'},
     {text: 'Ride History', screen: 'RideHistory'},
@@ -50,11 +50,13 @@ const CustomDrawerContent = ({...props}) => {
       <View style={styles.topSpace} />
       <View style={styles.header}>
         <View style={styles.imageContainer}>
-          <Image
-            source={{uri:user?.image}}
-            style={styles.profileImage}
-            onLoad={handleImageLoad}
-          />
+          {user?.image ? (
+            <Image
+              source={{uri: user?.image}}
+              style={styles.profileImage}
+              onLoad={handleImageLoad}
+            />
+          ) : null}
         </View>
         <View>
           <Heading
@@ -65,7 +67,7 @@ const CustomDrawerContent = ({...props}) => {
             textAlign="left"
           />
           <Heading
-            text={user?.first_name + " " + user?.last_name}
+            text={user?.first_name + ' ' + user?.last_name}
             fontSize={moderateScale(18)}
             fontFamily={KumbhSansBold}
             color={white}

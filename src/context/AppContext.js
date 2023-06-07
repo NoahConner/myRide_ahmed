@@ -29,12 +29,16 @@ export const AppProvider = ({children}) => {
       try {
         const storedToken = await AsyncStorage.getItem('token');
         const storedRole = await AsyncStorage.getItem('role');
+        const storedUser = await AsyncStorage.getItem('user');
 
         if (storedToken !== null) {
           setToken(JSON.parse(storedToken));
         }
         if (storedRole !== null) {
           setRole(storedRole);
+        }
+        if (storedRole !== null) {
+          setUser(JSON.parse(storedUser));
         }
       } catch (error) {
         console.log('Error retrieving data from AsyncStorage:', error);
@@ -49,13 +53,14 @@ export const AppProvider = ({children}) => {
       try {
         await AsyncStorage.setItem('token', JSON.stringify(token));
         await AsyncStorage.setItem('role', role);
+        await AsyncStorage.setItem('user', JSON.stringify(user));
       } catch (error) {
         console.log('Error saving data to AsyncStorage:', error);
       }
     }
 
     saveValuesToStorage();
-  }, [token, role]);
+  }, [token, role, user]);
 
   const contextValues = useMemo(
     () => ({
