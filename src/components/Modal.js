@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: moderateScale(-20),
   },
-  closeButton:{
+  closeButton: {
     position: 'absolute',
     top: moderateScale(15),
     right: moderateScale(15),
-  }
+  },
 });
 
 export default CustomModal;

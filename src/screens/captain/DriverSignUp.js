@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Animated, ScrollView} from 'react-native';
+import {View, StyleSheet, Animated, ScrollView, Modal} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppContext, useAppContext} from '../../context/AppContext';
 import {
@@ -43,7 +43,7 @@ const CapatainSignUp = () => {
   const [insuranceFile, setInsuranceFile] = useState('');
   const [liscencePlateFile, setLiscencePlateFile] = useState('');
   const [carFile, setCarFile] = useState('');
-
+  const [visible, setVisible] = useState('');
   useEffect(() => {
     startAnimations();
   }, []);
@@ -253,6 +253,32 @@ const CapatainSignUp = () => {
         source={require('../../../assets/Images/captainSignUpProp.png')}
       />
       <BottomCircleProp />
+      <Modal
+      visible={visible}
+      transparent={true}
+      animationType="fade"
+      onRequestClose={onClose}>
+      <View style={styles.modalContainer}>
+        <View style={[styles.modalContent, {backgroundColor}]}>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Icon name="times" size={20} color={white} />
+          </TouchableOpacity>
+          {content}
+          <Button
+            style={styles.modalButton}
+            fontSize={moderateScale(14)}
+            backgroundColor={green}
+            color={white}
+            text={buttonText}
+            padding={moderateScale(10)}
+            textAlign="center"
+            borderRadius={moderateScale(100)}
+            width={moderateScale(screenWidth / 2 - 30)}
+            onPress={onClose}
+          />
+        </View>
+      </View>
+    </Modal>
     </ScrollView>
   );
 };
@@ -321,8 +347,8 @@ const styles = StyleSheet.create({
     width: '30%',
   },
   CarProp: {
-    width: moderateScale(200),
-    height: moderateScale(180),
+    width: moderateScale(screenWidth - 80),
+    marginTop:moderateScale(50)
   },
 });
 

@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   GirlProp: {
     position: 'absolute',
     bottom: moderateScale(10),
-    right: moderateScale(100),
+    alignItems:'center',
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   MobileProp: {
     position: 'absolute',
     bottom: moderateScale(10),
-    right: moderateScale(40),
+    right: moderateScale(10),
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),

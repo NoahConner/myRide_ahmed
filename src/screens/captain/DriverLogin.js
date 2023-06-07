@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    backgroundColor:white
   },
   headingBox: {
     width: moderateScale(screenWidth - 100),
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
   GirlProp: {
     position: 'absolute',
     bottom: moderateScale(10),
-    right: moderateScale(100),
+    alignItems:'center',
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),

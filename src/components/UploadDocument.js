@@ -44,42 +44,13 @@ const UploadDocument = ({
         fontSize={moderateScale(14)}
         backgroundColor={purple}
         color={white}
-        text="Upload"
+        text={document ? 'Uploaded' : 'Upload'}
         padding={moderateScale(10)}
         textAlign="center"
         borderRadius={moderateScale(100)}
         width={moderateScale(screenWidth / 3 - 10)}
         onPress={onPress}
       />
-      {document ? (
-        <View
-          style={{
-            width: moderateScale(screenWidth / 3 - 10),
-            marginLeft: moderateScale(10),
-            display:'flex',
-            flexDirection:'column',
-            justifyContent:'center',
-            alignItems:'center'
-          }}>
-          <Icon
-            style={styles.iconStyle}
-            name={
-              document?.[0]?.type == 'image/jpeg' ? 'file-image' : 'file-pdf'
-            }
-            solid={true}
-            size={14}
-            color={black}
-          />
-          <Heading
-          text={document?.[0]?.name}
-          fontSize={moderateScale(6)}
-          fontFamily={KumbhSansExtraRegular}
-          color={styles.textStyle.color}
-          textAlign="center"
-          truncate={5}
-        />
-        </View>
-      ) : null}
     </View>
   );
 };
