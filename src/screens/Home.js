@@ -30,6 +30,7 @@ import {AppContext, useAppContext} from '../context/AppContext';
 import {useToast} from 'react-native-toast-notifications';
 import {
   notification,
+  notificationRoute,
   socketRideEnd,
   socketRideRated,
 } from '../constants/HelperFunctions';
@@ -166,6 +167,14 @@ const Home = () => {
         `${foundUser.first_name} ${foundUser.last_name} started your ride`,
       );
     };
+    const handleSocketMessage = ({from, to, message, time}) => {
+      const foundUser = userData.users.find(user => user?.id === from);
+      // console.log(user,'hello messageing recieving');
+      if(user?.id == to){
+        const notificationMessage =  `send you a message`
+        notificationRoute(toast, notificationMessage, foundUser, navigation)
+      }
+    };
 
     const handleSocketRideEnd = ({from, to}) => {
       handleRideEvent({from, to}, `Your ride ended`);
@@ -180,6 +189,7 @@ const Home = () => {
     socket.on('rideStarted', handleSocketRideStarted);
     socket.on('rideEnd', handleSocketRideEnd);
     socket.on('rideRated', handleSocketRideRated);
+    socket.on('message', handleSocketMessage);
 
     return () => {
       socket.off('rideAccept', handleSocketRideAccept);
@@ -187,8 +197,9 @@ const Home = () => {
       socket.off('rideStarted', handleSocketRideStarted);
       socket.off('rideEnd', handleSocketRideEnd);
       socket.off('rideRated', handleSocketRideRated);
+      socket.off('message', handleSocketMessage);
     };
-  }, [socket]);
+  }, [socket, userData, user]);
 
   const modalContent =
     rideStatus === 'started'
@@ -219,7 +230,7 @@ const Home = () => {
       return (
         <ScrollView contentContainerStyle={styles.captainRideOfferView}>
           {userData?.users?.map(user => {
-            return user?.type === 'passenger' ? (
+            return user?.type === 'driver' ? (
               <RideOfferDetail key={user?.id} selectedUser={user} />
             ) : null;
           })}
@@ -256,7 +267,7 @@ const Home = () => {
         return (
           <ScrollView contentContainerStyle={styles.captainRideOfferView}>
             {userData?.users?.map(user => {
-              return user?.type === 'driver' ? (
+              return user?.type === 'passenger' ? (
                 <RideOfferDetailCaptain key={user?.id} selectedUser={user} />
               ) : null;
             })}

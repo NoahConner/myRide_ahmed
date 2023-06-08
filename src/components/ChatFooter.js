@@ -3,15 +3,22 @@ import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {black, gray, green, white} from '../constants/Index';
 import Icon from './Icon';
+import { socketMessage } from '../constants/HelperFunctions';
+import { AppContext, useAppContext } from '../context/AppContext';
+import moment from 'moment';
 
-const ChatFooter = ({setMessage, message, setMessageList, messageList, user}) => {
+const ChatFooter = ({setMessage, message, setMessageList, selectedUser}) => {
+  const {user} =
+    useAppContext(AppContext);
   const handleSend = () => {
     if (message.trim() !== '') {
       const newMessage = {
         content: message,
         sender: 'sender',
       };
-
+      const currentTime = moment().format("HH:mm");
+      socketMessage(user?.id, selectedUser?.id, message, currentTime)
+      // setMessageList(newMessage);
       setMessageList(prevMessageList => [...prevMessageList, newMessage]);
       setMessage('');
     }

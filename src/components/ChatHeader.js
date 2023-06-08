@@ -12,7 +12,7 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import Icon from './Icon';
 const renderIcons = () => {
-  return Array.from({length: user?.rating}).map((_, index) => (
+  return Array.from({length: 5}).map((_, index) => (
     <Icon
       style={styles.iconStyle}
       key={index}
@@ -23,14 +23,13 @@ const renderIcons = () => {
     />
   ));
 };
-const ChatHeader = ({user}) => {
-
+const ChatHeader = ({selectedUser}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
         <View style={styles.textContainer}>
           <Heading
-            text={user?.first_name + " " + user?.last_name}
+            text={selectedUser?.first_name + ' ' + selectedUser?.last_name}
             fontSize={moderateScale(18)}
             fontFamily={KumbhSansExtraBold}
             color={green}
@@ -46,14 +45,17 @@ const ChatHeader = ({user}) => {
         </View>
       </View>
       <View style={styles.imageContainer}>
-      {user?.image ? (
-            <Image
-              source={{uri: user?.image}}
-              resizeMode="contain"
-              style={styles.image}
-            />
-          ) : null}
-        <View style={styles.ratingContainer}>{renderIcons()}</View>
+        {selectedUser?.image ? (
+          <Image
+            source={{uri: selectedUser?.image}}
+            resizeMode="contain"
+            style={styles.image}
+          />
+        ) : null}
+        {console.log(selectedUser)}
+        {selectedUser?.type == 'driver' && (
+          <View style={styles.ratingContainer}>{renderIcons()}</View>
+        )}
       </View>
     </View>
   );
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: moderateScale(screenWidth),
-    paddingLeft:moderateScale(70)
+    paddingLeft: moderateScale(70),
   },
   textContainer: {
     flexDirection: 'column',

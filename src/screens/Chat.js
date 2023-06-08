@@ -16,23 +16,48 @@ import {
   messages,
   purple,
   screenWidth,
-  user,
   white,
 } from '../constants/Index';
 import ChatBody from '../components/ChatBody';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import {socket} from '../stacks/DrawerNavigator';
+import {AppContext, useAppContext} from '../context/AppContext';
 const Chat = ({route}) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const [message, setMessage] = useState('');
-  const [user, setUser] = useState(route.params.user);
-  const [messageList, setMessageList] = useState(messages);
+  const [selectedUser, setSelectedUser] = useState(route.params.selectedUser);
+  const [messageList, setMessageList] = useState([]);
+  const {user} = useAppContext(AppContext);
   useEffect(() => {
-      setMessageList(messages)
-  }, [])
+    console.log(messageList, 'hello new messhadasd');
+  }, [messageList]);
+
+  useEffect(() => {
+    const handleSocketMessage = ({from, to, message, time}) => {
+      if (to == user?.id) {
+        const newMessage = {
+          content: message,
+          sender: 'receiver',
+        };
+        setMessageList(prevMessageList => [...prevMessageList, newMessage]);
+      }
+    };
+
+    socket.on('message', handleSocketMessage);
+
+    return () => {
+      socket.off('message', handleSocketMessage);
+    };
+  }, [socket, selectedUser?.id, setMessageList]);
+
   const renderMessage = ({item}) => {
     return (
-        <ChatBody item={item} user={user}/>
-    )
+      <ChatBody
+        item={item}
+        selectedUser={selectedUser}
+        setMessageList={setMessageList}
+      />
+    );
   };
 
   return (
@@ -52,14 +77,19 @@ const Chat = ({route}) => {
           path="Home"
           phoneNumber="1234567890"
         />
-        <ChatHeader user={user} />
+        <ChatHeader selectedUser={selectedUser} />
         <FlatList
           data={messageList}
           renderItem={renderMessage}
-          keyExtractor={(item,index) => index}
+          keyExtractor={(item, index) => index}
           contentContainerStyle={styles.chatContainer}
         />
-        <ChatFooter message={message} setMessage={setMessage} setMessageList={setMessageList} messageList={messageList} user={user}/>
+        <ChatFooter
+          message={message}
+          setMessage={setMessage}
+          setMessageList={setMessageList}
+          selectedUser={selectedUser}
+        />
       </View>
     </View>
   );

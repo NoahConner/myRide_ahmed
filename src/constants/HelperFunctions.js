@@ -6,7 +6,7 @@ import {useToast} from 'react-native-toast-notifications';
 import {lightestPurple, screenWidth, white} from './Index';
 import { moderateScale } from 'react-native-size-matters';
 import { socket } from '../stacks/DrawerNavigator';
-
+import { useNavigation } from '@react-navigation/native';
 export const handleImageLoad = setLoading => {
   setLoading(false);
 };
@@ -133,6 +133,23 @@ export const notification = (toast,message) => {
     },
   });
 };
+export const notificationRoute = (toast,message, selectedUser, navigation) => {
+  toast.show(message, {
+    type: 'customize',
+    placement: 'top',
+    duration: 4000,
+    offset: 30,
+    animationType: 'zoom-in',
+    style: {
+      backgroundColor: lightestPurple,
+      width: screenWidth,
+      textColor: white
+    },
+    onPress: () => {
+      navigation.navigate('Chat', {selectedUser});
+    }
+  });
+};
 export const socketAccept = (from, to) => {
   socket.emit('rideAccept', {
     from: from,
@@ -167,5 +184,13 @@ export const socketRideRated = (from, to) => {
   socket.emit('rideRated', {
     from: from,
     to: to
+  });
+};
+export const socketMessage = (from, to, message, time) => {
+  socket.emit('message', {
+    from: from,
+    to: to,
+    message: message,
+    time: time
   });
 };

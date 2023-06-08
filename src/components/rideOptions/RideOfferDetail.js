@@ -137,7 +137,7 @@ const RideOfferDetail = ({selectedUser}) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Chat', {user});
+                navigation.navigate('Chat', {selectedUser});
               }}>
               <Icon
                 style={[styles.iconStyle, styles.captainIcon]}

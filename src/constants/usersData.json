@@ -17,7 +17,7 @@
       "email": "jane@example.com",
       "phone": "9876543210",
       "address": "456 Elm Street",
-      "type": "driver",
+      "type": "passenger",
       "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
     },
     {
@@ -37,7 +37,7 @@
       "email": "sarah@example.com",
       "phone": "1112223333",
       "address": "321 Maple Avenue",
-      "type": "driver",
+      "type": "passenger",
       "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
     },
     {
@@ -47,7 +47,7 @@
       "email": "david@example.com",
       "phone": "4444444444",
       "address": "567 Pine Street",
-      "type": "passenger",
+      "type": "driver",
       "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
     },
     {
@@ -57,7 +57,7 @@
       "email": "dummy@gmail.com",
       "phone": "5555555555",
       "address": "123 Oak Street",
-      "type": "driver",
+      "type": "passenger",
       "image": "https://eliteadmin.themedesigner.in/demos/bt4/university/dist/images/users/11.jpg"
     },
     {
@@ -67,7 +67,7 @@
       "email": "john@gmail.com",
       "phone": "1111111111",
       "address": "789 Maple Avenue",
-      "type": "passenger",
+      "type": "driver",
       "image": "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
     }
   ]
