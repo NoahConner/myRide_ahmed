@@ -2,6 +2,11 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {PermissionsAndroid, Platform, Linking} from 'react-native';
 // import FilePickerManager from 'react-native-file-picker';
 import DocumentPicker from 'react-native-document-picker';
+import {useToast} from 'react-native-toast-notifications';
+import {lightestPurple, screenWidth, white} from './Index';
+import { moderateScale } from 'react-native-size-matters';
+import { socket } from '../stacks/DrawerNavigator';
+
 export const handleImageLoad = setLoading => {
   setLoading(false);
 };
@@ -45,9 +50,9 @@ export const handleCameraPress = async (setImageSource, setSheet) => {
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         launchCamera(options, response => {
           if (response.didCancel) {
-            console.log('User cancelled camera picker');
+            console.error('User cancelled camera picker');
           } else if (response.error) {
-            console.log('ImagePicker Error: ', response.error);
+            console.error('ImagePicker Error: ', response.error);
           } else {
             const selectedImage = response.assets[0];
             const source = {uri: selectedImage.uri};
@@ -56,14 +61,14 @@ export const handleCameraPress = async (setImageSource, setSheet) => {
           }
         });
       } else {
-        console.log('Camera permission denied');
+        console.error('Camera permission denied');
       }
     } else {
       launchCamera(options, response => {
         if (response.didCancel) {
-          console.log('User cancelled camera picker');
+          console.error('User cancelled camera picker');
         } else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
+          console.error('ImagePicker Error: ', response.error);
         } else {
           const selectedImage = response.assets[0];
           const source = {uri: selectedImage.uri};
@@ -73,7 +78,7 @@ export const handleCameraPress = async (setImageSource, setSheet) => {
       });
     }
   } catch (error) {
-    console.log('Error requesting camera permission: ', error);
+    console.error('Error requesting camera permission: ', error);
   }
 };
 
@@ -86,9 +91,9 @@ export const handleGalleryPress = (setImageSource, setSheet) => {
 
   launchImageLibrary(options, response => {
     if (response.didCancel) {
-      console.log('User cancelled image picker');
+      console.error('User cancelled image picker');
     } else if (response.error) {
-      console.log('ImagePicker Error: ', response.error);
+      console.error('ImagePicker Error: ', response.error);
     } else {
       const selectedImage = response.assets[0];
       const source = {uri: selectedImage.uri};
@@ -101,57 +106,7 @@ export const handleCallButtonPress = phoneNumber => {
   const url = `tel:${phoneNumber}`;
   Linking.openURL(url);
 };
-// export const uploadFile = async () => {
-//   try {
-//     if (Platform.OS === 'android') {
-//       const granted = await PermissionsAndroid.request(
-//         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-//         {
-//           title: 'Storage Permission',
-//           message: 'App needs access to your storage.',
-//           buttonPositive: 'OK',
-//           buttonNegative: 'Cancel',
-//         },
-//       );
-//       if (granted === PermissionsAndroid.RESULTS.GRANTED || granted === true) {
-//         // Permission granted, show file picker
-//         FilePickerManager.showFilePicker(null, response => {
-//           console.log('Response = ', response);
-  
-//           if (response.didCancel) {
-//             console.log('User cancelled file picker');
-//           } else if (response.error) {
-//             console.log('FilePickerManager Error: ', response.error);
-//           } else {
-//             console.log('FilePickerManager Response: ', response);
-//             // setFile(response);
-//           }
-//         });
-//       } else {
-//         // Permission denied
-//         console.log('Storage permission denied');
-//       }
-//     } else {
-//       // For platforms other than Android, show file picker directly
-//       FilePickerManager.showFilePicker(null, response => {
-//         console.log('Response = ', response);
-  
-//         if (response.didCancel) {
-//           console.log('User cancelled file picker');
-//         } else if (response.error) {
-//           console.log('FilePickerManager Error: ', response.error);
-//         } else {
-//           console.log('FilePickerManager Response: ', response);
-//           // setFile(response);
-//         }
-//       });
-//     }
-//   } catch (error) {
-//     console.log('Error: ', error);
-//   }
-// };
-export const selectDocument = async (setState) => {
-  console.log(setState, "hello state");
+export const selectDocument = async setState => {
   try {
     const res = await DocumentPicker.pick({
       type: [DocumentPicker.types.allFiles],
@@ -159,9 +114,58 @@ export const selectDocument = async (setState) => {
     setState(res);
   } catch (error) {
     if (DocumentPicker.isCancel(error)) {
-      console.log('Document selection cancelled.');
     } else {
       console.error('Error selecting document:', error);
     }
   }
+};
+export const notification = (toast,message) => {
+  toast.show(message, {
+    type: 'customize',
+    placement: 'top',
+    duration: 4000,
+    offset: 30,
+    animationType: 'zoom-in',
+    style: {
+      backgroundColor: lightestPurple,
+      width: screenWidth,
+      textColor: white
+    },
+  });
+};
+export const socketAccept = (from, to) => {
+  socket.emit('rideAccept', {
+    from: from,
+    to: to
+  });
+};
+export const socketDecline = (from, to) => {
+  socket.emit('rideDecline', {
+    from: from,
+    to: to
+  });
+};
+export const socketArrived = (from, to) => {
+  socket.emit('rideArrived', {
+    from: from,
+    to: to
+  });
+};
+export const socketRideStarted = (from, to) => {
+  socket.emit('rideStarted', {
+    from: from,
+    to: to
+  });
+};
+export const socketRideEnd = (from, to) => {
+  socket.emit('rideEnd', {
+    from: from,
+    to: to
+  });
+};
+export const socketRideRated = (from, to) => {
+  socket.emit('rideRated', {
+    from: from,
+    to: to
+  });
 };

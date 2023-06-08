@@ -14,6 +14,7 @@ export const AppProvider = ({children}) => {
   const [loader, setLoader] = useState('');
   const [token, setToken] = useState(false);
   const [user, setUser] = useState([]);
+  const [selectedUser, setSelectedUser] = useState([]);
   const [role, setRole] = useState('');
   const [rideStages, setRideStages] = useState('initial');
   const [rideDetails, setRideDetails] = useState('');
@@ -41,7 +42,7 @@ export const AppProvider = ({children}) => {
           setUser(JSON.parse(storedUser));
         }
       } catch (error) {
-        console.log('Error retrieving data from AsyncStorage:', error);
+        console.error('Error retrieving data from AsyncStorage:', error);
       }
     }
 
@@ -54,7 +55,7 @@ export const AppProvider = ({children}) => {
         await AsyncStorage.setItem('role', role);
         await AsyncStorage.setItem('user', JSON.stringify(user));
       } catch (error) {
-        console.log('Error saving data to AsyncStorage:', error);
+        console.error('Error saving data to AsyncStorage:', error);
       }
     }
 
@@ -89,6 +90,8 @@ export const AppProvider = ({children}) => {
       setUser,
       rideStatus,
       setRideStatus,
+      selectedUser,
+      setSelectedUser,
     }),
     [
       state,
@@ -117,6 +120,8 @@ export const AppProvider = ({children}) => {
       setUser,
       rideStatus,
       setRideStatus,
+      selectedUser,
+      setSelectedUser,
     ],
   );
 

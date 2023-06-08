@@ -49,7 +49,6 @@ const Login = () => {
   const login = () => {
     setLoading(true);
     const foundUser = userData.users.find(user => user?.email == email?.toLowerCase());
-    console.log(foundUser);
     if (foundUser) {
       setUser(foundUser);
       setRole('Passenger');

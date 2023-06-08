@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(10),
     paddingTop: moderateScale(10),
     paddingBottom: moderateScale(10),
-    borderBottomLeftRadius: moderateScale(20),
-    borderBottomRightRadius: moderateScale(20),
+    // borderBottomLeftRadius: moderateScale(20),
+    // borderBottomRightRadius: moderateScale(20),
   },
   rideOptionsView: {
     paddingVertical: moderateScale(20),

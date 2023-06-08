@@ -60,7 +60,7 @@ const Help = ({}) => {
             width="50%"
             style={styles.saveButton}
             onPress={() => {
-              console.log('Information Save');
+              console.error('Information Save');
             }}
           />
         </View>

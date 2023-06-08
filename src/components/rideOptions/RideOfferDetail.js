@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import {View, Image, StyleSheet, TouchableOpacity, Animated} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from '../Index';
 import {
@@ -33,11 +33,20 @@ const renderIcons = () => {
   ));
 };
 
-const RideOfferDetail = ({user}) => {
-  const {rideDetails, setRideStages, setRideDetails} =
+const RideOfferDetail = ({selectedUser}) => {
+  const {rideDetails} =
     useAppContext(AppContext);
   const navigation = useNavigation();
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1500,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
   return (
+    <Animated.View style={{ opacity: fadeAnim }}>
     <LinearGradient
       style={styles.container}
       colors={linearGradient}
@@ -45,16 +54,16 @@ const RideOfferDetail = ({user}) => {
       end={{x: 0, y: 0}}>
       <View style={styles.topLine}>
         <View style={styles.profileContentContainer}>
-          {user?.image ? (
+          {selectedUser?.image ? (
             <Image
-              source={{uri: user?.image}}
+              source={{uri: selectedUser?.image}}
               resizeMode="contain"
               style={styles.profileImage}
             />
           ) : null}
           <View style={styles.profileContent}>
             <Heading
-              text={user?.first_name + " " + user?.last_name}
+              text={selectedUser?.first_name + " " + selectedUser?.last_name}
               fontSize={moderateScale(14)}
               fontFamily={KumbhSansExtraRegular}
               color={white}
@@ -157,6 +166,7 @@ const RideOfferDetail = ({user}) => {
         />
       </View>
     </LinearGradient>
+    </Animated.View>
   );
 };
 

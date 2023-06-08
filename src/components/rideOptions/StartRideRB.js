@@ -15,6 +15,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {
   formatUSDPrice,
   handleCallButtonPress,
+  socketArrived,
 } from '../../constants/HelperFunctions';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../Button';
@@ -22,7 +23,11 @@ import {AppContext, useAppContext} from '../../context/AppContext';
 
 const StartRideRB = () => {
   const navigation = useNavigation();
-  const {setRideStatus} = useAppContext(AppContext);
+  const {setRideStatus, user, selectedUser} = useAppContext(AppContext);
+  const rideArrived = () => {
+    setRideStatus('starting');
+    socketArrived(user?.id, selectedUser?.id)
+  }
   return (
     <LinearGradient
       style={styles.container}
@@ -88,9 +93,7 @@ const StartRideRB = () => {
         textAlign="center"
         borderRadius={moderateScale(100)}
         width={moderateScale(screenWidth / 2)}
-        onPress={() => {
-          setRideStatus('starting');
-        }}
+        onPress={() => {rideArrived()}}
       />
     </LinearGradient>
   );

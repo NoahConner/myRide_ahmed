@@ -21,12 +21,31 @@ import {
   black,
   gold,
   lightestGray,
+  lightestPurple,
   purple,
   screenWidth,
   white,
 } from '../constants/Index';
 import {AppContext, useAppContext} from '../context/AppContext';
-
+import {useToast} from 'react-native-toast-notifications';
+import {
+  notification,
+  socketRideEnd,
+  socketRideRated,
+} from '../constants/HelperFunctions';
+import {socket} from '../stacks/DrawerNavigator';
+const renderIcons = () => {
+  return Array.from({length: 5}).map((_, index) => (
+    <Icon
+      style={styles.iconStyle}
+      key={index}
+      name="star"
+      solid={true}
+      size={16}
+      color={gold}
+    />
+  ));
+};
 const Home = () => {
   const navigation = useNavigation();
   const {
@@ -36,23 +55,13 @@ const Home = () => {
     role,
     setRideStatus,
     rideStatus,
+    user,
+    selectedUser,
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [rateMessage, setRateMessage] = useState('');
-
-  const renderIcons = () => {
-    return Array.from({length: 5}).map((_, index) => (
-      <Icon
-        style={styles.iconStyle}
-        key={index}
-        name="star"
-        solid={true}
-        size={16}
-        color={gold}
-      />
-    ));
-  };
+  const toast = useToast();
 
   const rideEndContent = () => {
     return (
@@ -127,6 +136,59 @@ const Home = () => {
       setRideStages('findType');
     }, 1500);
   };
+  useEffect(() => {
+    const handleRideEvent = ({from, to, foundUser}, message) => {
+      if (user?.id === to) {
+        notification(toast, message);
+      }
+    };
+
+    const handleSocketRideAccept = ({from, to}) => {
+      const foundUser = userData.users.find(user => user?.id === from);
+      handleRideEvent(
+        {from, to, foundUser},
+        `${foundUser.first_name} ${foundUser.last_name} accepted your ride`,
+      );
+    };
+
+    const handleSocketRideArrived = ({from, to}) => {
+      const foundUser = userData.users.find(user => user?.id === from);
+      handleRideEvent(
+        {from, to, foundUser},
+        `${foundUser.first_name} ${foundUser.last_name} arrived at your destination`,
+      );
+    };
+
+    const handleSocketRideStarted = ({from, to}) => {
+      const foundUser = userData.users.find(user => user?.id === from);
+      handleRideEvent(
+        {from, to, foundUser},
+        `${foundUser.first_name} ${foundUser.last_name} started your ride`,
+      );
+    };
+
+    const handleSocketRideEnd = ({from, to}) => {
+      handleRideEvent({from, to}, `Your ride ended`);
+    };
+
+    const handleSocketRideRated = ({from, to}) => {
+      handleRideEvent({from, to}, `Your Captain rated you`);
+    };
+
+    socket.on('rideAccept', handleSocketRideAccept);
+    socket.on('rideArrived', handleSocketRideArrived);
+    socket.on('rideStarted', handleSocketRideStarted);
+    socket.on('rideEnd', handleSocketRideEnd);
+    socket.on('rideRated', handleSocketRideRated);
+
+    return () => {
+      socket.off('rideAccept', handleSocketRideAccept);
+      socket.off('rideArrived', handleSocketRideArrived);
+      socket.off('rideStarted', handleSocketRideStarted);
+      socket.off('rideEnd', handleSocketRideEnd);
+      socket.off('rideRated', handleSocketRideRated);
+    };
+  }, [socket]);
 
   const modalContent =
     rideStatus === 'started'
@@ -155,11 +217,13 @@ const Home = () => {
       );
     } else if (rideStages === 'finding') {
       return (
-        <View style={styles.rideOfferView}>
+        <ScrollView contentContainerStyle={styles.captainRideOfferView}>
           {userData?.users?.map(user => {
-            return user?.type === 'driver' ? <RideOfferDetail user={user}/> : null;
+            return user?.type === 'passenger' ? (
+              <RideOfferDetail key={user?.id} selectedUser={user} />
+            ) : null;
           })}
-        </View>
+        </ScrollView>
       );
     }
     return null;
@@ -176,22 +240,26 @@ const Home = () => {
   const submitRating = () => {
     setModalVisible(false);
     setRideStatus('rated');
+    socketRideRated(user?.id, selectedUser?.id);
     navigation.navigate('RideHistory');
   };
-
+  const rideEnd = () => {
+    setRideStatus('end');
+    socketRideEnd(user?.id, selectedUser?.id);
+  };
+  const rideRate = () => {
+    setRideStatus('rate');
+  };
   const renderDriverHome = () => {
     switch (rideStatus) {
       case 'initial':
         return (
           <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
-            <RideOfferDetailCaptain />
+            {userData?.users?.map(user => {
+              return user?.type === 'driver' ? (
+                <RideOfferDetailCaptain key={user?.id} selectedUser={user} />
+              ) : null;
+            })}
           </ScrollView>
         );
       case 'start':
@@ -204,7 +272,7 @@ const Home = () => {
             times={false}
             backgroundColor={purple}
             visible={modalVisible}
-            onClose={() => setRideStatus('end')}
+            onClose={() => rideEnd()}
             content={modalContent}
             buttonText={'Ride End'}
           />
@@ -215,7 +283,7 @@ const Home = () => {
             times={true}
             backgroundColor={purple}
             visible={modalVisible}
-            onClose={() => setRideStatus('rate')}
+            onClose={() => rideRate()}
             content={modalContent}
             buttonText={'Rate Your Customer'}
           />

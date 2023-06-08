@@ -23,6 +23,18 @@ import Heading from '../components/Heading';
 import Icon from '../components/Icon';
 import Input from '../components/Input';
 import {formatUSDPrice} from '../constants/HelperFunctions';
+const renderIcons = () => {
+  return Array.from({length: 5}).map((_, index) => (
+    <Icon
+      style={styles.iconStyle}
+      key={index}
+      name="star"
+      solid={true}
+      size={14}
+      color={gold}
+    />
+  ));
+};
 const ModalScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
@@ -39,7 +51,6 @@ const ModalScreen = () => {
   };
 
   const handleSelect = value => {
-    console.log(value);
     setSelected(value);
   };
 
@@ -54,18 +65,6 @@ const ModalScreen = () => {
     );
   };
 
-  const renderIcons = () => {
-    return Array.from({length: 5}).map((_, index) => (
-      <Icon
-        style={styles.iconStyle}
-        key={index}
-        name="star"
-        solid={true}
-        size={14}
-        color={gold}
-      />
-    ));
-  };
 
   const CompleteRide = () => {
     return (

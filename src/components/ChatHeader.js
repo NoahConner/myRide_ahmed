@@ -11,20 +11,19 @@ import {
 } from '../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import Icon from './Icon';
+const renderIcons = () => {
+  return Array.from({length: user?.rating}).map((_, index) => (
+    <Icon
+      style={styles.iconStyle}
+      key={index}
+      name="star"
+      solid={true}
+      size={10}
+      color={gold}
+    />
+  ));
+};
 const ChatHeader = ({user}) => {
-  console.log(user,'hello i user');
-  const renderIcons = () => {
-    return Array.from({length: user?.rating}).map((_, index) => (
-      <Icon
-        style={styles.iconStyle}
-        key={index}
-        name="star"
-        solid={true}
-        size={10}
-        color={gold}
-      />
-    ));
-  };
 
   return (
     <View style={styles.container}>

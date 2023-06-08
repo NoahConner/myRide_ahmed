@@ -17,20 +17,20 @@ import {
 } from '../../constants/Index';
 import { useNavigation } from '@react-navigation/native';
 
+const renderIcons = () => {
+  return Array.from({ length: 5 }).map((_, index) => (
+    <Icon
+      style={styles.iconStyle}
+      key={index}
+      name="star"
+      solid={true}
+      size={10}
+      color={gold}
+    />
+  ));
+};
 const Ratings = ({ }) => {
   const navigation = useNavigation();
-  const renderIcons = () => {
-    return Array.from({ length: 5 }).map((_, index) => (
-      <Icon
-        style={styles.iconStyle}
-        key={index}
-        name="star"
-        solid={true}
-        size={10}
-        color={gold}
-      />
-    ));
-  };
   const renderRatings = () => {
     return Array.from({ length: 3 }).map((_, index) => (
       <View style={styles.addressRow} key={index}>
