@@ -13,9 +13,12 @@ import {
   yellow,
 } from '../../constants/Index';
 import {AppContext, useAppContext} from '../../context/AppContext';
-import {formatUSDPrice, handleCallButtonPress} from '../../constants/HelperFunctions';
+import {
+  formatUSDPrice,
+  handleCallButtonPress,
+} from '../../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
@@ -30,25 +33,28 @@ const renderIcons = () => {
   ));
 };
 
-const RideOfferDetail = () => {
-  const {rideDetails, setRideStages, setRideDetails} = useAppContext(AppContext);
-  const navigation = useNavigation()
+const RideOfferDetail = ({user}) => {
+  const {rideDetails, setRideStages, setRideDetails} =
+    useAppContext(AppContext);
+  const navigation = useNavigation();
   return (
     <LinearGradient
       style={styles.container}
-      colors={linearGradient} 
-      start={{ x: 0, y: 1 }}
-      end={{ x: 0, y: 0 }}
-    >
+      colors={linearGradient}
+      start={{x: 0, y: 1}}
+      end={{x: 0, y: 0}}>
       <View style={styles.topLine}>
         <View style={styles.profileContentContainer}>
-          <Image
-            style={styles.profileImage}
-            source={require('../../../assets/Images/AppLogo.png')}
-          />
+          {user?.image ? (
+            <Image
+              source={{uri: user?.image}}
+              resizeMode="contain"
+              style={styles.profileImage}
+            />
+          ) : null}
           <View style={styles.profileContent}>
             <Heading
-              text="Bill Carter"
+              text={user?.first_name + " " + user?.last_name}
               fontSize={moderateScale(14)}
               fontFamily={KumbhSansExtraRegular}
               color={white}
@@ -109,22 +115,28 @@ const RideOfferDetail = () => {
             textAlign="center"
           />
           <View style={styles.contactIcons}>
-            <TouchableOpacity onPress={()=>{handleCallButtonPress('1234567890')}}>
-            <Icon
-              style={[styles.iconStyle, styles.captainIcon]}
-              name="phone-alt"
-              size={18}
-              color={white}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                handleCallButtonPress(user?.phone);
+              }}>
+              <Icon
+                style={[styles.iconStyle, styles.captainIcon]}
+                name="phone-alt"
+                size={18}
+                color={white}
+              />
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{navigation.navigate('Chat')}}>
-            <Icon
-              style={[styles.iconStyle, styles.captainIcon]}
-              solid={true}
-              name="comment"
-              size={18}
-              color={white}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Chat', {user});
+              }}>
+              <Icon
+                style={[styles.iconStyle, styles.captainIcon]}
+                solid={true}
+                name="comment"
+                size={18}
+                color={white}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -138,7 +150,9 @@ const RideOfferDetail = () => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth / 3)}
-          onPress={()=>{navigation.navigate('ModalScreen')}}
+          onPress={() => {
+            navigation.navigate('ModalScreen');
+          }}
           // onPress={()=>{setRideStages('initial'); setRideDetails('')}}
         />
       </View>
@@ -150,8 +164,8 @@ const styles = StyleSheet.create({
   container: {
     width: moderateScale(screenWidth - 30),
     backgroundColor: purple,
-    marginLeft:'auto',
-    marginRight:'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginVertical: moderateScale(10),
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(20),

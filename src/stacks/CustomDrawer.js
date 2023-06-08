@@ -21,7 +21,6 @@ const CustomDrawerContent = ({...props}) => {
   const handleImageLoad = () => {
     setIsLoading(false);
   };
-  console.log(user, "hello i'm user");
   const PassengerButtons = [
     {text: 'Profile', screen: 'Profile'},
     {text: 'Ride History', screen: 'RideHistory'},

@@ -55,7 +55,9 @@ const Login = () => {
       setRole('Passenger');
       setToken(true);
     }
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
@@ -124,7 +126,7 @@ const Login = () => {
             padding={moderateScale(10)}
             textAlign="center"
             borderRadius={moderateScale(100)}
-            width="50%"
+            width={moderateScale(screenWidth / 3)}
             onPress={() => login()}
           />
         </View>

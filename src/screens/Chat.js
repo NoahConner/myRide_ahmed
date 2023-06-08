@@ -21,16 +21,17 @@ import {
 } from '../constants/Index';
 import ChatBody from '../components/ChatBody';
 import { useNavigation } from '@react-navigation/native';
-const Chat = ({}) => {
+const Chat = ({route}) => {
   const navigation = useNavigation()
   const [message, setMessage] = useState('');
+  const [user, setUser] = useState(route.params.user);
   const [messageList, setMessageList] = useState(messages);
   useEffect(() => {
       setMessageList(messages)
   }, [])
   const renderMessage = ({item}) => {
     return (
-        <ChatBody item={item}/>
+        <ChatBody item={item} user={user}/>
     )
   };
 
@@ -58,7 +59,7 @@ const Chat = ({}) => {
           keyExtractor={(item,index) => index}
           contentContainerStyle={styles.chatContainer}
         />
-        <ChatFooter message={message} setMessage={setMessage} setMessageList={setMessageList} messageList={messageList}/>
+        <ChatFooter message={message} setMessage={setMessage} setMessageList={setMessageList} messageList={messageList} user={user}/>
       </View>
     </View>
   );

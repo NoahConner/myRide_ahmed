@@ -4,7 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {black, gray, green, white} from '../constants/Index';
 import Icon from './Icon';
 
-const ChatFooter = ({setMessage, message, setMessageList, messageList}) => {
+const ChatFooter = ({setMessage, message, setMessageList, messageList, user}) => {
   const handleSend = () => {
     if (message.trim() !== '') {
       const newMessage = {

@@ -1,10 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {
-  View,
-  StyleSheet,
-  Animated,
-  Text,
-} from 'react-native';
+import {View, StyleSheet, Animated, Text} from 'react-native';
 import {
   gray,
   primaryHeadingColor,
@@ -32,7 +27,7 @@ const CapatainLogin = () => {
   const navigation = useNavigation();
   const {setToken, setUser, setRole} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
-  const [disabled, setDisabled] = useState(true); 
+  const [disabled, setDisabled] = useState(true);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -42,17 +37,20 @@ const CapatainLogin = () => {
     } else {
       setDisabled(false);
     }
-    }, [email, password]);
+  }, [email, password]);
   const login = () => {
     setLoading(true);
-    const foundUser = userData.users.find(user => user?.email == email?.toLowerCase());
-    console.log(foundUser);
-    if (foundUser) {
-      setUser(foundUser);
-      setRole('Driver');
-      setToken(true);
-    }
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+      const foundUser = userData.users.find(
+        user => user?.email == email?.toLowerCase(),
+      );
+      if (foundUser) {
+        setRole('Driver');
+        setToken(true);
+        setUser(foundUser);
+      }
+    }, 1000);
   };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
@@ -150,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    backgroundColor:white
+    backgroundColor: white,
   },
   headingBox: {
     width: moderateScale(screenWidth - 100),
@@ -177,12 +175,12 @@ const styles = StyleSheet.create({
   GirlProp: {
     position: 'absolute',
     bottom: moderateScale(10),
-    alignItems:'center',
+    alignItems: 'center',
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
-    zIndex:-1
-  }
+    zIndex: -1,
+  },
 });
 
 export default CapatainLogin;

@@ -11,7 +11,8 @@ import {
 import {AppContext} from '../../context/AppContext';
 
 const CardDetails = ({card, select}) => {
-  const {rideDetails, setRideDetails, setPaymentButton} = useContext(AppContext);
+  const {rideDetails, setRideDetails, setPaymentButton} =
+    useContext(AppContext);
   const selectCard = () => {
     const updatedCardDetails = {...rideDetails};
     if (updatedCardDetails.card) {
@@ -21,12 +22,7 @@ const CardDetails = ({card, select}) => {
     updatedCardDetails.card = card;
     setRideDetails(updatedCardDetails);
     setPaymentButton(card['selected']);
-};
-useEffect(() => {
-      console.log(rideDetails);
-  }, [rideDetails])
-  
-
+  };
   return (
     <View style={[styles.container]}>
       <View style={styles.column}>

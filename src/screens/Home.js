@@ -13,6 +13,7 @@ import {
   RideOfferDetailCaptain,
   StartRideRB,
 } from '../components/Index';
+import userData from '../constants/usersData.json';
 import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraRegular,
@@ -39,6 +40,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [rateMessage, setRateMessage] = useState('');
+
   const renderIcons = () => {
     return Array.from({length: 5}).map((_, index) => (
       <Icon
@@ -51,10 +53,15 @@ const Home = () => {
       />
     ));
   };
+
   const rideEndContent = () => {
     return (
-      <View style={{alignItems: 'center'}}>
-        <Image style={{width:moderateScale(100)}} resizeMode='contain' source={require('../../assets/Images/rideEndProp.png')} />
+      <View style={styles.modalContentContainer}>
+        <Image
+          style={styles.modalImage}
+          resizeMode="contain"
+          source={require('../../assets/Images/rideEndProp.png')}
+        />
         <Heading
           text="You have reached your destination"
           fontSize={moderateScale(14)}
@@ -65,10 +72,15 @@ const Home = () => {
       </View>
     );
   };
+
   const rideAmountContent = () => {
     return (
-      <View style={{alignItems: 'center'}}>
-        <Image style={{width:moderateScale(70)}} resizeMode='contain' source={require('../../assets/Images/rateProp.png')} />
+      <View style={styles.modalContentContainer}>
+        <Image
+          style={styles.modalImage}
+          resizeMode="contain"
+          source={require('../../assets/Images/rateProp.png')}
+        />
         <Heading
           text="This amount has been added to your wallet"
           fontSize={moderateScale(14)}
@@ -79,10 +91,15 @@ const Home = () => {
       </View>
     );
   };
+
   const rideRateContent = () => {
     return (
-      <View style={{alignItems: 'center'}}>
-        <Image style={{width:moderateScale(80), height:moderateScale(80)}} resizeMode='contain' source={require('../../assets/Images/ratingProp.png')} />
+      <View style={styles.modalContentContainer}>
+        <Image
+          style={styles.rateImage}
+          resizeMode="contain"
+          source={require('../../assets/Images/ratingProp.png')}
+        />
         <View style={styles.ratingContainer}>{renderIcons()}</View>
         <Heading
           text="Rate Now!"
@@ -102,6 +119,7 @@ const Home = () => {
       </View>
     );
   };
+
   const findRide = () => {
     setLoading(true);
     setTimeout(() => {
@@ -109,12 +127,14 @@ const Home = () => {
       setRideStages('findType');
     }, 1500);
   };
+
   const modalContent =
-    rideStatus == 'started'
+    rideStatus === 'started'
       ? rideEndContent()
-      : rideStatus == 'end'
+      : rideStatus === 'end'
       ? rideAmountContent()
       : rideRateContent();
+
   const renderPassengerHome = () => {
     if (rideStages === 'initial') {
       return (
@@ -136,68 +156,84 @@ const Home = () => {
     } else if (rideStages === 'finding') {
       return (
         <View style={styles.rideOfferView}>
-          <RideOfferDetail />
+          {userData?.users?.map(user => {
+            return user?.type === 'driver' ? <RideOfferDetail user={user}/> : null;
+          })}
         </View>
       );
     }
     return null;
   };
+
   useEffect(() => {
-    if (
-      rideStatus == 'started' ||
-      rideStatus == 'end' ||
-      rideStatus == 'rate'
-    ) {
+    if (['started', 'end', 'rate'].includes(rideStatus)) {
       setModalVisible(true);
     } else {
       setModalVisible(false);
     }
   }, [rideStatus]);
 
+  const submitRating = () => {
+    setModalVisible(false);
+    setRideStatus('rated');
+    navigation.navigate('RideHistory');
+  };
+
   const renderDriverHome = () => {
-    return rideStatus == 'initial' ? (
-      <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-        <RideOfferDetailCaptain />
-      </ScrollView>
-    ) : rideStatus == 'start' ? (
-      <StartRideRB />
-    ) : rideStatus == 'starting' ? (
-      <ArrivedRideRB />
-    ) : rideStatus == 'started' ? (
-      <CustomModal
-        times={false}
-        backgroundColor={purple}
-        visible={modalVisible}
-        onClose={() => setRideStatus('end')}
-        content={modalContent}
-        buttonText={'Ride End'}
-      />
-    ) : rideStatus == 'end' ? (
-      <CustomModal
-        times={true}
-        backgroundColor={purple}
-        visible={modalVisible}
-        onClose={() => setRideStatus('rate')}
-        content={modalContent}
-        buttonText={'Rate Your Customer'}
-      />
-    ) : rideStatus == 'rate' ? (
-      <CustomModal
-        times={true}
-        backgroundColor={purple}
-        visible={modalVisible}
-        onClose={() => {setRideStatus('rated'); setModalVisible(false); navigation.navigate('RideHistory')}}
-        content={modalContent}
-        buttonText={'Submit'}
-      />
-    ) : null;
+    switch (rideStatus) {
+      case 'initial':
+        return (
+          <ScrollView contentContainerStyle={styles.captainRideOfferView}>
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+            <RideOfferDetailCaptain />
+          </ScrollView>
+        );
+      case 'start':
+        return <StartRideRB />;
+      case 'starting':
+        return <ArrivedRideRB />;
+      case 'started':
+        return (
+          <CustomModal
+            times={false}
+            backgroundColor={purple}
+            visible={modalVisible}
+            onClose={() => setRideStatus('end')}
+            content={modalContent}
+            buttonText={'Ride End'}
+          />
+        );
+      case 'end':
+        return (
+          <CustomModal
+            times={true}
+            backgroundColor={purple}
+            visible={modalVisible}
+            onClose={() => setRideStatus('rate')}
+            content={modalContent}
+            buttonText={'Rate Your Customer'}
+          />
+        );
+      case 'rate':
+        return (
+          <CustomModal
+            times={true}
+            backgroundColor={purple}
+            visible={modalVisible}
+            onClose={() => submitRating()}
+            content={modalContent}
+            buttonText={'Submit'}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -243,6 +279,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+  },
+  modalContentContainer: {
+    alignItems: 'center',
+  },
+  modalImage: {
+    width: moderateScale(100),
+  },
+  rateImage: {
+    width: moderateScale(80),
+    height: moderateScale(80),
   },
 });
 

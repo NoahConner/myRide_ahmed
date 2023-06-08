@@ -4,7 +4,7 @@ import Heading from './Heading';
 import { KumbhSansExtraRegular, backgroundColor, gray, green, screenWidth, white } from '../constants/Index';
 import { moderateScale } from 'react-native-size-matters';
 
-const ChatBody = ({item}) => {
+const ChatBody = ({item, user}) => {
     const isSender = item.sender === 'sender';
     const containerStyle = isSender
       ? styles.senderContainer

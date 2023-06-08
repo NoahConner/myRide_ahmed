@@ -33,7 +33,6 @@ const FindRide = () => {
 
   useEffect(() => {
     checkFields();
-    console.log(pickUpAddress,dropOffAddress, noOfPassengers);
   }, [pickUpAddress, dropOffAddress, noOfPassengers]);
 
   return (

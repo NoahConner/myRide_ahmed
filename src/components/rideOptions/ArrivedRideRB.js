@@ -110,7 +110,7 @@ const ArrivedRideRB = () => {
         style={{marginLeft: 'auto', marginRight: 'auto'}}
         backgroundColor={green}
         color={white}
-        text="start Ride"
+        text="Start Ride"
         padding={moderateScale(10)}
         textAlign="center"
         borderRadius={moderateScale(100)}

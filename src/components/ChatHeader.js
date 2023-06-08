@@ -12,6 +12,7 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import Icon from './Icon';
 const ChatHeader = ({user}) => {
+  console.log(user,'hello i user');
   const renderIcons = () => {
     return Array.from({length: user?.rating}).map((_, index) => (
       <Icon
@@ -30,7 +31,7 @@ const ChatHeader = ({user}) => {
       <View style={styles.headingContainer}>
         <View style={styles.textContainer}>
           <Heading
-            text={user?.name}
+            text={user?.first_name + " " + user?.last_name}
             fontSize={moderateScale(18)}
             fontFamily={KumbhSansExtraBold}
             color={green}
@@ -46,10 +47,13 @@ const ChatHeader = ({user}) => {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Image
-          source={require('../../assets/Images/AppLogo.png')}
-          style={styles.image}
-        />
+      {user?.image ? (
+            <Image
+              source={{uri: user?.image}}
+              resizeMode="contain"
+              style={styles.image}
+            />
+          ) : null}
         <View style={styles.ratingContainer}>{renderIcons()}</View>
       </View>
     </View>
