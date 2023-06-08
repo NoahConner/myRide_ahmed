@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, ScrollView, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   ArrivedRideRB,
   Button,
@@ -63,7 +63,7 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rateMessage, setRateMessage] = useState('');
   const toast = useToast();
-
+  const route = useRoute();
   const rideEndContent = () => {
     return (
       <View style={styles.modalContentContainer}>
@@ -169,9 +169,9 @@ const Home = () => {
     };
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
-      // console.log(user,'hello messageing recieving');
-      if(user?.id == to){
-        const notificationMessage =  `send you a message`
+      console.log(route?.name,'hello messageing recieving');
+      if(user?.id == to && route?.name != 'Chat'){
+        const notificationMessage =  `${foundUser?.first_name} ${foundUser?.last_name} send you a message`
         notificationRoute(toast, notificationMessage, foundUser, navigation)
       }
     };
