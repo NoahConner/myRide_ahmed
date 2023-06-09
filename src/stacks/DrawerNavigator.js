@@ -6,9 +6,9 @@ import { DriverStack, PassengerStack, CustomDrawerContent } from './Index';
 import { io } from 'socket.io-client';
 
 // socket initializing
-  //export const socket = io('https://d9dating.herokuapp.com', {autoConnect: false});
+  export const socket = io('https://myride.herokuapp.com');
   //export const socket = io('http://192.168.18.212:3000');
-  export const socket = io('http://192.168.1.113:3000');
+  // export const socket = io('http://192.168.1.113:3000');
 const Drawer = createDrawerNavigator();
 export default function DrawerNavigatorScreen() {
   const { role } = useContext(AppContext);
