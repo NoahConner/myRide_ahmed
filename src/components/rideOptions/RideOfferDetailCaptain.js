@@ -4,7 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from '../Index';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   gold,
   green,
   linearGradient,
@@ -35,7 +35,7 @@ const renderIcons = () => {
   ));
 };
 
-const RideOfferDetailCaptain = ({selectedUser}) => {
+const RideOfferDetailCaptain = ({selectedUser,pickup,dropOff, passengers}) => {
   const {setRideStatus, user, setSelectedUser} = useAppContext(AppContext);
   const navigation = useNavigation();
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -74,7 +74,7 @@ const RideOfferDetailCaptain = ({selectedUser}) => {
               <Heading
                 text={selectedUser?.first_name + ' ' + selectedUser?.last_name}
                 fontSize={moderateScale(14)}
-                fontFamily={KumbhSansExtraRegular}
+                fontFamily={InterRegular}
                 color={white}
                 textAlign="left"
               />
@@ -85,7 +85,7 @@ const RideOfferDetailCaptain = ({selectedUser}) => {
             <Heading
               text="Estimated Fare"
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />
@@ -104,14 +104,14 @@ const RideOfferDetailCaptain = ({selectedUser}) => {
               <Heading
                 text="Pick Up"
                 fontSize={moderateScale(10)}
-                fontFamily={KumbhSansExtraRegular}
+                fontFamily={InterRegular}
                 color={white}
                 textAlign="left"
               />
               <Heading
-                text="House no 151 street 19 block 5"
+                text={pickup}
                 fontSize={moderateScale(8)}
-                fontFamily={KumbhSansExtraRegular}
+                fontFamily={InterRegular}
                 color={white}
                 textAlign="left"
               />
@@ -127,14 +127,14 @@ const RideOfferDetailCaptain = ({selectedUser}) => {
               <Heading
                 text="Drop Off"
                 fontSize={moderateScale(10)}
-                fontFamily={KumbhSansExtraRegular}
+                fontFamily={InterRegular}
                 color={white}
                 textAlign="left"
               />
               <Heading
-                text="City Airport Terminal 5"
+                text={dropOff}
                 fontSize={moderateScale(8)}
-                fontFamily={KumbhSansExtraRegular}
+                fontFamily={InterRegular}
                 color={white}
                 textAlign="left"
               />
@@ -144,12 +144,12 @@ const RideOfferDetailCaptain = ({selectedUser}) => {
             <Heading
               text="No Of Passengers"
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />
             <Heading
-              text="04"
+              text={passengers}
               fontSize={moderateScale(25)}
               fontFamily={KumbhSansExtraBold}
               color={white}

@@ -3,7 +3,7 @@ import React from 'react';
 import Heading from './Heading';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   gold,
   gray,
   green,
@@ -38,7 +38,7 @@ const ChatHeader = ({selectedUser}) => {
           <Heading
             text="Online"
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={gray}
             textAlign="center"
           />

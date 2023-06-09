@@ -5,7 +5,7 @@ import Icon from './Icon';
 import {moderateScale} from 'react-native-size-matters';
 import Heading from './Heading';
 import {
-  KumbhSansExtraRegular,
+  InterRegular,
   black,
   purple,
   screenWidth,
@@ -32,7 +32,7 @@ const UploadDocument = ({
         <Heading
           text={headingText}
           fontSize={moderateScale(14)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={styles.textStyle.color}
           textAlign="left"
           truncate={truncate}

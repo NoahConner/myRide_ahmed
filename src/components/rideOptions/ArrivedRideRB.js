@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   green,
   linearGradient,
   screenWidth,
@@ -39,14 +39,14 @@ const ArrivedRideRB = () => {
           <Heading
             text="Pick Up"
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />
           <Heading
             text="House no 151 street 19 block 5"
             fontSize={moderateScale(8)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />
@@ -62,14 +62,14 @@ const ArrivedRideRB = () => {
           <Heading
             text="Drop Off"
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />
           <Heading
             text="City Airport Terminal 5"
             fontSize={moderateScale(8)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />

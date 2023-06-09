@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Heading from './Heading'
 import { moderateScale } from 'react-native-size-matters'
-import { KumbhSansExtraBold, KumbhSansExtraRegular, black, screenWidth, white } from '../constants/Index'
+import { KumbhSansExtraBold, InterRegular, black, screenWidth, white } from '../constants/Index'
 import { formatUSDPrice } from '../constants/HelperFunctions'
 
 const WalletRow = () => {
@@ -11,7 +11,7 @@ const WalletRow = () => {
         <Heading
           text="Lorem Ipsum Header"
           fontSize={moderateScale(12)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={black}
           textAlign="left"
         />

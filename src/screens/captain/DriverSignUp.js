@@ -20,7 +20,7 @@ import {
   screenWidth,
   black,
   linearGradient,
-  KumbhSansExtraRegular,
+  InterRegular,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {selectDocument} from '../../constants/HelperFunctions';
@@ -287,7 +287,7 @@ const CapatainSignUp = () => {
               style={styles.heading}
               text="Your Request has been sent successfully"
               fontSize={moderateScale(12)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />
@@ -295,7 +295,7 @@ const CapatainSignUp = () => {
               style={styles.heading}
               text="Kindly wait for Approval"
               fontSize={moderateScale(20)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />
@@ -303,7 +303,7 @@ const CapatainSignUp = () => {
               style={styles.heading}
               text="Your approval will send through email or phone no."
               fontSize={moderateScale(14)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />

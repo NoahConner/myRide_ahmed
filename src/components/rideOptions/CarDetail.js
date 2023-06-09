@@ -5,7 +5,7 @@ import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   KumbhSansExtraLight,
-  KumbhSansExtraRegular,
+  InterRegular,
   black,
   lightestPurple,
   purple,
@@ -52,7 +52,7 @@ const CarDetail = ({ car, select }) => {
             style={styles.heading}
             text={car?.package}
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />
@@ -60,7 +60,7 @@ const CarDetail = ({ car, select }) => {
             style={styles.heading}
             text={car?.car}
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />
@@ -68,7 +68,7 @@ const CarDetail = ({ car, select }) => {
             style={styles.heading}
             text={car?.number}
             fontSize={moderateScale(10)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />

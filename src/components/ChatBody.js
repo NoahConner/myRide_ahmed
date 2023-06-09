@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import Heading from './Heading';
-import { KumbhSansExtraRegular, backgroundColor, gray, green, screenWidth, white } from '../constants/Index';
+import { InterRegular, backgroundColor, gray, green, screenWidth, white } from '../constants/Index';
 import { moderateScale } from 'react-native-size-matters';
 
 const ChatBody = ({item, user}) => {
@@ -16,7 +16,7 @@ const ChatBody = ({item, user}) => {
         <Heading
           text={item?.content}
           fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={textStyle}
           textAlign="center"
         />

@@ -16,7 +16,7 @@ import {
 import userData from '../constants/usersData.json';
 import {moderateScale} from 'react-native-size-matters';
 import {
-  KumbhSansExtraRegular,
+  InterRegular,
   backgroundColor,
   black,
   gold,
@@ -61,7 +61,9 @@ const Home = () => {
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [rideRequests, setRideRequests] = useState([]);
   const [rateMessage, setRateMessage] = useState('');
+  const [captainRequests, setCaptainRequests] = useState([]);
   const toast = useToast();
   const route = useRoute();
   const rideEndContent = () => {
@@ -75,7 +77,7 @@ const Home = () => {
         <Heading
           text="You have reached your destination"
           fontSize={moderateScale(14)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={white}
           textAlign="center"
         />
@@ -94,7 +96,7 @@ const Home = () => {
         <Heading
           text="This amount has been added to your wallet"
           fontSize={moderateScale(14)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={white}
           textAlign="center"
         />
@@ -114,7 +116,7 @@ const Home = () => {
         <Heading
           text="Rate Now!"
           fontSize={moderateScale(14)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={white}
           textAlign="center"
         />
@@ -143,13 +145,27 @@ const Home = () => {
         notification(toast, message);
       }
     };
+    const handleSocketRideRequest = ({from, pickup, dropoff, passengers}) => {
+      const foundUser = userData.users.find(user => user?.id === from);
+      const data = {
+        user: foundUser,
+        pickup: pickup,
+        dropoff: dropoff,
+        passengers: passengers,
+      };
 
+      setRideRequests([...rideRequests, data]);
+    };
     const handleSocketRideAccept = ({from, to}) => {
       const foundUser = userData.users.find(user => user?.id === from);
+      const data = {
+        user: foundUser,
+      };
       handleRideEvent(
         {from, to, foundUser},
         `${foundUser.first_name} ${foundUser.last_name} accepted your ride`,
       );
+      setCaptainRequests([...captainRequests, data]);
     };
 
     const handleSocketRideArrived = ({from, to}) => {
@@ -169,10 +185,10 @@ const Home = () => {
     };
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
-      console.log(route?.name,'hello messageing recieving');
-      if(user?.id == to && route?.name != 'Chat'){
-        const notificationMessage =  `${foundUser?.first_name} ${foundUser?.last_name} send you a message`
-        notificationRoute(toast, notificationMessage, foundUser, navigation)
+      console.log(route?.name, 'hello smessageing recieving');
+      if (user?.id == to && route?.name != 'Chat') {
+        const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
+        notificationRoute(toast, notificationMessage, foundUser, navigation);
       }
     };
 
@@ -184,6 +200,7 @@ const Home = () => {
       handleRideEvent({from, to}, `Your Captain rated you`);
     };
 
+    socket.on('rideRequest', handleSocketRideRequest);
     socket.on('rideAccept', handleSocketRideAccept);
     socket.on('rideArrived', handleSocketRideArrived);
     socket.on('rideStarted', handleSocketRideStarted);
@@ -192,6 +209,7 @@ const Home = () => {
     socket.on('message', handleSocketMessage);
 
     return () => {
+      socket.off('rideRequest', handleSocketRideRequest);
       socket.off('rideAccept', handleSocketRideAccept);
       socket.off('rideArrived', handleSocketRideArrived);
       socket.off('rideStarted', handleSocketRideStarted);
@@ -199,7 +217,7 @@ const Home = () => {
       socket.off('rideRated', handleSocketRideRated);
       socket.off('message', handleSocketMessage);
     };
-  }, [socket, userData, user]);
+  }, [socket, userData, user, rideRequests]);
 
   const modalContent =
     rideStatus === 'started'
@@ -229,10 +247,8 @@ const Home = () => {
     } else if (rideStages === 'finding') {
       return (
         <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-          {userData?.users?.map(user => {
-            return user?.type === 'driver' ? (
-              <RideOfferDetail key={user?.id} selectedUser={user} />
-            ) : null;
+          {captainRequests?.map(captainDetail => {
+            return <RideOfferDetail key={captainDetail?.user?.id} selectedUser={captainDetail?.user} />;
           })}
         </ScrollView>
       );
@@ -266,10 +282,16 @@ const Home = () => {
       case 'initial':
         return (
           <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-            {userData?.users?.map(user => {
-              return user?.type === 'passenger' ? (
-                <RideOfferDetailCaptain key={user?.id} selectedUser={user} />
-              ) : null;
+            {rideRequests?.map(rideDetails => {
+              return (
+                <RideOfferDetailCaptain
+                  key={rideDetails?.user?.id}
+                  selectedUser={rideDetails?.user}
+                  pickup={rideDetails?.pickup}
+                  dropOff={rideDetails?.dropfff}
+                  passengers={rideDetails?.passengers}
+                />
+              );
             })}
           </ScrollView>
         );

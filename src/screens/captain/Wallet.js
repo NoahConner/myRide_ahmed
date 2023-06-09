@@ -17,7 +17,7 @@ import {
   darkGray,
   KumbhSansExtraBold,
   screenWidth,
-  KumbhSansExtraRegular,
+  InterRegular,
   gray,
   lighterGray,
   purple,
@@ -97,7 +97,7 @@ const Wallet = ({}) => {
         <Heading
           text="Date Range"
           fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={gray}
           textAlign="center"
           style={{marginTop: moderateScale(10)}}

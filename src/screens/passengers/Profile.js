@@ -5,11 +5,12 @@ import {
   FlatList,
   ScrollView,
   Animated,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   backgroundColor,
   darkGray,
   gray,
@@ -110,12 +111,16 @@ const Profile = ({}) => {
             navigate(naviagteButton.path);
           }}
         />
+        <TouchableOpacity onPress={() => {
+            navigate(naviagteButton.path);
+          }}>
         <Icon
           name={'chevron-right'}
           style={styles.navigationIcon}
           size={15}
           color={gray}
         />
+        </TouchableOpacity>
       </View>
     );
   };
@@ -154,7 +159,7 @@ const Profile = ({}) => {
           <Heading
             text={user?.phone}
             fontSize={moderateScale(14)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={darkGray}
             textAlign="center"
             style={styles.marginTop}

@@ -81,8 +81,6 @@ const PersonalInformation = ({}) => {
   return (
     <View style={{flex: 1}}>
       <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
-      <ScrollView contentContainerStyle={styles.container}>
-        <View>
           <ViewHeader
             heading="Personal Information"
             icon={'home'}
@@ -92,6 +90,8 @@ const PersonalInformation = ({}) => {
             navigation={navigation}
             path={'Home'}
           />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View>
           <Heading
             text="Edit Information"
             fontSize={moderateScale(18)}

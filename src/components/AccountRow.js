@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import Heading from './Heading'
 import { moderateScale } from 'react-native-size-matters'
-import { KumbhSansExtraBold, KumbhSansExtraRegular, black, gray, purple, screenWidth, white } from '../constants/Index'
+import { KumbhSansExtraBold, InterRegular, black, gray, purple, screenWidth, white } from '../constants/Index'
 
 const AccountRow = () => {
   return (
@@ -19,7 +19,7 @@ const AccountRow = () => {
         <Heading
           text="12-Jun-2023"
           fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={gray}
           textAlign="left"
           style={{marginVertical: moderateScale(1)}}
@@ -29,7 +29,7 @@ const AccountRow = () => {
       <Heading
           text="123456789595"
           fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={gray}
           textAlign="left"
           style={{marginVertical: moderateScale(1)}}
@@ -37,7 +37,7 @@ const AccountRow = () => {
         <Heading
           text="ABC Branch"
           fontSize={moderateScale(10)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={gray}
           textAlign="left"
           style={{marginVertical: moderateScale(1)}}

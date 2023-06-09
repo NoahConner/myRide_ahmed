@@ -1,10 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  StyleSheet,
-  FlatList
-} from 'react-native';
+import {View, KeyboardAvoidingView, StyleSheet, FlatList} from 'react-native';
 import {AppContext} from '../../context/AppContext';
 import {
   Button,
@@ -22,18 +17,26 @@ import {
   white,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import {socketRideRequest} from '../../constants/HelperFunctions';
 const RidePayment = () => {
   const navigation = useNavigation();
-  const {rideDetails, setRideStages, paymentButton} = useContext(AppContext);
-  const [loading, setLoading] = useState(false)
+  const {rideDetails, setRideStages, paymentButton, user} =
+    useContext(AppContext);
+  const [loading, setLoading] = useState(false);
   const finding = () => {
-    setLoading(true)
+    setLoading(true);
+    socketRideRequest(
+      user?.id,
+      rideDetails?.pickUpAddress,
+      rideDetails?.dropOffAddress,
+      rideDetails?.noOfPassengers,
+    );
     setTimeout(() => {
       setRideStages('finding');
-      setLoading(false)
+      setLoading(false);
     }, 1500);
-  }
+  };
   return (
     <View>
       <KeyboardAvoidingView behavior="height" enabled style={styles.container}>
@@ -78,24 +81,26 @@ const RidePayment = () => {
           textAlign="center"
           borderRadius={moderateScale(0)}
           width="100%"
-          onPress={() => {navigation.navigate('CardsAndAccounts')}}
+          onPress={() => {
+            navigation.navigate('CardsAndAccounts');
+          }}
         />
-          <Button
-            disabled={!paymentButton}
-            loading={loading}
-            style={styles.findRideButton}
-            fontSize={moderateScale(14)}
-            backgroundColor={green}
-            color={white}
-            text="Find My Ride"
-            padding={null}
-            textAlign="center"
-            borderRadius={moderateScale(100)}
-            width={screenWidth - 200}
-            onPress={() => {
-              finding()
-            }}
-          />
+        <Button
+          disabled={!paymentButton}
+          loading={loading}
+          style={styles.findRideButton}
+          fontSize={moderateScale(14)}
+          backgroundColor={green}
+          color={white}
+          text="Find My Ride"
+          padding={null}
+          textAlign="center"
+          borderRadius={moderateScale(100)}
+          width={screenWidth - 200}
+          onPress={() => {
+            finding();
+          }}
+        />
       </KeyboardAvoidingView>
     </View>
   );

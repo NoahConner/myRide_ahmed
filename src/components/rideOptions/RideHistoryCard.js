@@ -4,7 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from '../Index';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   gold,
   linearGradient,
   purple,
@@ -49,7 +49,7 @@ const RideHistoryCard = ({}) => {
             <Heading
               text="Bill Carter"
               fontSize={moderateScale(14)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -57,14 +57,14 @@ const RideHistoryCard = ({}) => {
             <Heading
               text="Car Reg No."
               fontSize={moderateScale(8)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
             <Heading
               text="Ar-200"
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -78,7 +78,7 @@ const RideHistoryCard = ({}) => {
           <Heading
             text="Basic"
             fontSize={moderateScale(12)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="center"
           />
@@ -90,14 +90,14 @@ const RideHistoryCard = ({}) => {
             <Heading
               text="Pick Up"
               fontSize={moderateScale(12)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={yellow}
               textAlign="left"
             />
             <Heading
               text="New York Airport"
               fontSize={moderateScale(13)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -106,14 +106,14 @@ const RideHistoryCard = ({}) => {
             <Heading
               text="Drop Off"
               fontSize={moderateScale(12)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={yellow}
               textAlign="left"
             />
             <Heading
               text="CT Bus Stop"
               fontSize={moderateScale(13)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -122,7 +122,7 @@ const RideHistoryCard = ({}) => {
             <Heading
               text={moment(new Date()).format('DD/MMM/YYYY')}
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -131,7 +131,7 @@ const RideHistoryCard = ({}) => {
             <Heading
               text={formatTime(new Date())}
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -142,7 +142,7 @@ const RideHistoryCard = ({}) => {
             <Heading
               text="Estimated Fare"
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="center"
             />

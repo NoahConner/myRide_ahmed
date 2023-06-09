@@ -3,7 +3,7 @@ import {View, Image, StyleSheet, TouchableOpacity, Animated} from 'react-native'
 import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from '../Index';
 import {
-  KumbhSansExtraRegular,
+  InterRegular,
   gold,
   linearGradient,
   purple,
@@ -65,7 +65,7 @@ const RideOfferDetail = ({selectedUser}) => {
             <Heading
               text={selectedUser?.first_name + " " + selectedUser?.last_name}
               fontSize={moderateScale(14)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -73,14 +73,14 @@ const RideOfferDetail = ({selectedUser}) => {
             <Heading
               text="Car Reg No."
               fontSize={moderateScale(8)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
             <Heading
               text={rideDetails?.car?.number}
               fontSize={moderateScale(10)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
             />
@@ -94,21 +94,21 @@ const RideOfferDetail = ({selectedUser}) => {
           <Heading
             text="Basic"
             fontSize={moderateScale(12)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="center"
           />
           <Heading
             text="Estimated Fare"
             fontSize={moderateScale(7)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="center"
           />
           <Heading
             text={formatUSDPrice(rideDetails?.car?.fare)}
             fontSize={moderateScale(20)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="center"
           />
@@ -119,7 +119,7 @@ const RideOfferDetail = ({selectedUser}) => {
           <Heading
             text="Contact Cpt"
             fontSize={moderateScale(8)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="center"
           />

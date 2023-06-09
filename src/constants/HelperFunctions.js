@@ -150,6 +150,14 @@ export const notificationRoute = (toast,message, selectedUser, navigation) => {
     }
   });
 };
+export const socketRideRequest = (from, pickup, dropoff, passengers) => {
+  socket.emit('rideRequest', {
+    from: from,
+    pickup:pickup,
+    dropoff:dropoff,
+    passengers:passengers
+  });
+};
 export const socketAccept = (from, to) => {
   socket.emit('rideAccept', {
     from: from,

@@ -17,7 +17,7 @@ import {
   darkGray,
   KumbhSansExtraBold,
   screenWidth,
-  KumbhSansExtraRegular,
+  InterRegular,
   gray,
   lighterGray,
   purple,

@@ -22,15 +22,26 @@ export const gold = 'gold';
 export const green = '#0F9776';
 export const linearGradient = ["#7452B0", "#A78DD5"]
 // fonts
+// KumbhSans family
 export const KumbhSansBlack = 'KumbhSans-Black';
 export const KumbhSansBold = 'KumbhSans-Bold';
 export const KumbhSansExtraBold = 'KumbhSans-ExtraBold';
 export const KumbhSansExtraLight = 'KumbhSans-ExtraLight';
 export const KumbhSansLight = 'KumbhSans-Light';
 export const KumbhSansExtraMedium = 'KumbhSans-ExtraMedium';
-export const KumbhSansExtraRegular = 'KumbhSans-ExtraRegular';
+export const KumbhSansRegular = 'KumbhSans-ExtraRegular';
 export const KumbhSansExtraSemiBold = 'KumbhSans-ExtraSemiBold';
 export const KumbhSansExtraThin = 'KumbhSans-ExtraThin';
+// inter family
+export const InterBlack = 'Inter-Black';
+export const InterBold = 'Inter-Bold';
+export const InterExtraBold = 'Inter-ExtraBold';
+export const InterExtraLight = 'Inter-ExtraLight';
+export const InterLight = 'Inter-Light';
+export const InterMedium = 'Inter-Medium';
+export const InterRegular = 'Inter-Regular';
+export const InterSemiBold = 'Inter-SemiBold';
+export const InterThin = 'Inter-Thin';
 // regex
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // dummy array
@@ -104,10 +115,3 @@ export const user = {
   image: '../../assets/Images/AppLogo.png',
   rating: 5,
 };
-
-export const messages = [
-  { id: 1, content: 'Hello', sender: 'receiver' },
-  { id: 2, content: 'Hi', sender: 'sender' },
-  { id: 3, content: 'How are you?', sender: 'receiver' },
-  { id: 4, content: 'I am good. Thanks!', sender: 'sender' },
-];

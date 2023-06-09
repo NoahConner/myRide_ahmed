@@ -8,7 +8,7 @@ import {
   darkGray,
   KumbhSansExtraBold,
   screenWidth,
-  KumbhSansExtraRegular,
+  InterRegular,
   gray,
   lighterGray,
 } from '../../constants/Index';
@@ -28,7 +28,7 @@ const renderIcons = () => {
       <Heading
         text="lorem Ipsum asdb adbashd asdhbahsd asdhbasd asdahdada dashd"
         fontSize={moderateScale(13)}
-        fontFamily={KumbhSansExtraRegular}
+        fontFamily={InterRegular}
         color={gray}
         textAlign="left"
         style={styles.heading}

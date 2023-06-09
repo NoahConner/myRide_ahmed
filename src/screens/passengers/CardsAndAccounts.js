@@ -17,7 +17,7 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   backgroundColor,
   cards,
   darkGray,
@@ -83,7 +83,7 @@ const CardsAndAccounts = ({}) => {
           <Heading
             text="Fill this form to make payment easily"
             fontSize={moderateScale(12)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={gray}
             textAlign="left"
             style={styles.heading}

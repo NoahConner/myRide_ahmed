@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon, Heading } from './Index';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   darkGray,
   gray,
   lighterGray,
@@ -22,7 +22,7 @@ const CardRow = ({key, card ,index}) => {
           <Heading
             text={card?.name}
             fontSize={moderateScale(14)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={gray}
             textAlign="left"
           />
@@ -39,14 +39,14 @@ const CardRow = ({key, card ,index}) => {
           <Heading
             text={card?.number}
             fontSize={moderateScale(8)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={gray}
             textAlign="left"
           />
           <Heading
             text="MasterCard"
             fontSize={moderateScale(12)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={red}
             textAlign="left"
             style={styles.marginLeft}

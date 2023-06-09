@@ -8,7 +8,7 @@ import {
   darkGray,
   KumbhSansExtraBold,
   screenWidth,
-  KumbhSansExtraRegular,
+  InterRegular,
   gray,
   lighterGray,
   purple,
@@ -43,7 +43,7 @@ const Ratings = ({ }) => {
             <Heading
               text="John smith gave you 5 star rating"
               fontSize={moderateScale(13)}
-              fontFamily={KumbhSansExtraRegular}
+              fontFamily={InterRegular}
               color={white}
               textAlign="left"
               style={{ marginLeft: moderateScale(10) }}
@@ -63,7 +63,7 @@ const Ratings = ({ }) => {
           <Heading
             text="lorem Ipsum asdb adbashd asdhbahsd asdhbasd asdahdada dashd"
             fontSize={moderateScale(13)}
-            fontFamily={KumbhSansExtraRegular}
+            fontFamily={InterRegular}
             color={white}
             textAlign="left"
           />

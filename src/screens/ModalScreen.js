@@ -4,7 +4,7 @@ import CustomModal from '../components/Modal';
 import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   black,
   gold,
   gray,
@@ -79,7 +79,7 @@ const ModalScreen = () => {
         <Heading
           text="Rate Your Captain!"
           fontSize={moderateScale(12)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={white}
           textAlign="center"
           style={{marginTop: moderateScale(15)}}
@@ -110,7 +110,7 @@ const ModalScreen = () => {
         <Heading
           text="Tip your captain!"
           fontSize={moderateScale(12)}
-          fontFamily={KumbhSansExtraRegular}
+          fontFamily={InterRegular}
           color={white}
           textAlign="center"
           style={{marginTop: moderateScale(15)}}

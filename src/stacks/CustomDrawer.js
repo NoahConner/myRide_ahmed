@@ -5,7 +5,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import {
   KumbhSansBold,
-  KumbhSansExtraRegular,
+  InterRegular,
   purple,
   screenHeight,
   white,
@@ -13,9 +13,9 @@ import {
 import {Heading, Icon, Button} from '../components/Index';
 import {AppContext} from '../context/AppContext';
 
-const CustomDrawerContent = ({...props}) => {
+const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const {role, setToken, setRole, setRideStages, setRideDetails, user} =
     useContext(AppContext);
   const handleImageLoad = () => {
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   drawerButton: {
     paddingVertical: moderateScale(10),
     alignItems: 'flex-start',
-    fontFamily: KumbhSansExtraRegular,
+    fontFamily: InterRegular,
   },
   paddingDrawerButton: {
     paddingLeft: moderateScale(20),

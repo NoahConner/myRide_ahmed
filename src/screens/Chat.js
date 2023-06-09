@@ -9,11 +9,9 @@ import {
 } from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {
-  KumbhSansExtraRegular,
   backgroundColor,
   gray,
   green,
-  messages,
   purple,
   screenWidth,
   white,
