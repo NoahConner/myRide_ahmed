@@ -1,19 +1,23 @@
 import React, {useContext} from 'react';
-import {View, KeyboardAvoidingView, StyleSheet, FlatList, Platform} from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  StyleSheet,
+  FlatList,
+  Platform,
+} from 'react-native';
 import {AppContext} from '../../context/AppContext';
 import {CarDetail, Heading, Promo, RideDetail} from '../../components/Index';
-import {
-  KumbhSansBold,
-  rides,
-  screenWidth,
-  white,
-} from '../../constants/Index';
+import {KumbhSansBold, rides, screenWidth, white} from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 
 const RideType = () => {
   const {rideDetails} = useContext(AppContext);
   return (
-    <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled
+      style={styles.container}>
       <View style={styles.headingContainer}>
         <Heading
           text="Select Your Type"
@@ -45,7 +49,8 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom:moderateScale(30,0.1)
+    paddingBottom: moderateScale(30, 0.1),
+    position: 'relative',
   },
   headingContainer: {
     width: '100%',

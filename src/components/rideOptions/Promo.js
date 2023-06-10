@@ -58,7 +58,7 @@ const Promo = () => {
         padding={null}
         textAlign="center"
         borderRadius={moderateScale(100)}
-        width={screenWidth - 250}
+        width={moderateScale(screenWidth/2.5)}
         onPress={() => {
           applyCoupan();
         }}
@@ -88,10 +88,9 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(15, 0.1),
   },
   applyButton: {
-    paddingHorizontal: moderateScale(5),
     paddingVertical: moderateScale(15),
     position: 'absolute',
-    bottom: -75,
+    bottom: -80
   },
 });
 export default Promo;

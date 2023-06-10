@@ -7,13 +7,14 @@ import MapViewDirections from 'react-native-maps-directions';
 import {AppContext, useAppContext} from '../context/AppContext';
 
 const CustomMap = () => {
-  const {startingLatLng, endingLatLng, setStartingLatLng, setEndingLatLng} =
+  const {startingLatLng, endingLatLng, setStartingLatLng, setEndingLatLng, rideStages} =
     useAppContext(AppContext);
   return (
     <View
       style={{
         height: moderateScale(screenHeight - 30),
         width: moderateScale(screenWidth),
+        zIndex:(-10)
       }}>
       <MapView
         style={{flex: 1}}
@@ -32,12 +33,12 @@ const CustomMap = () => {
         /> */}
         <Marker
           coordinate={startingLatLng}
-          draggable
+          draggable={rideStages != 'finding'}
           onDragEnd={e => setStartingLatLng(e.nativeEvent.coordinate)}
         />
         <Marker
           coordinate={endingLatLng}
-          draggable
+          draggable={rideStages != 'finding'}
           onDragEnd={e => setEndingLatLng(e.nativeEvent.coordinate)}
         />
       </MapView>
