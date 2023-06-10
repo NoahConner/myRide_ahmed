@@ -25,5 +25,10 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity android:name="com.yalantis.ucrop.UCropActivity" />
+       <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="AIzaSyD8i3TGGkBPF757aCT-w36E6zvSer3r2KE"
+    />
     </application>
 </manifest>

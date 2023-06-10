@@ -4,6 +4,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   ArrivedRideRB,
   Button,
+  CustomMap,
   CustomModal,
   DrawerHeader,
   Heading,
@@ -22,7 +23,10 @@ import {
   gold,
   lightestGray,
   lightestPurple,
+  markers,
   purple,
+  region,
+  screenHeight,
   screenWidth,
   white,
 } from '../constants/Index';
@@ -248,7 +252,12 @@ const Home = () => {
       return (
         <ScrollView contentContainerStyle={styles.captainRideOfferView}>
           {captainRequests?.map(captainDetail => {
-            return <RideOfferDetail key={captainDetail?.user?.id} selectedUser={captainDetail?.user} />;
+            return (
+              <RideOfferDetail
+                key={captainDetail?.user?.id}
+                selectedUser={captainDetail?.user}
+              />
+            );
           })}
         </ScrollView>
       );
@@ -340,6 +349,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <DrawerHeader navigate={navigation} screen="home" />
+        <CustomMap region={region} markers={markers} />
       {role === 'Passenger' ? renderPassengerHome() : renderDriverHome()}
     </View>
   );

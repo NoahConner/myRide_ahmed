@@ -115,3 +115,17 @@ export const user = {
   image: '../../assets/Images/AppLogo.png',
   rating: 5,
 };
+export const region = {
+  latitude: 37.78825,
+  longitude: -122.4324,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
+export const markers = [
+  {
+    latlng: { latitude: 37.78825, longitude: -122.4324 },
+    title: 'Marker 1',
+    description: 'This is marker 1',
+  }
+];

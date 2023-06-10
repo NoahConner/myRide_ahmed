@@ -12,6 +12,7 @@ export { default as ViewHeader } from './ViewHeader';
 export { default as RbSheet } from './RbSheet';
 export { default as CardRow } from './CardRow';
 export { default as AccountRow } from './AccountRow';
+export { default as CustomMap } from './Map';
 export { default as WalletRow } from './WalletRow';
 export { default as CustomPicker } from './CustomPicker';
 export { default as UploadDocument } from './UploadDocument';
