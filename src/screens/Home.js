@@ -198,6 +198,8 @@ const Home = () => {
 
     const handleSocketRideEnd = ({from, to}) => {
       handleRideEvent({from, to}, `Your ride ended`);
+      setRideStages('initial');
+      setRideDetails('')
     };
 
     const handleSocketRideRated = ({from, to}) => {
