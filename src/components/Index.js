@@ -14,6 +14,7 @@ export { default as CardRow } from './CardRow';
 export { default as AccountRow } from './AccountRow';
 export { default as CustomMap } from './Map';
 export { default as WalletRow } from './WalletRow';
+export { default as GoogleAutoCompleteInput } from './GoogleAutoCompleteInput';
 export { default as CustomPicker } from './CustomPicker';
 export { default as UploadDocument } from './UploadDocument';
 export { default as CustomModal } from './Modal';

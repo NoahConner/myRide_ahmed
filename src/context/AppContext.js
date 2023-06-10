@@ -23,6 +23,14 @@ export const AppProvider = ({children}) => {
   const [findRideButton, setFindRideButton] = useState(false);
   const [applyButton, setApplyButton] = useState(false);
   const [paymentButton, setPaymentButton] = useState(false);
+  const [startingLatLng, setStartingLatLng] = useState({
+    latitude: 24.929873497852476,
+    longitude: 67.11593491135285,
+  });
+  const [endingLatLng, setEndingLatLng] = useState({
+    latitude: 24.929873497852476,
+    longitude: 67.11593491135285,
+  });
   const [rideStatus, setRideStatus] = useState('initial');
 
   useEffect(() => {
@@ -92,6 +100,10 @@ export const AppProvider = ({children}) => {
       setRideStatus,
       selectedUser,
       setSelectedUser,
+      startingLatLng,
+      setStartingLatLng,
+      endingLatLng,
+      setEndingLatLng,
     }),
     [
       state,
@@ -122,6 +134,10 @@ export const AppProvider = ({children}) => {
       setRideStatus,
       selectedUser,
       setSelectedUser,
+      startingLatLng,
+      setStartingLatLng,
+      endingLatLng,
+      setEndingLatLng,
     ],
   );
 

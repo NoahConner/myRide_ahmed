@@ -1,12 +1,8 @@
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {PermissionsAndroid, Platform, Linking} from 'react-native';
-// import FilePickerManager from 'react-native-file-picker';
 import DocumentPicker from 'react-native-document-picker';
-import {useToast} from 'react-native-toast-notifications';
 import {lightestPurple, screenWidth, white} from './Index';
-import { moderateScale } from 'react-native-size-matters';
 import { socket } from '../stacks/DrawerNavigator';
-import { useNavigation } from '@react-navigation/native';
 export const handleImageLoad = setLoading => {
   setLoading(false);
 };

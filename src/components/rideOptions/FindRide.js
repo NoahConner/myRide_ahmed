@@ -1,15 +1,15 @@
-import { View, StyleSheet } from 'react-native';
-import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { Input, Button } from '../Index';
-import { black, gray, screenWidth, white } from '../../constants/Index';
-import { moderateScale } from 'react-native-size-matters';
-import { AppContext } from '../../context/AppContext';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState, useContext, useEffect, useMemo} from 'react';
+import {Input, Button, Icon, GoogleAutoCompleteInput} from '../Index';
+import {black, getCurrentLocation, gray, screenWidth, white} from '../../constants/Index';
+import {moderateScale} from 'react-native-size-matters';
+import {AppContext} from '../../context/AppContext';
 
 const FindRide = () => {
   const [pickUpAddress, setPickUpAddress] = useState('');
   const [dropOffAddress, setDropOffAddress] = useState('');
   const [noOfPassengers, setNoOfPassengers] = useState('');
-  const { setRideDetails, setFindRideButton } = useContext(AppContext);
+  const {setRideDetails, setFindRideButton, setStartingLatLng, setEndingLatLng} = useContext(AppContext);
 
   const rideDetails = useMemo(() => {
     return {
@@ -37,15 +37,30 @@ const FindRide = () => {
 
   return (
     <View style={styles.container}>
-      <Input
-        value={pickUpAddress}
-        setValue={setPickUpAddress}
-        placeholder="Pick Up Address"
-        type="text"
-        style={styles.input}
-        placeholderTextColor={gray}
-      />
-      <Input
+      <View style={styles.mapInput}>
+        {/* <GoogleAutoCompleteInput setAddress={setPickUpAddress} setLatLng={setStartingLatLng} /> */}
+        
+        <Input
+          value={pickUpAddress}
+          setValue={setPickUpAddress}
+          placeholder="Pick Up Address"
+          type="text"
+          style={styles.input}
+          placeholderTextColor={gray}
+        />
+        <TouchableOpacity onPress={()=>{getCurrentLocation(setStartingLatLng)}}>
+          <Icon
+            name={'crosshairs'}
+            size={20}
+            color={'#87CEEB'}
+            style={{marginLeft: moderateScale(-30)}}
+          />
+        </TouchableOpacity>
+      </View>
+      {/* <View style={styles.mapInput}>
+      <GoogleAutoCompleteInput setAddress={setDropOffAddress} setLatLng={setEndingLatLng} />
+      </View> */}
+            <Input
         value={dropOffAddress}
         setValue={setDropOffAddress}
         placeholder="Drop Off Address"
@@ -73,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderRadius: 100,
     shadowColor: black,
-    shadowOffset: { width: 2, height: 30 },
+    shadowOffset: {width: 2, height: 30},
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 20,
@@ -82,6 +97,10 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: moderateScale(10),
+  },
+  mapInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
