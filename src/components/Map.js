@@ -7,14 +7,19 @@ import MapViewDirections from 'react-native-maps-directions';
 import {AppContext, useAppContext} from '../context/AppContext';
 
 const CustomMap = () => {
-  const {startingLatLng, endingLatLng, setStartingLatLng, setEndingLatLng, rideStages} =
-    useAppContext(AppContext);
+  const {
+    startingLatLng,
+    endingLatLng,
+    setStartingLatLng,
+    setEndingLatLng,
+    rideStages,
+  } = useAppContext(AppContext);
   return (
     <View
       style={{
         height: moderateScale(screenHeight - 30),
         width: moderateScale(screenWidth),
-        zIndex:(-10)
+        zIndex: -10,
       }}>
       <MapView
         style={{flex: 1}}

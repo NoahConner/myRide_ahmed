@@ -30,7 +30,6 @@ import {
 } from '../../constants/Index';
 import moment from 'moment';
 import {useNavigation} from '@react-navigation/native';
-
 const CardsAndAccounts = ({}) => {
   const navigation = useNavigation()
 
