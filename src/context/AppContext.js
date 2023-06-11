@@ -24,8 +24,8 @@ export const AppProvider = ({children}) => {
   const [applyButton, setApplyButton] = useState(false);
   const [paymentButton, setPaymentButton] = useState(false);
   const [startingLatLng, setStartingLatLng] = useState({
-    latitude: 24.929873497852476,
-    longitude: 67.11593491135285,
+    latitude: 42.536457,
+    longitude: -70.985786,
   });
   const [endingLatLng, setEndingLatLng] = useState({
     latitude: 24.929873497852476,

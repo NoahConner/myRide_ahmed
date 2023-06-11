@@ -1,7 +1,13 @@
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState, useContext, useEffect, useMemo} from 'react';
 import {Input, Button, Icon, GoogleAutoCompleteInput} from '../Index';
-import {black, getCurrentLocation, gray, screenWidth, white} from '../../constants/Index';
+import {
+  black,
+  getCurrentLocation,
+  gray,
+  screenWidth,
+  white,
+} from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {AppContext} from '../../context/AppContext';
 
@@ -9,7 +15,12 @@ const FindRide = () => {
   const [pickUpAddress, setPickUpAddress] = useState('');
   const [dropOffAddress, setDropOffAddress] = useState('');
   const [noOfPassengers, setNoOfPassengers] = useState('');
-  const {setRideDetails, setFindRideButton, setStartingLatLng, setEndingLatLng} = useContext(AppContext);
+  const {
+    setRideDetails,
+    setFindRideButton,
+    setStartingLatLng,
+    setEndingLatLng,
+  } = useContext(AppContext);
 
   const rideDetails = useMemo(() => {
     return {
@@ -39,7 +50,7 @@ const FindRide = () => {
     <View style={styles.container}>
       <View style={styles.mapInput}>
         {/* <GoogleAutoCompleteInput setAddress={setPickUpAddress} setLatLng={setStartingLatLng} /> */}
-        
+
         <Input
           value={pickUpAddress}
           setValue={setPickUpAddress}
@@ -48,7 +59,10 @@ const FindRide = () => {
           style={styles.input}
           placeholderTextColor={gray}
         />
-        <TouchableOpacity onPress={()=>{getCurrentLocation(setStartingLatLng)}}>
+        <TouchableOpacity
+          onPress={() => {
+            getCurrentLocation(setStartingLatLng);
+          }}>
           <Icon
             name={'crosshairs'}
             size={20}
@@ -57,17 +71,28 @@ const FindRide = () => {
           />
         </TouchableOpacity>
       </View>
-      {/* <View style={styles.mapInput}>
-      <GoogleAutoCompleteInput setAddress={setDropOffAddress} setLatLng={setEndingLatLng} />
-      </View> */}
-            <Input
-        value={dropOffAddress}
-        setValue={setDropOffAddress}
-        placeholder="Drop Off Address"
-        type="text"
-        style={styles.input}
-        placeholderTextColor={gray}
-      />
+      {/* <GoogleAutoCompleteInput setAddress={setDropOffAddress} setLatLng={setEndingLatLng} /> */}
+      <View style={styles.mapInput}>
+        <Input
+          value={dropOffAddress}
+          setValue={setDropOffAddress}
+          placeholder="Drop Off Address"
+          type="text"
+          style={styles.input}
+          placeholderTextColor={gray}
+        />
+        <TouchableOpacity
+          onPress={() => {
+            getCurrentLocation(setEndingLatLng);
+          }}>
+          <Icon
+            name={'crosshairs'}
+            size={20}
+            color={'#87CEEB'}
+            style={{marginLeft: moderateScale(-30)}}
+          />
+        </TouchableOpacity>
+      </View>
       <Input
         value={noOfPassengers}
         setValue={setNoOfPassengers}

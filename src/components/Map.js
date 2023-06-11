@@ -1,10 +1,10 @@
-import React from 'react';
-import {View} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
-import {screenHeight, screenWidth} from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
+import React, { useRef, useEffect } from 'react';
+import { View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { screenHeight, screenWidth } from '../constants/Index';
+import { moderateScale } from 'react-native-size-matters';
 import MapViewDirections from 'react-native-maps-directions';
-import {AppContext, useAppContext} from '../context/AppContext';
+import { AppContext, useAppContext } from '../context/AppContext';
 
 const CustomMap = () => {
   const {
@@ -14,6 +14,31 @@ const CustomMap = () => {
     setEndingLatLng,
     rideStages,
   } = useAppContext(AppContext);
+
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (mapRef.current && startingLatLng) {
+      const region = {
+        latitude: startingLatLng.latitude,
+        longitude: startingLatLng.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      };
+      mapRef.current.animateToRegion(region);
+    }
+  }, [startingLatLng]);
+  useEffect(() => {
+    if (mapRef.current && endingLatLng) {
+      const region = {
+        latitude: endingLatLng.latitude,
+        longitude: endingLatLng.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      };
+      mapRef.current.animateToRegion(region);
+    }
+  }, [endingLatLng]);
   return (
     <View
       style={{
@@ -22,7 +47,8 @@ const CustomMap = () => {
         zIndex: -10,
       }}>
       <MapView
-        style={{flex: 1}}
+        ref={mapRef}
+        style={{ flex: 1 }}
         initialRegion={{
           latitude: startingLatLng.latitude,
           longitude: startingLatLng.longitude,
@@ -39,12 +65,12 @@ const CustomMap = () => {
         <Marker
           coordinate={startingLatLng}
           draggable={rideStages != 'finding'}
-          onDragEnd={e => setStartingLatLng(e.nativeEvent.coordinate)}
+          onDragEnd={(e) => setStartingLatLng(e.nativeEvent.coordinate)}
         />
         <Marker
           coordinate={endingLatLng}
           draggable={rideStages != 'finding'}
-          onDragEnd={e => setEndingLatLng(e.nativeEvent.coordinate)}
+          onDragEnd={(e) => setEndingLatLng(e.nativeEvent.coordinate)}
         />
       </MapView>
     </View>
