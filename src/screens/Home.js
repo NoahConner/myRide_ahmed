@@ -384,8 +384,7 @@ const styles = StyleSheet.create({
   captainRideOfferView: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: screenWidth,
-    backgroundColor:'white'
+    width: screenWidth
   },
   iconStyle: {
     marginHorizontal: moderateScale(1),
