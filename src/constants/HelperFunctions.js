@@ -118,7 +118,7 @@ export const selectDocument = async setState => {
 export const notification = (toast,message) => {
   toast.show(message, {
     type: 'customize',
-    placement: 'top',
+    placement: 'bottom',
     duration: 4000,
     offset: 30,
     animationType: 'zoom-in',
@@ -132,7 +132,7 @@ export const notification = (toast,message) => {
 export const notificationRoute = (toast,message, selectedUser, navigation) => {
   toast.show(message, {
     type: 'customize',
-    placement: 'top',
+    placement: 'bottom',
     duration: 4000,
     offset: 30,
     animationType: 'zoom-in',
