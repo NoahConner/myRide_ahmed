@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, ScrollView, Image} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
 import {
   ArrivedRideRB,
   Button,
@@ -22,11 +22,9 @@ import {
   black,
   gold,
   lightestGray,
-  lightestPurple,
   markers,
   purple,
   region,
-  screenHeight,
   screenWidth,
   white,
 } from '../constants/Index';
@@ -70,6 +68,7 @@ const Home = () => {
   const [captainRequests, setCaptainRequests] = useState([]);
   const toast = useToast();
   const route = useRoute();
+  const isFocused = useIsFocused();
   const rideEndContent = () => {
     return (
       <View style={styles.modalContentContainer}>
@@ -189,7 +188,7 @@ const Home = () => {
     };
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
-      console.log(route?.name, 'hello smessageing recieving');
+      console.log(route,"hello route name", isFocused);
       if (user?.id == to && route?.name != 'Chat') {
         const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
         notificationRoute(toast, notificationMessage, foundUser, navigation);
@@ -198,8 +197,6 @@ const Home = () => {
 
     const handleSocketRideEnd = ({from, to}) => {
       handleRideEvent({from, to}, `Your ride ended`);
-      setRideStages('initial');
-      setRideDetails('')
     };
 
     const handleSocketRideRated = ({from, to}) => {
@@ -233,38 +230,42 @@ const Home = () => {
       : rideRateContent();
 
   const renderPassengerHome = () => {
-    if (rideStages === 'initial') {
-      return (
-        <Button
-          disabled={!findRideButton}
-          loading={loading}
-          style={styles.findRideButton}
-          fontSize={moderateScale(14)}
-          backgroundColor={purple}
-          color={white}
-          text="Find My Ride"
-          padding={moderateScale(10)}
-          textAlign="center"
-          borderRadius={moderateScale(100)}
-          width="50%"
-          onPress={findRide}
-        />
-      );
-    } else if (rideStages === 'finding') {
-      return (
-        <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-          {captainRequests?.map(captainDetail => {
-            return (
+    switch (rideStages) {
+      case 'initial':
+        return (
+          <>
+            <Button
+              disabled={!findRideButton}
+              loading={loading}
+              style={styles.findRideButton}
+              fontSize={moderateScale(14)}
+              backgroundColor={purple}
+              color={white}
+              text="Find My Ride"
+              padding={moderateScale(10)}
+              textAlign="center"
+              borderRadius={moderateScale(100)}
+              width="50%"
+              onPress={findRide}
+            />
+            <CustomMap region={region} markers={markers} />
+          </>
+        );
+      case 'finding':
+        return (
+          <ScrollView contentContainerStyle={styles.captainRideOfferView}>
+            {captainRequests?.map(captainDetail => (
               <RideOfferDetail
                 key={captainDetail?.user?.id}
                 selectedUser={captainDetail?.user}
               />
-            );
-          })}
-        </ScrollView>
-      );
+            ))}
+            <CustomMap region={region} markers={markers} />
+          </ScrollView>
+        );
+      default:
+        return null;
     }
-    return null;
   };
 
   useEffect(() => {
@@ -304,6 +305,7 @@ const Home = () => {
                 />
               );
             })}
+            <CustomMap region={region} markers={markers} />
           </ScrollView>
         );
       case 'start':
@@ -351,8 +353,14 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <DrawerHeader navigate={navigation} screen="home" />
-        <CustomMap region={region} markers={markers} />
       {role === 'Passenger' ? renderPassengerHome() : renderDriverHome()}
+      {role !== 'Passenger' ? (
+        rideStatus != 'initial' ? (
+          <View style={{zIndex: -100}}>
+            <CustomMap region={region} markers={markers} />
+          </View>
+        ) : null
+      ) : null}
     </View>
   );
 };
@@ -366,6 +374,7 @@ const styles = StyleSheet.create({
   findRideButton: {
     position: 'absolute',
     bottom: moderateScale(50),
+    zIndex: 100,
   },
   rideOfferView: {
     flex: 1,
@@ -376,6 +385,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: screenWidth,
+    backgroundColor:'white'
   },
   iconStyle: {
     marginHorizontal: moderateScale(1),

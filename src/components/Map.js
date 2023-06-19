@@ -42,7 +42,7 @@ const CustomMap = () => {
   return (
     <View
       style={{
-        height: moderateScale(screenHeight - 30),
+        height: moderateScale(screenHeight),
         width: moderateScale(screenWidth),
         zIndex: -10,
       }}>

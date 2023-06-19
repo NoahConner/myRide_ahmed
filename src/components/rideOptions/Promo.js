@@ -69,6 +69,7 @@ const Promo = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    zIndex:100
   },
   heading: {
     marginTop: moderateScale(15),
@@ -90,7 +91,8 @@ const styles = StyleSheet.create({
   applyButton: {
     paddingVertical: moderateScale(15),
     position: 'absolute',
-    bottom: -80
+    bottom: -80,
+    zIndex:1000
   },
 });
 export default Promo;

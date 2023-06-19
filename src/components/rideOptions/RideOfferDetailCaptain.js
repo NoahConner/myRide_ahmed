@@ -14,13 +14,8 @@ import {
   white,
 } from '../../constants/Index';
 import {AppContext, useAppContext} from '../../context/AppContext';
-import {
-  formatUSDPrice,
-  handleCallButtonPress,
-  socketAccept,
-} from '../../constants/HelperFunctions';
+import {formatUSDPrice, socketAccept} from '../../constants/HelperFunctions';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
@@ -35,14 +30,18 @@ const renderIcons = () => {
   ));
 };
 
-const RideOfferDetailCaptain = ({selectedUser,pickup,dropOff, passengers}) => {
+const RideOfferDetailCaptain = ({
+  selectedUser,
+  pickup,
+  dropOff,
+  passengers,
+}) => {
   const {setRideStatus, user, setSelectedUser} = useAppContext(AppContext);
-  const navigation = useNavigation();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const accept = () => {
     setRideStatus('start');
-    socketAccept(user?.id, selectedUser?.id)
-    setSelectedUser(selectedUser)
+    socketAccept(user?.id, selectedUser?.id);
+    setSelectedUser(selectedUser);
   };
   const decline = () => {
     setRideStatus('decline');
@@ -55,7 +54,10 @@ const RideOfferDetailCaptain = ({selectedUser,pickup,dropOff, passengers}) => {
     }).start();
   }, [fadeAnim]);
   return (
-    <Animated.View style={{opacity: fadeAnim}}>
+    <Animated.View
+      style={{
+        opacity: fadeAnim,
+      }}>
       <LinearGradient
         style={styles.container}
         colors={linearGradient}
@@ -194,7 +196,7 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(20),
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(20),
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(20)
   },
   topLine: {
     flexDirection: 'row',
