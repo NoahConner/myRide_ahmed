@@ -336,7 +336,9 @@ const Home = () => {
     switch (rideStatus) {
       case 'initial':
         return (
-          <View style={styles.containerCard}>
+         <View style={[styles.containerCard, {width: screenWidth }, !rideRequests?.length ? {flex:1} :null]}>
+          {rideRequests?.length ? (
+            <>
             <CustomMap region={region} markers={markers} />
             <View style={styles.cardContainer}>
               <ScrollView
@@ -353,6 +355,25 @@ const Home = () => {
                 ))}
               </ScrollView>
             </View>
+            </>)
+            : (
+              <View
+                style={{
+                  backgroundColor:white,
+                  flex:1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <ActivityIndicator size="large" color={purple} />
+                <Heading
+                  text="Waiting For Ride Request"
+                  fontSize={moderateScale(20)}
+                  fontFamily={KumbhSansBold}
+                  color={purple}
+                  textAlign="center"
+                />
+              </View>
+            )}
           </View>
         );
       case 'start':
