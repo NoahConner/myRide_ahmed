@@ -67,8 +67,7 @@ const Home = () => {
     setRideStatus,
     rideStatus,
     user,
-    selectedUser,
-    firstMessage,
+    selectedUser
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -201,11 +200,9 @@ const Home = () => {
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
       if (user?.id == to && route?.name != 'Chat') {
-        console.log(route, 'hello route name', isFocused, firstMessage);
-        if (firstMessage) {
+        console.log(route, 'hello route name', isFocused);
           const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
           notificationRoute(toast, notificationMessage, foundUser, navigation);
-        } else return;
       }
     };
 

@@ -22,7 +22,6 @@ const ViewHeader = ({
   path,
   phoneNumber,
 }) => {
-  const {setFirstMessage} = useAppContext(AppContext);
   const handleButtonPress = () => {
     if (icon === 'phone-alt') {
       handleCallButtonPress(phoneNumber);
@@ -36,7 +35,6 @@ const ViewHeader = ({
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => {
-          heading == 'Chats' ? setFirstMessage(true) : null;
           navigation.goBack();
         }}>
         <Icon

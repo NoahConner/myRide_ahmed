@@ -25,17 +25,11 @@ const Chat = ({route}) => {
   const [message, setMessage] = useState('');
   const [selectedUser, setSelectedUser] = useState(route.params.selectedUser);
   const [messageList, setMessageList] = useState([]);
-  const {user, setFirstMessage} = useAppContext(AppContext);
+  const {user} = useAppContext(AppContext);
   const isFocused = useIsFocused()
   useEffect(() => {
     console.log(messageList, 'hello new messhadasd');
   }, [messageList]);
-  useEffect(() => {
-    if (isFocused && messageList.some(message => message.sender === 'receiver')) {
-      setFirstMessage(false);
-    }
-  }, [isFocused, messageList]);
-
   useEffect(() => {
     const handleSocketMessage = ({from, to, message, time}) => {
       if (to == user?.id) {
