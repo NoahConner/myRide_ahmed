@@ -25,6 +25,7 @@ import {
   markers,
   purple,
   region,
+  screenHeight,
   screenWidth,
   white,
 } from '../constants/Index';
@@ -188,7 +189,7 @@ const Home = () => {
     };
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
-      console.log(route,"hello route name", isFocused);
+      console.log(route, 'hello route name', isFocused);
       if (user?.id == to && route?.name != 'Chat') {
         const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
         notificationRoute(toast, notificationMessage, foundUser, navigation);
@@ -293,20 +294,22 @@ const Home = () => {
     switch (rideStatus) {
       case 'initial':
         return (
-          <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-            {rideRequests?.map(rideDetails => {
-              return (
-                <RideOfferDetailCaptain
-                  key={rideDetails?.user?.id}
-                  selectedUser={rideDetails?.user}
-                  pickup={rideDetails?.pickup}
-                  dropOff={rideDetails?.dropfff}
-                  passengers={rideDetails?.passengers}
-                />
-              );
-            })}
+          <View>
+            <ScrollView contentContainerStyle={[styles.captainRideOfferView, styles.captainRideOfferViewPosition]}>
+              {rideRequests?.map(rideDetails => {
+                return (
+                  <RideOfferDetailCaptain
+                    key={rideDetails?.user?.id}
+                    selectedUser={rideDetails?.user}
+                    pickup={rideDetails?.pickup}
+                    dropOff={rideDetails?.dropfff}
+                    passengers={rideDetails?.passengers}
+                  />
+                );
+              })}
+            </ScrollView>
             <CustomMap region={region} markers={markers} />
-          </ScrollView>
+          </View>
         );
       case 'start':
         return <StartRideRB />;
@@ -384,7 +387,13 @@ const styles = StyleSheet.create({
   captainRideOfferView: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: screenWidth
+    width: screenWidth,
+  },
+  captainRideOfferViewPosition: {
+    position: 'absolute',
+    zIndex: 1000,
+    left:0,
+    top:0
   },
   iconStyle: {
     marginHorizontal: moderateScale(1),
