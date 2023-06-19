@@ -10,6 +10,7 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {handleCallButtonPress} from '../constants/HelperFunctions';
+import { AppContext, useAppContext } from '../context/AppContext';
 
 const ViewHeader = ({
   heading,
@@ -21,6 +22,7 @@ const ViewHeader = ({
   path,
   phoneNumber,
 }) => {
+  const {setFirstMessage} = useAppContext(AppContext);
   const handleButtonPress = () => {
     if (icon === 'phone-alt') {
       handleCallButtonPress(phoneNumber);
@@ -34,6 +36,7 @@ const ViewHeader = ({
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => {
+          heading == 'Chats' ? setFirstMessage(true) : null;
           navigation.goBack();
         }}>
         <Icon

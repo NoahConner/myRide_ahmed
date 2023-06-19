@@ -17,7 +17,7 @@ import {
   white,
 } from '../constants/Index';
 import ChatBody from '../components/ChatBody';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {socket} from '../stacks/DrawerNavigator';
 import {AppContext, useAppContext} from '../context/AppContext';
 const Chat = ({route}) => {
@@ -25,10 +25,16 @@ const Chat = ({route}) => {
   const [message, setMessage] = useState('');
   const [selectedUser, setSelectedUser] = useState(route.params.selectedUser);
   const [messageList, setMessageList] = useState([]);
-  const {user} = useAppContext(AppContext);
+  const {user, setFirstMessage} = useAppContext(AppContext);
+  const isFocused = useIsFocused()
   useEffect(() => {
     console.log(messageList, 'hello new messhadasd');
   }, [messageList]);
+  useEffect(() => {
+    if (isFocused && messageList.some(message => message.sender === 'receiver')) {
+      setFirstMessage(false);
+    }
+  }, [isFocused, messageList]);
 
   useEffect(() => {
     const handleSocketMessage = ({from, to, message, time}) => {

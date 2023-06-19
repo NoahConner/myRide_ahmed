@@ -23,6 +23,7 @@ export const AppProvider = ({children}) => {
   const [findRideButton, setFindRideButton] = useState(false);
   const [applyButton, setApplyButton] = useState(false);
   const [paymentButton, setPaymentButton] = useState(false);
+  const [firstMessage, setFirstMessage] = useState(true);
   const [startingLatLng, setStartingLatLng] = useState({
     latitude: 42.536457,
     longitude: -70.985786,
@@ -104,6 +105,8 @@ export const AppProvider = ({children}) => {
       setStartingLatLng,
       endingLatLng,
       setEndingLatLng,
+      firstMessage,
+      setFirstMessage,
     }),
     [
       state,
@@ -138,6 +141,8 @@ export const AppProvider = ({children}) => {
       setStartingLatLng,
       endingLatLng,
       setEndingLatLng,
+      firstMessage,
+      setFirstMessage,
     ],
   );
 

@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, ScrollView, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
 import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
 import {
   ArrivedRideRB,
@@ -18,6 +24,7 @@ import userData from '../constants/usersData.json';
 import {moderateScale} from 'react-native-size-matters';
 import {
   InterRegular,
+  KumbhSansBold,
   backgroundColor,
   black,
   gold,
@@ -61,6 +68,7 @@ const Home = () => {
     rideStatus,
     user,
     selectedUser,
+    firstMessage,
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -88,6 +96,9 @@ const Home = () => {
       </View>
     );
   };
+  useEffect(() => {
+    console.log(rideStages, 'hello stages');
+  }, [rideStages]);
 
   const rideAmountContent = () => {
     return (
@@ -141,7 +152,7 @@ const Home = () => {
     setTimeout(() => {
       setLoading(false);
       setRideStages('findType');
-    }, 1500);
+    }, 1000);
   };
   useEffect(() => {
     const handleRideEvent = ({from, to, foundUser}, message) => {
@@ -189,10 +200,12 @@ const Home = () => {
     };
     const handleSocketMessage = ({from, to, message, time}) => {
       const foundUser = userData.users.find(user => user?.id === from);
-      console.log(route, 'hello route name', isFocused);
       if (user?.id == to && route?.name != 'Chat') {
-        const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
-        notificationRoute(toast, notificationMessage, foundUser, navigation);
+        console.log(route, 'hello route name', isFocused, firstMessage);
+        if (firstMessage) {
+          const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
+          notificationRoute(toast, notificationMessage, foundUser, navigation);
+        } else return;
       }
     };
 
@@ -234,35 +247,64 @@ const Home = () => {
     switch (rideStages) {
       case 'initial':
         return (
-          <>
-            <Button
-              disabled={!findRideButton}
-              loading={loading}
-              style={styles.findRideButton}
-              fontSize={moderateScale(14)}
-              backgroundColor={purple}
-              color={white}
-              text="Find My Ride"
-              padding={moderateScale(10)}
-              textAlign="center"
-              borderRadius={moderateScale(100)}
-              width="50%"
-              onPress={findRide}
-            />
+          <View style={styles.container}>
             <CustomMap region={region} markers={markers} />
-          </>
+            <View style={styles.buttonContainer}>
+              <Button
+                disabled={!findRideButton}
+                loading={loading}
+                style={styles.findRideButton}
+                fontSize={moderateScale(14)}
+                backgroundColor={purple}
+                color={white}
+                text="Find My Ride"
+                padding={moderateScale(10)}
+                textAlign="center"
+                borderRadius={moderateScale(100)}
+                width="50%"
+                onPress={findRide}
+              />
+            </View>
+          </View>
         );
       case 'finding':
         return (
-          <ScrollView contentContainerStyle={styles.captainRideOfferView}>
-            {captainRequests?.map(captainDetail => (
-              <RideOfferDetail
-                key={captainDetail?.user?.id}
-                selectedUser={captainDetail?.user}
-              />
-            ))}
-            <CustomMap region={region} markers={markers} />
-          </ScrollView>
+          <View style={[styles.containerCard, {width: screenWidth }, !captainRequests?.length ? {flex:1} :null]}>
+            {captainRequests?.length ? (
+              <>
+                <CustomMap region={region} markers={markers} />
+                <View style={styles.cardContainer}>
+                  <ScrollView
+                    contentContainerStyle={styles.captainRideOfferView}
+                    showsVerticalScrollIndicator={false}>
+                    {captainRequests?.map(captainDetail => (
+                      <RideOfferDetail
+                        key={captainDetail?.user?.id}
+                        selectedUser={captainDetail?.user}
+                      />
+                    ))}
+                  </ScrollView>
+                </View>
+              </>
+            ) : (
+              <View
+                style={{
+                  backgroundColor:white,
+                  flex:1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <ActivityIndicator size="large" color={purple} />
+                <Heading
+                  text="Searching Your Ride"
+                  fontSize={moderateScale(20)}
+                  fontFamily={KumbhSansBold}
+                  color={purple}
+                  textAlign="center"
+                />
+              </View>
+            )}
+          </View>
         );
       default:
         return null;
@@ -294,10 +336,13 @@ const Home = () => {
     switch (rideStatus) {
       case 'initial':
         return (
-          <View>
-            <ScrollView contentContainerStyle={[styles.captainRideOfferView, styles.captainRideOfferViewPosition]}>
-              {rideRequests?.map(rideDetails => {
-                return (
+          <View style={styles.containerCard}>
+            <CustomMap region={region} markers={markers} />
+            <View style={styles.cardContainer}>
+              <ScrollView
+                contentContainerStyle={styles.captainRideOfferView}
+                showsVerticalScrollIndicator={false}>
+                {rideRequests?.map(rideDetails => (
                   <RideOfferDetailCaptain
                     key={rideDetails?.user?.id}
                     selectedUser={rideDetails?.user}
@@ -305,10 +350,9 @@ const Home = () => {
                     dropOff={rideDetails?.dropfff}
                     passengers={rideDetails?.passengers}
                   />
-                );
-              })}
-            </ScrollView>
-            <CustomMap region={region} markers={markers} />
+                ))}
+              </ScrollView>
+            </View>
           </View>
         );
       case 'start':
@@ -374,6 +418,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: backgroundColor,
   },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerCard: {
+    // justifyContent:'center'
+  },
+  cardContainer: {
+    position: 'absolute',
+    zIndex: 1,
+    alignItems: 'center',
+  },
+  captainRideOfferView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: screenWidth,
+  },
   findRideButton: {
     position: 'absolute',
     bottom: moderateScale(50),
@@ -383,17 +452,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  captainRideOfferView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: screenWidth,
-  },
-  captainRideOfferViewPosition: {
-    position: 'absolute',
-    zIndex: 1000,
-    left:0,
-    top:0
   },
   iconStyle: {
     marginHorizontal: moderateScale(1),
