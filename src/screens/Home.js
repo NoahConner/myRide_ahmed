@@ -10,6 +10,7 @@ import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
 import {
   ArrivedRideRB,
   Button,
+  CompleteRide,
   CustomMap,
   CustomModal,
   DrawerHeader,
@@ -19,6 +20,7 @@ import {
   RideOfferDetail,
   RideOfferDetailCaptain,
   StartRideRB,
+  TipRider,
 } from '../components/Index';
 import userData from '../constants/usersData.json';
 import {moderateScale} from 'react-native-size-matters';
@@ -27,13 +29,16 @@ import {
   KumbhSansBold,
   backgroundColor,
   black,
+  cards,
   gold,
   lightestGray,
   markers,
   purple,
   region,
+  rides,
   screenHeight,
   screenWidth,
+  updateSelection,
   white,
 } from '../constants/Index';
 import {AppContext, useAppContext} from '../context/AppContext';
@@ -67,10 +72,14 @@ const Home = () => {
     setRideStatus,
     rideStatus,
     user,
-    selectedUser
+    selectedUser,
+    setRideDetails,
+    setSelectedUser
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [rateDriverModal, setRateDriverModal] = useState(false);
+  const [tipDriverModal, setTipDriverModal] = useState(false);
   const [rideRequests, setRideRequests] = useState([]);
   const [rateMessage, setRateMessage] = useState('');
   const [captainRequests, setCaptainRequests] = useState([]);
@@ -95,9 +104,6 @@ const Home = () => {
       </View>
     );
   };
-  useEffect(() => {
-    console.log(rideStages, 'hello stages');
-  }, [rideStages]);
 
   const rideAmountContent = () => {
     return (
@@ -208,6 +214,8 @@ const Home = () => {
 
     const handleSocketRideEnd = ({from, to}) => {
       handleRideEvent({from, to}, `Your ride ended`);
+      setRideStages('rateDriver');
+      setRateDriverModal(true);
     };
 
     const handleSocketRideRated = ({from, to}) => {
@@ -232,14 +240,26 @@ const Home = () => {
       socket.off('message', handleSocketMessage);
     };
   }, [socket, userData, user, rideRequests]);
-
+  const rateDriverFunc = () => {
+    setRateDriverModal(false);
+    setRideStages('tipDriver');
+    setTipDriverModal(true)
+  }
+  const tipDriverFunc = () => {
+    setTipDriverModal(false)
+    setRideStages('initial');
+    setRideDetails('')
+    setSelectedUser([])
+    setCaptainRequests([])
+    updateSelection()
+    console.log(rides,cards);
+  }
   const modalContent =
     rideStatus === 'started'
       ? rideEndContent()
       : rideStatus === 'end'
       ? rideAmountContent()
       : rideRateContent();
-
   const renderPassengerHome = () => {
     switch (rideStages) {
       case 'initial':
@@ -303,6 +323,28 @@ const Home = () => {
             )}
           </View>
         );
+        case 'rateDriver' : 
+        return(
+          <CustomModal
+          times={true}
+          backgroundColor={purple}
+          visible={rateDriverModal}
+          onClose={rateDriverFunc}
+          content={<CompleteRide/>}
+          buttonText={'Submit'}
+        />
+        );
+        case 'tipDriver' :
+          return(
+          <CustomModal
+          times={true}
+          backgroundColor={purple}
+          visible={tipDriverModal}
+          onClose={tipDriverFunc}
+          content={<TipRider/>}
+          buttonText={'Done'}
+        />
+          );
       default:
         return null;
     }
@@ -318,8 +360,10 @@ const Home = () => {
 
   const submitRating = () => {
     setModalVisible(false);
-    setRideStatus('rated');
+    setRideStatus('initial');
     socketRideRated(user?.id, selectedUser?.id);
+    setRideRequests([])
+    updateSelection()
     navigation.navigate('RideHistory');
   };
   const rideEnd = () => {
@@ -330,6 +374,7 @@ const Home = () => {
     setRideStatus('rate');
   };
   const renderDriverHome = () => {
+    console.log(rideStatus,"ride status");
     switch (rideStatus) {
       case 'initial':
         return (
@@ -341,12 +386,13 @@ const Home = () => {
               <ScrollView
                 contentContainerStyle={styles.captainRideOfferView}
                 showsVerticalScrollIndicator={false}>
+                  {console.log(rideRequests)}
                 {rideRequests?.map(rideDetails => (
                   <RideOfferDetailCaptain
                     key={rideDetails?.user?.id}
                     selectedUser={rideDetails?.user}
                     pickup={rideDetails?.pickup}
-                    dropOff={rideDetails?.dropfff}
+                    dropOff={rideDetails?.dropoff}
                     passengers={rideDetails?.passengers}
                   />
                 ))}
@@ -396,7 +442,7 @@ const Home = () => {
             visible={modalVisible}
             onClose={() => rideRate()}
             content={modalContent}
-            buttonText={'Rate Your Customer'}
+            buttonText={'Rate Your Passenger'}
           />
         );
       case 'rate':

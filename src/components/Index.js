@@ -20,6 +20,8 @@ export { default as UploadDocument } from './UploadDocument';
 export { default as CustomModal } from './Modal';
 export { default as ChatHeader } from './ChatHeader';
 export { default as ChatFooter } from './ChatFooter';
+export { default as DriverHome } from './DriverHome';
+export { default as PassengerHome } from './PassengerHome';
 
 // splash Components export
 export { default as SplashBackgroundAnimation } from './splash/splashBackgroundAnimation';
@@ -39,3 +41,7 @@ export { default as StartRideRB } from './rideOptions/StartRideRB';
 export { default as RideHistoryCard } from './rideOptions/RideHistoryCard';
 export { default as RideOfferDetailCaptain } from './rideOptions/RideOfferDetailCaptain';
 export { default as RideOfferDetail } from './rideOptions/RideOfferDetail';
+export { default as RideWait } from './rideOptions/RideWait';
+export { default as RideSearch } from './rideOptions/RideSearch';
+export { default as CompleteRide } from './rideOptions/CompleteRide';
+export { default as TipRider } from './rideOptions/TipRider';

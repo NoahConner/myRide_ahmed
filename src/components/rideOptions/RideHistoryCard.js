@@ -140,7 +140,7 @@ const RideHistoryCard = ({}) => {
         <View style={styles.rightSide}>
           <View style={styles.fareContainer}>
             <Heading
-              text="Estimated Fare"
+              text="Fare"
               fontSize={moderateScale(10)}
               fontFamily={InterRegular}
               color={white}

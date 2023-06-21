@@ -159,10 +159,7 @@ const RideOfferDetail = ({selectedUser}) => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth / 3)}
-          onPress={() => {
-            navigation.navigate('ModalScreen');
-          }}
-          // onPress={()=>{setRideStages('initial'); setRideDetails('')}}
+          onPress={()=>{setRideStages('rateDriver');}}
         />
       </View>
     </LinearGradient>
