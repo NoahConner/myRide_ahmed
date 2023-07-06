@@ -46,6 +46,7 @@ const Promo = () => {
         textAlign="center"
         fontFamily={KumbhSansExtraBold}
         fontSize={moderateScale(20)}
+        color={black}
       />
       <Button
         disabled={!applyButton}

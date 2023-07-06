@@ -10,8 +10,6 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {handleCallButtonPress} from '../constants/HelperFunctions';
-import { AppContext, useAppContext } from '../context/AppContext';
-
 const ViewHeader = ({
   heading,
   icon,

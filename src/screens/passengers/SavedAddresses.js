@@ -1,5 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import {DrawerHeader, Heading, ViewHeader} from '../../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {
@@ -11,8 +11,10 @@ import {
   InterRegular,
   gray,
   lighterGray,
+  white,
 } from '../../constants/Index';
 import {useNavigation} from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
@@ -38,8 +40,11 @@ const renderIcons = () => {
 };
 const SavedAddresses = ({}) => {
   const navigation = useNavigation();
+  const {
+    theme
+  } = useContext(AppContext);
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : white}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -48,7 +53,7 @@ const SavedAddresses = ({}) => {
         <ViewHeader
           heading="Saved Addresses"
           icon={'home'}
-          headingColor={darkGray}
+          headingColor={theme == 'dark' ? white : darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
@@ -72,7 +77,9 @@ const styles = StyleSheet.create({
   },
   addressRow: {
     marginVertical: moderateScale(10),
-    width: moderateScale(screenWidth),
+    width: '95%',
+    marginLeft:'auto',
+    marginRight:'auto',
     backgroundColor: lighterGray,
     paddingVertical: moderateScale(15),
     paddingHorizontal: moderateScale(25),

@@ -23,9 +23,9 @@ const renderIcons = () => {
     />
   ));
 };
-const ChatHeader = ({selectedUser}) => {
+const ChatHeader = ({selectedUser, backgroundColor}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor}]}>
       <View style={styles.headingContainer}>
         <View style={styles.textContainer}>
           <Heading

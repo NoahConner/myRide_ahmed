@@ -58,6 +58,7 @@ const RidePayment = () => {
         </View>
         <View style={[styles.carListContainer, styles.cardListContainer]}>
           <FlatList
+          showsVerticalScrollIndicator={false}
             data={cards}
             keyExtractor={item => item.id}
             renderItem={({item, index}) => (

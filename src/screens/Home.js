@@ -84,6 +84,7 @@ const Home = () => {
   const [rideRequests, setRideRequests] = useState([]);
   const [rateMessage, setRateMessage] = useState('');
   const [captainRequests, setCaptainRequests] = useState([]);
+  const [showTimer, setShowTimer] = useState(false);
   const toast = useToast();
   const route = useRoute();
   const isFocused = useIsFocused();
@@ -148,6 +149,7 @@ const Home = () => {
           value={rateMessage}
           setValue={setRateMessage}
           type="text"
+          color={black}
         />
       </View>
     );
@@ -195,10 +197,12 @@ const Home = () => {
         {from, to, foundUser},
         `${foundUser.first_name} ${foundUser.last_name} arrived at your destination`,
       );
+      setShowTimer(true)
     };
 
     const handleSocketRideStarted = ({from, to}) => {
       const foundUser = userData.users.find(user => user?.id === from);
+      setShowTimer(false)
       handleRideEvent(
         {from, to, foundUser},
         `${foundUser.first_name} ${foundUser.last_name} started your ride`,
@@ -299,6 +303,7 @@ const Home = () => {
                       <RideOfferDetail
                         key={captainDetail?.user?.id}
                         selectedUser={captainDetail?.user}
+                        showTimer={showTimer}
                       />
                     ))}
                   </ScrollView>
@@ -307,7 +312,7 @@ const Home = () => {
             ) : (
               <View
                 style={{
-                  backgroundColor:white,
+                  backgroundColor:theme == 'dark' ? black : backgroundColor,
                   flex:1,
                   justifyContent: 'center',
                   alignItems: 'center',

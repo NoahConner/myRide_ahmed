@@ -10,6 +10,7 @@ import {
 import {moderateScale} from 'react-native-size-matters';
 import {
   backgroundColor,
+  black,
   gray,
   green,
   purple,
@@ -25,7 +26,7 @@ const Chat = ({route}) => {
   const [message, setMessage] = useState('');
   const [selectedUser, setSelectedUser] = useState(route.params.selectedUser);
   const [messageList, setMessageList] = useState([]);
-  const {user} = useAppContext(AppContext);
+  const {user, theme} = useAppContext(AppContext);
   const isFocused = useIsFocused()
   useEffect(() => {
     console.log(messageList, 'hello new messhadasd');
@@ -59,12 +60,12 @@ const Chat = ({route}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
       />
-      <View style={styles.container}>
+      <View style={[styles.container,{backgroundColor: theme == 'dark' ? black : backgroundColor}]}>
         <ViewHeader
           heading="Chats"
           icon={'phone-alt'}
@@ -75,7 +76,7 @@ const Chat = ({route}) => {
           path="Home"
           phoneNumber="1234567890"
         />
-        <ChatHeader selectedUser={selectedUser} />
+        <ChatHeader selectedUser={selectedUser} backgroundColor={theme == 'dark' ? black : backgroundColor}/>
         <FlatList
           data={messageList}
           renderItem={renderMessage}

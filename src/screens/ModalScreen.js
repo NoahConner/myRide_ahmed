@@ -92,6 +92,7 @@ const ModalScreen = () => {
           value={rating}
           setValue={setRating}
           type="text"
+          color={black}
         />
       </View>
     );
@@ -127,6 +128,7 @@ const ModalScreen = () => {
           type="number"
           style={styles.input}
           placeholderTextColor={gray}
+          color={black}
         />
       </View>
     );

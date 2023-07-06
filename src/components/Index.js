@@ -45,3 +45,4 @@ export { default as RideWait } from './rideOptions/RideWait';
 export { default as RideSearch } from './rideOptions/RideSearch';
 export { default as CompleteRide } from './rideOptions/CompleteRide';
 export { default as TipRider } from './rideOptions/TipRider';
+export { default as Timer } from './rideOptions/Timer';

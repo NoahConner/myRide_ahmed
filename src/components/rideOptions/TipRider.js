@@ -51,6 +51,7 @@ const TipRider = () => {
           type="number"
           style={styles.input}
           placeholderTextColor={gray}
+          color={black}
         />
       </View>
     );

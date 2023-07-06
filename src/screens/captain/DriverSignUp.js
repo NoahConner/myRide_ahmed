@@ -253,29 +253,6 @@ const CapatainSignUp = () => {
           />
         </View>
       </View>
-      <Animated.Image
-        style={[
-          styles.CarProp,
-          {
-            transform: [
-              {
-                translateY: CarAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [-screenWidth + 250, 0],
-                }),
-              },
-              {
-                scale: CarAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 1],
-                }),
-              },
-            ],
-          },
-        ]}
-        resizeMode="contain"
-        source={require('../../../assets/Images/captainSignUpProp.png')}
-      />
       <BottomCircleProp />
       <Modal
         visible={visible}

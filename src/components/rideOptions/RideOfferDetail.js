@@ -1,7 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import {View, Image, StyleSheet, TouchableOpacity, Animated} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from '../Index';
+import {Button, Heading, Icon, Timer} from '../Index';
 import {
   InterRegular,
   gold,
@@ -33,9 +39,8 @@ const renderIcons = () => {
   ));
 };
 
-const RideOfferDetail = ({selectedUser}) => {
-  const {rideDetails} =
-    useAppContext(AppContext);
+const RideOfferDetail = ({selectedUser, showTimer}) => {
+  const {rideDetails} = useAppContext(AppContext);
   const navigation = useNavigation();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -46,123 +51,130 @@ const RideOfferDetail = ({selectedUser}) => {
     }).start();
   }, [fadeAnim]);
   return (
-    <Animated.View style={{ opacity: fadeAnim }}>
-    <LinearGradient
-      style={styles.container}
-      colors={linearGradient}
-      start={{x: 0, y: 1}}
-      end={{x: 0, y: 0}}>
-      <View style={styles.topLine}>
-        <View style={styles.profileContentContainer}>
-          {selectedUser?.image ? (
+    <Animated.View style={{opacity: fadeAnim}}>
+      <LinearGradient
+        style={styles.container}
+        colors={linearGradient}
+        start={{x: 0, y: 1}}
+        end={{x: 0, y: 0}}>
+        <View style={styles.topLine}>
+          <View style={styles.profileContentContainer}>
+            {selectedUser?.image ? (
+              <Image
+                source={{uri: selectedUser?.image}}
+                resizeMode="contain"
+                style={styles.profileImage}
+              />
+            ) : null}
+            <View style={styles.profileContent}>
+              <Heading
+                text={selectedUser?.first_name + ' ' + selectedUser?.last_name}
+                fontSize={moderateScale(14)}
+                fontFamily={InterRegular}
+                color={white}
+                textAlign="left"
+              />
+              <View style={styles.ratingContainer}>{renderIcons()}</View>
+              <Heading
+                text="Car Reg No."
+                fontSize={moderateScale(8)}
+                fontFamily={InterRegular}
+                color={white}
+                textAlign="left"
+              />
+              <Heading
+                text={rideDetails?.car?.number}
+                fontSize={moderateScale(10)}
+                fontFamily={InterRegular}
+                color={white}
+                textAlign="left"
+              />
+            </View>
+          </View>
+          <View style={styles.carContainer}>
             <Image
-              source={{uri: selectedUser?.image}}
-              resizeMode="contain"
-              style={styles.profileImage}
+              style={styles.carImage}
+              source={require('../../../assets/Images/ride1.png')}
             />
-          ) : null}
-          <View style={styles.profileContent}>
             <Heading
-              text={selectedUser?.first_name + " " + selectedUser?.last_name}
-              fontSize={moderateScale(14)}
+              text="Basic"
+              fontSize={moderateScale(12)}
               fontFamily={InterRegular}
               color={white}
-              textAlign="left"
+              textAlign="center"
             />
-            <View style={styles.ratingContainer}>{renderIcons()}</View>
             <Heading
-              text="Car Reg No."
+              text="Estimated Fare"
+              fontSize={moderateScale(7)}
+              fontFamily={InterRegular}
+              color={white}
+              textAlign="center"
+            />
+            <Heading
+              text={formatUSDPrice(rideDetails?.car?.fare)}
+              fontSize={moderateScale(20)}
+              fontFamily={InterRegular}
+              color={white}
+              textAlign="center"
+            />
+          </View>
+        </View>
+        <View style={styles.bottomLine}>
+          <View style={styles.captainContact}>
+            <Heading
+              text="Contact Cpt"
               fontSize={moderateScale(8)}
               fontFamily={InterRegular}
               color={white}
-              textAlign="left"
+              textAlign="center"
             />
-            <Heading
-              text={rideDetails?.car?.number}
-              fontSize={moderateScale(10)}
-              fontFamily={InterRegular}
+            <View style={styles.contactIcons}>
+              <TouchableOpacity
+                onPress={() => {
+                  handleCallButtonPress(user?.phone);
+                }}>
+                <Icon
+                  style={[styles.iconStyle, styles.captainIcon]}
+                  name="phone-alt"
+                  size={18}
+                  color={white}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Chat', {selectedUser});
+                }}>
+                <Icon
+                  style={[styles.iconStyle, styles.captainIcon]}
+                  solid={true}
+                  name="comment"
+                  size={18}
+                  color={white}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{marginTop: moderateScale(10)}}>
+            {showTimer ? (
+              <Timer />
+            ) : null}
+            <Button
+              style={null}
+              fontSize={moderateScale(14)}
+              backgroundColor={red}
               color={white}
-              textAlign="left"
+              text="Cancel"
+              padding={moderateScale(5)}
+              textAlign="center"
+              borderRadius={moderateScale(100)}
+              width={moderateScale(screenWidth / 3)}
+              onPress={() => {
+                setRideStages('rateDriver');
+              }}
             />
           </View>
         </View>
-        <View style={styles.carContainer}>
-          <Image
-            style={styles.carImage}
-            source={require('../../../assets/Images/ride1.png')}
-          />
-          <Heading
-            text="Basic"
-            fontSize={moderateScale(12)}
-            fontFamily={InterRegular}
-            color={white}
-            textAlign="center"
-          />
-          <Heading
-            text="Estimated Fare"
-            fontSize={moderateScale(7)}
-            fontFamily={InterRegular}
-            color={white}
-            textAlign="center"
-          />
-          <Heading
-            text={formatUSDPrice(rideDetails?.car?.fare)}
-            fontSize={moderateScale(20)}
-            fontFamily={InterRegular}
-            color={white}
-            textAlign="center"
-          />
-        </View>
-      </View>
-      <View style={styles.bottomLine}>
-        <View style={styles.captainContact}>
-          <Heading
-            text="Contact Cpt"
-            fontSize={moderateScale(8)}
-            fontFamily={InterRegular}
-            color={white}
-            textAlign="center"
-          />
-          <View style={styles.contactIcons}>
-            <TouchableOpacity
-              onPress={() => {
-                handleCallButtonPress(user?.phone);
-              }}>
-              <Icon
-                style={[styles.iconStyle, styles.captainIcon]}
-                name="phone-alt"
-                size={18}
-                color={white}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Chat', {selectedUser});
-              }}>
-              <Icon
-                style={[styles.iconStyle, styles.captainIcon]}
-                solid={true}
-                name="comment"
-                size={18}
-                color={white}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <Button
-          style={null}
-          fontSize={moderateScale(14)}
-          backgroundColor={red}
-          color={white}
-          text="Cancel"
-          padding={moderateScale(5)}
-          textAlign="center"
-          borderRadius={moderateScale(100)}
-          width={moderateScale(screenWidth / 3)}
-          onPress={()=>{setRideStages('rateDriver');}}
-        />
-      </View>
-    </LinearGradient>
+      </LinearGradient>
     </Animated.View>
   );
 };

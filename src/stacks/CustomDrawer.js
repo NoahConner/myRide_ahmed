@@ -1,30 +1,47 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, Switch} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
 import {
   KumbhSansBold,
   InterRegular,
   purple,
   screenHeight,
   white,
+  darkGray,
+  lightGray,
+  gold,
 } from '../constants/Index';
 import {Heading, Icon, Button} from '../components/Index';
 import {AppContext} from '../context/AppContext';
 
 const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);
-  // const navigation = useNavigation();
-  const {role, setToken, setRole, setRideStages, setRideDetails, user} =
-    useContext(AppContext);
+  const {
+    role,
+    setToken,
+    setRole,
+    setRideStages,
+    setRideDetails,
+    user,
+    theme,
+    setTheme,
+  } = useContext(AppContext);
   const handleImageLoad = () => {
     setIsLoading(false);
+  };
+  const toggleSwitch = () => {
+    if (theme == 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
   };
   const PassengerButtons = [
     {text: 'Profile', screen: 'Profile'},
     {text: 'Ride History', screen: 'RideHistory'},
     {text: 'Saved Addresses', screen: 'SavedAddresses'},
+    {text: 'Ratings', screen: 'Ratings'},
     {text: 'How to Use?', screen: 'HowToUse'},
     {text: 'Contact Us', screen: 'Help'},
   ];
@@ -41,6 +58,18 @@ const CustomDrawerContent = ({navigation, ...props}) => {
     setRole('');
     setRideStages('initial');
     setRideDetails('');
+  };
+  const renderIcons = () => {
+    return Array.from({length: 5}).map((_, index) => (
+      <Icon
+        style={styles.iconStyle}
+        key={index}
+        name="star"
+        solid={true}
+        size={6}
+        color={gold}
+      />
+    ));
   };
   return (
     <DrawerContentScrollView
@@ -72,6 +101,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
             color={white}
             textAlign="left"
           />
+          <View style={styles.ratingContainer}>{renderIcons()}</View>
         </View>
       </View>
       {role == 'Passenger'
@@ -108,6 +138,21 @@ const CustomDrawerContent = ({navigation, ...props}) => {
             />
           ))}
       <View style={styles.bottomButtons}>
+        <View style={styles.iconButtonContainer}>
+          <Icon
+            style={null}
+            name={theme === 'dark' ? 'moon' : 'sun'}
+            size={18}
+            color={theme === 'dark' ? white : gold}
+          />
+          <Switch
+            trackColor={{false: darkGray, true: lightGray}}
+            thumbColor={theme === 'dark' ? darkGray : lightGray}
+            onValueChange={toggleSwitch}
+            value={theme === 'dark'}
+            style={styles.switch}
+          />
+        </View>
         <View style={styles.iconButtonContainer}>
           <Icon style={null} name={'window-close'} size={16} color={white} />
           <Button
@@ -181,13 +226,23 @@ const styles = StyleSheet.create({
   },
   bottomButtons: {
     position: 'absolute',
-    top: moderateScale(screenHeight - 150),
+    bottom: moderateScale(10),
     left: moderateScale(20),
   },
   iconButtonContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  switch: {
+    transform: [{ scaleX: 0.95 }, { scaleY: 0.95 }]
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    marginVertical: moderateScale(5),
+  },
+  iconStyle: {
+    marginHorizontal: moderateScale(1),
   },
 });
 

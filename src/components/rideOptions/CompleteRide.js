@@ -44,6 +44,7 @@ const CompleteRide = () => {
           value={rating}
           setValue={setRating}
           type="text"
+          color={black}
         />
       </View>
     );

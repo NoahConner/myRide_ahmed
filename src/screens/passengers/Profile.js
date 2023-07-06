@@ -2,7 +2,7 @@ import {
   View,
   StyleSheet,
   Image,
-  FlatList,
+  Switch,
   ScrollView,
   Animated,
   TouchableOpacity,
@@ -19,6 +19,8 @@ import {
   screenWidth,
   black,
   white,
+  lightGray,
+  KumbhSansRegular,
 } from '../../constants/Index';
 import {
   Button,
@@ -35,6 +37,7 @@ const Profile = ({}) => {
   const navigation = useNavigation();
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   const {role, user, theme} = useContext(AppContext);
+  
   const passengernavigationViewButtons = [
     {
       name: 'Personal Information',
@@ -75,6 +78,10 @@ const Profile = ({}) => {
       path: 'PrivacyPolicy',
     },
     {
+      name: 'Accounts',
+      path: 'Accounts',
+    },
+    {
       name: 'Terms & Conditions',
       path: 'TermsAndConditions',
     },
@@ -113,21 +120,26 @@ const Profile = ({}) => {
             navigate(naviagteButton.path);
           }}
         />
-        <TouchableOpacity onPress={() => {
+        <TouchableOpacity
+          onPress={() => {
             navigate(naviagteButton.path);
           }}>
-        <Icon
-          name={'chevron-right'}
-          style={styles.navigationIcon}
-          size={15}
-          color={gray}
-        />
+          <Icon
+            name={'chevron-right'}
+            style={styles.navigationIcon}
+            size={15}
+            color={gray}
+          />
         </TouchableOpacity>
       </View>
     );
   };
   return (
-    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: theme == 'dark' ? black : backgroundColor,
+      }}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -141,7 +153,11 @@ const Profile = ({}) => {
         navigation={navigation}
         path={'Home'}
       />
-      <ScrollView contentContainerStyle={[styles.container, {backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
+      <ScrollView
+        contentContainerStyle={[
+          styles.container,
+          {backgroundColor: theme == 'dark' ? black : backgroundColor},
+        ]}>
         <View style={styles.imageContainer}>
           {user?.image ? (
             <Image

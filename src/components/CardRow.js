@@ -9,8 +9,6 @@ import {
   gray,
   lighterGray,
   red,
-  screenWidth,
-  white,
 } from '../constants/Index';
 import { moderateScale } from 'react-native-size-matters';
 
@@ -62,8 +60,9 @@ const CardRow = ({key, card ,index}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: moderateScale(screenWidth - 40),
-    marginHorizontal: moderateScale(20),
+    width: '95%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

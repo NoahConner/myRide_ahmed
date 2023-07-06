@@ -98,7 +98,7 @@ const Input = ({
             onRequestClose={() => setShowModal(false)}>
             <View style={styles.modalContainer}>
               <View style={styles.modalContent}>
-                <View style={styles.rowContainer}>
+                <View>
                   <DatePicker
                     date={selectedDate}
                     onDateChange={handleDateChange}
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 8,
+    padding: 8
   },
   eyeButton: {
     padding: 8,

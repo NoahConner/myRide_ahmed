@@ -6,7 +6,6 @@ import {
   KumbhSansExtraBold,
   black,
   lightestPurple,
-  screenWidth,
 } from '../../constants/Index';
 import {AppContext} from '../../context/AppContext';
 
@@ -68,9 +67,9 @@ const styles = StyleSheet.create({
     backgroundColor: lightestPurple,
     borderRadius: moderateScale(10),
     marginVertical: moderateScale(2),
-    width: screenWidth - 40,
-    marginLeft: moderateScale(20),
-    marginRight: moderateScale(20),
+    width: '95%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   row: {
     flex: 1,

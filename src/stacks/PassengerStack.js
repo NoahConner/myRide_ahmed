@@ -12,6 +12,7 @@ import {
   PersonalInformation,
   PrivacyPolicy,
   Profile,
+  Ratings,
   RideHistory,
   SavedAddresses,
   TermsAndConditions,
@@ -29,6 +30,7 @@ const PassengerStack = () => {
       <Stack.Screen name="RideHistory" component={RideHistory} />
       <Stack.Screen name="SavedAddresses" component={SavedAddresses} />
       <Stack.Screen name="Contactus" component={Contactus} />
+      <Stack.Screen name="Ratings" component={Ratings} />
       <Stack.Screen
         name="PersonalInformation"
         component={PersonalInformation}

@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import Heading from './Heading'
 import { moderateScale } from 'react-native-size-matters'
-import { KumbhSansExtraBold, InterRegular, black, gray, purple, screenWidth, white } from '../constants/Index'
+import { KumbhSansExtraBold, InterRegular, gray, purple, white } from '../constants/Index'
 
 const AccountRow = () => {
   return (
@@ -51,7 +51,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingVertical:moderateScale(10),
         marginVertical:moderateScale(5),
-        width:moderateScale(screenWidth - 20),
+        width:'95%',
+        marginLeft:'auto',
+        marginRight:'auto',
         justifyContent:'space-between',
         backgroundColor:white,
         paddingHorizontal:moderateScale(20),

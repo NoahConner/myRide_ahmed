@@ -90,7 +90,7 @@ const ArrivedRideRB = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Chat');
+              navigation.navigate('Chat', {selectedUser});
             }}>
             <Icon
               solid={true}

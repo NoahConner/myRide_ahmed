@@ -1,11 +1,10 @@
 import {
   View,
   StyleSheet,
-  Image,
   Animated,
   FlatList,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {
   Button,
   CardRow,
@@ -27,12 +26,14 @@ import {
   screenHeight,
   screenWidth,
   white,
+  black,
 } from '../../constants/Index';
 import moment from 'moment';
 import {useNavigation} from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 const CardsAndAccounts = ({}) => {
   const navigation = useNavigation()
-
+  const {theme} = useContext(AppContext);
   const [name, setName] = useState('');
   const [cardNo, setCardNo] = useState('');
   const [expiry, setExpiry] = useState('');
@@ -59,13 +60,13 @@ const CardsAndAccounts = ({}) => {
     }).start();
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor: theme == 'dark' ? black : backgroundColor}]}>
           <ViewHeader
             heading="Cards & Accounts"
             icon={'home'}
-            headingColor={darkGray}
+            headingColor={theme == 'dark' ? white : darkGray}
             fontSize={20}
             style={styles.header}
             navigation={navigation}
@@ -83,7 +84,7 @@ const CardsAndAccounts = ({}) => {
             text="Fill this form to make payment easily"
             fontSize={moderateScale(12)}
             fontFamily={InterRegular}
-            color={gray}
+            color={theme == 'dark' ? white : gray}
             textAlign="left"
             style={styles.heading}
           />
@@ -95,6 +96,7 @@ const CardsAndAccounts = ({}) => {
               type="text"
               style={styles.input}
               placeholderTextColor={gray}
+              color={black}
             />
             <Input
               value={cardNo}
@@ -103,6 +105,7 @@ const CardsAndAccounts = ({}) => {
               type="text"
               style={styles.input}
               placeholderTextColor={gray}
+              color={black}
             />
             <View
               style={{
@@ -117,6 +120,7 @@ const CardsAndAccounts = ({}) => {
                 type="date"
                 style={styles.inputHalf}
                 placeholderTextColor={gray}
+                color={black}
               />
               <Input
                 value={CCV}
@@ -125,6 +129,7 @@ const CardsAndAccounts = ({}) => {
                 type="text"
                 style={styles.inputHalf}
                 placeholderTextColor={gray}
+                color={black}
               />
             </View>
             <Button
@@ -144,6 +149,7 @@ const CardsAndAccounts = ({}) => {
             />
           </View>
           <FlatList
+          showsVerticalScrollIndicator={false}
             style={styles.cardView}
             data={cards}
             keyExtractor={item => item.id}
@@ -152,17 +158,6 @@ const CardsAndAccounts = ({}) => {
             )}
             horizontal={false}
           />
-        <Animated.View
-          style={{
-            transform: [{translateY: illustratorProp}],
-            alignItems: 'center',
-          }}>
-          <Image
-            style={styles.prop}
-            resizeMode="contain"
-            source={require('../../../assets/Images/cardsAndAccountsProp.png')}
-          />
-        </Animated.View>
       </View>
     </View>
   );
@@ -170,10 +165,7 @@ const CardsAndAccounts = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // position: 'relative',
-    // alignItems: 'center',
-    backgroundColor: backgroundColor,
+    flex: 1
   },
   header: {
     marginTop: moderateScale(20),

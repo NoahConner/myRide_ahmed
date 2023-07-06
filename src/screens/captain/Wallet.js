@@ -135,14 +135,10 @@ const Wallet = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: backgroundColor,
+    flex: 1
   },
   scrollContent: {
-    // flexGrow: 1,
-    alignItems: 'center',
-    // paddingVertical: moderateScale(20),
+    alignItems: 'center'
   },
   buttonContainer: {
     marginVertical: moderateScale(20),

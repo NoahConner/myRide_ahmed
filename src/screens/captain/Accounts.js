@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Image, ScrollView} from 'react-native';
 import {
-    AccountRow,
+  AccountRow,
   Button,
   DrawerHeader,
   Heading,
@@ -21,18 +21,22 @@ import {
   screenHeight,
 } from '../../constants/Index';
 import {useNavigation} from '@react-navigation/native';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
 
 const Accounts = ({}) => {
   const navigation = useNavigation();
   const {theme} = useContext(AppContext);
   const renderAccountsRow = () => {
     return Array.from({length: 5}).map((_, index) => (
-        <AccountRow key={index} />
+      <AccountRow key={index} />
     ));
   };
   return (
-    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme == 'dark' ? black : backgroundColor},
+      ]}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -40,15 +44,15 @@ const Accounts = ({}) => {
       <ViewHeader
         heading="Accounts"
         icon={'home'}
-        headingColor={darkGray}
+        headingColor={theme == 'dark' ? white : darkGray}
         fontSize={20}
         style={styles.header}
         navigation={navigation}
         path={'Home'}
       />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-      {renderAccountsRow()}
-      <Button
+        {renderAccountsRow()}
+        <Button
           fontSize={moderateScale(14)}
           backgroundColor={green}
           color={white}
@@ -58,7 +62,7 @@ const Accounts = ({}) => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth / 2)}
-          onPress={()=>navigation.navigate('AccountInformation')}
+          onPress={() => navigation.navigate('AccountInformation')}
         />
       </ScrollView>
       <TopLeftCircleProp style={{top: moderateScale(screenHeight - 150)}} />
@@ -68,8 +72,7 @@ const Accounts = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center'
+    flex: 1
   },
   scrollContent: {
     alignItems: 'center',

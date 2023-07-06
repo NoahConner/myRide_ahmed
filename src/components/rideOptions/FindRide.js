@@ -58,6 +58,7 @@ const FindRide = () => {
           type="text"
           style={styles.input}
           placeholderTextColor={gray}
+          color={black}
         />
         <TouchableOpacity
           onPress={() => {
@@ -80,6 +81,7 @@ const FindRide = () => {
           type="text"
           style={styles.input}
           placeholderTextColor={gray}
+          color={black}
         />
         <TouchableOpacity
           onPress={() => {
@@ -100,6 +102,7 @@ const FindRide = () => {
         type="number"
         style={styles.input}
         placeholderTextColor={gray}
+        color={black}
       />
     </View>
   );

@@ -32,6 +32,7 @@ import {AppContext, useAppContext} from '../../context/AppContext';
 import {ScrollView} from 'react-native-gesture-handler';
 import ImagePickerOptions from '../../components/ImagePickerOptions';
 import {useNavigation} from '@react-navigation/native';
+import MaskInput from 'react-native-mask-input';
 
 const PersonalInformation = ({}) => {
   const navigation = useNavigation();
@@ -44,6 +45,7 @@ const PersonalInformation = ({}) => {
   const [disabled, setDisabled] = useState(true);
   const [sheet, setSheet] = useState(false);
   const {user, theme, role} = useAppContext(AppContext);
+  const [isActive, setIsActive] = useState(false);
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   useEffect(() => {
     startAnimations();
@@ -162,14 +164,31 @@ const PersonalInformation = ({}) => {
               placeholderTextColor={theme == 'dark' ? white : black}
               color={theme == 'dark' ? white : black}
             />
-            <Input
+            <MaskInput
+              style={[styles.maskInput,{borderColor: isActive ? purple : gray, color: theme == 'dark'? white : black}]}
               value={contact}
-              setValue={setContact}
-              placeholder="Contact No."
-              type="text"
-              style={styles.input}
-              placeholderTextColor={theme == 'dark' ? white : black}
-              color={theme == 'dark' ? white : black}
+              onFocus={() => setIsActive(true)}
+              onBlur={() => setIsActive(false)}
+              onChangeText={(masked, unmasked) => {
+                setContact(masked);
+              }}
+              mask={[
+                '(',
+                /\d/,
+                /\d/,
+                ')',
+                ' ',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+              ]}
             />
             <Input
               value={address}
@@ -259,6 +278,13 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(10),
     width: moderateScale(screenWidth - 40),
     borderRadius: moderateScale(5),
+  },
+  maskInput: {
+    borderBottomWidth: 1,
+    width: '100%',
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+    paddingLeft: moderateScale(15),
   },
   saveButton: {
     marginTop: moderateScale(20),

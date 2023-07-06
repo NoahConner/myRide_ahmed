@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {
-  gray, lightGray,
+  gray, lightGray, white
 } from '../constants/Index';
 import { AppContext, useAppContext } from '../context/AppContext';
 const Button = ({
@@ -24,7 +24,6 @@ const Button = ({
   disabled,
   loading,
 }) => {
-  const { white } = useAppContext(AppContext);
   return (
     <TouchableOpacity
       disabled={disabled}
