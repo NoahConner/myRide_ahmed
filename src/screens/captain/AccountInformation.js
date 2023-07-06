@@ -1,12 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Image, ScrollView} from 'react-native';
 import {
-    AccountRow,
   Button,
   CustomPicker,
   DrawerHeader,
-  Heading,
-  Icon,
   Input,
   TopLeftCircleProp,
   ViewHeader,
@@ -16,34 +13,31 @@ import {
   backgroundColor,
   black,
   darkGray,
-  KumbhSansExtraBold,
   screenWidth,
-  InterRegular,
   gray,
-  lighterGray,
-  purple,
   white,
-  gold,
   green,
-  lightGray,
   screenHeight,
 } from '../../constants/Index';
 import {useNavigation} from '@react-navigation/native';
-import {formatUSDPrice} from '../../constants/HelperFunctions';
-import moment from 'moment';
-
+import {AppContext} from '../../context/AppContext';
 const AccountInformation = ({}) => {
-    const banks =[
-        {label: 'ABC Bank', value: 'ABC Bank'},
-        {label: 'DEF Bank', value: 'DEF Bank'},
-        {label: 'GHI Bank', value: 'GHI Bank'},
-      ];
+  const banks = [
+    {label: 'ABC Bank', value: 'ABC Bank'},
+    {label: 'DEF Bank', value: 'DEF Bank'},
+    {label: 'GHI Bank', value: 'GHI Bank'},
+  ];
   const navigation = useNavigation();
-  const [selectedBank, setSelectedBank] = useState('')
-  const [selectedBranchCode, setSelectedBranchCode] = useState('')
-  const [accountNumber, setAccountNumber] = useState('')
+  const [selectedBank, setSelectedBank] = useState('');
+  const [selectedBranchCode, setSelectedBranchCode] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
+  const {theme} = useContext(AppContext);
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme == 'dark' ? black : white},
+      ]}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -51,39 +45,41 @@ const AccountInformation = ({}) => {
       <ViewHeader
         heading="Account Information"
         icon={'home'}
-        headingColor={darkGray}
+        headingColor={theme == 'dark' ? white : darkGray}
         fontSize={20}
         style={styles.header}
         navigation={navigation}
         path={'Home'}
       />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-      <View style={styles.SelectBorderContainer}>
-            <CustomPicker
-              selectedService={selectedBank}
-              setSelectedService={setSelectedBank}
-              style={styles.select}
-              options={banks}
-            />
-            <View style={styles.SelectBorder}></View>
-          </View>
-          <Input
-            placeholderTextColor={black}
-            style={styles.input}
-            placeholder="Branch Code"
-            value={selectedBranchCode}
-            setValue={setSelectedBranchCode}
-            type="text"
+        <View style={styles.SelectBorderContainer}>
+          <CustomPicker
+            selectedService={selectedBank}
+            setSelectedService={setSelectedBank}
+            style={styles.select}
+            options={banks}
           />
-          <Input
-            placeholderTextColor={black}
-            style={styles.input}
-            placeholder="Account No/ IBAN"
-            value={accountNumber}
-            setValue={setAccountNumber}
-            type="text"
-          />
-      <Button
+          <View style={styles.SelectBorder}></View>
+        </View>
+        <Input
+          placeholderTextColor={theme == 'dark' ? white : black}
+          color={theme == 'dark' ? white : black}
+          style={styles.input}
+          placeholder="Branch Code"
+          value={selectedBranchCode}
+          setValue={setSelectedBranchCode}
+          type="text"
+        />
+        <Input
+          placeholderTextColor={theme == 'dark' ? white : black}
+          color={theme == 'dark' ? white : black}
+          style={styles.input}
+          placeholder="Account No/ IBAN"
+          value={accountNumber}
+          setValue={setAccountNumber}
+          type="text"
+        />
+        <Button
           fontSize={moderateScale(14)}
           backgroundColor={green}
           color={white}
@@ -93,7 +89,7 @@ const AccountInformation = ({}) => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth / 2)}
-          onPress={()=>navigation.navigate('AccountInformation')}
+          onPress={() => navigation.navigate('AccountInformation')}
         />
       </ScrollView>
       <TopLeftCircleProp style={{top: moderateScale(screenHeight - 150)}} />
@@ -120,7 +116,6 @@ const styles = StyleSheet.create({
   select: {
     width: moderateScale(screenWidth - 30),
     marginVertical: moderateScale(10),
-    color: black,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },

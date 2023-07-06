@@ -16,6 +16,7 @@ import {
   screenWidth,
   black,
   emailRegex,
+  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
@@ -33,7 +34,7 @@ const Login = () => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser, setRole} = useContext(AppContext);
+  const {setToken, setUser, setRole, theme, setTheme} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
@@ -72,7 +73,7 @@ const Login = () => {
     }).start();
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -80,25 +81,27 @@ const Login = () => {
           text="Sign in to continue"
           fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
-          color={primaryHeadingColor}
+          color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
             setValue={setEmail}
             type="text"
+            color={theme == 'dark' ? white : black}
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Password"
             value={password}
             setValue={setPassword}
             type="password"
+            color={theme == 'dark' ? white : black}
           />
         </View>
         <Button

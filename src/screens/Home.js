@@ -74,7 +74,8 @@ const Home = () => {
     user,
     selectedUser,
     setRideDetails,
-    setSelectedUser
+    setSelectedUser,
+    theme
   } = useAppContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -374,7 +375,6 @@ const Home = () => {
     setRideStatus('rate');
   };
   const renderDriverHome = () => {
-    console.log(rideStatus,"ride status");
     switch (rideStatus) {
       case 'initial':
         return (
@@ -402,7 +402,7 @@ const Home = () => {
             : (
               <View
                 style={{
-                  backgroundColor:white,
+                  backgroundColor:theme == 'dark' ? black : backgroundColor,
                   flex:1,
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -462,7 +462,7 @@ const Home = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : white}]}>
       <DrawerHeader navigate={navigation} screen="home" />
       {role === 'Passenger' ? renderPassengerHome() : renderDriverHome()}
       {role !== 'Passenger' ? (
@@ -480,7 +480,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: backgroundColor,
   },
   buttonContainer: {
     position: 'absolute',
@@ -495,7 +494,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerCard: {
-    // justifyContent:'center'
   },
   cardContainer: {
     position: 'absolute',

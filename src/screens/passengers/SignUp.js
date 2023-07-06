@@ -14,6 +14,7 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
+  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
@@ -28,7 +29,7 @@ const SignUp = () => {
   const [confirmpassword, setConfirmPassword] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser} = useContext(AppContext);
+  const {setToken, setUser, theme} = useContext(AppContext);
   useEffect(() => {
     startAnimations();
   }, []);
@@ -52,7 +53,7 @@ const SignUp = () => {
     setToken(true)
   }
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
+    <KeyboardAvoidingView style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]} behavior="height" enabled>
       <Animated.Image
         style={[
           styles.CarProp,
@@ -82,12 +83,13 @@ const SignUp = () => {
           text="Sign Up"
           fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
-          color={primaryHeadingColor}
+          color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="First Name"
             value={firstName}
@@ -95,7 +97,8 @@ const SignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Last Name"
             value={lastName}
@@ -103,7 +106,8 @@ const SignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
@@ -111,7 +115,8 @@ const SignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Contact"
             value={contact}
@@ -119,7 +124,8 @@ const SignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Password"
             value={password}
@@ -127,7 +133,8 @@ const SignUp = () => {
             type="password"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Confirm Password"
             value={confirmpassword}

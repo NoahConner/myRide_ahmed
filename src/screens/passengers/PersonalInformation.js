@@ -19,6 +19,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   backgroundColor,
+  black,
   darkGray,
   emailRegex,
   gray,
@@ -33,8 +34,7 @@ import ImagePickerOptions from '../../components/ImagePickerOptions';
 import {useNavigation} from '@react-navigation/native';
 
 const PersonalInformation = ({}) => {
-  const navigation = useNavigation()
-
+  const navigation = useNavigation();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -43,7 +43,7 @@ const PersonalInformation = ({}) => {
   const [address, setAddress] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [sheet, setSheet] = useState(false);
-  const {user, setUser, role} = useAppContext(AppContext);
+  const {user, theme, role} = useAppContext(AppContext);
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   useEffect(() => {
     startAnimations();
@@ -56,7 +56,8 @@ const PersonalInformation = ({}) => {
       !emailRegex.test(email) ||
       email === '' ||
       contact === '' ||
-      address === '' || imageSource === ''
+      address === '' ||
+      imageSource === ''
     ) {
       setDisabled(true);
     } else {
@@ -69,7 +70,7 @@ const PersonalInformation = ({}) => {
     setLastName(user?.last_name);
     setContact(user?.phone);
     setAddress(user?.address);
-    setImageSource(user?.image)
+    setImageSource(user?.image);
   }, []);
   const startAnimations = () => {
     Animated.timing(illustratorProp, {
@@ -79,18 +80,25 @@ const PersonalInformation = ({}) => {
     }).start();
   };
   return (
-    <View style={{flex: 1}}>
-      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
-          <ViewHeader
-            heading="Personal Information"
-            icon={'home'}
-            headingColor={darkGray}
-            fontSize={20}
-            style={styles.header}
-            navigation={navigation}
-            path={'Home'}
-          />
-      <ScrollView contentContainerStyle={styles.container}>
+    <View style={{flex: 1, backgroundColor: theme == 'dark' ? black : white}}>
+      <DrawerHeader
+        navigate={navigation}
+        style={{paddingBottom: moderateScale(10)}}
+      />
+      <ViewHeader
+        heading="Personal Information"
+        icon={'home'}
+        headingColor={theme == 'dark' ? white : darkGray}
+        fontSize={20}
+        style={styles.header}
+        navigation={navigation}
+        path={'Home'}
+      />
+      <ScrollView
+        contentContainerStyle={[
+          styles.container,
+          {backgroundColor: theme == 'dark' ? black : white},
+        ]}>
         <View>
           <Heading
             text="Edit Information"
@@ -132,7 +140,8 @@ const PersonalInformation = ({}) => {
               placeholder="First Name"
               type="text"
               style={styles.input}
-              placeholderTextColor={gray}
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
             />
             <Input
               value={lastName}
@@ -140,7 +149,8 @@ const PersonalInformation = ({}) => {
               placeholder="Last Name"
               type="text"
               style={styles.input}
-              placeholderTextColor={gray}
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
             />
             <Input
               value={email}
@@ -149,7 +159,8 @@ const PersonalInformation = ({}) => {
               placeholder="Email Address"
               type="text"
               style={styles.input}
-              placeholderTextColor={gray}
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
             />
             <Input
               value={contact}
@@ -157,7 +168,8 @@ const PersonalInformation = ({}) => {
               placeholder="Contact No."
               type="text"
               style={styles.input}
-              placeholderTextColor={gray}
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
             />
             <Input
               value={address}
@@ -165,7 +177,8 @@ const PersonalInformation = ({}) => {
               placeholder="Address"
               type="text"
               style={styles.input}
-              placeholderTextColor={gray}
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
             />
             <Button
               disabled={disabled}
@@ -184,20 +197,12 @@ const PersonalInformation = ({}) => {
             />
           </View>
         </View>
-        <Animated.View style={{transform: [{translateY: illustratorProp}]}}>
-        <Image
-          resizeMode="contain"
-          style={styles.prop}
-          source={
-            role === 'Passenger'
-              ? require('../../../assets/Images/personalInformation.png')
-              : require('../../../assets/Images/driverPersonalInfoProp.png')
-          }
-        />
-        </Animated.View>
       </ScrollView>
       <RbSheet sheet={sheet} setSheet={setSheet}>
-        <ImagePickerOptions setImageSource={setImageSource} setSheet={setSheet}/>
+        <ImagePickerOptions
+          setImageSource={setImageSource}
+          setSheet={setSheet}
+        />
       </RbSheet>
     </View>
   );
@@ -250,7 +255,6 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(100),
   },
   input: {
-    backgroundColor: lightGray,
     paddingHorizontal: moderateScale(10),
     marginVertical: moderateScale(10),
     width: moderateScale(screenWidth - 40),
@@ -261,7 +265,7 @@ const styles = StyleSheet.create({
   },
   prop: {
     marginVertical: moderateScale(30),
-    width:moderateScale(200)
+    width: moderateScale(200),
   },
 });
 

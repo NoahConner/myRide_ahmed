@@ -2,7 +2,7 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import React from 'react';
+import React,{useContext} from 'react';
 import {
   DrawerHeader,
   Heading,
@@ -18,20 +18,22 @@ import {
   dummyText,
   purple,
   screenWidth,
+  white,
 } from '../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/AppContext';
 
 const PrivacyPolicy = ({}) => {
   const navigation = useNavigation()
-
+  const {theme} = useContext(AppContext);
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <View>
         <ViewHeader
           heading="Privacy Policy"
           icon={'home'}
-          headingColor={darkGray}
+          headingColor={theme == 'dark' ? white : darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
@@ -41,7 +43,7 @@ const PrivacyPolicy = ({}) => {
           text={dummyText}
           fontSize={moderateScale(13)}
           fontFamily={KumbhSansExtraMedium}
-          color={black}
+          color={theme == 'dark' ? white : black}
           textAlign="center"
           style={styles.heading}
         />

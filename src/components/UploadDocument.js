@@ -1,5 +1,5 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import Button from './Button';
 import Icon from './Icon';
 import {moderateScale} from 'react-native-size-matters';
@@ -11,6 +11,7 @@ import {
   screenWidth,
   white,
 } from '../constants/Index';
+import { AppContext } from '../context/AppContext';
 
 const UploadDocument = ({
   headingText,
@@ -19,6 +20,7 @@ const UploadDocument = ({
   onPress,
   document,
 }) => {
+  const {theme} = useContext(AppContext);
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -27,7 +29,7 @@ const UploadDocument = ({
           name="file"
           solid={true}
           size={14}
-          color={black}
+          color={theme == 'dark' ? white : black}
         />
         <Heading
           text={headingText}

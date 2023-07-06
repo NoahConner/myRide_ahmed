@@ -2,7 +2,7 @@ import {
     View,
     StyleSheet
   } from 'react-native';
-  import React from 'react';
+  import React, {useContext} from 'react';
   import {
     DrawerHeader,
     Heading,
@@ -13,17 +13,17 @@ import {
     backgroundColor,
     black,
     darkGray,
-    KumbhSansExtraBold,
-    screenWidth,
     InterRegular,
     gray,
+    white,
     lighterGray,
   } from '../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/AppContext';
 
   const Notifications = ({}) => {
   const navigation = useNavigation()
-
+  const {theme} = useContext(AppContext);
     const renderNotifications = () => {
       return Array.from({length: 5}).map((_, index) => (
         <View style={styles.addressRow} key={index}>
@@ -33,19 +33,18 @@ import { useNavigation } from '@react-navigation/native';
             fontFamily={InterRegular}
             color={gray}
             textAlign="left"
-            style={styles.heading}
           />
           </View>
       ));
     };
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
         <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
         <View>
           <ViewHeader
             heading="Notifications"
             icon={'home'}
-            headingColor={darkGray}
+            headingColor={theme == 'dark' ? white : darkGray}
             fontSize={20}
             style={styles.header}
             navigation={navigation}
@@ -69,15 +68,14 @@ import { useNavigation } from '@react-navigation/native';
     },
     addressRow:{
       marginVertical:moderateScale(10),
-      width:moderateScale(screenWidth),
+      marginLeft:'auto',
+      marginRight:'auto',
+      width:'95%',
       backgroundColor:lighterGray,
       paddingVertical:moderateScale(15),
-      paddingHorizontal:moderateScale(25),
+      paddingHorizontal:moderateScale(10),
       borderRadius:moderateScale(10)
-    },
-    heading: {
-      marginTop: moderateScale(5),
-    },
+    }
   });
   
   export default Notifications;

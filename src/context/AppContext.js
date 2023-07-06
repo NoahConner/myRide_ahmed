@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
+import {Appearance} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AppContext = createContext();
@@ -23,6 +24,8 @@ export const AppProvider = ({children}) => {
   const [findRideButton, setFindRideButton] = useState(false);
   const [applyButton, setApplyButton] = useState(false);
   const [paymentButton, setPaymentButton] = useState(false);
+  const colorScheme = Appearance.getColorScheme();
+  const [theme, setTheme] = useState(colorScheme);
   const [startingLatLng, setStartingLatLng] = useState({
     latitude: 42.536457,
     longitude: -70.985786,
@@ -32,8 +35,8 @@ export const AppProvider = ({children}) => {
     longitude: 67.11593491135285,
   });
   const [rideStatus, setRideStatus] = useState('initial');
-
   useEffect(() => {
+    console.log(colorScheme, 'hello corlor scheme');
     async function fetchStoredValues() {
       try {
         const storedToken = await AsyncStorage.getItem('token');
@@ -104,6 +107,8 @@ export const AppProvider = ({children}) => {
       setStartingLatLng,
       endingLatLng,
       setEndingLatLng,
+      theme,
+      setTheme
     }),
     [
       state,
@@ -138,6 +143,8 @@ export const AppProvider = ({children}) => {
       setStartingLatLng,
       endingLatLng,
       setEndingLatLng,
+      theme,
+      setTheme
     ],
   );
 

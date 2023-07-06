@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(10),
     borderRadius: moderateScale(10),
     padding: moderateScale(20),
-    width: moderateScale(screenWidth - 40),
+    width: '95%',
     marginLeft:'auto',
     marginRight:'auto',
   },

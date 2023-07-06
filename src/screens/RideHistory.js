@@ -1,5 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {DrawerHeader, RideHistoryCard, ViewHeader} from '../components/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {
@@ -7,13 +7,16 @@ import {
   darkGray,
   screenWidth,
   lighterGray,
+  black,
+  white,
 } from '../constants/Index';
 import {FlatList} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/AppContext';
 
 const RideHistory = ({}) => {
   const navigation = useNavigation()
-
+  const {theme} = useContext(AppContext);
   const renderCards = () => {
     return Array.from({length: 10}).map((_, index) => ({
       key: index.toString(),
@@ -21,7 +24,7 @@ const RideHistory = ({}) => {
     }));
   };
   return (
-    <View style={{flex: 1, backgroundColor: backgroundColor}}>
+    <View style={{flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -30,7 +33,7 @@ const RideHistory = ({}) => {
         <ViewHeader
           heading="Ride History"
           icon={'home'}
-          headingColor={darkGray}
+          headingColor={theme == 'dark' ? white : darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
@@ -41,6 +44,7 @@ const RideHistory = ({}) => {
           renderItem={({item}) => item.card}
           keyExtractor={item => item.key}
           contentContainerStyle={styles.cardContainer}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </View>

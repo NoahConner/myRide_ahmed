@@ -21,6 +21,7 @@ import {
   black,
   linearGradient,
   InterRegular,
+  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {selectDocument} from '../../constants/HelperFunctions';
@@ -40,7 +41,7 @@ const CapatainSignUp = () => {
   const [selectedService, setSelectedService] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser, setRole} = useAppContext(AppContext);
+  const {setToken, theme, setRole} = useAppContext(AppContext);
   const [driverFile, setDriverFile] = useState('');
   const [registrationFile, setRegistrationFile] = useState('');
   const [insuranceFile, setInsuranceFile] = useState('');
@@ -84,7 +85,7 @@ const CapatainSignUp = () => {
   }, [visible])
   
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -92,12 +93,13 @@ const CapatainSignUp = () => {
           text="Fill this form to complete sign up!"
           fontSize={moderateScale(20)}
           fontFamily={KumbhSansExtraBold}
-          color={primaryHeadingColor}
+          color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="First Name"
             value={firstName}
@@ -105,7 +107,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Last Name"
             value={lastName}
@@ -113,7 +116,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Email"
             value={email}
@@ -121,7 +125,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Contact"
             value={contact}
@@ -129,7 +134,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="City"
             value={city}
@@ -137,7 +143,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="State"
             value={state}
@@ -145,7 +152,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Car Maker"
             value={carMaker}
@@ -153,7 +161,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Model"
             value={model}
@@ -161,7 +170,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Car Year"
             value={carYear}
@@ -169,7 +179,8 @@ const CapatainSignUp = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Car Color"
             value={carColor}
@@ -180,13 +191,14 @@ const CapatainSignUp = () => {
             <CustomPicker
               selectedService={selectedService}
               setSelectedService={setSelectedService}
-              style={styles.select}
+              style={[styles.select,{color:theme == 'dark' ? white : black}]}
               options={services}
             />
             <View style={styles.SelectBorder}></View>
           </View>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={styles.input}
             placeholder="Car Capacity"
             value={carCapacity}
@@ -340,7 +352,6 @@ const styles = StyleSheet.create({
   select: {
     width: moderateScale(screenWidth / 2 - 60),
     marginVertical: moderateScale(10),
-    color: black,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },

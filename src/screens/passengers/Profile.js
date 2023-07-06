@@ -17,6 +17,8 @@ import {
   green,
   purple,
   screenWidth,
+  black,
+  white,
 } from '../../constants/Index';
 import {
   Button,
@@ -32,7 +34,7 @@ import {AppContext} from '../../context/AppContext';
 const Profile = ({}) => {
   const navigation = useNavigation();
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
-  const {role, user} = useContext(AppContext);
+  const {role, user, theme} = useContext(AppContext);
   const passengernavigationViewButtons = [
     {
       name: 'Personal Information',
@@ -101,7 +103,7 @@ const Profile = ({}) => {
           style={styles.navigationButton}
           fontSize={moderateScale(14)}
           backgroundColor={null}
-          color={darkGray}
+          color={theme == 'dark' ? white : darkGray}
           text={naviagteButton.name}
           padding={moderateScale(5)}
           textAlign="left"
@@ -125,7 +127,7 @@ const Profile = ({}) => {
     );
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -139,7 +141,7 @@ const Profile = ({}) => {
         navigation={navigation}
         path={'Home'}
       />
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, {backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
         <View style={styles.imageContainer}>
           {user?.image ? (
             <Image
@@ -160,7 +162,7 @@ const Profile = ({}) => {
             text={user?.phone}
             fontSize={moderateScale(14)}
             fontFamily={InterRegular}
-            color={darkGray}
+            color={theme == 'dark' ? white : darkGray}
             textAlign="center"
             style={styles.marginTop}
           />
@@ -169,7 +171,7 @@ const Profile = ({}) => {
           text={'Account Information'}
           fontSize={moderateScale(20)}
           fontFamily={KumbhSansExtraBold}
-          color={darkGray}
+          color={theme == 'dark' ? white : darkGray}
           textAlign="center"
         />
         {role == 'Passenger'
@@ -179,17 +181,6 @@ const Profile = ({}) => {
           : drivernavigationViewButtons?.map((naviagteButton, index) => {
               return renderNavigationButton(naviagteButton, index);
             })}
-        <Animated.View style={{transform: [{translateY: illustratorProp}]}}>
-          <Image
-            resizeMode="contain"
-            style={styles.prop}
-            source={
-              role === 'Passenger'
-                ? require('../../../assets/Images/passengerProfileProp.png')
-                : require('../../../assets/Images/driverProfileProp.png')
-            }
-          />
-        </Animated.View>
       </ScrollView>
     </View>
   );

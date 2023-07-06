@@ -1,5 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Button,
   DrawerHeader,
@@ -19,24 +19,29 @@ import {
   white,
 } from '../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/AppContext';
 const Help = ({}) => {
   const navigation = useNavigation()
   const [helpMessage, setHelpMessage] = useState('');
+  const {theme} = useContext(AppContext);
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
       <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
       <View>
         <ViewHeader
           heading="Help"
           icon={'home'}
-          headingColor={darkGray}
+          headingColor={theme == 'dark' ? white : darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
           path={'Home'}
         />
         <Input
-          placeholderTextColor={black}
+        multiline
+        numberOfLines={4}
+          placeholderTextColor={theme == 'dark' ? white : black}
+          color={theme == 'dark' ? white : black}
           style={styles.helpTextArea}
           placeholder="Type Here..."
           value={helpMessage}
@@ -68,7 +73,7 @@ const Help = ({}) => {
           text="lorem ipsum dolor si rameru asdus, absdhsdasndsd, asdahsdbhasdsdasdb"
           fontSize={moderateScale(13)}
           fontFamily={KumbhSansExtraMedium}
-          color={black}
+          color={theme == 'dark' ? white : black}
           textAlign="left"
           style={styles.heading}
         />
@@ -80,10 +85,10 @@ const Help = ({}) => {
             marginTop:moderateScale(10)
           }}>
           <Heading
-            text="Or Call Now"
+            text="Or Call Now "
             fontSize={moderateScale(13)}
             fontFamily={KumbhSansExtraMedium}
-            color={black}
+            color={theme == 'dark' ? white : black}
             textAlign="left"
           />
           <Heading
@@ -115,9 +120,9 @@ const styles = StyleSheet.create({
   },
   helpTextArea: {
     minHeight: moderateScale(200),
-    backgroundColor: lightestGray,
-    width: moderateScale(screenWidth - 70),
-    marginHorizontal: moderateScale(35),
+    width: '95%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginTop: moderateScale(35),
     borderRadius: moderateScale(10),
     display: 'flex',

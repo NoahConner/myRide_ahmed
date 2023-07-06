@@ -1,5 +1,5 @@
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
-import React from 'react';
+import { View, StyleSheet, Image } from 'react-native';
+import React,{useContext} from 'react';
 import { DrawerHeader, Heading, Icon, ViewHeader } from '../../components/Index';
 import { moderateScale } from 'react-native-size-matters';
 import {
@@ -16,6 +16,7 @@ import {
   gold,
 } from '../../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../../context/AppContext';
 
 const renderIcons = () => {
   return Array.from({ length: 5 }).map((_, index) => (
@@ -31,6 +32,7 @@ const renderIcons = () => {
 };
 const Ratings = ({ }) => {
   const navigation = useNavigation();
+  const {theme} = useContext(AppContext);
   const renderRatings = () => {
     return Array.from({ length: 3 }).map((_, index) => (
       <View style={styles.addressRow} key={index}>
@@ -72,7 +74,7 @@ const Ratings = ({ }) => {
     ));
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor }}>
       <DrawerHeader
         navigate={navigation}
         style={{ paddingBottom: moderateScale(10) }}
@@ -81,7 +83,7 @@ const Ratings = ({ }) => {
         <ViewHeader
           heading="Ratings"
           icon={'home'}
-          headingColor={darkGray}
+          headingColor={theme == 'dark' ? white : darkGray}
           fontSize={20}
           style={styles.header}
           navigation={navigation}
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
   },
   addressRow: {
     marginVertical: moderateScale(10),
-    width: moderateScale(screenWidth - 20),
+    width: '95%',
     backgroundColor: purple,
     paddingVertical: moderateScale(15),
     paddingHorizontal: moderateScale(25),

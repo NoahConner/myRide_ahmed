@@ -2,7 +2,7 @@ import {
     View,
     StyleSheet
   } from 'react-native';
-  import React from 'react';
+  import React, {useContext} from 'react';
   import {
     DrawerHeader,
     Heading,
@@ -15,20 +15,22 @@ import {
     black,
     darkGray,
     dummyText,
-    screenWidth,
+    white,
   } from '../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/AppContext';
 
   const HowToUse = ({}) => {
   const navigation = useNavigation()
+  const {theme} = useContext(AppContext);
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1,backgroundColor: theme == 'dark' ? black : backgroundColor}}>
         <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
         <View>
           <ViewHeader
             heading="How To Use?"
             icon={'home'}
-            headingColor={darkGray}
+            headingColor={theme == 'dark' ? white : darkGray}
             fontSize={20}
             style={styles.header}
             navigation={navigation}
@@ -38,7 +40,7 @@ import { useNavigation } from '@react-navigation/native';
             text={dummyText}
             fontSize={moderateScale(13)}
             fontFamily={KumbhSansExtraMedium}
-            color={black}
+            color={theme == 'dark' ? white : black}
             textAlign="center"
             style={styles.heading}
           />
@@ -57,7 +59,6 @@ import { useNavigation } from '@react-navigation/native';
       marginTop: moderateScale(20),
     },
     heading: {
-      width:moderateScale(screenWidth-40),
       marginHorizontal:moderateScale(20),
       marginTop: moderateScale(20),
     },

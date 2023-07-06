@@ -9,6 +9,7 @@ import {
   screenWidth,
   black,
   emailRegex,
+  backgroundColor,
 } from '../../constants/Index';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
@@ -25,7 +26,7 @@ const CapatainLogin = () => {
   const [password, setPassword] = useState('');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser, setRole} = useContext(AppContext);
+  const {setToken, setUser, setRole, theme} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
@@ -60,7 +61,7 @@ const CapatainLogin = () => {
     }).start();
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -68,12 +69,13 @@ const CapatainLogin = () => {
           text="Sign in to continue"
           fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
-          color={primaryHeadingColor}
+          color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Email"
             value={email}
@@ -81,7 +83,8 @@ const CapatainLogin = () => {
             type="text"
           />
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Password"
             value={password}

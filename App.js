@@ -7,9 +7,7 @@ import { ToastProvider } from 'react-native-toast-notifications';
 
 export default function App() {
   useEffect(() => {
-    setTimeout(() => {
       SplashScreen.hide();
-    }, 800);
   }, []);
 
   return (

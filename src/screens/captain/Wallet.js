@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Image, ScrollView} from 'react-native';
 import {
   Button,
@@ -30,20 +30,24 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {formatUSDPrice} from '../../constants/HelperFunctions';
 import moment from 'moment';
+import {AppContext} from '../../context/AppContext';
 
 const Wallet = ({}) => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const navigation = useNavigation();
+  const {theme} = useContext(AppContext);
 
   const renderWalletRow = () => {
-    return Array.from({length: 5}).map((_, index) => (
-      <WalletRow key={index} />
-    ));
+    return Array.from({length: 5}).map((_, index) => <WalletRow key={index} />);
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme == 'dark' ? black : white},
+      ]}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -51,7 +55,7 @@ const Wallet = ({}) => {
       <ViewHeader
         heading="Wallet"
         icon={'home'}
-        headingColor={darkGray}
+        headingColor={theme == 'dark' ? white : darkGray}
         fontSize={20}
         style={styles.header}
         navigation={navigation}
@@ -84,7 +88,7 @@ const Wallet = ({}) => {
           textAlign="center"
           borderRadius={moderateScale(100)}
           width={moderateScale(screenWidth / 2)}
-          onPress={()=>navigation.navigate('Accounts')}
+          onPress={() => navigation.navigate('Accounts')}
         />
         <Heading
           text="Transactions"
@@ -98,7 +102,7 @@ const Wallet = ({}) => {
           text="Date Range"
           fontSize={moderateScale(10)}
           fontFamily={InterRegular}
-          color={gray}
+          color={theme == 'dark' ? white : gray}
           textAlign="center"
           style={{marginTop: moderateScale(10)}}
         />
@@ -109,7 +113,8 @@ const Wallet = ({}) => {
             placeholder="From"
             type="date"
             style={styles.inputHalf}
-            placeholderTextColor={gray}
+            placeholderTextColor={theme == 'dark' ? white : gray}
+            color={theme == 'dark' ? black : gray}
           />
           <Input
             value={moment(to).format('DD/MM/YYYY')}
@@ -117,15 +122,11 @@ const Wallet = ({}) => {
             placeholder="To"
             type="date"
             style={styles.inputHalf}
-            placeholderTextColor={gray}
+            placeholderTextColor={theme == 'dark' ? white : gray}
+            color={theme == 'dark' ? black : gray}
           />
         </View>
         {renderWalletRow()}
-        <Image
-          resizeMode="contain"
-          source={require('../../../assets/Images/walletProp.png')}
-          style={styles.image}
-        />
       </ScrollView>
       <TopLeftCircleProp style={{top: moderateScale(screenHeight - 150)}} />
     </View>
@@ -163,11 +164,11 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(10),
     borderRadius: moderateScale(100),
   },
-  
-  image:{
-    width:moderateScale(200),
-    marginLeft:'auto'
-  }
+
+  image: {
+    width: moderateScale(200),
+    marginLeft: 'auto',
+  },
 });
 
 export default Wallet;

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {View, StyleSheet, Animated, KeyboardAvoidingView} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
@@ -9,6 +9,7 @@ import {
   KumbhSansExtraBold,
   screenWidth,
   black,
+  backgroundColor,
 } from '../constants/Index';
 import {
   Heading,
@@ -17,9 +18,11 @@ import {
   TopLeftCircleProp,
   BottomCircleProp,
 } from '../components/Index';
+import { AppContext } from '../context/AppContext';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
+  const {theme} = useContext(AppContext);
 
   useEffect(() => {
     startAnimations();
@@ -43,7 +46,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading
@@ -51,12 +54,13 @@ const ForgotPassword = () => {
           text="Forget Password"
           fontSize={moderateScale(40)}
           fontFamily={KumbhSansExtraBold}
-          color={primaryHeadingColor}
+          color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
           <Input
-            placeholderTextColor={black}
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
             placeholder="Email"
             value={email}

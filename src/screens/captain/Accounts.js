@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Image, ScrollView} from 'react-native';
 import {
     AccountRow,
@@ -15,31 +15,24 @@ import {
   backgroundColor,
   black,
   darkGray,
-  KumbhSansExtraBold,
   screenWidth,
-  InterRegular,
-  gray,
-  lighterGray,
-  purple,
   white,
-  gold,
   green,
-  lightGray,
   screenHeight,
 } from '../../constants/Index';
 import {useNavigation} from '@react-navigation/native';
-import {formatUSDPrice} from '../../constants/HelperFunctions';
-import moment from 'moment';
+import { AppContext } from '../../context/AppContext';
 
 const Accounts = ({}) => {
   const navigation = useNavigation();
+  const {theme} = useContext(AppContext);
   const renderAccountsRow = () => {
     return Array.from({length: 5}).map((_, index) => (
         <AccountRow key={index} />
     ));
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -76,8 +69,7 @@ const Accounts = ({}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: backgroundColor,
+    alignItems: 'center'
   },
   scrollContent: {
     alignItems: 'center',

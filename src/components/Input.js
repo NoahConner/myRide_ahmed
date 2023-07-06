@@ -32,6 +32,7 @@ const Input = ({
   fontFamily,
   fontSize,
   disabled,
+  color
 }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -75,7 +76,7 @@ const Input = ({
             editable={!disabled}
             selectTextOnFocus={!disabled}
             placeholderTextColor={placeholderTextColor}
-            style={styles.input}
+            style={[styles.input,{color:color}]}
             placeholder={placeholder}
             value={selectedDate.toDateString()}
             onChangeText={setValue}
@@ -148,7 +149,7 @@ const Input = ({
           editable={!disabled}
           selectTextOnFocus={!disabled}
           placeholderTextColor={placeholderTextColor}
-          style={styles.input}
+          style={[styles.input,{color:color}]}
           placeholder={placeholder}
           value={value}
           onChangeText={setValue}
@@ -165,7 +166,7 @@ const Input = ({
           editable={!disabled}
           selectTextOnFocus={!disabled}
           placeholderTextColor={placeholderTextColor}
-          style={styles.input}
+          style={[styles.input,{color:color}]}
           placeholder={placeholder}
           value={value}
           onChangeText={setValue}
@@ -184,7 +185,7 @@ const Input = ({
             editable={!disabled}
             selectTextOnFocus={!disabled}
             placeholderTextColor={placeholderTextColor}
-            style={styles.input}
+            style={[styles.input,{color:color}]}
             placeholder={placeholder}
             value={value}
             onChangeText={setValue}
@@ -223,7 +224,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 8,
-    color: black,
   },
   eyeButton: {
     padding: 8,
