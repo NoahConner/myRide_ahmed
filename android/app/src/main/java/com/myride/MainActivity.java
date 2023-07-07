@@ -18,11 +18,10 @@ public class MainActivity extends ReactActivity {
     return "MyRide";
   }
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    // splash screen 
-    SplashScreen.show(this);
-    super.onCreate(null);
-  }
+        protected void onCreate(Bundle savedInstanceState) {
+            SplashScreen.show(this);  // here
+            super.onCreate(savedInstanceState);
+        }
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link
    * DefaultReactActivityDelegate} which allows you to easily enable Fabric and Concurrent React

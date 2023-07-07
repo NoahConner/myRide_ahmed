@@ -175,10 +175,9 @@ const PersonalInformation = ({}) => {
                 '(',
                 /\d/,
                 /\d/,
+                /\d/,
                 ')',
                 ' ',
-                /\d/,
-                /\d/,
                 /\d/,
                 /\d/,
                 /\d/,
@@ -187,7 +186,7 @@ const PersonalInformation = ({}) => {
                 /\d/,
                 /\d/,
                 /\d/,
-              ]}
+            ]}
             />
             <Input
               value={address}

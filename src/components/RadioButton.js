@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import { gray, purple, white } from '../constants/Index';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { gray, white } from '../constants/Index';
 
 const RadioButton = ({ selected, onPress }) => {
   return (

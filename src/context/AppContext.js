@@ -20,6 +20,7 @@ export const AppProvider = ({children}) => {
   const [rideStages, setRideStages] = useState('initial');
   const [rideDetails, setRideDetails] = useState('');
   const [loading, setLoading] = useState(true);
+  const [tokenLoader, setTokenLoader] = useState(true);
   const [imageloading, setImageLoading] = useState(true);
   const [findRideButton, setFindRideButton] = useState(false);
   const [applyButton, setApplyButton] = useState(false);
@@ -42,21 +43,25 @@ export const AppProvider = ({children}) => {
         const storedRole = await AsyncStorage.getItem('role');
         const storedUser = await AsyncStorage.getItem('user');
         const theme = await AsyncStorage.getItem('theme');
-
-        if (storedToken !== null) {
-          setToken(JSON.parse(storedToken));
-        }
-        if (storedRole !== null) {
+    
+        if (storedRole) {
           setRole(storedRole);
         }
-        if (storedRole !== null) {
+        if (storedRole) {
           setUser(JSON.parse(storedUser));
         }
-        if (theme !== null) {
+        if (theme) {
           setTheme(JSON.parse(theme));
+        }
+        if (storedToken) {
+          setToken(JSON.parse(storedToken));
         }
       } catch (error) {
         console.error('Error retrieving data from AsyncStorage:', error);
+      } finally {
+        setTimeout(() => {
+          setTokenLoader(false);
+        }, 500);
       }
     }
 
@@ -112,7 +117,8 @@ export const AppProvider = ({children}) => {
       endingLatLng,
       setEndingLatLng,
       theme,
-      setTheme
+      setTheme,
+      tokenLoader, setTokenLoader
     }),
     [
       state,
@@ -148,7 +154,8 @@ export const AppProvider = ({children}) => {
       endingLatLng,
       setEndingLatLng,
       theme,
-      setTheme
+      setTheme,
+      tokenLoader, setTokenLoader
     ],
   );
 

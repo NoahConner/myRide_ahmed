@@ -1,8 +1,8 @@
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import React, { useContext, useState } from 'react';
-import { Image, StyleSheet, Switch, View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
-import { Button, Heading, Icon } from '../components/Index';
+import {DrawerContentScrollView} from '@react-navigation/drawer';
+import React, {useContext, useRef, useState} from 'react';
+import {Image, StyleSheet, Switch, View, Animated} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import {Button, Heading, Icon} from '../components/Index';
 import {
   InterRegular,
   KumbhSansBold,
@@ -10,9 +10,10 @@ import {
   gold,
   lightGray,
   purple,
+  screenWidth,
   white,
 } from '../constants/Index';
-import { AppContext } from '../context/AppContext';
+import {AppContext} from '../context/AppContext';
 
 const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +31,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
     setIsLoading(false);
   };
   const toggleSwitch = () => {
+    navigation.closeDrawer()
     if (theme == 'dark') {
       setTheme('light');
     } else {
@@ -70,6 +72,9 @@ const CustomDrawerContent = ({navigation, ...props}) => {
       />
     ));
   };
+
+
+  
   return (
     <DrawerContentScrollView
       {...props}
@@ -194,6 +199,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:screenWidth,
     backgroundColor: purple,
     paddingTop: moderateScale(20),
   },
@@ -234,7 +240,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   switch: {
-    transform: [{ scaleX: 0.95 }, { scaleY: 0.95 }]
+    transform: [{scaleX: 0.95}, {scaleY: 0.95}],
   },
   ratingContainer: {
     flexDirection: 'row',

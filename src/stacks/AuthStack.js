@@ -6,7 +6,6 @@ const Stack = createStackNavigator();
 
 const AuthNavigator = () => {
   const { role } = useContext(AppContext);
-
   return (
     <Stack.Navigator
       screenOptions={{

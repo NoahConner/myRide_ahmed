@@ -1,8 +1,9 @@
+import React, { useContext, useMemo, useEffect } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import React, { useContext, useEffect, useMemo } from 'react';
-import { io } from 'socket.io-client';
+import { purple } from '../constants/Index';
 import { AppContext } from '../context/AppContext';
-import { CustomDrawerContent, DriverStack, PassengerStack } from './Index';
+import { DriverStack, PassengerStack, CustomDrawerContent } from './Index';
+import { io } from 'socket.io-client';
 
 // socket initializing
   export const socket = io('https://myride.herokuapp.com');
