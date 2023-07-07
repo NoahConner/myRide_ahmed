@@ -1,31 +1,31 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Animated, ScrollView, Modal, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext, useAppContext} from '../../context/AppContext';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Animated, Image, Modal, ScrollView, StyleSheet, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  Heading,
+  BottomCircleProp,
   Button,
+  CustomPicker,
+  Heading,
   Input,
   TopLeftCircleProp,
-  BottomCircleProp,
-  CustomPicker,
   UploadDocument
 } from '../../components/Index';
+import { selectDocument } from '../../constants/HelperFunctions';
 import {
+  InterRegular,
+  KumbhSansExtraBold,
+  backgroundColor,
+  black,
   gray,
+  linearGradient,
   primaryHeadingColor,
   purple,
-  white,
-  KumbhSansExtraBold,
   screenWidth,
-  black,
-  linearGradient,
-  InterRegular,
-  backgroundColor,
+  white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {selectDocument} from '../../constants/HelperFunctions';
-import LinearGradient from 'react-native-linear-gradient';
+import { AppContext, useAppContext } from '../../context/AppContext';
 const CapatainSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');

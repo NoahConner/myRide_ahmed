@@ -1,12 +1,12 @@
-import {View, StyleSheet} from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { LocationDetail } from '../../components/Index';
 import {
   black,
   screenWidth,
   white,
 } from '../../constants/Index';
-import {LocationDetail} from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 
 const RideDetail = ({rideDetails}) => {
   return (

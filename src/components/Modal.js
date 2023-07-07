@@ -1,10 +1,10 @@
 import React from 'react';
-import {Modal, View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import Button from './Button';
-import {green, linearGradient, screenWidth, white} from '../constants/Index';
-import Icon from './Icon';
+import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
+import { green, linearGradient, screenWidth, white } from '../constants/Index';
+import Button from './Button';
+import Icon from './Icon';
 
 const CustomModal = ({
   visible,

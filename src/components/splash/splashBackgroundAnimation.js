@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, Image } from 'react-native';
+import { Animated } from 'react-native';
 
 const SplashBackgroundAnimation = ({ backgroundState }) => {
   const scaleAnimation = useRef(new Animated.Value(0.6)).current;

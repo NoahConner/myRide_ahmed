@@ -1,10 +1,9 @@
-import React, {useRef, useEffect} from 'react';
-import {View} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
-import {screenHeight, screenWidth} from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import MapViewDirections from 'react-native-maps-directions';
-import {AppContext, useAppContext} from '../context/AppContext';
+import React, { useEffect, useRef } from 'react';
+import { View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { moderateScale } from 'react-native-size-matters';
+import { screenHeight, screenWidth } from '../constants/Index';
+import { AppContext, useAppContext } from '../context/AppContext';
 
 const CustomMap = () => {
   const {

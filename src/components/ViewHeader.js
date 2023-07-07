@@ -1,15 +1,15 @@
-import {View, StyleSheet} from 'react-native';
 import React from 'react';
-import {Heading, Icon} from '../components/Index';
+import { StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { moderateScale } from 'react-native-size-matters';
+import { Heading, Icon } from '../components/Index';
+import { handleCallButtonPress } from '../constants/HelperFunctions';
 import {
   KumbhSansExtraBold,
   purple,
   screenWidth,
   white,
 } from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {handleCallButtonPress} from '../constants/HelperFunctions';
 const ViewHeader = ({
   heading,
   icon,

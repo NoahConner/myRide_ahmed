@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import Heading from './Heading'
+import { StyleSheet, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
-import { KumbhSansExtraBold, InterRegular, black, screenWidth, white } from '../constants/Index'
 import { formatUSDPrice } from '../constants/HelperFunctions'
+import { InterRegular, KumbhSansExtraBold, black, white } from '../constants/Index'
+import Heading from './Heading'
 
 const WalletRow = () => {
   return (

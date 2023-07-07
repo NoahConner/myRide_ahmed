@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useContext } from 'react';
-import { View, Animated, StyleSheet } from 'react-native';
-import { Heading, Button } from '../Index';
-import {moderateScale} from 'react-native-size-matters';
-import { screenHeight, screenWidth, black, lightPurple, white, KumbhSansExtraBold } from '../../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useRef } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { KumbhSansExtraBold, black, lightPurple, screenHeight, screenWidth, white } from '../../constants/Index';
 import { AppContext } from '../../context/AppContext';
+import { Button, Heading } from '../Index';
 
 const SplashModalView = ({ modalView }) => {
   const translateYAnimation = useRef(new Animated.Value(screenHeight)).current;

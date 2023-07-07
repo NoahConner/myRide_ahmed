@@ -1,19 +1,18 @@
-import React, {useContext, useState} from 'react';
-import {StyleSheet, View, Image, Switch} from 'react-native';
-import {DrawerContentScrollView} from '@react-navigation/drawer';
-import {moderateScale} from 'react-native-size-matters';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
+import React, { useContext, useState } from 'react';
+import { Image, StyleSheet, Switch, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { Button, Heading, Icon } from '../components/Index';
 import {
-  KumbhSansBold,
   InterRegular,
-  purple,
-  screenHeight,
-  white,
+  KumbhSansBold,
   darkGray,
-  lightGray,
   gold,
+  lightGray,
+  purple,
+  white,
 } from '../constants/Index';
-import {Heading, Icon, Button} from '../components/Index';
-import {AppContext} from '../context/AppContext';
+import { AppContext } from '../context/AppContext';
 
 const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);

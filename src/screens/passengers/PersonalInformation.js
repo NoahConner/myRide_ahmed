@@ -1,11 +1,16 @@
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
   Animated,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
+import MaskInput from 'react-native-mask-input';
+import { moderateScale } from 'react-native-size-matters';
+import ImagePickerOptions from '../../components/ImagePickerOptions';
 import {
   Button,
   DrawerHeader,
@@ -15,7 +20,6 @@ import {
   RbSheet,
   ViewHeader,
 } from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   backgroundColor,
@@ -23,16 +27,11 @@ import {
   darkGray,
   emailRegex,
   gray,
-  lightGray,
   purple,
   screenWidth,
-  white,
+  white
 } from '../../constants/Index';
-import {AppContext, useAppContext} from '../../context/AppContext';
-import {ScrollView} from 'react-native-gesture-handler';
-import ImagePickerOptions from '../../components/ImagePickerOptions';
-import {useNavigation} from '@react-navigation/native';
-import MaskInput from 'react-native-mask-input';
+import { AppContext, useAppContext } from '../../context/AppContext';
 
 const PersonalInformation = ({}) => {
   const navigation = useNavigation();

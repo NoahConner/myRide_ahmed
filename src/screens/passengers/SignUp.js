@@ -1,25 +1,25 @@
-import React, {useContext, useEffect, useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
   Animated,
   KeyboardAvoidingView,
+  StyleSheet,
   Text,
+  View,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { Button, Heading, Input } from '../../components/Index';
 import {
+  KumbhSansExtraBold,
+  backgroundColor,
+  black,
   gray,
   primaryHeadingColor,
   purple,
-  white,
-  KumbhSansExtraBold,
   screenWidth,
-  black,
-  backgroundColor,
+  white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
-import {Heading, Button, Input} from '../../components/Index';
+import { AppContext } from '../../context/AppContext';
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');

@@ -1,25 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
+  Animated,
+  Modal,
+  StyleSheet,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Modal
+  View
 } from 'react-native';
+import DatePicker from 'react-native-date-picker';
+import { moderateScale } from 'react-native-size-matters';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
-  KumbhSansExtraBold,
   black,
   gray,
   purple,
   red,
   screenWidth,
-  white,
+  white
 } from '../constants/Index';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import DatePicker from 'react-native-date-picker';
 import Button from './Button';
-import {moderateScale} from 'react-native-size-matters';
 
 const Input = ({
   placeholder,

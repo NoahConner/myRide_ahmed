@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { View, KeyboardAvoidingView, StyleSheet, FlatList, Platform, Keyboard, Animated } from 'react-native';
-import { AppContext } from '../../context/AppContext';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Animated, FlatList, Keyboard, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import { CarDetail, Heading, Promo, RideDetail } from '../../components/Index';
 import { KumbhSansBold, rides, screenWidth, white } from '../../constants/Index';
-import { moderateScale } from 'react-native-size-matters';
+import { AppContext } from '../../context/AppContext';
 
 const RideType = () => {
   const { rideDetails } = useContext(AppContext);

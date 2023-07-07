@@ -1,16 +1,16 @@
-import { View, StyleSheet } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Icon, Heading } from './Index';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
   InterRegular,
+  KumbhSansExtraBold,
   darkGray,
   gray,
   lighterGray,
   red,
 } from '../constants/Index';
-import { moderateScale } from 'react-native-size-matters';
+import { Heading, Icon } from './Index';
 
 const CardRow = ({key, card ,index}) => {
   return (

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { ForgotPassword,CapatainSignUp,CapatainLogin, SignUp, Login, AppSplash} from '../screens/Index';
+import { AppSplash, CapatainLogin, CapatainSignUp, ForgotPassword, Login, SignUp } from '../screens/Index';
 const Stack = createStackNavigator();
 
 const AuthNavigator = () => {

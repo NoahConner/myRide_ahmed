@@ -1,6 +1,7 @@
-import React, {useContext, useState} from 'react';
-import {View, KeyboardAvoidingView, StyleSheet, FlatList} from 'react-native';
-import {AppContext} from '../../context/AppContext';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
+import { FlatList, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   Button,
   CarDetail,
@@ -8,6 +9,7 @@ import {
   Heading,
   RideDetail,
 } from '../../components/Index';
+import { socketRideRequest } from '../../constants/HelperFunctions';
 import {
   KumbhSansBold,
   KumbhSansExtraBold,
@@ -16,9 +18,7 @@ import {
   screenWidth,
   white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {socketRideRequest} from '../../constants/HelperFunctions';
+import { AppContext } from '../../context/AppContext';
 const RidePayment = () => {
   const navigation = useNavigation();
   const {rideDetails, setRideStages, paymentButton, user} =
@@ -108,10 +108,8 @@ const RidePayment = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // paddingBottom: moderateScale(30),
     position: 'relative',
   },
   headingContainer: {

@@ -1,23 +1,23 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {View, StyleSheet, Animated, KeyboardAvoidingView} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  primaryHeadingColor,
-  purple,
-  white,
-  KumbhSansExtraBold,
-  screenWidth,
-  black,
-  backgroundColor,
-} from '../constants/Index';
-import {
-  Heading,
+  BottomCircleProp,
   Button,
+  Heading,
   Input,
   TopLeftCircleProp,
-  BottomCircleProp,
 } from '../components/Index';
+import {
+  KumbhSansExtraBold,
+  backgroundColor,
+  black,
+  primaryHeadingColor,
+  purple,
+  screenWidth,
+  white,
+} from '../constants/Index';
 import { AppContext } from '../context/AppContext';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

@@ -1,36 +1,32 @@
-import React, {useState, useContext} from 'react';
-import {View, StyleSheet, Image, ScrollView} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import moment from 'moment';
+import React, { useContext, useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   Button,
   DrawerHeader,
   Heading,
-  Icon,
   Input,
   TopLeftCircleProp,
   ViewHeader,
-  WalletRow,
+  WalletRow
 } from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
+import { formatUSDPrice } from '../../constants/HelperFunctions';
 import {
-  backgroundColor,
+  InterRegular,
+  KumbhSansExtraBold,
   black,
   darkGray,
-  KumbhSansExtraBold,
-  screenWidth,
-  InterRegular,
   gray,
-  lighterGray,
-  purple,
-  white,
-  gold,
   green,
   lightGray,
+  purple,
   screenHeight,
+  screenWidth,
+  white
 } from '../../constants/Index';
-import {useNavigation} from '@react-navigation/native';
-import {formatUSDPrice} from '../../constants/HelperFunctions';
-import moment from 'moment';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 
 const Wallet = ({}) => {
   const [from, setFrom] = useState('');

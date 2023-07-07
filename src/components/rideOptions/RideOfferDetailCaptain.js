@@ -1,10 +1,11 @@
-import React, {useEffect, useRef} from 'react';
-import {View, Image, StyleSheet, Animated} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from '../Index';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Image, StyleSheet, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
+import { formatUSDPrice, socketAccept } from '../../constants/HelperFunctions';
 import {
-  KumbhSansExtraBold,
   InterRegular,
+  KumbhSansExtraBold,
   gold,
   green,
   linearGradient,
@@ -13,9 +14,8 @@ import {
   screenWidth,
   white,
 } from '../../constants/Index';
-import {AppContext, useAppContext} from '../../context/AppContext';
-import {formatUSDPrice, socketAccept} from '../../constants/HelperFunctions';
-import LinearGradient from 'react-native-linear-gradient';
+import { AppContext, useAppContext } from '../../context/AppContext';
+import { Button, Heading, Icon } from '../Index';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (

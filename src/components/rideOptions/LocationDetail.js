@@ -1,12 +1,12 @@
-import {View, StyleSheet} from 'react-native';
 import React from 'react';
-import {Heading, Icon} from '../Index';
-import {moderateScale} from 'react-native-size-matters';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   KumbhSansLight,
   lightPurple
 } from '../../constants/Index';
+import { Heading, Icon } from '../Index';
 
 const LocationDetail = ({rideDetails}) => {
   return (

@@ -1,8 +1,8 @@
-import { View, StyleSheet } from 'react-native'
 import React from 'react'
-import { purple, white } from '../constants/Index'
+import { StyleSheet, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import { handleCameraPress, handleGalleryPress } from '../constants/HelperFunctions'
+import { purple, white } from '../constants/Index'
 import Button from './Button'
 
 const ImagePickerOptions = ({setImageSource, setSheet}) => {

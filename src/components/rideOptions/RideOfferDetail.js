@@ -1,13 +1,18 @@
-import React, {useEffect, useRef} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useRef } from 'react';
 import {
-  View,
+  Animated,
   Image,
   StyleSheet,
   TouchableOpacity,
-  Animated,
+  View,
 } from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon, Timer} from '../Index';
+import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
+import {
+  formatUSDPrice,
+  handleCallButtonPress,
+} from '../../constants/HelperFunctions';
 import {
   InterRegular,
   gold,
@@ -15,16 +20,10 @@ import {
   purple,
   red,
   screenWidth,
-  white,
-  yellow,
+  white
 } from '../../constants/Index';
-import {AppContext, useAppContext} from '../../context/AppContext';
-import {
-  formatUSDPrice,
-  handleCallButtonPress,
-} from '../../constants/HelperFunctions';
-import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
+import { AppContext, useAppContext } from '../../context/AppContext';
+import { Button, Heading, Icon, Timer } from '../Index';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (

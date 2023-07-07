@@ -1,8 +1,8 @@
-import { View, StyleSheet } from 'react-native'
-import React from 'react'
-import Heading from './Heading';
-import { InterRegular, backgroundColor, gray, green, screenWidth, white } from '../constants/Index';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { InterRegular, backgroundColor, gray, green, screenWidth, white } from '../constants/Index';
+import Heading from './Heading';
 
 const ChatBody = ({item, user}) => {
     const isSender = item.sender === 'sender';

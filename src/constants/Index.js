@@ -1,5 +1,5 @@
 import Geolocation from '@react-native-community/geolocation';
-import {Dimensions, PermissionsAndroid} from 'react-native';
+import { Dimensions, PermissionsAndroid } from 'react-native';
 // screen resolutions
 export const screenHeight = Dimensions.get('window').height;
 export const screenWidth = Dimensions.get('window').width;

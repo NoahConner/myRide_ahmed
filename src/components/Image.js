@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image as RNImage, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Image as RNImage, View } from 'react-native';
 import { getImageSource } from '../constants/HelperFunctions';
 
 const Image = ({ fileName, style, resizeMode }) => {

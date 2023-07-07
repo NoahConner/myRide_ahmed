@@ -1,8 +1,8 @@
-import { View, StyleSheet } from 'react-native'
-import React,{useState} from 'react'
-import Heading from '../Heading';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { InterRegular, KumbhSansExtraBold, black, gold, lightestGray, lightestPurple, white } from '../../constants/Index';
+import Heading from '../Heading';
 import Icon from '../Icon';
 import Input from '../Input';
 const renderIcons = () => {

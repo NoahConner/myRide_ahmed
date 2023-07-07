@@ -1,26 +1,24 @@
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
 import {
-  View,
-  StyleSheet
+  StyleSheet,
+  View
 } from 'react-native';
-import React,{useContext} from 'react';
+import { moderateScale } from 'react-native-size-matters';
 import {
   DrawerHeader,
   Heading,
   ViewHeader,
 } from '../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
   KumbhSansExtraMedium,
   backgroundColor,
   black,
   darkGray,
   dummyText,
-  purple,
   screenWidth,
-  white,
+  white
 } from '../constants/Index';
-import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../context/AppContext';
 
 const PrivacyPolicy = ({}) => {

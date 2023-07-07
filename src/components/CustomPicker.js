@@ -1,6 +1,5 @@
-import {View, Text} from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import React from 'react';
-import {Picker} from '@react-native-picker/picker';
 
 const CustomPicker = ({
   selectedService,

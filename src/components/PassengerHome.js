@@ -1,7 +1,7 @@
-import {View, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext, useAppContext} from '../context/AppContext';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   backgroundColor,
   lightestGray,
@@ -11,14 +11,14 @@ import {
   screenWidth,
   white,
 } from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import CustomModal from './Modal';
+import { AppContext, useAppContext } from '../context/AppContext';
 import {
   Button,
   CustomMap,
   RideOfferDetail,
   RideSearch,
 } from './Index';
+import CustomModal from './Modal';
 
 
 const PassengerHome = ({captainRequests, findRide}) => {

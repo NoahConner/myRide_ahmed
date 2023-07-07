@@ -1,28 +1,25 @@
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
-import CustomModal from '../components/Modal';
-import {moderateScale} from 'react-native-size-matters';
-import {
-  KumbhSansExtraBold,
-  InterRegular,
-  black,
-  gold,
-  gray,
-  lightPurple,
-  lightestGray,
-  lightestPurple,
-  purple,
-  red,
-  screenHeight,
-  screenWidth,
-  white,
-  yellow,
-} from '../constants/Index';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import Button from '../components/Button';
 import Heading from '../components/Heading';
 import Icon from '../components/Icon';
 import Input from '../components/Input';
-import {formatUSDPrice} from '../constants/HelperFunctions';
+import CustomModal from '../components/Modal';
+import { formatUSDPrice } from '../constants/HelperFunctions';
+import {
+  InterRegular,
+  KumbhSansExtraBold,
+  black,
+  gold,
+  gray,
+  lightestGray,
+  lightestPurple,
+  purple,
+  red,
+  screenWidth,
+  white
+} from '../constants/Index';
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
     <Icon

@@ -1,26 +1,26 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {View, StyleSheet, Animated, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  gray,
-  primaryHeadingColor,
-  purple,
-  white,
-  KumbhSansExtraBold,
-  screenWidth,
-  black,
-  emailRegex,
-  backgroundColor,
-} from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
-import {
-  Heading,
   Button,
+  Heading,
   Input,
   TopLeftCircleProp,
 } from '../../components/Index';
+import {
+  KumbhSansExtraBold,
+  backgroundColor,
+  black,
+  emailRegex,
+  gray,
+  primaryHeadingColor,
+  purple,
+  screenWidth,
+  white,
+} from '../../constants/Index';
 import userData from '../../constants/usersData.json';
+import { AppContext } from '../../context/AppContext';
 const CapatainLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

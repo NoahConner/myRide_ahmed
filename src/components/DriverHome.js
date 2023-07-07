@@ -1,36 +1,23 @@
-import {View, StyleSheet, ScrollView} from 'react-native';
-import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext, useAppContext} from '../context/AppContext';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { socketRideEnd, socketRideRated } from '../constants/HelperFunctions';
 import {
-  InterRegular,
   backgroundColor,
-  black,
-  gold,
   lightestGray,
-  markers,
   purple,
-  region,
   screenWidth,
-  user,
-  white,
+  user
 } from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import CustomModal from './Modal';
+import { AppContext, useAppContext } from '../context/AppContext';
 import {
   ArrivedRideRB,
-  Button,
-  CustomMap,
-  Heading,
-  Icon,
   Image,
-  Input,
-  RideOfferDetailCaptain,
-  RideSearch,
   RideWait,
-  StartRideRB,
+  StartRideRB
 } from './Index';
-import { socketRideEnd, socketRideRated } from '../constants/HelperFunctions';
+import CustomModal from './Modal';
 
 const DriverHome = ({ rideRequests }) => {
   const [loading, setLoading] = useState(false);

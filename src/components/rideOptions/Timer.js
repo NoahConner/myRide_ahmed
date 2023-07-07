@@ -1,9 +1,9 @@
-import {View, Text} from 'react-native';
-import React, {useState, useEffect} from 'react';
 import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { InterRegular, white } from '../../constants/Index';
 import Heading from '../Heading';
-import {moderateScale} from 'react-native-size-matters';
-import {InterRegular, white} from '../../constants/Index';
 
 const Timer = () => {
   const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));

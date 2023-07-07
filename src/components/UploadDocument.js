@@ -1,9 +1,6 @@
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import React, {useContext} from 'react';
-import Button from './Button';
-import Icon from './Icon';
-import {moderateScale} from 'react-native-size-matters';
-import Heading from './Heading';
+import React, { useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   InterRegular,
   black,
@@ -12,6 +9,9 @@ import {
   white,
 } from '../constants/Index';
 import { AppContext } from '../context/AppContext';
+import Button from './Button';
+import Heading from './Heading';
+import Icon from './Icon';
 
 const UploadDocument = ({
   headingText,

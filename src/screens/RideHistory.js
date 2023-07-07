@@ -1,17 +1,16 @@
-import {View, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
-import {DrawerHeader, RideHistoryCard, ViewHeader} from '../components/Index';
-import {moderateScale} from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { DrawerHeader, RideHistoryCard, ViewHeader } from '../components/Index';
 import {
   backgroundColor,
-  darkGray,
-  screenWidth,
-  lighterGray,
   black,
+  darkGray,
+  lighterGray,
+  screenWidth,
   white,
 } from '../constants/Index';
-import {FlatList} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../context/AppContext';
 
 const RideHistory = ({}) => {

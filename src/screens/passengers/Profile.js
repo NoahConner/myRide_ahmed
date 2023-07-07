@@ -1,37 +1,34 @@
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
-  Image,
-  Switch,
-  ScrollView,
   Animated,
+  Image,
+  ScrollView,
+  StyleSheet,
   TouchableOpacity,
+  View
 } from 'react-native';
-import React, {useContext, useEffect, useState} from 'react';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
+  Button,
+  DrawerHeader,
+  Heading,
+  Icon,
+  ViewHeader,
+} from '../../components/Index';
+import {
   InterRegular,
+  KumbhSansExtraBold,
   backgroundColor,
+  black,
   darkGray,
   gray,
   green,
   purple,
   screenWidth,
-  black,
-  white,
-  lightGray,
-  KumbhSansRegular,
+  white
 } from '../../constants/Index';
-import {
-  Button,
-  Heading,
-  Icon,
-  DrawerHeader,
-  ViewHeader,
-} from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 
 const Profile = ({}) => {
   const navigation = useNavigation();

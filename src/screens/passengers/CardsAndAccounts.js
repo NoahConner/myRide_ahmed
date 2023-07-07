@@ -1,10 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
+import moment from 'moment';
+import React, { useContext, useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
   Animated,
   FlatList,
+  StyleSheet,
+  View,
 } from 'react-native';
-import React, {useEffect, useState, useContext} from 'react';
+import { moderateScale } from 'react-native-size-matters';
 import {
   Button,
   CardRow,
@@ -13,11 +16,11 @@ import {
   Input,
   ViewHeader,
 } from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
   InterRegular,
+  KumbhSansExtraBold,
   backgroundColor,
+  black,
   cards,
   darkGray,
   gray,
@@ -26,10 +29,7 @@ import {
   screenHeight,
   screenWidth,
   white,
-  black,
 } from '../../constants/Index';
-import moment from 'moment';
-import {useNavigation} from '@react-navigation/native';
 import { AppContext } from '../../context/AppContext';
 const CardsAndAccounts = ({}) => {
   const navigation = useNavigation()

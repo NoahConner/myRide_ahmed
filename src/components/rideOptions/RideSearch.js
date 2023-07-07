@@ -1,7 +1,7 @@
-import {View, ActivityIndicator} from 'react-native';
 import React from 'react';
-import {KumbhSansBold, purple, white} from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
+import { ActivityIndicator, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { KumbhSansBold, purple, white } from '../../constants/Index';
 import Heading from '../Heading';
 
 const RideSearch = () => {

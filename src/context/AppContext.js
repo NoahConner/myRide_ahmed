@@ -36,12 +36,12 @@ export const AppProvider = ({children}) => {
   });
   const [rideStatus, setRideStatus] = useState('initial');
   useEffect(() => {
-    console.log(colorScheme, 'hello corlor scheme');
     async function fetchStoredValues() {
       try {
         const storedToken = await AsyncStorage.getItem('token');
         const storedRole = await AsyncStorage.getItem('role');
         const storedUser = await AsyncStorage.getItem('user');
+        const theme = await AsyncStorage.getItem('theme');
 
         if (storedToken !== null) {
           setToken(JSON.parse(storedToken));
@@ -51,6 +51,9 @@ export const AppProvider = ({children}) => {
         }
         if (storedRole !== null) {
           setUser(JSON.parse(storedUser));
+        }
+        if (theme !== null) {
+          setTheme(JSON.parse(theme));
         }
       } catch (error) {
         console.error('Error retrieving data from AsyncStorage:', error);
@@ -65,13 +68,14 @@ export const AppProvider = ({children}) => {
         await AsyncStorage.setItem('token', JSON.stringify(token));
         await AsyncStorage.setItem('role', role);
         await AsyncStorage.setItem('user', JSON.stringify(user));
+        await AsyncStorage.setItem('theme', JSON.stringify(theme));
       } catch (error) {
         console.error('Error saving data to AsyncStorage:', error);
       }
     }
 
     saveValuesToStorage();
-  }, [token, role, user]);
+  }, [token, role, user, theme]);
 
   const contextValues = useMemo(
     () => ({

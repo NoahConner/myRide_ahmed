@@ -1,11 +1,10 @@
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
-import React,{useState} from 'react'
-import Heading from '../Heading';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
-import { InterRegular, KumbhSansExtraBold, black, gold, gray, lightestGray, lightestPurple, white } from '../../constants/Index';
-import Icon from '../Icon';
-import Input from '../Input';
 import { formatUSDPrice } from '../../constants/HelperFunctions';
+import { InterRegular, KumbhSansExtraBold, black, gray, lightestGray, lightestPurple, white } from '../../constants/Index';
+import Heading from '../Heading';
+import Input from '../Input';
 const TipRider = () => {
     const [selected, setSelected] = useState(null);
     const [amount, setAmount] = useState('');

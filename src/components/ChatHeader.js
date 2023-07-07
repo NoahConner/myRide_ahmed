@@ -1,15 +1,15 @@
-import {View, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import Heading from './Heading';
+import { Image, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
   InterRegular,
+  KumbhSansExtraBold,
   gold,
   gray,
   green,
   screenWidth,
 } from '../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
+import Heading from './Heading';
 import Icon from './Icon';
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (

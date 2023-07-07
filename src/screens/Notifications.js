@@ -1,24 +1,24 @@
-import {
-    View,
-    StyleSheet
-  } from 'react-native';
-  import React, {useContext} from 'react';
-  import {
-    DrawerHeader,
-    Heading,
-    ViewHeader,
-  } from '../components/Index';
-  import {moderateScale} from 'react-native-size-matters';
-  import {
-    backgroundColor,
-    black,
-    darkGray,
-    InterRegular,
-    gray,
-    white,
-    lighterGray,
-  } from '../constants/Index';
 import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import {
+  StyleSheet,
+  View
+} from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import {
+  DrawerHeader,
+  Heading,
+  ViewHeader,
+} from '../components/Index';
+import {
+  InterRegular,
+  backgroundColor,
+  black,
+  darkGray,
+  gray,
+  lighterGray,
+  white,
+} from '../constants/Index';
 import { AppContext } from '../context/AppContext';
 
   const Notifications = ({}) => {

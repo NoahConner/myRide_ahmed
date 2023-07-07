@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Text, Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { Animated, Text, TouchableOpacity } from 'react-native';
 
 const Heading = ({
   text,

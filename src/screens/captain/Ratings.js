@@ -1,21 +1,18 @@
-import { View, StyleSheet, Image } from 'react-native';
-import React,{useContext} from 'react';
-import { DrawerHeader, Heading, Icon, ViewHeader } from '../../components/Index';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { DrawerHeader, Heading, Icon, ViewHeader } from '../../components/Index';
 import {
+  InterRegular,
+  KumbhSansExtraBold,
   backgroundColor,
   black,
   darkGray,
-  KumbhSansExtraBold,
-  screenWidth,
-  InterRegular,
-  gray,
-  lighterGray,
-  purple,
-  white,
   gold,
+  purple,
+  white
 } from '../../constants/Index';
-import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../../context/AppContext';
 
 const renderIcons = () => {

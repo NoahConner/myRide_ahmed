@@ -1,27 +1,24 @@
-import React, {useState, useContext} from 'react';
-import {View, StyleSheet, Image, ScrollView} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   AccountRow,
   Button,
   DrawerHeader,
-  Heading,
-  Icon,
-  Input,
   TopLeftCircleProp,
-  ViewHeader,
+  ViewHeader
 } from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
   backgroundColor,
   black,
   darkGray,
-  screenWidth,
-  white,
   green,
   screenHeight,
+  screenWidth,
+  white,
 } from '../../constants/Index';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 
 const Accounts = ({}) => {
   const navigation = useNavigation();

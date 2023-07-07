@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {purple} from '../constants/Index';
-import {FindRide, HeaderToggleButton, RidePayment, RideType} from './Index';
-import {moderateScale} from 'react-native-size-matters';
-import {AppContext, useAppContext} from '../context/AppContext';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { purple } from '../constants/Index';
+import { AppContext, useAppContext } from '../context/AppContext';
+import { FindRide, HeaderToggleButton, RidePayment, RideType } from './Index';
 
 const DrawerHeader = ({navigate, style, screen}) => {
   const {rideStages, role} = useAppContext(AppContext);

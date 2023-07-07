@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Image, Animated, StyleSheet } from 'react-native';
+import { Animated, Image, StyleSheet, View } from 'react-native';
 import { screenHeight } from '../../constants/Index';
 
 const topValue = screenHeight - 300;

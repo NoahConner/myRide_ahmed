@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Image,
   ActivityIndicator,
+  Image,
+  ScrollView,
+  StyleSheet,
+  View,
 } from 'react-native';
-import {useNavigation, useRoute, useIsFocused} from '@react-navigation/native';
+import { moderateScale } from 'react-native-size-matters';
+import { useToast } from 'react-native-toast-notifications';
 import {
   ArrivedRideRB,
   Button,
@@ -22,8 +24,12 @@ import {
   StartRideRB,
   TipRider,
 } from '../components/Index';
-import userData from '../constants/usersData.json';
-import {moderateScale} from 'react-native-size-matters';
+import {
+  notification,
+  notificationRoute,
+  socketRideEnd,
+  socketRideRated,
+} from '../constants/HelperFunctions';
 import {
   InterRegular,
   KumbhSansBold,
@@ -36,20 +42,13 @@ import {
   purple,
   region,
   rides,
-  screenHeight,
   screenWidth,
   updateSelection,
-  white,
+  white
 } from '../constants/Index';
-import {AppContext, useAppContext} from '../context/AppContext';
-import {useToast} from 'react-native-toast-notifications';
-import {
-  notification,
-  notificationRoute,
-  socketRideEnd,
-  socketRideRated,
-} from '../constants/HelperFunctions';
-import {socket} from '../stacks/DrawerNavigator';
+import userData from '../constants/usersData.json';
+import { AppContext, useAppContext } from '../context/AppContext';
+import { socket } from '../stacks/DrawerNavigator';
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (
     <Icon

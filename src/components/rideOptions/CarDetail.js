@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Button, Heading } from '../Index';
+import { Image, StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { formatUSDPrice } from '../../constants/HelperFunctions';
 import {
+  InterRegular,
   KumbhSansExtraBold,
   KumbhSansExtraLight,
-  InterRegular,
   black,
   lightestPurple,
   purple,
   white,
 } from '../../constants/Index';
-import { formatUSDPrice } from '../../constants/HelperFunctions';
 import { AppContext } from '../../context/AppContext';
+import { Button, Heading } from '../Index';
 
 const CarDetail = ({ car, select }) => {
   const { rideDetails, setRideDetails, applyButton, setApplyButton } = useContext(AppContext);

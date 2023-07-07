@@ -1,22 +1,20 @@
+import { useNavigation } from '@react-navigation/native';
+import moment from 'moment';
 import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from '../Index';
+import { Image, StyleSheet, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
+import { formatTime, formatUSDPrice } from '../../constants/HelperFunctions';
 import {
-  KumbhSansExtraBold,
   InterRegular,
+  KumbhSansExtraBold,
   gold,
   linearGradient,
-  purple,
   red,
-  screenWidth,
   white,
-  yellow,
+  yellow
 } from '../../constants/Index';
-import {formatTime, formatUSDPrice} from '../../constants/HelperFunctions';
-import LinearGradient from 'react-native-linear-gradient';
-import moment from 'moment';
-import { useNavigation } from '@react-navigation/native';
+import { Button, Heading, Icon } from '../Index';
 
 const renderIcons = () => {
   return Array.from({length: 5}).map((_, index) => (

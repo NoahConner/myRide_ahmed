@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { apiKey, black, gray, screenWidth, white } from '../constants/Index';
 import { moderateScale } from 'react-native-size-matters';
+import { apiKey, black, gray, screenWidth, white } from '../constants/Index';
 
 const GoogleAutoCompleteInput = ({ setAddress, setLatLng }) => {
   return (

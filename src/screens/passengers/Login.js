@@ -1,33 +1,32 @@
-import React, {useEffect, useState, useContext} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
   Animated,
-  KeyboardAvoidingView,
+  StyleSheet,
   Text,
+  View
 } from 'react-native';
-import userData from '../../constants/usersData.json';
+import { moderateScale } from 'react-native-size-matters';
 import {
+  BottomCircleProp,
+  Button,
+  Heading,
+  Input,
+  TopLeftCircleProp,
+} from '../../components/Index';
+import {
+  KumbhSansExtraBold,
+  backgroundColor,
+  black,
+  emailRegex,
   gray,
   primaryHeadingColor,
   purple,
-  white,
-  KumbhSansExtraBold,
   screenWidth,
-  black,
-  emailRegex,
-  backgroundColor,
+  white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
-import {
-  Heading,
-  Button,
-  Input,
-  TopLeftCircleProp,
-  BottomCircleProp,
-} from '../../components/Index';
+import userData from '../../constants/usersData.json';
+import { AppContext } from '../../context/AppContext';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

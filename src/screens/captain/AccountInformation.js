@@ -1,5 +1,7 @@
-import React, {useState, useContext} from 'react';
-import {View, StyleSheet, Image, ScrollView} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   Button,
   CustomPicker,
@@ -8,19 +10,17 @@ import {
   TopLeftCircleProp,
   ViewHeader,
 } from '../../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
   backgroundColor,
   black,
   darkGray,
-  screenWidth,
   gray,
-  white,
   green,
   screenHeight,
+  screenWidth,
+  white,
 } from '../../constants/Index';
-import {useNavigation} from '@react-navigation/native';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 const AccountInformation = ({}) => {
   const banks = [
     {label: 'ABC Bank', value: 'ABC Bank'},

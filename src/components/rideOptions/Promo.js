@@ -1,6 +1,6 @@
-import {View, StyleSheet, ActivityIndicator} from 'react-native';
-import React, {useState, useEffect, useContext} from 'react';
-import {Button, Heading, Input} from '../Index';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansBold,
   KumbhSansExtraBold,
@@ -10,8 +10,8 @@ import {
   screenWidth,
   white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
+import { Button, Heading, Input } from '../Index';
 
 const Promo = () => {
   const [promo, setPromo] = useState('');

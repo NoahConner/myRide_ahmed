@@ -1,5 +1,7 @@
-import {View, StyleSheet} from 'react-native';
-import React, {useState, useContext} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   Button,
   DrawerHeader,
@@ -7,18 +9,15 @@ import {
   Input,
   ViewHeader,
 } from '../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
   KumbhSansExtraMedium,
   backgroundColor,
   black,
   darkGray,
-  lightestGray,
   purple,
   screenWidth,
-  white,
+  white
 } from '../constants/Index';
-import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../context/AppContext';
 const Help = ({}) => {
   const navigation = useNavigation()

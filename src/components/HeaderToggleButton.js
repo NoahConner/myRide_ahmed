@@ -1,6 +1,6 @@
-import {TouchableOpacity } from 'react-native'
-import React from 'react'
-import {Icon} from '../components/Index'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { Icon } from '../components/Index';
 import { white } from '../constants/Index';
 const HeaderToggleButton = ({drawer}) => {
   return (

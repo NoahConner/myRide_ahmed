@@ -1,13 +1,13 @@
-import React, {useContext, useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {RadioButton, Heading} from '../Index';
-import {moderateScale} from 'react-native-size-matters';
+import React, { useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansExtraBold,
   black,
   lightestPurple,
 } from '../../constants/Index';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
+import { Heading, RadioButton } from '../Index';
 
 const CardDetails = ({card, select}) => {
   const {rideDetails, setRideDetails, setPaymentButton} =

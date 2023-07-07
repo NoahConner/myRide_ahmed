@@ -1,6 +1,6 @@
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import React, {useState, useContext, useEffect, useMemo} from 'react';
-import {Input, Button, Icon, GoogleAutoCompleteInput} from '../Index';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import {
   black,
   getCurrentLocation,
@@ -8,8 +8,8 @@ import {
   screenWidth,
   white,
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
-import {AppContext} from '../../context/AppContext';
+import { AppContext } from '../../context/AppContext';
+import { Icon, Input } from '../Index';
 
 const FindRide = () => {
   const [pickUpAddress, setPickUpAddress] = useState('');

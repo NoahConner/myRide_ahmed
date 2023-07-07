@@ -1,25 +1,22 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { moderateScale } from 'react-native-size-matters';
 import {
-  KumbhSansExtraBold,
+  socketArrived
+} from '../../constants/HelperFunctions';
+import {
   InterRegular,
   green,
   linearGradient,
   screenWidth,
-  white,
+  white
 } from '../../constants/Index';
-import {moderateScale} from 'react-native-size-matters';
+import { AppContext, useAppContext } from '../../context/AppContext';
+import Button from '../Button';
 import Heading from '../Heading';
 import Icon from '../Icon';
-import LinearGradient from 'react-native-linear-gradient';
-import {
-  formatUSDPrice,
-  handleCallButtonPress,
-  socketArrived,
-} from '../../constants/HelperFunctions';
-import {useNavigation} from '@react-navigation/native';
-import Button from '../Button';
-import {AppContext, useAppContext} from '../../context/AppContext';
 
 const StartRideRB = () => {
   const navigation = useNavigation();

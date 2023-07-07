@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import ChatBody from '../components/ChatBody';
 import {
   ChatFooter,
   ChatHeader,
   DrawerHeader,
-  Heading,
-  ViewHeader,
+  ViewHeader
 } from '../components/Index';
-import {moderateScale} from 'react-native-size-matters';
 import {
   backgroundColor,
   black,
@@ -17,10 +18,8 @@ import {
   screenWidth,
   white,
 } from '../constants/Index';
-import ChatBody from '../components/ChatBody';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {socket} from '../stacks/DrawerNavigator';
-import {AppContext, useAppContext} from '../context/AppContext';
+import { AppContext, useAppContext } from '../context/AppContext';
+import { socket } from '../stacks/DrawerNavigator';
 const Chat = ({route}) => {
   const navigation = useNavigation();
   const [message, setMessage] = useState('');

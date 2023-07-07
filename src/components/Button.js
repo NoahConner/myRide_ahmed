@@ -1,14 +1,13 @@
 import React from 'react';
 import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
   ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
 } from 'react-native';
 import {
   gray, lightGray, white
 } from '../constants/Index';
-import { AppContext, useAppContext } from '../context/AppContext';
 const Button = ({
   backgroundColor,
   text,

@@ -1,9 +1,9 @@
-import React, { useEffect, memo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import React, { memo, useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import { AppContext, AppProvider, useAppContext } from './src/context/AppContext';
-import { DrawerNavigatorScreen, AuthNavigator } from './src/stacks/Index';
 import { ToastProvider } from 'react-native-toast-notifications';
+import { AppContext, AppProvider, useAppContext } from './src/context/AppContext';
+import { AuthNavigator, DrawerNavigatorScreen } from './src/stacks/Index';
 
 export default function App() {
   useEffect(() => {

@@ -1,8 +1,8 @@
-import { View, StyleSheet } from 'react-native'
 import React from 'react'
-import Heading from './Heading'
+import { StyleSheet, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
-import { KumbhSansExtraBold, InterRegular, gray, purple, white } from '../constants/Index'
+import { InterRegular, KumbhSansExtraBold, gray, purple, white } from '../constants/Index'
+import Heading from './Heading'
 
 const AccountRow = () => {
   return (
