@@ -59,9 +59,9 @@ export const AppProvider = ({children}) => {
       } catch (error) {
         console.error('Error retrieving data from AsyncStorage:', error);
       } finally {
-        setTimeout(() => {
-          setTokenLoader(false);
-        }, 500);
+        // setTimeout(() => {
+        //   setTokenLoader(false);
+        // }, 1000);
       }
     }
 

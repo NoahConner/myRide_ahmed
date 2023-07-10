@@ -20,27 +20,10 @@ export default function App() {
 const AppContent = memo(() => {
   const {token, tokenLoader, theme} = useAppContext(AppContext);
   useEffect(() => {
-    if (!tokenLoader) {
+    setTimeout(() => {
       SplashScreen.hide();
-    }
-  }, [tokenLoader]);
-
-  if (tokenLoader) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: theme == 'dark' ? black : white,
-        }}>
-        <ActivityIndicator
-          size="large"
-          color={theme == 'dark' ? white : black}
-        />
-      </View>
-    );
-  }
+    }, 1000);
+  }, []);
   return (
     <NavigationContainer>
       {token ? <DrawerNavigatorScreen /> : <AuthNavigator />}
