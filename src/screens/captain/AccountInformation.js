@@ -56,7 +56,7 @@ const AccountInformation = ({}) => {
           <CustomPicker
             selectedService={selectedBank}
             setSelectedService={setSelectedBank}
-            style={styles.select}
+            style={[styles.select,{color:theme == 'dark' ? white : black}]}
             options={banks}
           />
           <View style={styles.SelectBorder}></View>

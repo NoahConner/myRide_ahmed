@@ -20,6 +20,7 @@ import {
   white,
 } from '../../constants/Index';
 import { AppContext } from '../../context/AppContext';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -157,19 +158,10 @@ const SignUp = () => {
           />
         </View>
         <View style={styles.dontHaveBox}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
-          <Button
-            style={null}
-            fontSize={moderateScale(12)}
-            backgroundColor={null}
-            color={purple}
-            text="Sign In!"
-            padding={moderateScale(0)}
-            textAlign="center"
-            borderRadius={moderateScale(0)}
-            width="30%"
-            onPress={() => navigation.navigate('Login')}
-          />
+          <Text style={styles.dontHaveBoxText2}>Sign In!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -204,6 +196,9 @@ const styles = StyleSheet.create({
   },
   dontHaveBoxText: {
     color: gray,
+  },
+  dontHaveBoxText2: {
+    color: purple,
   },
   CarProp: {
     width: moderateScale(200),

@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		570076A12A5E873400958A75 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570076A02A5E873300958A75 /* BootSplash.storyboard */; };
 		57148F512A5BEC02005CC921 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3E2A5BDA68005CC921 /* Inter-Black.ttf */; };
 		57148F522A5BEC02005CC921 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3D2A5BDA68005CC921 /* Inter-Bold.ttf */; };
 		57148F532A5BEC02005CC921 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F372A5BDA67005CC921 /* Inter-ExtraBold.ttf */; };
@@ -67,6 +68,7 @@
 		32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter/static/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-VariableFont_slnt,wght.ttf"; path = "../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		4FB694AA2D07C212AD1C7E26 /* Pods-MyRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide.release.xcconfig"; path = "Target Support Files/Pods-MyRide/Pods-MyRide.release.xcconfig"; sourceTree = "<group>"; };
+		570076A02A5E873300958A75 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = MyRide/BootSplash.storyboard; sourceTree = "<group>"; };
 		57148F2D2A5BDA67005CC921 /* KumbhSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-SemiBold.ttf"; path = "../../../../fonts/myRide/KumbhSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		57148F2E2A5BDA67005CC921 /* KumbhSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Medium.ttf"; path = "../../../../fonts/myRide/KumbhSans-Medium.ttf"; sourceTree = "<group>"; };
 		57148F2F2A5BDA67005CC921 /* KumbhSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-ExtraBold.ttf"; path = "../../../../fonts/myRide/KumbhSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				570076A02A5E873300958A75 /* BootSplash.storyboard */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				57E0FE642A5D8B2200950CF4 /* Media.xcassets */,
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57148F512A5BEC02005CC921 /* Inter-Black.ttf in Resources */,
+				570076A12A5E873400958A75 /* BootSplash.storyboard in Resources */,
 				57148F522A5BEC02005CC921 /* Inter-Bold.ttf in Resources */,
 				57148F532A5BEC02005CC921 /* Inter-ExtraBold.ttf in Resources */,
 				57148F542A5BEC02005CC921 /* Inter-ExtraLight.ttf in Resources */,
