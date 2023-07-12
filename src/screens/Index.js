@@ -14,7 +14,6 @@ export { default as CapatainSignUp } from './captain/DriverSignUp';
 
 // passenger screens
 export { default as CardsAndAccounts } from './passengers/CardsAndAccounts';
-export { default as Contactus } from './passengers/Contactus';
 export { default as Login } from './passengers/Login';
 export { default as PersonalInformation } from './passengers/PersonalInformation';
 export { default as Profile } from './passengers/Profile';

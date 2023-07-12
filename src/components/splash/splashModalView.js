@@ -98,7 +98,7 @@ const SplashModalView = ({ modalView }) => {
           fontSize={moderateScale(14)}
           backgroundColor={white}
           color={black}
-          text="Login as Captain"
+          text="Login As Captain"
           padding={moderateScale(10)}
           textAlign="center"
           borderRadius={moderateScale(100)}

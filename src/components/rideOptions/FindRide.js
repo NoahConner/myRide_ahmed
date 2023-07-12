@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import {
   black,
@@ -116,12 +116,13 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderRadius: 100,
     shadowColor: black,
-    shadowOffset: {width: 2, height: 30},
-    shadowOpacity: 1,
+    shadowOffset: {width: 2, height: 10},
+    shadowOpacity: Platform.OS == 'ios' ? 0.2 : 1,
     shadowRadius: 10,
     elevation: 20,
     marginVertical: moderateScale(10),
     paddingHorizontal: moderateScale(15),
+    paddingVertical:Platform.OS == 'ios' ? moderateScale(5) : null
   },
   button: {
     marginTop: moderateScale(10),

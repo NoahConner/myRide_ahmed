@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { LocationDetail } from '../../components/Index';
 import {
@@ -23,10 +23,10 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(10),
     borderRadius: moderateScale(15),
     shadowColor: black,
-    shadowOffset: { width: 2, height: 30 },
-    shadowOpacity: 1,
+    shadowOpacity: Platform.OS == 'ios' ? 0.3 : 1,
     shadowRadius: 10,
-    elevation: 10
+    elevation: 20,
+    shadowOffset: {width: 2},
   }
 });
 export default RideDetail;

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
+  Keyboard,
   ScrollView,
   StyleSheet,
   View,
@@ -50,7 +51,7 @@ import userData from '../constants/usersData.json';
 import { AppContext, useAppContext } from '../context/AppContext';
 import { socket } from '../stacks/DrawerNavigator';
 const renderIcons = () => {
-  return Array.from({length: 5}).map((_, index) => (
+  return Array.from({ length: 5 }).map((_, index) => (
     <Icon
       style={styles.iconStyle}
       key={index}
@@ -84,6 +85,8 @@ const Home = () => {
   const [rateMessage, setRateMessage] = useState('');
   const [captainRequests, setCaptainRequests] = useState([]);
   const [showTimer, setShowTimer] = useState(false);
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(50);
   const toast = useToast();
   const route = useRoute();
   const isFocused = useIsFocused();
@@ -162,12 +165,12 @@ const Home = () => {
     }, 1000);
   };
   useEffect(() => {
-    const handleRideEvent = ({from, to, foundUser}, message) => {
+    const handleRideEvent = ({ from, to, foundUser }, message) => {
       if (user?.id === to) {
         notification(toast, message);
       }
     };
-    const handleSocketRideRequest = ({from, pickup, dropoff, passengers}) => {
+    const handleSocketRideRequest = ({ from, pickup, dropoff, passengers }) => {
       const foundUser = userData.users.find(user => user?.id === from);
       const data = {
         user: foundUser,
@@ -178,52 +181,52 @@ const Home = () => {
 
       setRideRequests([...rideRequests, data]);
     };
-    const handleSocketRideAccept = ({from, to}) => {
+    const handleSocketRideAccept = ({ from, to }) => {
       const foundUser = userData.users.find(user => user?.id === from);
       const data = {
         user: foundUser,
       };
       handleRideEvent(
-        {from, to, foundUser},
+        { from, to, foundUser },
         `${foundUser.first_name} ${foundUser.last_name} accepted your ride`,
       );
       setCaptainRequests([...captainRequests, data]);
     };
 
-    const handleSocketRideArrived = ({from, to}) => {
+    const handleSocketRideArrived = ({ from, to }) => {
       const foundUser = userData.users.find(user => user?.id === from);
       handleRideEvent(
-        {from, to, foundUser},
+        { from, to, foundUser },
         `${foundUser.first_name} ${foundUser.last_name} arrived at your destination`,
       );
       setShowTimer(true)
     };
 
-    const handleSocketRideStarted = ({from, to}) => {
+    const handleSocketRideStarted = ({ from, to }) => {
       const foundUser = userData.users.find(user => user?.id === from);
       setShowTimer(false)
       handleRideEvent(
-        {from, to, foundUser},
+        { from, to, foundUser },
         `${foundUser.first_name} ${foundUser.last_name} started your ride`,
       );
     };
-    const handleSocketMessage = ({from, to, message, time}) => {
+    const handleSocketMessage = ({ from, to, message, time }) => {
       const foundUser = userData.users.find(user => user?.id === from);
       if (user?.id == to && route?.name != 'Chat') {
         console.log(route, 'hello route name', isFocused);
-          const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
-          notificationRoute(toast, notificationMessage, foundUser, navigation);
+        const notificationMessage = `${foundUser?.first_name} ${foundUser?.last_name} send you a message`;
+        notificationRoute(toast, notificationMessage, foundUser, navigation);
       }
     };
 
-    const handleSocketRideEnd = ({from, to}) => {
-      handleRideEvent({from, to}, `Your ride ended`);
+    const handleSocketRideEnd = ({ from, to }) => {
+      handleRideEvent({ from, to }, `Your ride ended`);
       setRideStages('rateDriver');
       setRateDriverModal(true);
     };
 
-    const handleSocketRideRated = ({from, to}) => {
-      handleRideEvent({from, to}, `Your Captain rated you`);
+    const handleSocketRideRated = ({ from, to }) => {
+      handleRideEvent({ from, to }, `Your Captain rated you`);
     };
 
     socket.on('rideRequest', handleSocketRideRequest);
@@ -256,14 +259,42 @@ const Home = () => {
     setSelectedUser([])
     setCaptainRequests([])
     updateSelection()
-    console.log(rides,cards);
+    console.log(rides, cards);
   }
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+    const keyboardWillShowListener = Keyboard.addListener(
+      'keyboardWillShow',
+      (event) => {
+        setKeyboardHeight(event.endCoordinates.height);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+        setKeyboardHeight(50);
+      }
+    );
+
+    // Clean up the event listeners when the component is unmounted
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardWillShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
   const modalContent =
     rideStatus === 'started'
       ? rideEndContent()
       : rideStatus === 'end'
-      ? rideAmountContent()
-      : rideRateContent();
+        ? rideAmountContent()
+        : rideRateContent();
   const renderPassengerHome = () => {
     switch (rideStages) {
       case 'initial':
@@ -274,7 +305,12 @@ const Home = () => {
               <Button
                 disabled={!findRideButton}
                 loading={loading}
-                style={styles.findRideButton}
+                style={[
+                  styles.findRideButton,
+                  {
+                    bottom: keyboardVisible ? keyboardHeight : 50,
+                  }
+                ]}
                 fontSize={moderateScale(14)}
                 backgroundColor={purple}
                 color={white}
@@ -290,7 +326,7 @@ const Home = () => {
         );
       case 'finding':
         return (
-          <View style={[styles.containerCard, {width: screenWidth }, !captainRequests?.length ? {flex:1} :null]}>
+          <View style={[styles.containerCard, { width: screenWidth }, !captainRequests?.length ? { flex: 1 } : null]}>
             {captainRequests?.length ? (
               <>
                 <CustomMap region={region} markers={markers} />
@@ -311,8 +347,8 @@ const Home = () => {
             ) : (
               <View
                 style={{
-                  backgroundColor:theme == 'dark' ? black : backgroundColor,
-                  flex:1,
+                  backgroundColor: theme == 'dark' ? black : backgroundColor,
+                  flex: 1,
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
@@ -328,28 +364,28 @@ const Home = () => {
             )}
           </View>
         );
-        case 'rateDriver' : 
-        return(
+      case 'rateDriver':
+        return (
           <CustomModal
-          times={true}
-          backgroundColor={purple}
-          visible={rateDriverModal}
-          onClose={rateDriverFunc}
-          content={<CompleteRide/>}
-          buttonText={'Submit'}
-        />
+            times={true}
+            backgroundColor={purple}
+            visible={rateDriverModal}
+            onClose={rateDriverFunc}
+            content={<CompleteRide />}
+            buttonText={'Submit'}
+          />
         );
-        case 'tipDriver' :
-          return(
+      case 'tipDriver':
+        return (
           <CustomModal
-          times={true}
-          backgroundColor={purple}
-          visible={tipDriverModal}
-          onClose={tipDriverFunc}
-          content={<TipRider/>}
-          buttonText={'Done'}
-        />
-          );
+            times={true}
+            backgroundColor={purple}
+            visible={tipDriverModal}
+            onClose={tipDriverFunc}
+            content={<TipRider />}
+            buttonText={'Done'}
+          />
+        );
       default:
         return null;
     }
@@ -382,45 +418,45 @@ const Home = () => {
     switch (rideStatus) {
       case 'initial':
         return (
-         <View style={[styles.containerCard, {width: screenWidth }, !rideRequests?.length ? {flex:1} :null]}>
-          {rideRequests?.length ? (
-            <>
-            <CustomMap region={region} markers={markers} />
-            <View style={styles.cardContainer}>
-              <ScrollView
-                contentContainerStyle={styles.captainRideOfferView}
-                showsVerticalScrollIndicator={false}>
-                  {console.log(rideRequests)}
-                {rideRequests?.map(rideDetails => (
-                  <RideOfferDetailCaptain
-                    key={rideDetails?.user?.id}
-                    selectedUser={rideDetails?.user}
-                    pickup={rideDetails?.pickup}
-                    dropOff={rideDetails?.dropoff}
-                    passengers={rideDetails?.passengers}
+          <View style={[styles.containerCard, { width: screenWidth }, !rideRequests?.length ? { flex: 1 } : null]}>
+            {rideRequests?.length ? (
+              <>
+                <CustomMap region={region} markers={markers} />
+                <View style={styles.cardContainer}>
+                  <ScrollView
+                    contentContainerStyle={styles.captainRideOfferView}
+                    showsVerticalScrollIndicator={false}>
+                    {console.log(rideRequests)}
+                    {rideRequests?.map(rideDetails => (
+                      <RideOfferDetailCaptain
+                        key={rideDetails?.user?.id}
+                        selectedUser={rideDetails?.user}
+                        pickup={rideDetails?.pickup}
+                        dropOff={rideDetails?.dropoff}
+                        passengers={rideDetails?.passengers}
+                      />
+                    ))}
+                  </ScrollView>
+                </View>
+              </>)
+              : (
+                <View
+                  style={{
+                    backgroundColor: theme == 'dark' ? black : backgroundColor,
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <ActivityIndicator size="large" color={purple} />
+                  <Heading
+                    text="Waiting For Ride Request"
+                    fontSize={moderateScale(20)}
+                    fontFamily={KumbhSansBold}
+                    color={purple}
+                    textAlign="center"
                   />
-                ))}
-              </ScrollView>
-            </View>
-            </>)
-            : (
-              <View
-                style={{
-                  backgroundColor:theme == 'dark' ? black : backgroundColor,
-                  flex:1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <ActivityIndicator size="large" color={purple} />
-                <Heading
-                  text="Waiting For Ride Request"
-                  fontSize={moderateScale(20)}
-                  fontFamily={KumbhSansBold}
-                  color={purple}
-                  textAlign="center"
-                />
-              </View>
-            )}
+                </View>
+              )}
           </View>
         );
       case 'start':
@@ -466,12 +502,12 @@ const Home = () => {
   };
 
   return (
-    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : white}]}>
+    <View style={[styles.container, { backgroundColor: theme == 'dark' ? black : white }]}>
       <DrawerHeader navigate={navigation} screen="home" />
       {role === 'Passenger' ? renderPassengerHome() : renderDriverHome()}
       {role !== 'Passenger' ? (
         rideStatus != 'initial' ? (
-          <View style={{zIndex: -100}}>
+          <View style={{ zIndex: -100 }}>
             <CustomMap region={region} markers={markers} />
           </View>
         ) : null

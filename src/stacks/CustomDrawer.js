@@ -1,6 +1,6 @@
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import React, {useContext, useRef, useState} from 'react';
-import {Image, StyleSheet, Switch, View, Animated} from 'react-native';
+import {Image, StyleSheet, Switch, View, Animated, Platform} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, Heading, Icon} from '../components/Index';
 import {
@@ -76,9 +76,9 @@ const CustomDrawerContent = ({navigation, ...props}) => {
 
   
   return (
-    <DrawerContentScrollView
+    <View
       {...props}
-      contentContainerStyle={styles.container}>
+      style={styles.container}>
       <View style={styles.topSpace} />
       <View style={styles.header}>
         <View style={styles.imageContainer}>
@@ -192,14 +192,13 @@ const CustomDrawerContent = ({navigation, ...props}) => {
           />
         </View>
       </View>
-    </DrawerContentScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:screenWidth,
     backgroundColor: purple,
     paddingTop: moderateScale(20),
   },
@@ -240,7 +239,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   switch: {
-    transform: [{scaleX: 0.95}, {scaleY: 0.95}],
+    transform: [{scaleX: Platform.OS == 'ios' ? 0.70  :0.95}, {scaleY: Platform.OS == 'ios' ? 0.70 : 0.95}],
   },
   ratingContainer: {
     flexDirection: 'row',

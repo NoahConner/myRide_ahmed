@@ -29,8 +29,7 @@ export const KumbhSansBold = 'KumbhSans-Bold';
 export const KumbhSansExtraBold = 'KumbhSans-ExtraBold';
 export const KumbhSansExtraLight = 'KumbhSans-ExtraLight';
 export const KumbhSansLight = 'KumbhSans-Light';
-export const KumbhSansExtraMedium = 'KumbhSans-ExtraMedium';
-export const KumbhSansRegular = 'KumbhSans-ExtraRegular';
+export const KumbhSansRegular = 'KumbhSans-Regular';
 export const KumbhSansExtraSemiBold = 'KumbhSans-ExtraSemiBold';
 export const KumbhSansExtraThin = 'KumbhSans-ExtraThin';
 // inter family

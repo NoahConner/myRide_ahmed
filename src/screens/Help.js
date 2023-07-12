@@ -19,13 +19,13 @@ import {
   white
 } from '../constants/Index';
 import { AppContext } from '../context/AppContext';
-const Help = ({}) => {
+const Help = ({ }) => {
   const navigation = useNavigation()
   const [helpMessage, setHelpMessage] = useState('');
-  const {theme} = useContext(AppContext);
+  const { theme } = useContext(AppContext);
   return (
-    <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
-      <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
+    <View style={{ flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor }}>
+      <DrawerHeader navigate={navigation} style={{ paddingBottom: moderateScale(10) }} />
       <View>
         <ViewHeader
           heading="Help"
@@ -37,8 +37,8 @@ const Help = ({}) => {
           path={'Home'}
         />
         <Input
-        multiline
-        numberOfLines={4}
+          multiline={true}
+          numberOfLines={4}
           placeholderTextColor={theme == 'dark' ? white : black}
           color={theme == 'dark' ? white : black}
           style={styles.helpTextArea}
@@ -79,9 +79,9 @@ const Help = ({}) => {
         <View
           style={{
             display: 'flex',
-            flexDirection:'row',
-            marginLeft:moderateScale(35),
-            marginTop:moderateScale(10)
+            flexDirection: 'row',
+            marginLeft: moderateScale(35),
+            marginTop: moderateScale(10)
           }}>
           <Heading
             text="Or Call Now "

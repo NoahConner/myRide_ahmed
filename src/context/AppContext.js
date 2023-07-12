@@ -28,12 +28,12 @@ export const AppProvider = ({children}) => {
   const colorScheme = Appearance.getColorScheme();
   const [theme, setTheme] = useState(colorScheme);
   const [startingLatLng, setStartingLatLng] = useState({
-    latitude: 42.536457,
-    longitude: -70.985786,
+    latitude: 39.000000,
+    longitude: -80.500000,
   });
   const [endingLatLng, setEndingLatLng] = useState({
-    latitude: 24.929873497852476,
-    longitude: 67.11593491135285,
+    latitude: 44.500000,
+    longitude: -89.500000,
   });
   const [rideStatus, setRideStatus] = useState('initial');
   useEffect(() => {

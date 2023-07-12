@@ -3,7 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   CardsAndAccounts,
   Chat,
-  Contactus,
   Help,
   Home,
   HowToUse,
@@ -29,7 +28,6 @@ const PassengerStack = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="RideHistory" component={RideHistory} />
       <Stack.Screen name="SavedAddresses" component={SavedAddresses} />
-      <Stack.Screen name="Contactus" component={Contactus} />
       <Stack.Screen name="Ratings" component={Ratings} />
       <Stack.Screen
         name="PersonalInformation"

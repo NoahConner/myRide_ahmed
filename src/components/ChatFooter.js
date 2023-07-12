@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { socketMessage } from '../constants/HelperFunctions';
 import { black, gray, green, white } from '../constants/Index';
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(10),
     paddingVertical: moderateScale(5),
     alignItems: 'center',
+    shadowOpacity: Platform.OS == 'ios' ? 0.3 : 1,
+    shadowRadius: 10,
+    elevation: 20,
     shadowColor: gray,
     shadowOffset: {width: 0, height: -30},
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 10,
   },
   inputContainer: {
     flex: 1,

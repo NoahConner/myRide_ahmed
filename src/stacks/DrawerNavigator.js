@@ -55,10 +55,8 @@ export default function DrawerNavigatorScreen() {
       drawerContent={drawerContent}
       drawerType="front"
       drawerPosition="right"
-      drawerStyle={{
-        width: '60%',
-      }}
       initialRouteName={initialRouteName}
+      
     >
       <Drawer.Screen
         options={{

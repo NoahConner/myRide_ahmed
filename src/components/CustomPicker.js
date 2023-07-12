@@ -1,22 +1,29 @@
-import { Picker } from '@react-native-picker/picker';
 import React from 'react';
+import RNPickerSelect from 'react-native-picker-select';
+import { StyleSheet } from 'react-native';
+import { black } from '../constants/Index';
 
-const CustomPicker = ({
-  selectedService,
-  setSelectedService,
-  style,
-  options,
-}) => {
+const CustomPicker = ({ selectedService, setSelectedService, style, options }) => {
+  const pickerStyle = {
+    inputIOS: style,
+    inputAndroid: style,
+    placeholder: styles.placeholder,
+  };
+
   return (
-    <Picker
-      style={style}
+    <RNPickerSelect
       selectedValue={selectedService}
-      onValueChange={(itemValue, itemIndex) => setSelectedService(itemValue)}>
-      {options.map((option, index) => (
-        <Picker.Item label={option.label} value={option.value} key={index} />
-      ))}
-    </Picker>
+      onValueChange={(itemValue, itemIndex) => setSelectedService(itemValue)}
+      items={options}
+      style={pickerStyle}
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  placeholder: {
+    color: black,
+  },
+});
 
 export default CustomPicker;

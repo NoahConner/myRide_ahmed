@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { moderateScale } from 'react-native-size-matters';
 import { apiKey, black, gray, screenWidth, white } from '../constants/Index';
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: white,
     borderRadius: 100,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 30 },
-    shadowOpacity: 1,
+    shadowColor: black,
+    shadowOpacity: Platform.OS == 'ios' ? 0.3 : 1,
     shadowRadius: 10,
     elevation: 20,
+    shadowOffset: {width: 2},
     marginVertical: moderateScale(10),
     paddingHorizontal: moderateScale(15),
     color:black

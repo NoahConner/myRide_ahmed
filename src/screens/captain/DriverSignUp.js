@@ -327,13 +327,12 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(10),
   },
   select: {
-    width: moderateScale(screenWidth / 2 - 60),
-    marginVertical: moderateScale(10),
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
+    marginTop: moderateScale(18),
+    marginLeft:moderateScale(8)
   },
   SelectBorderContainer: {
     position: 'relative',
+    width:moderateScale(screenWidth / 2.93)
   },
   SelectBorder: {
     position: 'absolute',

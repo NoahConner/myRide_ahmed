@@ -8,33 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MyRideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyRideTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-MyRide.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-MyRide.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-MyRide-MyRideTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyRide-MyRideTests.a */; };
+		57148F512A5BEC02005CC921 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3E2A5BDA68005CC921 /* Inter-Black.ttf */; };
+		57148F522A5BEC02005CC921 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3D2A5BDA68005CC921 /* Inter-Bold.ttf */; };
+		57148F532A5BEC02005CC921 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F372A5BDA67005CC921 /* Inter-ExtraBold.ttf */; };
+		57148F542A5BEC02005CC921 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F382A5BDA67005CC921 /* Inter-ExtraLight.ttf */; };
+		57148F552A5BEC02005CC921 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3B2A5BDA67005CC921 /* Inter-Light.ttf */; };
+		57148F562A5BEC02005CC921 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3A2A5BDA67005CC921 /* Inter-Medium.ttf */; };
+		57148F572A5BEC02005CC921 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F392A5BDA67005CC921 /* Inter-Regular.ttf */; };
+		57148F582A5BEC02005CC921 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F332A5BDA67005CC921 /* Inter-SemiBold.ttf */; };
+		57148F592A5BEC02005CC921 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F352A5BDA67005CC921 /* Inter-Thin.ttf */; };
+		57148F5A2A5BEC02005CC921 /* KumbhSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F3C2A5BDA68005CC921 /* KumbhSans-Black.ttf */; };
+		57148F5B2A5BEC02005CC921 /* KumbhSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F312A5BDA67005CC921 /* KumbhSans-Bold.ttf */; };
+		57148F5C2A5BEC02005CC921 /* KumbhSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F2F2A5BDA67005CC921 /* KumbhSans-ExtraBold.ttf */; };
+		57148F5D2A5BEC02005CC921 /* KumbhSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F302A5BDA67005CC921 /* KumbhSans-ExtraLight.ttf */; };
+		57148F5E2A5BEC02005CC921 /* KumbhSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F322A5BDA67005CC921 /* KumbhSans-Light.ttf */; };
+		57148F5F2A5BEC02005CC921 /* KumbhSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F2E2A5BDA67005CC921 /* KumbhSans-Medium.ttf */; };
+		57148F602A5BEC02005CC921 /* KumbhSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F362A5BDA67005CC921 /* KumbhSans-Regular.ttf */; };
+		57148F612A5BEC02005CC921 /* KumbhSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F2D2A5BDA67005CC921 /* KumbhSans-SemiBold.ttf */; };
+		57148F622A5BEC02005CC921 /* KumbhSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57148F342A5BDA67005CC921 /* KumbhSans-Thin.ttf */; };
+		57E0FE652A5D8B2200950CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E0FE642A5D8B2200950CF4 /* Media.xcassets */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		7EA76121D87343BEAB4A4C36 /* KumbhSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D0FEA959AE84C09B1B133C7 /* KumbhSans-Black.ttf */; };
-		B7C6211BA8D740548485A61B /* KumbhSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 289BB654363C4A03B7CA0C0B /* KumbhSans-Bold.ttf */; };
-		0D24C4B323FE47D9921F1CAE /* KumbhSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7417EF113B4B83B19380C8 /* KumbhSans-ExtraBold.ttf */; };
-		1BB2DC90250745D4B3A738C8 /* KumbhSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30D50CC1485B448EA0E879D2 /* KumbhSans-ExtraLight.ttf */; };
-		5818A3AF6F084A538BB6F0B1 /* KumbhSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC21DFA6325340128E7FC9DD /* KumbhSans-Light.ttf */; };
-		5483FD226CCE43559C38284F /* KumbhSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10C83067D6784C53A2A96887 /* KumbhSans-Medium.ttf */; };
-		75E9D0A5FA0B42BCB5CA2390 /* KumbhSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3DD2CD298414C9BACA55B4A /* KumbhSans-Regular.ttf */; };
-		DED64EC28FCB43C188F7B6DC /* KumbhSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70C6546AFD4D0C8A70AEDD /* KumbhSans-SemiBold.ttf */; };
-		554922BEC040400EA58FCF3E /* KumbhSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75BDDA5F93F341FD8B68FC0E /* KumbhSans-Thin.ttf */; };
-		6ED04BCC666449E29909285F /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */; };
-		8E092045DB104C7A9775B6F4 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBBB3D2DEE464EE2B2C8A630 /* Inter-Black.ttf */; };
-		55E3BF7F91F54EAE9F8BC87E /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12780DBBB5334AF3A2001BA1 /* Inter-Bold.ttf */; };
-		CFE403B297BA488985964BDF /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7E93E9B18141B2ADA45471 /* Inter-ExtraBold.ttf */; };
-		640154FB081F465BB951E3AA /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */; };
-		97596F0225764E078E0FF865 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 204AF626C8094290BE4112F4 /* Inter-Light.ttf */; };
-		8B08E4D521654A21A18227EA /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB2904EDC3C5427EA90F2847 /* Inter-Medium.ttf */; };
-		4E9E4D0690324C6D94B22673 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1345F7D69F4C9B84FCA2EA /* Inter-Regular.ttf */; };
-		BCFC4030E917480B9FC1FA2F /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1332F5616A13413486D2AD8D /* Inter-SemiBold.ttf */; };
-		42CB0FB1E03C4AD7B65F5074 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98DEA15FE714C95A0AF398F /* Inter-Thin.ttf */; };
-		00F913AD514E417F89ADB412 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2579009A0E6E4BCCAA925763 /* OFL.txt */; };
-		8C104078198C42B2A7BA2DCA /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCC78A92BC484F6DAF6B60F9 /* README.txt */; };
+		BA73D478FD801F482B39156D /* libPods-MyRide.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE61FF02F730527388B63C0 /* libPods-MyRide.a */; };
+		C8A5BB713FBCD70C485B25ED /* libPods-MyRide-MyRideTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F99BC42BB2886E7D1A5FB6B /* libPods-MyRide-MyRideTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,41 +49,60 @@
 		00E356EE1AD99517003FC87E /* MyRideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MyRideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRideTests.m; sourceTree = "<group>"; };
+		10C83067D6784C53A2A96887 /* KumbhSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Medium.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Medium.ttf"; sourceTree = "<group>"; };
+		111CFFEC6E39C04ECF756F1A /* Pods-MyRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide.debug.xcconfig"; path = "Target Support Files/Pods-MyRide/Pods-MyRide.debug.xcconfig"; sourceTree = "<group>"; };
+		12780DBBB5334AF3A2001BA1 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		1332F5616A13413486D2AD8D /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter/static/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MyRide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyRide/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MyRide/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyRide/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyRide/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyRide/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyRide-MyRideTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRide-MyRideTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-MyRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide.debug.xcconfig"; path = "Target Support Files/Pods-MyRide/Pods-MyRide.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-MyRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide.release.xcconfig"; path = "Target Support Files/Pods-MyRide/Pods-MyRide.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-MyRide-MyRideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide-MyRideTests.debug.xcconfig"; path = "Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-MyRide.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRide.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C70C6546AFD4D0C8A70AEDD /* KumbhSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-SemiBold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		204AF626C8094290BE4112F4 /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../assets/fonts/Inter/static/Inter-Light.ttf"; sourceTree = "<group>"; };
+		2579009A0E6E4BCCAA925763 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../assets/fonts/Inter/OFL.txt; sourceTree = "<group>"; };
+		289BB654363C4A03B7CA0C0B /* KumbhSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Bold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Bold.ttf"; sourceTree = "<group>"; };
+		30D50CC1485B448EA0E879D2 /* KumbhSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-ExtraLight.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter/static/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-VariableFont_slnt,wght.ttf"; path = "../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
+		4FB694AA2D07C212AD1C7E26 /* Pods-MyRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide.release.xcconfig"; path = "Target Support Files/Pods-MyRide/Pods-MyRide.release.xcconfig"; sourceTree = "<group>"; };
+		57148F2D2A5BDA67005CC921 /* KumbhSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-SemiBold.ttf"; path = "../../../../fonts/myRide/KumbhSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		57148F2E2A5BDA67005CC921 /* KumbhSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Medium.ttf"; path = "../../../../fonts/myRide/KumbhSans-Medium.ttf"; sourceTree = "<group>"; };
+		57148F2F2A5BDA67005CC921 /* KumbhSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-ExtraBold.ttf"; path = "../../../../fonts/myRide/KumbhSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		57148F302A5BDA67005CC921 /* KumbhSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-ExtraLight.ttf"; path = "../../../../fonts/myRide/KumbhSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		57148F312A5BDA67005CC921 /* KumbhSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Bold.ttf"; path = "../../../../fonts/myRide/KumbhSans-Bold.ttf"; sourceTree = "<group>"; };
+		57148F322A5BDA67005CC921 /* KumbhSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Light.ttf"; path = "../../../../fonts/myRide/KumbhSans-Light.ttf"; sourceTree = "<group>"; };
+		57148F332A5BDA67005CC921 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-SemiBold.ttf"; path = "../../../../fonts/myRide/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		57148F342A5BDA67005CC921 /* KumbhSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Thin.ttf"; path = "../../../../fonts/myRide/KumbhSans-Thin.ttf"; sourceTree = "<group>"; };
+		57148F352A5BDA67005CC921 /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Thin.ttf"; path = "../../../../fonts/myRide/Inter-Thin.ttf"; sourceTree = "<group>"; };
+		57148F362A5BDA67005CC921 /* KumbhSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Regular.ttf"; path = "../../../../fonts/myRide/KumbhSans-Regular.ttf"; sourceTree = "<group>"; };
+		57148F372A5BDA67005CC921 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraBold.ttf"; path = "../../../../fonts/myRide/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		57148F382A5BDA67005CC921 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraLight.ttf"; path = "../../../../fonts/myRide/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		57148F392A5BDA67005CC921 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Regular.ttf"; path = "../../../../fonts/myRide/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		57148F3A2A5BDA67005CC921 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Medium.ttf"; path = "../../../../fonts/myRide/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		57148F3B2A5BDA67005CC921 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Light.ttf"; path = "../../../../fonts/myRide/Inter-Light.ttf"; sourceTree = "<group>"; };
+		57148F3C2A5BDA68005CC921 /* KumbhSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KumbhSans-Black.ttf"; path = "../../../../fonts/myRide/KumbhSans-Black.ttf"; sourceTree = "<group>"; };
+		57148F3D2A5BDA68005CC921 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Bold.ttf"; path = "../../../../fonts/myRide/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		57148F3E2A5BDA68005CC921 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Black.ttf"; path = "../../../../fonts/myRide/Inter-Black.ttf"; sourceTree = "<group>"; };
+		57E0FE642A5D8B2200950CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		5BE61FF02F730527388B63C0 /* libPods-MyRide.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRide.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F99BC42BB2886E7D1A5FB6B /* libPods-MyRide-MyRideTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRide-MyRideTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75BDDA5F93F341FD8B68FC0E /* KumbhSans-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Thin.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Thin.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyRide/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-MyRide-MyRideTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide-MyRideTests.release.xcconfig"; path = "Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F1345F7D69F4C9B84FCA2EA /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter/static/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		949881AB5AD36013F7863E85 /* Pods-MyRide-MyRideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide-MyRideTests.debug.xcconfig"; path = "Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D0FEA959AE84C09B1B133C7 /* KumbhSans-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Black.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Black.ttf"; sourceTree = "<group>"; };
+		B3DD2CD298414C9BACA55B4A /* KumbhSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Regular.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Regular.ttf"; sourceTree = "<group>"; };
+		BCC78A92BC484F6DAF6B60F9 /* README.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = README.txt; path = ../assets/fonts/Inter/README.txt; sourceTree = "<group>"; };
+		CB2904EDC3C5427EA90F2847 /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter/static/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		CE7E93E9B18141B2ADA45471 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/Inter/static/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D98DEA15FE714C95A0AF398F /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../assets/fonts/Inter/static/Inter-Thin.ttf"; sourceTree = "<group>"; };
+		DBBB3D2DEE464EE2B2C8A630 /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../assets/fonts/Inter/static/Inter-Black.ttf"; sourceTree = "<group>"; };
+		EC21DFA6325340128E7FC9DD /* KumbhSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-Light.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9D0FEA959AE84C09B1B133C7 /* KumbhSans-Black.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Black.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		289BB654363C4A03B7CA0C0B /* KumbhSans-Bold.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Bold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		ED7417EF113B4B83B19380C8 /* KumbhSans-ExtraBold.ttf */ = {isa = PBXFileReference; name = "KumbhSans-ExtraBold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		30D50CC1485B448EA0E879D2 /* KumbhSans-ExtraLight.ttf */ = {isa = PBXFileReference; name = "KumbhSans-ExtraLight.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EC21DFA6325340128E7FC9DD /* KumbhSans-Light.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Light.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		10C83067D6784C53A2A96887 /* KumbhSans-Medium.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Medium.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B3DD2CD298414C9BACA55B4A /* KumbhSans-Regular.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Regular.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1C70C6546AFD4D0C8A70AEDD /* KumbhSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "KumbhSans-SemiBold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		75BDDA5F93F341FD8B68FC0E /* KumbhSans-Thin.ttf */ = {isa = PBXFileReference; name = "KumbhSans-Thin.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; name = "Inter-VariableFont_slnt,wght.ttf"; path = "../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DBBB3D2DEE464EE2B2C8A630 /* Inter-Black.ttf */ = {isa = PBXFileReference; name = "Inter-Black.ttf"; path = "../assets/fonts/Inter/static/Inter-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		12780DBBB5334AF3A2001BA1 /* Inter-Bold.ttf */ = {isa = PBXFileReference; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CE7E93E9B18141B2ADA45471 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/Inter/static/Inter-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter/static/Inter-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		204AF626C8094290BE4112F4 /* Inter-Light.ttf */ = {isa = PBXFileReference; name = "Inter-Light.ttf"; path = "../assets/fonts/Inter/static/Inter-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CB2904EDC3C5427EA90F2847 /* Inter-Medium.ttf */ = {isa = PBXFileReference; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter/static/Inter-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8F1345F7D69F4C9B84FCA2EA /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter/static/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1332F5616A13413486D2AD8D /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter/static/Inter-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D98DEA15FE714C95A0AF398F /* Inter-Thin.ttf */ = {isa = PBXFileReference; name = "Inter-Thin.ttf"; path = "../assets/fonts/Inter/static/Inter-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2579009A0E6E4BCCAA925763 /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../assets/fonts/Inter/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BCC78A92BC484F6DAF6B60F9 /* README.txt */ = {isa = PBXFileReference; name = "README.txt"; path = "../assets/fonts/Inter/README.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED7417EF113B4B83B19380C8 /* KumbhSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumbhSans-ExtraBold.ttf"; path = "../assets/fonts/kumbh_sans/KumbhSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F343A3C08D98E61AC5A96A8B /* Pods-MyRide-MyRideTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRide-MyRideTests.release.xcconfig"; path = "Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-MyRide-MyRideTests.a in Frameworks */,
+				C8A5BB713FBCD70C485B25ED /* libPods-MyRide-MyRideTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-MyRide.a in Frameworks */,
+				BA73D478FD801F482B39156D /* libPods-MyRide.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,14 +142,61 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0F50523BE2A147468EE29EC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D0FEA959AE84C09B1B133C7 /* KumbhSans-Black.ttf */,
+				289BB654363C4A03B7CA0C0B /* KumbhSans-Bold.ttf */,
+				ED7417EF113B4B83B19380C8 /* KumbhSans-ExtraBold.ttf */,
+				30D50CC1485B448EA0E879D2 /* KumbhSans-ExtraLight.ttf */,
+				EC21DFA6325340128E7FC9DD /* KumbhSans-Light.ttf */,
+				10C83067D6784C53A2A96887 /* KumbhSans-Medium.ttf */,
+				B3DD2CD298414C9BACA55B4A /* KumbhSans-Regular.ttf */,
+				1C70C6546AFD4D0C8A70AEDD /* KumbhSans-SemiBold.ttf */,
+				75BDDA5F93F341FD8B68FC0E /* KumbhSans-Thin.ttf */,
+				4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */,
+				DBBB3D2DEE464EE2B2C8A630 /* Inter-Black.ttf */,
+				12780DBBB5334AF3A2001BA1 /* Inter-Bold.ttf */,
+				CE7E93E9B18141B2ADA45471 /* Inter-ExtraBold.ttf */,
+				32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */,
+				204AF626C8094290BE4112F4 /* Inter-Light.ttf */,
+				CB2904EDC3C5427EA90F2847 /* Inter-Medium.ttf */,
+				8F1345F7D69F4C9B84FCA2EA /* Inter-Regular.ttf */,
+				1332F5616A13413486D2AD8D /* Inter-SemiBold.ttf */,
+				D98DEA15FE714C95A0AF398F /* Inter-Thin.ttf */,
+				2579009A0E6E4BCCAA925763 /* OFL.txt */,
+				BCC78A92BC484F6DAF6B60F9 /* README.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* MyRide */ = {
 			isa = PBXGroup;
 			children = (
+				57148F3E2A5BDA68005CC921 /* Inter-Black.ttf */,
+				57148F3D2A5BDA68005CC921 /* Inter-Bold.ttf */,
+				57148F372A5BDA67005CC921 /* Inter-ExtraBold.ttf */,
+				57148F382A5BDA67005CC921 /* Inter-ExtraLight.ttf */,
+				57148F3B2A5BDA67005CC921 /* Inter-Light.ttf */,
+				57148F3A2A5BDA67005CC921 /* Inter-Medium.ttf */,
+				57148F392A5BDA67005CC921 /* Inter-Regular.ttf */,
+				57148F332A5BDA67005CC921 /* Inter-SemiBold.ttf */,
+				57148F352A5BDA67005CC921 /* Inter-Thin.ttf */,
+				57148F3C2A5BDA68005CC921 /* KumbhSans-Black.ttf */,
+				57148F312A5BDA67005CC921 /* KumbhSans-Bold.ttf */,
+				57148F2F2A5BDA67005CC921 /* KumbhSans-ExtraBold.ttf */,
+				57148F302A5BDA67005CC921 /* KumbhSans-ExtraLight.ttf */,
+				57148F322A5BDA67005CC921 /* KumbhSans-Light.ttf */,
+				57148F2E2A5BDA67005CC921 /* KumbhSans-Medium.ttf */,
+				57148F362A5BDA67005CC921 /* KumbhSans-Regular.ttf */,
+				57148F2D2A5BDA67005CC921 /* KumbhSans-SemiBold.ttf */,
+				57148F342A5BDA67005CC921 /* KumbhSans-Thin.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				57E0FE642A5D8B2200950CF4 /* Media.xcassets */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = MyRide;
@@ -142,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-MyRide.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyRide-MyRideTests.a */,
+				5BE61FF02F730527388B63C0 /* libPods-MyRide.a */,
+				6F99BC42BB2886E7D1A5FB6B /* libPods-MyRide-MyRideTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +234,7 @@
 			sourceTree = "<group>";
 			tabWidth = 2;
 			usesTabs = 0;
+			wrapsLines = 0;
 		};
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
@@ -183,42 +248,13 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-MyRide.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-MyRide.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-MyRide-MyRideTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-MyRide-MyRideTests.release.xcconfig */,
+				111CFFEC6E39C04ECF756F1A /* Pods-MyRide.debug.xcconfig */,
+				4FB694AA2D07C212AD1C7E26 /* Pods-MyRide.release.xcconfig */,
+				949881AB5AD36013F7863E85 /* Pods-MyRide-MyRideTests.debug.xcconfig */,
+				F343A3C08D98E61AC5A96A8B /* Pods-MyRide-MyRideTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		0F50523BE2A147468EE29EC8 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				9D0FEA959AE84C09B1B133C7 /* KumbhSans-Black.ttf */,
-				289BB654363C4A03B7CA0C0B /* KumbhSans-Bold.ttf */,
-				ED7417EF113B4B83B19380C8 /* KumbhSans-ExtraBold.ttf */,
-				30D50CC1485B448EA0E879D2 /* KumbhSans-ExtraLight.ttf */,
-				EC21DFA6325340128E7FC9DD /* KumbhSans-Light.ttf */,
-				10C83067D6784C53A2A96887 /* KumbhSans-Medium.ttf */,
-				B3DD2CD298414C9BACA55B4A /* KumbhSans-Regular.ttf */,
-				1C70C6546AFD4D0C8A70AEDD /* KumbhSans-SemiBold.ttf */,
-				75BDDA5F93F341FD8B68FC0E /* KumbhSans-Thin.ttf */,
-				4C14C47DFA004DB48B5E84F3 /* Inter-VariableFont_slnt,wght.ttf */,
-				DBBB3D2DEE464EE2B2C8A630 /* Inter-Black.ttf */,
-				12780DBBB5334AF3A2001BA1 /* Inter-Bold.ttf */,
-				CE7E93E9B18141B2ADA45471 /* Inter-ExtraBold.ttf */,
-				32005EA828E24756A569AE0B /* Inter-ExtraLight.ttf */,
-				204AF626C8094290BE4112F4 /* Inter-Light.ttf */,
-				CB2904EDC3C5427EA90F2847 /* Inter-Medium.ttf */,
-				8F1345F7D69F4C9B84FCA2EA /* Inter-Regular.ttf */,
-				1332F5616A13413486D2AD8D /* Inter-SemiBold.ttf */,
-				D98DEA15FE714C95A0AF398F /* Inter-Thin.ttf */,
-				2579009A0E6E4BCCAA925763 /* OFL.txt */,
-				BCC78A92BC484F6DAF6B60F9 /* README.txt */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -227,12 +263,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyRideTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				FEAF6623BC5746B699F68D4F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				EB2F717BB552E2A25361D2BE /* [CP] Embed Pods Frameworks */,
+				83147F607F90CC459FA30206 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,14 +284,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyRide" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				6F10D469EEA638D36A6DB7F4 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				178A94750FA470E1E7D26361 /* [CP] Embed Pods Frameworks */,
+				D7CDA0FCCEF25328B838F9D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,29 +350,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57148F512A5BEC02005CC921 /* Inter-Black.ttf in Resources */,
+				57148F522A5BEC02005CC921 /* Inter-Bold.ttf in Resources */,
+				57148F532A5BEC02005CC921 /* Inter-ExtraBold.ttf in Resources */,
+				57148F542A5BEC02005CC921 /* Inter-ExtraLight.ttf in Resources */,
+				57148F552A5BEC02005CC921 /* Inter-Light.ttf in Resources */,
+				57148F562A5BEC02005CC921 /* Inter-Medium.ttf in Resources */,
+				57148F572A5BEC02005CC921 /* Inter-Regular.ttf in Resources */,
+				57148F582A5BEC02005CC921 /* Inter-SemiBold.ttf in Resources */,
+				57148F592A5BEC02005CC921 /* Inter-Thin.ttf in Resources */,
+				57148F5A2A5BEC02005CC921 /* KumbhSans-Black.ttf in Resources */,
+				57148F5B2A5BEC02005CC921 /* KumbhSans-Bold.ttf in Resources */,
+				57148F5C2A5BEC02005CC921 /* KumbhSans-ExtraBold.ttf in Resources */,
+				57148F5D2A5BEC02005CC921 /* KumbhSans-ExtraLight.ttf in Resources */,
+				57148F5E2A5BEC02005CC921 /* KumbhSans-Light.ttf in Resources */,
+				57148F5F2A5BEC02005CC921 /* KumbhSans-Medium.ttf in Resources */,
+				57148F602A5BEC02005CC921 /* KumbhSans-Regular.ttf in Resources */,
+				57E0FE652A5D8B2200950CF4 /* Media.xcassets in Resources */,
+				57148F612A5BEC02005CC921 /* KumbhSans-SemiBold.ttf in Resources */,
+				57148F622A5BEC02005CC921 /* KumbhSans-Thin.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				7EA76121D87343BEAB4A4C36 /* KumbhSans-Black.ttf in Resources */,
-				B7C6211BA8D740548485A61B /* KumbhSans-Bold.ttf in Resources */,
-				0D24C4B323FE47D9921F1CAE /* KumbhSans-ExtraBold.ttf in Resources */,
-				1BB2DC90250745D4B3A738C8 /* KumbhSans-ExtraLight.ttf in Resources */,
-				5818A3AF6F084A538BB6F0B1 /* KumbhSans-Light.ttf in Resources */,
-				5483FD226CCE43559C38284F /* KumbhSans-Medium.ttf in Resources */,
-				75E9D0A5FA0B42BCB5CA2390 /* KumbhSans-Regular.ttf in Resources */,
-				DED64EC28FCB43C188F7B6DC /* KumbhSans-SemiBold.ttf in Resources */,
-				554922BEC040400EA58FCF3E /* KumbhSans-Thin.ttf in Resources */,
-				6ED04BCC666449E29909285F /* Inter-VariableFont_slnt,wght.ttf in Resources */,
-				8E092045DB104C7A9775B6F4 /* Inter-Black.ttf in Resources */,
-				55E3BF7F91F54EAE9F8BC87E /* Inter-Bold.ttf in Resources */,
-				CFE403B297BA488985964BDF /* Inter-ExtraBold.ttf in Resources */,
-				640154FB081F465BB951E3AA /* Inter-ExtraLight.ttf in Resources */,
-				97596F0225764E078E0FF865 /* Inter-Light.ttf in Resources */,
-				8B08E4D521654A21A18227EA /* Inter-Medium.ttf in Resources */,
-				4E9E4D0690324C6D94B22673 /* Inter-Regular.ttf in Resources */,
-				BCFC4030E917480B9FC1FA2F /* Inter-SemiBold.ttf in Resources */,
-				42CB0FB1E03C4AD7B65F5074 /* Inter-Thin.ttf in Resources */,
-				00F913AD514E417F89ADB412 /* OFL.txt in Resources */,
-				8C104078198C42B2A7BA2DCA /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +393,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		178A94750FA470E1E7D26361 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,29 +410,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide/Pods-MyRide-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyRide-MyRideTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		6F10D469EEA638D36A6DB7F4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -420,24 +432,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		83147F607F90CC459FA30206 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		D7CDA0FCCEF25328B838F9D5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,21 +466,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide/Pods-MyRide-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		EB2F717BB552E2A25361D2BE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyRide-MyRideTests/Pods-MyRide-MyRideTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -488,6 +500,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FEAF6623BC5746B699F68D4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyRide-MyRideTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -523,7 +557,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-MyRide-MyRideTests.debug.xcconfig */;
+			baseConfigurationReference = 949881AB5AD36013F7863E85 /* Pods-MyRide-MyRideTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -550,7 +584,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-MyRide-MyRideTests.release.xcconfig */;
+			baseConfigurationReference = F343A3C08D98E61AC5A96A8B /* Pods-MyRide-MyRideTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -574,11 +608,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-MyRide.debug.xcconfig */;
+			baseConfigurationReference = 111CFFEC6E39C04ECF756F1A /* Pods-MyRide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MyRide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -601,11 +637,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-MyRide.release.xcconfig */;
+			baseConfigurationReference = 4FB694AA2D07C212AD1C7E26 /* Pods-MyRide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				INFOPLIST_FILE = MyRide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,7 +695,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -691,6 +729,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -728,7 +767,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -754,6 +793,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

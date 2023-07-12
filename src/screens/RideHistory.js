@@ -1,15 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { DrawerHeader, RideHistoryCard, ViewHeader } from '../components/Index';
 import {
   backgroundColor,
   black,
   darkGray,
-  lighterGray,
-  screenWidth,
-  white,
+  white
 } from '../constants/Index';
 import { AppContext } from '../context/AppContext';
 
@@ -54,17 +52,6 @@ const styles = StyleSheet.create({
   header: {
     marginTop: moderateScale(20),
     marginBottom: moderateScale(20),
-  },
-  addressRow: {
-    marginVertical: moderateScale(10),
-    width: moderateScale(screenWidth),
-    backgroundColor: lighterGray,
-    paddingVertical: moderateScale(15),
-    paddingHorizontal: moderateScale(25),
-    borderRadius: moderateScale(10),
-  },
-  heading: {
-    marginTop: moderateScale(5),
   },
   cardContainer: {
     paddingBottom: moderateScale(150),

@@ -2,7 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
 import {
   StyleSheet,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import {
@@ -11,7 +12,7 @@ import {
   ViewHeader,
 } from '../components/Index';
 import {
-  KumbhSansExtraMedium,
+  KumbhSansRegular,
   backgroundColor,
   black,
   darkGray,
@@ -28,7 +29,6 @@ import { AppContext } from '../context/AppContext';
     return (
       <View style={{flex: 1, backgroundColor:theme == 'dark' ? black : backgroundColor}}>
         <DrawerHeader navigate={navigation} style={{paddingBottom:moderateScale(10)}}/>
-        <View>
           <ViewHeader
             heading="Terms & Conditions"
             icon={'home'}
@@ -38,15 +38,16 @@ import { AppContext } from '../context/AppContext';
             navigation={navigation}
             path={'Home'}
           />
+        <ScrollView contentContainerStyle={{flex:1}}>
           <Heading
             text={dummyText}
             fontSize={moderateScale(13)}
-            fontFamily={KumbhSansExtraMedium}
+            fontFamily={KumbhSansRegular}
             color={theme == 'dark' ? white : black}
             textAlign="center"
             style={styles.heading}
           />
-        </View>
+        </ScrollView>
       </View>
     );
   };
@@ -61,7 +62,6 @@ import { AppContext } from '../context/AppContext';
       marginTop: moderateScale(20),
     },
     heading: {
-      width:moderateScale(screenWidth-40),
       marginHorizontal:moderateScale(20),
       marginTop: moderateScale(20),
     },

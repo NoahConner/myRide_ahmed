@@ -31,7 +31,9 @@ const Input = ({
   fontFamily,
   fontSize,
   disabled,
-  color
+  color,
+  multiline,
+  numberOfLines
 }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -75,7 +77,7 @@ const Input = ({
             editable={!disabled}
             selectTextOnFocus={!disabled}
             placeholderTextColor={placeholderTextColor}
-            style={[styles.input,{color:color}]}
+            style={[styles.input, { color: color }]}
             placeholder={placeholder}
             value={selectedDate.toDateString()}
             onChangeText={setValue}
@@ -144,11 +146,13 @@ const Input = ({
       )}
       {type === 'text' && (
         <TextInput
+          numberOfLines={numberOfLines}
+          multiline={multiline}
           disabled={disabled}
           editable={!disabled}
           selectTextOnFocus={!disabled}
           placeholderTextColor={placeholderTextColor}
-          style={[styles.input,{color:color}]}
+          style={[styles.input, { color: color }]}
           placeholder={placeholder}
           value={value}
           onChangeText={setValue}
@@ -165,7 +169,7 @@ const Input = ({
           editable={!disabled}
           selectTextOnFocus={!disabled}
           placeholderTextColor={placeholderTextColor}
-          style={[styles.input,{color:color}]}
+          style={[styles.input, { color: color }]}
           placeholder={placeholder}
           value={value}
           onChangeText={setValue}
@@ -184,7 +188,7 @@ const Input = ({
             editable={!disabled}
             selectTextOnFocus={!disabled}
             placeholderTextColor={placeholderTextColor}
-            style={[styles.input,{color:color}]}
+            style={[styles.input, { color: color }]}
             placeholder={placeholder}
             value={value}
             onChangeText={setValue}

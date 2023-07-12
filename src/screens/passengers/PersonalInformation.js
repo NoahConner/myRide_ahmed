@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Animated,
   Image,
+  KeyboardAvoidingView,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -81,7 +82,7 @@ const PersonalInformation = ({}) => {
     }).start();
   };
   return (
-    <View style={{flex: 1, backgroundColor: theme == 'dark' ? black : white}}>
+    <KeyboardAvoidingView behavior="height" enabled style={{flex: 1, backgroundColor: theme == 'dark' ? black : white}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -221,7 +222,7 @@ const PersonalInformation = ({}) => {
           setSheet={setSheet}
         />
       </RbSheet>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -282,7 +283,9 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
+    marginVertical: moderateScale(10),
     paddingLeft: moderateScale(15),
+    paddingVertical: moderateScale(5),
   },
   saveButton: {
     marginTop: moderateScale(20),

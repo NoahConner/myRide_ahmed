@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import {
   KumbhSansBold,
@@ -81,10 +81,10 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(5),
     color: black,
     shadowColor: black,
-    shadowOffset: {width: 2, height: 10},
-    shadowOpacity: 1,
-    shadowRadius: 5,
+    shadowOpacity: Platform.OS == 'ios' ? 0.3 : 1,
+    shadowRadius: 10,
     elevation: 20,
+    shadowOffset: {width: 2, height: 30},
     borderRadius: moderateScale(5),
     width: moderateScale(screenWidth - 150, 0.1),
     marginTop: moderateScale(15, 0.1),
