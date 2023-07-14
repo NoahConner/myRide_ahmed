@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, Image, StyleSheet, View } from 'react-native';
+import { Animated, Image, Platform, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { moderateScale } from 'react-native-size-matters';
 import { formatUSDPrice, socketAccept } from '../../constants/HelperFunctions';
@@ -158,7 +158,7 @@ const RideOfferDetailCaptain = ({
               textAlign="center"
             />
           </View>
-          <View style={styles.buttonOptions}>
+          <View style={Platform.OS == 'ios' ? styles.buttonOptionsRelative : styles.buttonOptions}>
             <Button
               onPress={() => accept()}
               style={styles.acceptButton}
@@ -172,6 +172,7 @@ const RideOfferDetailCaptain = ({
               width={moderateScale(screenWidth / 3)}
             />
             <Button
+            disabled={true}
               onPress={() => decline()}
               fontSize={moderateScale(14)}
               backgroundColor={red}
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(20),
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(20),
-    paddingVertical: moderateScale(20)
+    paddingVertical: Platform.OS == 'ios' ? moderateScale(30) : moderateScale(20),
   },
   topLine: {
     flexDirection: 'row',
@@ -238,6 +239,7 @@ const styles = StyleSheet.create({
   },
   passengerContainer: {
     marginTop: moderateScale(15),
+    marginBottom: moderateScale(15),
   },
   buttonOptions: {
     justifyContent: 'center',
@@ -246,6 +248,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: moderateScale(-30),
     width: '100%',
+    zIndex:1000
+  },
+  buttonOptionsRelative: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: moderateScale(-20),
+    flexDirection: 'row',
+    width: '100%',
+    zIndex:1000
   },
   acceptButton: {
     marginRight: moderateScale(20),

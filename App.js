@@ -9,14 +9,11 @@ import { AuthNavigator, DrawerNavigatorScreen } from './src/stacks/Index';
 export default function App() {
   return (
     <AppProvider>
-      <ToastProvider>
-        {
-          Platform.OS == 'ios' ?
-            <SafeAreaView style={{ flex: 1, backgroundColor: backgroundColor }}>
-              <AppContent />
-            </SafeAreaView> : <AppContent />
-        }
-      </ToastProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
+        <ToastProvider>
+          <AppContent />
+        </ToastProvider>
+      </SafeAreaView>
     </AppProvider>
   );
 }

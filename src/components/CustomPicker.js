@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
-import { StyleSheet } from 'react-native';
-import { black } from '../constants/Index';
+import { black, white } from '../constants/Index';
+import { AppContext } from '../context/AppContext';
 
-const CustomPicker = ({ selectedService, setSelectedService, style, options }) => {
+const CustomPicker = ({ selectedService, setSelectedService, style, options, placeholder }) => {
+  const {theme} = useContext(AppContext);
   const pickerStyle = {
     inputIOS: style,
     inputAndroid: style,
-    placeholder: styles.placeholder,
+    placeholder: {color: theme == 'dark' ? white : black},
   };
 
   return (
@@ -16,14 +17,12 @@ const CustomPicker = ({ selectedService, setSelectedService, style, options }) =
       onValueChange={(itemValue, itemIndex) => setSelectedService(itemValue)}
       items={options}
       style={pickerStyle}
+      placeholder={{
+        label: placeholder,
+        value: null,
+    }}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  placeholder: {
-    color: black,
-  },
-});
 
 export default CustomPicker;

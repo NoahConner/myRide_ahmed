@@ -189,6 +189,7 @@ const CapatainSignUp = () => {
           />
           <View style={styles.SelectBorderContainer}>
             <CustomPicker
+            placeholder={'Select Service'}
               selectedService={selectedService}
               setSelectedService={setSelectedService}
               style={[styles.select,{color:theme == 'dark' ? white : black}]}

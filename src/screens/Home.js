@@ -543,7 +543,7 @@ const styles = StyleSheet.create({
   captainRideOfferView: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: screenWidth,
+    width: screenWidth
   },
   findRideButton: {
     position: 'absolute',
