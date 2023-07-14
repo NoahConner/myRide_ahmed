@@ -29,7 +29,10 @@ const AppSplash = () => {
         setBackgroundState={setBackgroundState}
         setModalView={setModalView}
       />
-      {modalView && <SplashModalView modalView={modalView} />}
+      {modalView && 
+      <View style={{position:'absolute'}}>
+        <SplashModalView modalView={modalView} />
+      </View>}
     </SafeAreaView>
   );
 };

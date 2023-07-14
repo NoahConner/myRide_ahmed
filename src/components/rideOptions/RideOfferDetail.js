@@ -158,6 +158,7 @@ const RideOfferDetail = ({selectedUser, showTimer}) => {
               <Timer />
             ) : null}
             <Button
+            disabled={true}
               style={null}
               fontSize={moderateScale(14)}
               backgroundColor={red}

@@ -54,6 +54,7 @@ const AccountInformation = ({}) => {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.SelectBorderContainer}>
           <CustomPicker
+          placeholder={'Select Bank'}
             selectedService={selectedBank}
             setSelectedService={setSelectedBank}
             style={[styles.select,{color:theme == 'dark' ? white : black}]}
@@ -118,6 +119,8 @@ const styles = StyleSheet.create({
     marginVertical: moderateScale(10),
     borderBottomColor: 'black',
     borderBottomWidth: 1,
+    paddingLeft:moderateScale(10),
+    paddingBottom:moderateScale(10)
   },
   SelectBorderContainer: {
     position: 'relative',

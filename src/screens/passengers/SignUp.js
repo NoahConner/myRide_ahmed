@@ -273,7 +273,7 @@ const SignUp = () => {
         <View style={styles.dontHaveBox}>
           <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
           <Button
-            style={{paddingLeft: moderateScale(5)}}
+            style={null}
             fontSize={moderateScale(12)}
             backgroundColor={null}
             color={purple}
@@ -318,9 +318,6 @@ const styles = StyleSheet.create({
   },
   dontHaveBoxText: {
     color: gray,
-  },
-  dontHaveBoxText2: {
-    color: purple,
   },
   CarProp: {
     width: moderateScale(200),

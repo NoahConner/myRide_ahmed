@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Modal, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { moderateScale } from 'react-native-size-matters';
 import { green, linearGradient, screenWidth, white } from '../constants/Index';
@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
+    padding:moderateScale(20),
     paddingHorizontal: moderateScale(40),
     paddingTop: moderateScale(10),
-    paddingBottom: moderateScale(30),
+    paddingBottom: moderateScale(50),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'purple',
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   },
   modalButton: {
     position: 'absolute',
-    bottom: moderateScale(-20),
+    bottom: Platform.OS == 'ios' ? moderateScale(5) : moderateScale(-20),
   },
   closeButton: {
     position: 'absolute',

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useEffect, useRef } from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
+import { Animated, Platform, StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { KumbhSansExtraBold, black, lightPurple, screenHeight, screenWidth, white } from '../../constants/Index';
 import { AppContext } from '../../context/AppContext';
@@ -84,7 +84,7 @@ const SplashModalView = ({ modalView }) => {
         <View style={styles.viewBoxHeadingBox}>
           <Heading
             text="Our Service Is Always There For You."
-            fontSize={moderateScale(35)}
+            fontSize={moderateScale(38, 0.1)}
             fontFamily={KumbhSansExtraBold}
             color={white}
             textAlign="left"
@@ -95,27 +95,29 @@ const SplashModalView = ({ modalView }) => {
       </View>
       <View style={styles.viewboxButtons}>
         <Button
-          fontSize={moderateScale(14)}
+        style={{marginLeft:'auto', marginRight:moderateScale(15,0.1)}}
+          fontSize={moderateScale(12)}
           backgroundColor={white}
           color={black}
           text="Login As Captain"
           padding={moderateScale(10)}
           textAlign="center"
           borderRadius={moderateScale(100)}
-          width="40%"
+          width="35%"
           onPress={() => {
             setRoleAndNavigate('driver');
           }}
         />
         <Button
-          fontSize={moderateScale(14)}
+        style={{marginRight:'auto'}}
+          fontSize={moderateScale(12)}
           backgroundColor={white}
           color={black}
           text="Get Started"
           padding={moderateScale(10)}
           textAlign="center"
           borderRadius={moderateScale(100)}
-          width="40%"
+          width="35%"
           onPress={() => {
             setRoleAndNavigate('passenger');
           }}
@@ -127,41 +129,43 @@ const SplashModalView = ({ modalView }) => {
 
 const styles = StyleSheet.create({
   viewBox: {
-    height: moderateScale(screenHeight / 1.2),
+    minHeight: moderateScale(500),
     backgroundColor: lightPurple,
-    position: 'absolute',
-    bottom: moderateScale(0),
+    position:'relative',
+    // paddingBottom:moderateScale(50),
+    // position: 'absolute',
+    // top: moderateScale(0),
     width: moderateScale(screenWidth),
-    borderTopLeftRadius: moderateScale(30),
-    borderTopRightRadius: moderateScale(30),
+    borderTopLeftRadius: Platform.OS == 'ios' ? moderateScale(50) : moderateScale(30),
+    borderTopRightRadius: Platform.OS == 'ios' ? moderateScale(50) : moderateScale(30),
   },
   viewBoxContent: {
     position: 'relative',
     padding: moderateScale(50),
-    flex: 1,
+    // flex: 1,
   },
   viewBoxHeadingBox: {
-    width: moderateScale(screenWidth / 2),
+    width: moderateScale(170,0.1),
   },
   viewboxButtons: {
     position: 'absolute',
-    top: moderateScale(screenHeight / 1.85),
+    bottom: moderateScale(70,0.1),
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
   },
   carProp: {
     position: 'absolute',
     width: '100%',
-    bottom: moderateScale(190),
+    bottom: moderateScale(-100),
     right: moderateScale(0),
   },
   mapProp: {
     position: 'absolute',
     width: '70%',
-    top: moderateScale(0),
-    right: moderateScale(0),
+    top: moderateScale(10,0.1),
+    right: moderateScale(10,0.1),
   },
 });
 

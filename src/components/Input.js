@@ -124,6 +124,7 @@ const Input = ({
                       }}
                     />
                     <Button
+                    disabled={true}
                       style={styles.modalButton}
                       fontSize={moderateScale(14)}
                       backgroundColor={red}
