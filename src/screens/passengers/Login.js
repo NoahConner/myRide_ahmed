@@ -38,7 +38,7 @@ const Login = () => {
     startAnimations();
   }, []);
   useEffect(() => {
-    if (email === '' || password === '' || !emailRegex.test(email)) {
+    if (!email || !password || !emailRegex.test(email)) {
       setDisabled(true);
     } else {
       setDisabled(false);

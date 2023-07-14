@@ -1,14 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useEffect, useState } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Animated,
   Image,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import {
   Button,
   DrawerHeader,
@@ -26,9 +26,9 @@ import {
   green,
   purple,
   screenWidth,
-  white
+  white,
 } from '../../constants/Index';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
 
 const Profile = ({}) => {
   const navigation = useNavigation();
@@ -59,6 +59,10 @@ const Profile = ({}) => {
       name: 'Help',
       path: 'Help',
     },
+    {
+      name: 'Change Password',
+      path: 'ChangePassword',
+    },
   ];
   const drivernavigationViewButtons = [
     {
@@ -85,14 +89,23 @@ const Profile = ({}) => {
       name: 'Help',
       path: 'Help',
     },
+    {
+      name: 'Change Password',
+      path: 'ChangePassword',
+    },
   ];
   useEffect(() => {
-  console.log(user);
+    console.log(user);
 
     startAnimations();
   }, []);
   const navigate = path => {
-    navigation.navigate(path);
+    if(path != 'ChangePassword'){
+      navigation.navigate(path);
+    }
+    else{
+      navigation.navigate(path,{email:user?.email, screen:'ChangePassword'});
+    }
   };
   const startAnimations = () => {
     Animated.timing(illustratorProp, {

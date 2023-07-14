@@ -26,51 +26,56 @@ import AxiosConfig from '../constants/Axios';
 import {alertToast, notification} from '../constants/HelperFunctions';
 import {useToast} from 'react-native-toast-notifications';
 const ChangePassword = ({route}) => {
-  const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
-  const {theme} = useContext(AppContext);
+  const {theme, setToken, setRole, setRideStages, setRideDetails, token} =
+    useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [loader, setLoader] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [visible, setVisible] = useState(false);
   const [routeParam, setRouteParam] = useState(route.params);
+
   const toast = useToast();
   useEffect(() => {
-    console.log(routeParam);
-    if (routeParam?.screen == 'forgetPassword') {
-      if (newPassword === '' || confirmPassword === '') {
-        setDisabled(true);
-      } else {
-        setDisabled(false);
-      }
+    if (!newPassword || !confirmPassword) {
+      setDisabled(true);
     } else {
-      if (oldPassword === '' || newPassword === '' || confirmPassword === '') {
-        setDisabled(true);
-      } else {
-        setDisabled(false);
-      }
+      setDisabled(false);
     }
-  }, [oldPassword, newPassword, confirmPassword]);
+  }, [newPassword, confirmPassword]);
   const changPass = async () => {
-    if(newPassword != confirmPassword) {
-        alertToast(toast, "Password and confirm password don't match", 'danger');
-        return
+    if (newPassword != confirmPassword) {
+      alertToast(toast, "Password and confirm password don't match", 'danger');
+      return;
     }
     const data = {
-        email:routeParam?.email,
-        password:newPassword
-    }
+      email: routeParam?.email,
+      password: newPassword,
+    };
     setDisabled(true);
     setLoading(true);
-    await AxiosConfig.post('auth/changePassword', data)
+    await AxiosConfig.post('changePassword', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
       .then(res => {
         if (res) {
           notification(toast, res?.data?.message, 'bottom');
           setLoading(false);
           setVisible(true);
-          navigation.navigate('Login')
+          if (routeParam?.screen == 'forgetPassword') {
+            navigation.navigate('Login');
+          } else {
+            setToken(false);
+            setRole('');
+            setRideStages('initial');
+            setRideDetails('');
+          }
         }
       })
       .catch(err => {
@@ -99,17 +104,6 @@ const ChangePassword = ({route}) => {
           textAlign="left"
         />
         <View style={styles.InputBox}>
-          {routeParam?.screen != 'forgetPassword' && (
-            <Input
-              placeholderTextColor={theme == 'dark' ? white : black}
-              color={theme == 'dark' ? white : black}
-              style={{marginBottom: 16}}
-              placeholder="Old Password"
-              value={oldPassword}
-              setValue={setOldPassword}
-              type="password"
-            />
-          )}
           <Input
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}

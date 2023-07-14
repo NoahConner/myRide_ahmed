@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
+import React, {useContext, useState} from 'react';
+import {StyleSheet, View, Linking} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import {
   Button,
   DrawerHeader,
@@ -16,16 +16,23 @@ import {
   darkGray,
   purple,
   screenWidth,
-  white
+  white,
 } from '../constants/Index';
-import { AppContext } from '../context/AppContext';
-const Help = ({ }) => {
-  const navigation = useNavigation()
+import {AppContext} from '../context/AppContext';
+const Help = ({}) => {
+  const navigation = useNavigation();
   const [helpMessage, setHelpMessage] = useState('');
-  const { theme } = useContext(AppContext);
+  const {theme} = useContext(AppContext);
   return (
-    <View style={{ flex: 1, backgroundColor: theme == 'dark' ? black : backgroundColor }}>
-      <DrawerHeader navigate={navigation} style={{ paddingBottom: moderateScale(10) }} />
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: theme == 'dark' ? black : backgroundColor,
+      }}>
+      <DrawerHeader
+        navigate={navigation}
+        style={{paddingBottom: moderateScale(10)}}
+      />
       <View>
         <ViewHeader
           heading="Help"
@@ -80,8 +87,9 @@ const Help = ({ }) => {
           style={{
             display: 'flex',
             flexDirection: 'row',
+            alignItems:'center',
             marginLeft: moderateScale(35),
-            marginTop: moderateScale(10)
+            marginTop: moderateScale(10),
           }}>
           <Heading
             text="Or Call Now "
@@ -90,12 +98,16 @@ const Help = ({ }) => {
             color={theme == 'dark' ? white : black}
             textAlign="left"
           />
-          <Heading
-            text="123-456-7890"
-            fontSize={moderateScale(13)}
-            fontFamily={KumbhSansExtraMedium}
+          <Button
+            style={null}
+            fontSize={moderateScale(12)}
+            backgroundColor={null}
             color={purple}
-            textAlign="left"
+            text="123-456-7890"
+            padding={moderateScale(0)}
+            textAlign="right"
+            borderRadius={moderateScale(0)}
+            onPress={() => Linking.openURL('tel:12312312312')}
           />
         </View>
       </View>

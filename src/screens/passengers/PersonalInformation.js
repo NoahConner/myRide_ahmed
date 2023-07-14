@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {
   Animated,
   Image,
@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import MaskInput from 'react-native-mask-input';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import ImagePickerOptions from '../../components/ImagePickerOptions';
 import {
   Button,
@@ -30,9 +30,12 @@ import {
   gray,
   purple,
   screenWidth,
-  white
+  white,
 } from '../../constants/Index';
-import { AppContext, useAppContext } from '../../context/AppContext';
+import AxiosConfig from '../../constants/Axios';
+import {AppContext, useAppContext} from '../../context/AppContext';
+import {alertToast, notification} from '../../constants/HelperFunctions';
+import {useToast} from 'react-native-toast-notifications';
 
 const PersonalInformation = ({}) => {
   const navigation = useNavigation();
@@ -43,9 +46,11 @@ const PersonalInformation = ({}) => {
   const [contact, setContact] = useState('');
   const [address, setAddress] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [sheet, setSheet] = useState(false);
-  const {user, theme, role} = useAppContext(AppContext);
+  const {user, theme, token, setUser} = useAppContext(AppContext);
   const [isActive, setIsActive] = useState(false);
+  const toast = useToast();
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   useEffect(() => {
     startAnimations();
@@ -53,13 +58,13 @@ const PersonalInformation = ({}) => {
 
   useEffect(() => {
     if (
-      firstName === '' ||
-      lastName === '' ||
+      !firstName ||
+      !lastName ||
       !emailRegex.test(email) ||
-      email === '' ||
-      contact === '' ||
-      address === '' ||
-      imageSource === ''
+      !email ||
+      !contact ||
+      !address ||
+      !imageSource
     ) {
       setDisabled(true);
     } else {
@@ -74,6 +79,42 @@ const PersonalInformation = ({}) => {
     setAddress(user?.address);
     setImageSource(user?.image);
   }, []);
+  const updateUser = async () => {
+    const data = {
+      id: user?.id,
+      fname: firstName,
+      lname: lastName,
+      phone: contact,
+      address: address,
+    };
+    setLoading(true);
+    setDisabled(true);
+    await AxiosConfig.post('updateUser', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then(res => {
+        if (res) {
+          console.log(res?.data);
+          if(res?.data?.data){
+            setUser(res?.data?.data)
+            console.log(user,'hello');
+          }
+          navigation.navigate('Profile')
+          notification(toast, res?.data?.message, 'bottom');
+          setLoading(false);
+          setDisabled(false);
+        }
+      })
+      .catch(err => {
+        alertToast(toast, err?.response?.data?.error, 'danger');
+        setLoading(false);
+        setDisabled(false);
+      });
+  };
   const startAnimations = () => {
     Animated.timing(illustratorProp, {
       toValue: 0,
@@ -82,7 +123,10 @@ const PersonalInformation = ({}) => {
     }).start();
   };
   return (
-    <KeyboardAvoidingView behavior="height" enabled style={{flex: 1, backgroundColor: theme == 'dark' ? black : white}}>
+    <KeyboardAvoidingView
+      behavior="height"
+      enabled
+      style={{flex: 1, backgroundColor: theme == 'dark' ? black : white}}>
       <DrawerHeader
         navigate={navigation}
         style={{paddingBottom: moderateScale(10)}}
@@ -137,6 +181,7 @@ const PersonalInformation = ({}) => {
               </TouchableOpacity>
             </View>
             <Input
+            disabled={loading}
               value={firstName}
               setValue={setFirstName}
               placeholder="First Name"
@@ -146,6 +191,7 @@ const PersonalInformation = ({}) => {
               color={theme == 'dark' ? white : black}
             />
             <Input
+            disabled={loading}
               value={lastName}
               setValue={setLastName}
               placeholder="Last Name"
@@ -165,7 +211,13 @@ const PersonalInformation = ({}) => {
               color={theme == 'dark' ? white : black}
             />
             <MaskInput
-              style={[styles.maskInput,{borderColor: isActive ? purple : gray, color: theme == 'dark'? white : black}]}
+              style={[
+                styles.maskInput,
+                {
+                  borderColor: isActive ? purple : gray,
+                  color: theme == 'dark' ? white : black,
+                },
+              ]}
               value={contact}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(false)}
@@ -187,9 +239,10 @@ const PersonalInformation = ({}) => {
                 /\d/,
                 /\d/,
                 /\d/,
-            ]}
+              ]}
             />
             <Input
+            disabled={loading}
               value={address}
               setValue={setAddress}
               placeholder="Address"
@@ -200,6 +253,7 @@ const PersonalInformation = ({}) => {
             />
             <Button
               disabled={disabled}
+              loading={loading}
               fontSize={moderateScale(14)}
               backgroundColor={purple}
               color={white}
@@ -210,7 +264,7 @@ const PersonalInformation = ({}) => {
               width="50%"
               style={styles.saveButton}
               onPress={() => {
-                console.log('Information Save');
+                updateUser();
               }}
             />
           </View>

@@ -51,12 +51,12 @@ const SignUp = () => {
   }, []);
   useEffect(() => {
     if (
-      firstName === '' ||
-      lastName === '' ||
-      contact === '' ||
-      email === '' ||
-      password === '' ||
-      confirmpassword === '' ||
+      !firstName ||
+      !lastName ||
+      !contact ||
+      !email ||
+      !password ||
+      !confirmpassword ||
       !emailRegex.test(email)
     ) {
       setDisabled(true);

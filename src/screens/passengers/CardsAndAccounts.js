@@ -45,7 +45,7 @@ const CardsAndAccounts = ({}) => {
   }, []);
 
   useEffect(() => {
-    if (name === '' || cardNo === '' || expiry === '' || CCV === '') {
+    if (!name || !cardNo || !expiry || !CCV) {
       setDisabled(true);
     } else {
       setDisabled(false);

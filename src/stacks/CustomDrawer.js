@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { Image, Platform, StyleSheet, Switch, View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
-import { Button, Heading, Icon } from '../components/Index';
+import React, {useContext, useState} from 'react';
+import {Image, Platform, StyleSheet, Switch, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import {Button, Heading, Icon} from '../components/Index';
+import AxiosConfig from '../constants/Axios';
 import {
   InterRegular,
   KumbhSansBold,
@@ -9,9 +10,11 @@ import {
   gold,
   lightGray,
   purple,
-  white
+  white,
 } from '../constants/Index';
-import { AppContext } from '../context/AppContext';
+import {AppContext} from '../context/AppContext';
+import {alertToast, notification} from '../constants/HelperFunctions';
+import {useToast} from 'react-native-toast-notifications';
 
 const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,12 +27,14 @@ const CustomDrawerContent = ({navigation, ...props}) => {
     user,
     theme,
     setTheme,
+    token,
   } = useContext(AppContext);
+  const toast = useToast();
   const handleImageLoad = () => {
     setIsLoading(false);
   };
   const toggleSwitch = () => {
-    navigation.closeDrawer()
+    navigation.closeDrawer();
     if (theme == 'dark') {
       setTheme('light');
     } else {
@@ -52,11 +57,26 @@ const CustomDrawerContent = ({navigation, ...props}) => {
     {text: 'Ratings', screen: 'Ratings'},
     {text: 'Contact Us', screen: 'Help'},
   ];
-  const logout = () => {
-    setToken(false);
-    setRole('');
-    setRideStages('initial');
-    setRideDetails('');
+  const logout = async () => {
+    await AxiosConfig.get('logout', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then(res => {
+        if (res) {
+          notification(toast, res?.data?.message, 'bottom');
+          setToken(false);
+          setRole('');
+          setRideStages('initial');
+          setRideDetails('');
+        }
+      })
+      .catch(err => {
+        alertToast(toast, err?.response?.data?.error, 'danger');
+      });
   };
   const renderIcons = () => {
     return Array.from({length: 5}).map((_, index) => (
@@ -72,9 +92,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
   };
 
   return (
-    <View
-      {...props}
-      style={styles.container}>
+    <View {...props} style={styles.container}>
       <View style={styles.topSpace} />
       <View style={styles.header}>
         <View style={styles.imageContainer}>
@@ -235,7 +253,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   switch: {
-    transform: [{scaleX: Platform.OS == 'ios' ? 0.70  :0.95}, {scaleY: Platform.OS == 'ios' ? 0.70 : 0.95}],
+    transform: [
+      {scaleX: Platform.OS == 'ios' ? 0.7 : 0.95},
+      {scaleY: Platform.OS == 'ios' ? 0.7 : 0.95},
+    ],
   },
   ratingContainer: {
     flexDirection: 'row',

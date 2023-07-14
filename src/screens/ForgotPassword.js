@@ -39,7 +39,7 @@ const ForgotPassword = () => {
   }, []);
   useEffect(() => {
     if (
-      email === '' || !emailRegex.test(email)
+      !email || !emailRegex.test(email)
     ) {
       setDisabled(true);
     } else {
