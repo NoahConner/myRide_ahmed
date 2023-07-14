@@ -23,51 +23,54 @@ import {
 } from '../constants/Index';
 import {AppContext} from '../context/AppContext';
 import AxiosConfig from '../constants/Axios';
-import { alertToast, notification } from '../constants/HelperFunctions';
-import { useToast } from 'react-native-toast-notifications';
-const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+import {alertToast, notification} from '../constants/HelperFunctions';
+import {useToast} from 'react-native-toast-notifications';
+const ChangePassword = ({route}) => {
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
   const {theme} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [loader, setLoader] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [visible, setVisible] = useState(false);
+  const [routeParam, setRouteParam] = useState(route.params);
   const toast = useToast();
   useEffect(() => {
-    startAnimations();
-  }, []);
-  useEffect(() => {
-    if (
-      email === '' || !emailRegex.test(email)
-    ) {
-      setDisabled(true);
+    console.log(routeParam);
+    if (routeParam?.screen == 'forgetPassword') {
+      if (newPassword === '' || confirmPassword === '') {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
+      }
     } else {
-      setDisabled(false);
-    }
-  }, [email]);
-  const handleOTPChange = e => {
-    if (e?.length == 4) {
-      const data = {
-        email: email,
-        otp: e,
-      };
-      if(data){
-        setVisible(false)
-        setLoader(true);
-        verifyOtp(data);
+      if (oldPassword === '' || newPassword === '' || confirmPassword === '') {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
       }
     }
-  };
-  const forgetPasswordOtp = async () => {
+  }, [oldPassword, newPassword, confirmPassword]);
+  const changPass = async () => {
+    if(newPassword != confirmPassword) {
+        alertToast(toast, "Password and confirm password don't match", 'danger');
+        return
+    }
+    const data = {
+        email:routeParam?.email,
+        password:newPassword
+    }
     setDisabled(true);
     setLoading(true);
-    await AxiosConfig.post('auth/forgetPasswordOtp', {email: email})
+    await AxiosConfig.post('auth/changePassword', data)
       .then(res => {
         if (res) {
           notification(toast, res?.data?.message, 'bottom');
           setLoading(false);
           setVisible(true);
+          navigation.navigate('Login')
         }
       })
       .catch(err => {
@@ -75,38 +78,6 @@ const ForgotPassword = () => {
         setLoading(false);
         setDisabled(false);
       });
-  };
-  const verifyOtp = async (data) => {
-    await AxiosConfig.post('auth/verifyOtp', data)
-    .then(res => {
-      if (res) {
-        setVisible(false);
-        setLoader(false);
-        notification(toast, res?.data?.message, 'bottom');
-        navigation.navigate('ChangePassword', {email:email, screen:'forgetPassword'})
-      }
-    })
-    .catch(err => {
-      alertToast(toast, err?.response?.data?.error, 'danger');
-      setLoading(false);
-      setDisabled(false);
-    });
-  }
-  const QuestionMarkAnimation = new Animated.Value(screenWidth + 250);
-
-  const startAnimations = () => {
-    Animated.sequence([
-      Animated.timing(QuestionMarkAnimation, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.spring(QuestionMarkAnimation, {
-        toValue: 1,
-        friction: 7,
-        useNativeDriver: true,
-      }),
-    ]).start();
   };
 
   return loader ? (
@@ -121,21 +92,41 @@ const ForgotPassword = () => {
       <View style={styles.headingBox}>
         <Heading
           style={null}
-          text="Forget Password"
-          fontSize={moderateScale(40)}
+          text="Change Password"
+          fontSize={moderateScale(30)}
           fontFamily={KumbhSansExtraBold}
           color={theme == 'dark' ? white : primaryHeadingColor}
           textAlign="left"
         />
         <View style={styles.InputBox}>
+          {routeParam?.screen != 'forgetPassword' && (
+            <Input
+              placeholderTextColor={theme == 'dark' ? white : black}
+              color={theme == 'dark' ? white : black}
+              style={{marginBottom: 16}}
+              placeholder="Old Password"
+              value={oldPassword}
+              setValue={setOldPassword}
+              type="password"
+            />
+          )}
           <Input
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
-            placeholder="Email"
-            value={email}
-            setValue={setEmail}
-            type="text"
+            placeholder="New Password"
+            value={newPassword}
+            setValue={setNewPassword}
+            type="password"
+          />
+          <Input
+            placeholderTextColor={theme == 'dark' ? white : black}
+            color={theme == 'dark' ? white : black}
+            style={{marginBottom: 16}}
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            setValue={setConfirmPassword}
+            type="password"
           />
         </View>
         <View style={styles.signInButtonContainer}>
@@ -146,40 +137,18 @@ const ForgotPassword = () => {
             fontSize={moderateScale(14)}
             backgroundColor={purple}
             color={white}
-            text="Send"
+            text="Change"
             padding={moderateScale(10)}
             textAlign="center"
             borderRadius={moderateScale(100)}
             width="50%"
-            onPress={() => {forgetPasswordOtp()}}
+            onPress={() => {
+              changPass();
+            }}
           />
         </View>
       </View>
-      <Animated.Image
-        style={[
-          styles.QuestionMarkProp,
-          {
-            transform: [
-              {
-                translateY: QuestionMarkAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [screenWidth + 250, 0],
-                }),
-              },
-              {
-                scale: QuestionMarkAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 1],
-                }),
-              },
-            ],
-          },
-        ]}
-        resizeMode="contain"
-        source={require('../../assets/Images/QuestionMarkProp.png')}
-      />
       <BottomCircleProp />
-      <OtpModal visible={visible} setVisible={setVisible} handleOTPChange={handleOTPChange}/>
     </View>
   );
 };
@@ -214,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ForgotPassword;
+export default ChangePassword;

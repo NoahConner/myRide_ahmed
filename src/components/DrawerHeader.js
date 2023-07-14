@@ -11,13 +11,13 @@ const DrawerHeader = ({navigate, style, screen}) => {
   return (
     <View
       style={[
-        rideStages == 'finding' || screen != 'home' || role == 'Driver'
+        rideStages == 'finding' || screen != 'home' || role?.toLowerCase() == 'Driver'
           ? styles.FindingContainer
           : styles.container,
         style,
       ]}>
       <HeaderToggleButton drawer={navigate} />
-      {screen == 'home' && role == 'Passenger'? (
+      {screen == 'home' && role?.toLowerCase() == 'passenger'? (
         <View
           style={[
             rideStages == 'finding'

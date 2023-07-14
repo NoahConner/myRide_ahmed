@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   CardsAndAccounts,
+  ChangePassword,
   Chat,
   Help,
   Home,
@@ -29,6 +30,7 @@ const PassengerStack = () => {
       <Stack.Screen name="RideHistory" component={RideHistory} />
       <Stack.Screen name="SavedAddresses" component={SavedAddresses} />
       <Stack.Screen name="Ratings" component={Ratings} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen
         name="PersonalInformation"
         component={PersonalInformation}
@@ -41,7 +43,6 @@ const PassengerStack = () => {
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="ModalScreen" component={ModalScreen} />
       <Stack.Screen name="Chat" component={Chat} />
-
     </Stack.Navigator>
   );
 };

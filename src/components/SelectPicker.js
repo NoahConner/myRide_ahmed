@@ -1,50 +1,28 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+import { StyleSheet } from 'react-native';
+import { black } from '../constants/Index';
 
-const CustomPicker = ({items, onValueChange, placeholder}) => {
+const CustomPicker = ({ selectedService, setSelectedService, style, options }) => {
+  const pickerStyle = {
+    inputIOS: style,
+    inputAndroid: style,
+    placeholder: styles.placeholder,
+  };
+
   return (
-    <View style={styles.container}>
-      <RNPickerSelect
-        onValueChange={value => console.log(value)}
-        items={[
-          {label: 'Football', value: 'football'},
-          {label: 'Baseball', value: 'baseball'},
-          {label: 'Hockey', value: 'hockey'},
-        ]}
-      />
-    </View>
+    <RNPickerSelect
+      selectedValue={selectedService}
+      onValueChange={(itemValue, itemIndex) => setSelectedService(itemValue)}
+      items={options}
+      style={pickerStyle}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    padding: 8,
-  },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
-  },
-  inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 8,
-    color: 'black',
-    paddingRight: 30
+  placeholder: {
+    color: black,
   },
 });
 

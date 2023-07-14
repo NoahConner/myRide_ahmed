@@ -13,7 +13,7 @@ export const AppContext = createContext();
 export const AppProvider = ({children}) => {
   const [state, setState] = useState('');
   const [loader, setLoader] = useState('');
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(null);
   const [user, setUser] = useState([]);
   const [selectedUser, setSelectedUser] = useState([]);
   const [role, setRole] = useState('');
@@ -71,7 +71,7 @@ export const AppProvider = ({children}) => {
     async function saveValuesToStorage() {
       try {
         await AsyncStorage.setItem('token', JSON.stringify(token));
-        await AsyncStorage.setItem('role', role);
+        await AsyncStorage.setItem('role', role?.toLowerCase());
         await AsyncStorage.setItem('user', JSON.stringify(user));
         await AsyncStorage.setItem('theme', JSON.stringify(theme));
       } catch (error) {

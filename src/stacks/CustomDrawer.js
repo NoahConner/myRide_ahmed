@@ -1,8 +1,7 @@
-import {DrawerContentScrollView} from '@react-navigation/drawer';
-import React, {useContext, useRef, useState} from 'react';
-import {Image, StyleSheet, Switch, View, Animated, Platform} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
-import {Button, Heading, Icon} from '../components/Index';
+import React, { useContext, useState } from 'react';
+import { Image, Platform, StyleSheet, Switch, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { Button, Heading, Icon } from '../components/Index';
 import {
   InterRegular,
   KumbhSansBold,
@@ -10,10 +9,9 @@ import {
   gold,
   lightGray,
   purple,
-  screenWidth,
-  white,
+  white
 } from '../constants/Index';
-import {AppContext} from '../context/AppContext';
+import { AppContext } from '../context/AppContext';
 
 const CustomDrawerContent = ({navigation, ...props}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,8 +71,6 @@ const CustomDrawerContent = ({navigation, ...props}) => {
     ));
   };
 
-
-  
   return (
     <View
       {...props}
@@ -99,7 +95,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
             textAlign="left"
           />
           <Heading
-            text={user?.first_name + ' ' + user?.last_name}
+            text={user?.fname + ' ' + user?.lname}
             fontSize={moderateScale(18)}
             fontFamily={KumbhSansBold}
             color={white}
@@ -108,7 +104,7 @@ const CustomDrawerContent = ({navigation, ...props}) => {
           <View style={styles.ratingContainer}>{renderIcons()}</View>
         </View>
       </View>
-      {role == 'Passenger'
+      {role?.toLowerCase() == 'passenger'
         ? PassengerButtons.map((button, index) => (
             <Button
               key={index}

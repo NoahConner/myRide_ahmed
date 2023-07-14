@@ -68,8 +68,8 @@ const PersonalInformation = ({}) => {
   }, [firstName, lastName, email, contact, address, imageSource]);
   useEffect(() => {
     setEmail(user?.email);
-    setFirstName(user?.first_name);
-    setLastName(user?.last_name);
+    setFirstName(user?.fname);
+    setLastName(user?.lname);
     setContact(user?.phone);
     setAddress(user?.address);
     setImageSource(user?.image);

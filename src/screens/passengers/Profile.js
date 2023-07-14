@@ -34,7 +34,6 @@ const Profile = ({}) => {
   const navigation = useNavigation();
   const [illustratorProp] = useState(new Animated.Value(screenWidth + 250));
   const {role, user, theme} = useContext(AppContext);
-  
   const passengernavigationViewButtons = [
     {
       name: 'Personal Information',
@@ -88,6 +87,8 @@ const Profile = ({}) => {
     },
   ];
   useEffect(() => {
+  console.log(user);
+
     startAnimations();
   }, []);
   const navigate = path => {
@@ -164,7 +165,7 @@ const Profile = ({}) => {
             />
           ) : null}
           <Heading
-            text={user?.first_name + ' ' + user?.last_name}
+            text={user?.fname + ' ' + user?.lname}
             fontSize={moderateScale(20)}
             fontFamily={KumbhSansExtraBold}
             color={green}
@@ -187,7 +188,7 @@ const Profile = ({}) => {
           color={theme == 'dark' ? white : darkGray}
           textAlign="center"
         />
-        {role == 'Passenger'
+        {role?.toLowerCase() == 'passenger'
           ? passengernavigationViewButtons?.map((naviagteButton, index) => {
               return renderNavigationButton(naviagteButton, index);
             })

@@ -3,24 +3,33 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
   Animated,
   KeyboardAvoidingView,
+  Modal,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import MaskInput from 'react-native-mask-input';
+import OTPTextInput from 'react-native-otp-textinput';
 import { moderateScale } from 'react-native-size-matters';
-import { Button, Heading, Input } from '../../components/Index';
+import { useToast } from 'react-native-toast-notifications';
+import { Button, Heading, Input, Loader, OtpModal } from '../../components/Index';
+import AxiosConfig from '../../constants/Axios';
+import { alertToast, notification } from '../../constants/HelperFunctions';
 import {
   KumbhSansExtraBold,
   backgroundColor,
   black,
+  emailRegex,
   gray,
+  lightPurple,
+  linearGradient,
   primaryHeadingColor,
   purple,
   screenWidth,
   white,
 } from '../../constants/Index';
 import { AppContext } from '../../context/AppContext';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -30,11 +39,31 @@ const SignUp = () => {
   const [confirmpassword, setConfirmPassword] = useState('');
   const CarAnimation = new Animated.Value(-screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser, theme} = useContext(AppContext);
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const {theme} = useContext(AppContext);
+  const toast = useToast();
   useEffect(() => {
     startAnimations();
   }, []);
-
+  useEffect(() => {
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      contact === '' ||
+      email === '' ||
+      password === '' ||
+      confirmpassword === '' ||
+      !emailRegex.test(email)
+    ) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [firstName, lastName, contact, email, password, confirmpassword]);
   const startAnimations = () => {
     Animated.sequence([
       Animated.timing(CarAnimation, {
@@ -49,12 +78,67 @@ const SignUp = () => {
       }),
     ]).start();
   };
-  const signUp = () => {
-    setUser({firstName, lastName, contact, password, email})
-    setToken(true)
-  }
-  return (
-    <KeyboardAvoidingView style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]} behavior="height" enabled>
+  const otp = async () => {
+    if (password != confirmpassword) {
+      alertToast(toast, "Password and confirm password don't match", 'danger');
+      return;
+    }
+    setLoading(true);
+    setDisabled(true);
+    await AxiosConfig.post('otp', {email: email})
+      .then(res => {
+        if (res) {
+          setLoading(false);
+          setVisible(true);
+        }
+      })
+      .catch(err => {
+        alertToast(toast, err?.response?.data?.error, 'danger');
+        setLoading(false);
+        setDisabled(false);
+      });
+  };
+  const handleOTPChange = e => {
+    if (e?.length == 4) {
+      const data = {
+        fname: firstName,
+        lname: lastName,
+        phone: contact,
+        email: email,
+        password: password,
+        role: 'passenger',
+        otp: e,
+      };
+      if(data){
+        setVisible(false)
+        setLoader(true);
+        register(data);
+      }
+    }
+  };
+  const register = async data => {
+    await AxiosConfig.post('auth/register', data)
+      .then(res => {
+        if (res) {
+          notification(toast, res?.data?.message, 'bottom');
+          setLoader(false);
+          navigation.navigate('Login');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+  return loader ? (
+    <Loader />
+  ) : (
+    <KeyboardAvoidingView
+      style={[
+        styles.container,
+        {backgroundColor: theme == 'dark' ? black : backgroundColor},
+      ]}
+      behavior="padding"
+      enabled>
       <Animated.Image
         style={[
           styles.CarProp,
@@ -89,6 +173,7 @@ const SignUp = () => {
         />
         <View style={styles.InputBox}>
           <Input
+            disabled={loading}
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
@@ -98,6 +183,7 @@ const SignUp = () => {
             type="text"
           />
           <Input
+            disabled={loading}
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
@@ -107,6 +193,7 @@ const SignUp = () => {
             type="text"
           />
           <Input
+            disabled={loading}
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
@@ -115,16 +202,39 @@ const SignUp = () => {
             setValue={setEmail}
             type="text"
           />
-          <Input
-            placeholderTextColor={theme == 'dark' ? white : black}
-            color={theme == 'dark' ? white : black}
-            style={{marginBottom: 16}}
-            placeholder="Contact"
+          <MaskInput
+            style={[
+              styles.maskInput,
+              {
+                borderColor: isActive ? purple : gray,
+                color: theme == 'dark' ? white : black,
+              },
+            ]}
             value={contact}
-            setValue={setContact}
-            type="text"
+            onFocus={() => setIsActive(true)}
+            onBlur={() => setIsActive(false)}
+            onChangeText={(masked, unmasked) => {
+              setContact(masked);
+            }}
+            mask={[
+              '(',
+              /\d/,
+              /\d/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
           />
           <Input
+            disabled={loading}
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
@@ -134,6 +244,7 @@ const SignUp = () => {
             type="password"
           />
           <Input
+            disabled={loading}
             placeholderTextColor={theme == 'dark' ? white : black}
             color={theme == 'dark' ? white : black}
             style={{marginBottom: 16}}
@@ -145,6 +256,8 @@ const SignUp = () => {
         </View>
         <View style={styles.signInButtonContainer}>
           <Button
+            disabled={disabled}
+            loading={loading}
             style={null}
             fontSize={moderateScale(14)}
             backgroundColor={purple}
@@ -154,16 +267,25 @@ const SignUp = () => {
             textAlign="center"
             borderRadius={moderateScale(100)}
             width="50%"
-            onPress={() => signUp() }
+            onPress={() => otp()}
           />
         </View>
         <View style={styles.dontHaveBox}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.dontHaveBoxText}>Already have an account?</Text>
-          <Text style={styles.dontHaveBoxText2}>Sign In!</Text>
-          </TouchableOpacity>
+          <Button
+            style={{paddingLeft: moderateScale(5)}}
+            fontSize={moderateScale(12)}
+            backgroundColor={null}
+            color={purple}
+            text="Sign In!"
+            padding={moderateScale(0)}
+            textAlign="left"
+            borderRadius={moderateScale(0)}
+            onPress={() => navigation.navigate('Login')}
+          />
         </View>
       </View>
+      <OtpModal visible={visible} setVisible={setVisible} handleOTPChange={handleOTPChange}/>
     </KeyboardAvoidingView>
   );
 };
@@ -204,6 +326,28 @@ const styles = StyleSheet.create({
     width: moderateScale(200),
     resizeMode: 'contain',
     height: moderateScale(180),
+  },
+  maskInput: {
+    borderBottomWidth: 1,
+    width: '100%',
+    marginVertical: moderateScale(10),
+    paddingLeft: moderateScale(10),
+    paddingVertical: moderateScale(5),
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(167, 141, 213, 0.7)',
+  },
+  modalContent: {
+    paddingHorizontal: moderateScale(50),
+    paddingVertical: moderateScale(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'purple',
+    borderRadius: moderateScale(10),
+    position: 'relative',
   },
 });
 

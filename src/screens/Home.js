@@ -167,7 +167,7 @@ const Home = () => {
   useEffect(() => {
     const handleRideEvent = ({ from, to, foundUser }, message) => {
       if (user?.id === to) {
-        notification(toast, message);
+        notification(toast, message, 'top');
       }
     };
     const handleSocketRideRequest = ({ from, pickup, dropoff, passengers }) => {
@@ -504,8 +504,8 @@ const Home = () => {
   return (
     <View style={[styles.container, { backgroundColor: theme == 'dark' ? black : white }]}>
       <DrawerHeader navigate={navigation} screen="home" />
-      {role === 'Passenger' ? renderPassengerHome() : renderDriverHome()}
-      {role !== 'Passenger' ? (
+      {role?.toLowerCase() === 'passenger' ? renderPassengerHome() : renderDriverHome()}
+      {role?.toLowerCase() !== 'passenger' ? (
         rideStatus != 'initial' ? (
           <View style={{ zIndex: -100 }}>
             <CustomMap region={region} markers={markers} />

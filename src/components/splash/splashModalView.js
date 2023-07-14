@@ -70,9 +70,9 @@ const SplashModalView = ({ modalView }) => {
   const setRoleAndNavigate = role => {
     setRole(role);
     setTimeout(() => {
-      if (role === 'driver') {
+      if (role?.toLowerCase() === 'driver') {
         navigation.navigate('CapatainLogin');
-      } else if (role === 'passenger') {
+      } else if (role?.toLowerCase() === 'passenger') {
         navigation.navigate('Login');
       }
     }, 0);

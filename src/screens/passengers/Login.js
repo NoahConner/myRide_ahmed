@@ -1,12 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useEffect, useState } from 'react';
-import {
-  Animated,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
+import React, {useContext, useEffect, useState} from 'react';
+import {Animated, StyleSheet, Text, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import {useToast} from 'react-native-toast-notifications';
 import {
   BottomCircleProp,
   Button,
@@ -14,6 +10,8 @@ import {
   Input,
   TopLeftCircleProp,
 } from '../../components/Index';
+import AxiosConfig from '../../constants/Axios';
+import {alertToast, notification} from '../../constants/HelperFunctions';
 import {
   KumbhSansExtraBold,
   backgroundColor,
@@ -25,17 +23,17 @@ import {
   screenWidth,
   white,
 } from '../../constants/Index';
-import userData from '../../constants/usersData.json';
-import { AppContext } from '../../context/AppContext';
+import {AppContext} from '../../context/AppContext';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const navigation = useNavigation();
-  const {setToken, setUser, setRole, theme, setTheme} = useContext(AppContext);
+  const {setToken, setUser, setRole, theme} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const toast = useToast();
   useEffect(() => {
     startAnimations();
   }, []);
@@ -46,17 +44,29 @@ const Login = () => {
       setDisabled(false);
     }
   }, [email, password]);
-  const login = () => {
-    setLoading(true);
-    const foundUser = userData.users.find(user => user?.email == email?.toLowerCase());
-    if (foundUser) {
-      setUser(foundUser);
-      setRole('Passenger');
-      setToken(true);
+  const login = async () => {
+    const data = {
+      email: email,
+      password: password,
+    };
+    if (data) {
+      setLoading(true);
+      setDisabled(true);
+      await AxiosConfig.post('auth/login', data)
+        .then(res => {
+          if (res) {
+            setToken(res?.data?.access_token);
+            setUser(res?.data?.user);
+            setRole(res?.data?.user?.role?.toLowerCase());
+            notification(toast, res?.data?.message, 'bottom');
+          }
+        })
+        .catch(err => {
+          alertToast(toast, err?.response?.data?.error, 'danger');
+          setLoading(false);
+          setDisabled(false);
+        });
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
   };
   const startAnimations = () => {
     Animated.timing(GirlAnimation, {
@@ -72,7 +82,11 @@ const Login = () => {
     }).start();
   };
   return (
-    <View style={[styles.container,{backgroundColor:theme == 'dark' ? black : backgroundColor}]}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme == 'dark' ? black : backgroundColor},
+      ]}>
       <TopLeftCircleProp />
       <View style={styles.headingBox}>
         <Heading

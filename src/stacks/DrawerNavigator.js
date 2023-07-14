@@ -46,9 +46,9 @@ export default function DrawerNavigatorScreen() {
     };
   }, []);
 
-  const initialRouteName = role === 'passenger' ? 'Passenger' : 'Driver';
-  const screenName = role === 'Passenger' ? 'Passenger' : 'Driver';
-  const ScreenComponent = role === 'Passenger' ? PassengerStack : DriverStack;
+  const initialRouteName = role?.toLowerCase() == 'passenger' ? 'passenger' : 'Driver';
+  const screenName = role?.toLowerCase() == 'passenger' ? 'passenger' : 'Driver';
+  const ScreenComponent = role?.toLowerCase() == 'passenger' ? PassengerStack : DriverStack;
 
   return (
     <Drawer.Navigator

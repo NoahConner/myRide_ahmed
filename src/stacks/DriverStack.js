@@ -4,6 +4,7 @@ import {
   AccountInformation,
   Accounts,
   CardsAndAccounts,
+  ChangePassword,
   Chat,
   Help,
   Home,
@@ -48,6 +49,7 @@ const DriverStack = () => {
         <Stack.Screen name="Notifications" component={Notifications} />
         <Stack.Screen name="ModalScreen" component={ModalScreen} />
         <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
       </>
     </Stack.Navigator>
   );

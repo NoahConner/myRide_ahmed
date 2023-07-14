@@ -5,6 +5,7 @@ export { default as Help } from './Help';
 export { default as Home } from './Home';
 export { default as HowToUse } from './HowToUse';
 export { default as ModalScreen } from './ModalScreen';
+export { default as ChangePassword } from './ChangePassword';
 export { default as Notifications } from './Notifications';
 export { default as PrivacyPolicy } from './PrivacyPolicy';
 export { default as RideHistory } from './RideHistory';

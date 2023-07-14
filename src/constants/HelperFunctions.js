@@ -115,10 +115,10 @@ export const selectDocument = async setState => {
     }
   }
 };
-export const notification = (toast,message) => {
+export const notification = (toast,message, placement) => {
   toast.show(message, {
     type: 'customize',
-    placement: 'top',
+    placement: placement,
     duration: 4000,
     offset: 30,
     animationType: 'zoom-in',
@@ -127,6 +127,19 @@ export const notification = (toast,message) => {
       width: screenWidth,
       textColor: white
     },
+  });
+};
+export const alertToast = (toast,message, type) => {
+  console.log(toast,message, type);
+  toast.show(message, {
+    type: type,
+    placement: 'bottom',
+    duration: 4000,
+    offset: 30,
+    animationType: 'zoom-in',
+    style: {
+      width: screenWidth
+    }
   });
 };
 export const notificationRoute = (toast,message, selectedUser, navigation) => {
